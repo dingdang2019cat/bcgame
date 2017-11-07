@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="bcgame:war exploded">
+    <output-path>$PROJECT_DIR$/target/bcgame</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="bcgame" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/bcgame/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="bcgame/web/Web" />
+    </root>
+  </artifact>
+</component>
