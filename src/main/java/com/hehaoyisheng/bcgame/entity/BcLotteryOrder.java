@@ -15,4 +15,5 @@ public class BcLotteryOrder {
     private String lotType;
     private String lotteryHaoMa;
     private int multiple;
+
 }
