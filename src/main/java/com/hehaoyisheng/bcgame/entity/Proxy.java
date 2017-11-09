@@ -2,7 +2,7 @@ package com.hehaoyisheng.bcgame.entity;
 
 public class Proxy {
     private int id;
-    private String shagnji;
+    private String shangji;
     private String xiaji;
 
     public int getId() {
@@ -13,12 +13,12 @@ public class Proxy {
         this.id = id;
     }
 
-    public String getShagnji() {
-        return shagnji;
+    public String getShangji() {
+        return shangji;
     }
 
-    public void setShagnji(String shagnji) {
-        this.shagnji = shagnji;
+    public void setShangji(String shagnji) {
+        this.shangji = shagnji;
     }
 
     public String getXiaji() {
