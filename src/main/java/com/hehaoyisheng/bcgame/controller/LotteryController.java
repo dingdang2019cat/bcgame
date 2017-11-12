@@ -61,5 +61,4 @@ public class LotteryController {
         return Result.success(null);
     }
 
-
 }
