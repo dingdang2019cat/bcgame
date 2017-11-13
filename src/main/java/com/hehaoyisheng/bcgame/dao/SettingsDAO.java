@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface SettingsDAO {
     @Insert("insert into settings (key, value) values (#{key}, #{value})")
     int insert(Settings settings);

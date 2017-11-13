@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface ProxyDAO {
 
     @Insert("insert into Daili (shangji, xiaji) values (#{shangji}, #{xiaji})")

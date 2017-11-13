@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
-@Repository
 public interface DrawHistoryDAO {
 
     @Insert("insert into txHistory (accountId, account, money, time, name, bankName, cardNo, status, orderid, shangji, remark) values (#{accountId, #{account}, #{money}, #{time}, #{name}, #{bankName}, #{cardNo}, #{status}, #{orderid}, #{shangji}, #{remark})")

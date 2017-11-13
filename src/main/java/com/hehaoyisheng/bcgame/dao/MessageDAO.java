@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface MessageDAO {
 
     @Insert("insert into message (account, title, text, status, readTime, createTime, author) values (#{account}, #{title}, #{text}, #{status}, #{readTime}, #{createTime}, #{author})")

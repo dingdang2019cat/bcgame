@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface UserDAO {
 
     @Insert("insert into user (username, password, drawFlag, createtime, ip, type, minBonusOdds, fandian, shangji, status) values (#{username}, #{password}, #{drawFlag}, #{createtime}, #{ip}, #{type}, #{minBonusOdds}, #{fandian}, #{shangji}, #{shangji} )")
