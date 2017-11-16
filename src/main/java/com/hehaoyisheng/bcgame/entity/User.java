@@ -3,17 +3,17 @@ package com.hehaoyisheng.bcgame.entity;
 import java.util.Date;
 
 public class User {
-    private int id;
+    private Integer id;
     private String username;
     private String password;
     private double money;
-    private int drawFlag;
+    private Integer drawFlag;
     private Date createtime;
-    private int touzhuFlag;
+    private Integer touzhuFlag;
     private String ip;
     private Date time;
-    private int online;
-    private int type;
+    private Integer online;
+    private Integer type;
     private String drawPwd;
     private String name;
     //TODO new insert
@@ -23,13 +23,13 @@ public class User {
     private double minBonusOdds;
     private double fandian;
     private String shangji;
-    private int status;
+    private Integer status;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -57,11 +57,11 @@ public class User {
         this.money = money;
     }
 
-    public int getDrawFlag() {
+    public Integer getDrawFlag() {
         return drawFlag;
     }
 
-    public void setDrawFlag(int drawFlag) {
+    public void setDrawFlag(Integer drawFlag) {
         this.drawFlag = drawFlag;
     }
 
@@ -73,11 +73,11 @@ public class User {
         this.createtime = createtime;
     }
 
-    public int getTouzhuFlag() {
+    public Integer getTouzhuFlag() {
         return touzhuFlag;
     }
 
-    public void setTouzhuFlag(int touzhuFlag) {
+    public void setTouzhuFlag(Integer touzhuFlag) {
         this.touzhuFlag = touzhuFlag;
     }
 
@@ -97,19 +97,19 @@ public class User {
         this.time = time;
     }
 
-    public int getOnline() {
+    public Integer getOnline() {
         return online;
     }
 
-    public void setOnline(int online) {
+    public void setOnline(Integer online) {
         this.online = online;
     }
 
-    public int getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
@@ -177,11 +177,11 @@ public class User {
         this.shangji = shangji;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }

@@ -3,28 +3,29 @@ package com.hehaoyisheng.bcgame.entity;
 import java.util.Date;
 
 public class Message {
-    private int id;
-    private int account;
+    private Integer id;
+    private String account;
     private String title;
     private String text;
-    private int status;
+    //1-unread  2-read
+    private Integer status;
     private Date readTime;
     private Date createTime;
     private String author;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(int account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 
@@ -44,11 +45,11 @@ public class Message {
         this.text = text;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

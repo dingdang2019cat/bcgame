@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <!-- saved from url=(0024)http://vanke55.com/login -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -32,7 +33,7 @@
 			       <a href="javascript:;" class="safeLoginBtn">安全登录</a>
 			    </div>
 		        <!-- 正常登录 -->
-				<form class="loginForm" action="http://vanke55.com/login" id="loginForm" method="post" data-token="yWvNoHo9">
+				<form class="loginForm" action="/login" id="loginForm" method="post" data-token="yWvNoHo9">
 		            <div class="loginDetail">
 		                <input type="text" class="inputCont" placeholder="用户名" id="userName">
 		                <input type="hidden" name="account" id="account">
@@ -48,7 +49,7 @@
 		            	<a href="javascript:void(0);" class="forgetPassword" onclick="forgetPassword()">忘记密码?</a>
 		            	<a target="_blank" href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&amp;configID=62880&amp;jid=3635228849&amp;s=1" class="onlineServices"><i></i>联系客服</a>
 			        </div>
-			        <p class="errorTips"></p>
+			        <p class="errorTips">${errorTips}</p>
 			        <div class="loginBtnArea">
 			        	<input type="submit" class="btn submitBtn" value="登录">
 			        </div>
@@ -106,7 +107,7 @@
 		
 		<div class="findPwdMain" style="display:none;">
 		    <div class="findPwdHeader">
-		        <a class="logo" href="http://vanke55.com/login">
+		        <a class="logo" href="login">
 		            <img src="./resource/logo.png" alt="logo">
 		        </a>
 				<a target="_blank" href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&amp;configID=62880&amp;jid=3635228849&amp;s=1" class="customerService"><i></i>在线客服</a>
@@ -115,7 +116,7 @@
 		        <div class="findPwdBox">
 		            <div class="findPwdHeader">
 		                <p class="findPwdTitle">找回登录密码</p>
-		                <a href="http://vanke55.com/login" class="findPwdReturn">返回</a>
+		                <a href="/login" class="findPwdReturn">返回</a>
 		            </div>
 		            
 		            <div class="findPwdContent">

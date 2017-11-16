@@ -41,7 +41,7 @@ public interface UserDAO {
 
     @Select("<script> " +
             "select * " +
-            "from user " +
+            "from user" +
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
             " <if test=\"id != null\"> AND id=#{id}</if> " +
             " <if test=\"username != null\"> AND username=#{username}</if> " +
