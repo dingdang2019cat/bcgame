@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- saved from url=(0028)/index -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -285,48 +286,13 @@
 		<div class="noticeScrollBox">
 			<div class="noticeScroll">
 				<ul class="noticeScrollList" id="webSiteNotice">
-					
+					<c:forEach var="signs" items="${signs}">
 						<li class="notice">
-							<a href="/notice/index?id=134" class="textUnderline" target="_blank">【平台更新】2017年11月17日</a>
-							<span class="noticeTime">2017-11-16</span>
+							<a href="/notice/index?id=${signs.id}" class="textUnderline" target="_blank">${signs.title}</a>
+							<span class="noticeTime">${sign.time}</span>
 						</li>
-					
-						<li class="notice">
-							<a href="/notice/index?id=3" class="textUnderline" target="_blank">【平台更新】2017年11月15日</a>
-							<span class="noticeTime">2017-11-14</span>
-						</li>
-					
-						<li class="notice">
-							<a href="/notice/index?id=133" class="textUnderline" target="_blank">【重要通知】重庆时时彩·投注狂欢双11~0点准时开启~</a>
-							<span class="noticeTime">2017-11-10</span>
-						</li>
-					
-						<li class="notice">
-							<a href="/notice/index?id=132" class="textUnderline" target="_blank">【平台更新】2017年11月08日</a>
-							<span class="noticeTime">2017-11-8</span>
-						</li>
-					
-						<li class="notice">
-							<a href="/notice/index?id=131" class="textUnderline" target="_blank">【银行维护】中信银行和农业银行11月5日</a>
-							<span class="noticeTime">2017-11-4</span>
-						</li>
-					
-				<li class="notice">
-							<a href="/notice/index?id=134" class="textUnderline" target="_blank">【平台更新】2017年11月17日</a>
-							<span class="noticeTime">2017-11-16</span>
-						</li><li class="notice">
-							<a href="/notice/index?id=3" class="textUnderline" target="_blank">【平台更新】2017年11月15日</a>
-							<span class="noticeTime">2017-11-14</span>
-						</li><li class="notice">
-							<a href="/notice/index?id=133" class="textUnderline" target="_blank">【重要通知】重庆时时彩·投注狂欢双11~0点准时开启~</a>
-							<span class="noticeTime">2017-11-10</span>
-						</li><li class="notice">
-							<a href="/notice/index?id=132" class="textUnderline" target="_blank">【平台更新】2017年11月08日</a>
-							<span class="noticeTime">2017-11-8</span>
-						</li><li class="notice">
-							<a href="/notice/index?id=131" class="textUnderline" target="_blank">【银行维护】中信银行和农业银行11月5日</a>
-							<span class="noticeTime">2017-11-4</span>
-						</li></ul>
+					</c:forEach>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -336,19 +302,19 @@
     	<div class="vlott">
     		
     			<a href="/lotts/cqssc/index" class="acqssc">
-					<p>本期截止：<span data-key="cqssc" data-time="235">00:03:55</span></p>
+					<p>本期截止：<span data-key="cqssc" data-time="235">${cqssc}</span></p>
 				</a>
     		
     			<a href="/lotts/gd11x5/index" class="agd11x5">
-					<p>本期截止：<span data-key="gd11x5" data-time="32845">09:07:25</span></p>
+					<p>本期截止：<span data-key="gd11x5" data-time="32845">${gd11x5}</span></p>
 				</a>
     		
     			<a href="/lotts/pk10/index" class="apk10">
-					<p>本期截止：<span data-key="pk10" data-time="32755">09:05:55</span></p>
+					<p>本期截止：<span data-key="pk10" data-time="32755">${pk10}</span></p>
 				</a>
     		
     			<a href="/lotts/3d/index" class="a3d">
-					<p>本期截止：<span data-key="3d" data-time="76165">21:09:25</span></p>
+					<p>本期截止：<span data-key="3d" data-time="76165">${fc3d}</span></p>
 				</a>
     		
     	</div>
@@ -365,207 +331,13 @@
 		<div class="noticeScrollBox">
 			<div class="noticeScroll">
 				<ul class="noticeScrollList" id="awardsNotice">
+					<c:forEach var="lotterys" items="${lotterys}">
 						<li class="notice">
-							<span>江西11选5</span>
-							<span class="lotteryName">jm****l</span>
-							<span class="winAmount">7425元</span>
+							<span>${lotterys.lotName}</span>
+							<span class="lotteryName">${lotterys.username}</span>
+							<span class="winAmount">${lotterys.money}元</span>
 						</li>
-					
-						<li class="notice">
-							<span>五分11选5</span>
-							<span class="lotteryName">od****z</span>
-							<span class="winAmount">3474元</span>
-						</li>
-					
-						<li class="notice">
-							<span>鼎汇一分彩</span>
-							<span class="lotteryName">ei****k</span>
-							<span class="winAmount">8705元</span>
-						</li>
-					
-						<li class="notice">
-							<span>北京赛车</span>
-							<span class="lotteryName">ne****w</span>
-							<span class="winAmount">6827元</span>
-						</li>
-					
-						<li class="notice">
-							<span>广东11选5</span>
-							<span class="lotteryName">yj****t</span>
-							<span class="winAmount">9032元</span>
-						</li>
-					
-						<li class="notice">
-							<span>一分11选5</span>
-							<span class="lotteryName">dw****h</span>
-							<span class="winAmount">11400元</span>
-						</li>
-					
-						<li class="notice">
-							<span>鼎汇五分彩</span>
-							<span class="lotteryName">la****w</span>
-							<span class="winAmount">43805元</span>
-						</li>
-					
-						<li class="notice">
-							<span>重庆时时彩</span>
-							<span class="lotteryName">sc****3</span>
-							<span class="winAmount">31812元</span>
-						</li>
-					
-						<li class="notice">
-							<span>三分11选5</span>
-							<span class="lotteryName">jy****7</span>
-							<span class="winAmount">18746元</span>
-						</li>
-					
-						<li class="notice">
-							<span>鼎汇五分彩</span>
-							<span class="lotteryName">zh****w</span>
-							<span class="winAmount">18049元</span>
-						</li>
-					
-						<li class="notice">
-							<span>三分11选5</span>
-							<span class="lotteryName">na****6</span>
-							<span class="winAmount">32637元</span>
-						</li>
-					
-						<li class="notice">
-							<span>新疆时时彩</span>
-							<span class="lotteryName">cg****s</span>
-							<span class="winAmount">21100元</span>
-						</li>
-					
-						<li class="notice">
-							<span>鼎汇五分彩</span>
-							<span class="lotteryName">kd****x</span>
-							<span class="winAmount">36857元</span>
-						</li>
-					
-						<li class="notice">
-							<span>鼎汇三分彩</span>
-							<span class="lotteryName">sv****9</span>
-							<span class="winAmount">49410元</span>
-						</li>
-					
-						<li class="notice">
-							<span>江西11选5</span>
-							<span class="lotteryName">lx****z</span>
-							<span class="winAmount">27423元</span>
-						</li>
-					
-						<li class="notice">
-							<span>新疆时时彩</span>
-							<span class="lotteryName">vk****v</span>
-							<span class="winAmount">62582元</span>
-						</li>
-					
-						<li class="notice">
-							<span>三分11选5</span>
-							<span class="lotteryName">wo****u</span>
-							<span class="winAmount">76540元</span>
-						</li>
-					
-						<li class="notice">
-							<span>三分11选5</span>
-							<span class="lotteryName">kf****z</span>
-							<span class="winAmount">81497元</span>
-						</li>
-					
-						<li class="notice">
-							<span>天津时时彩</span>
-							<span class="lotteryName">zt****n</span>
-							<span class="winAmount">76068元</span>
-						</li>
-					
-						<li class="notice">
-							<span>三分11选5</span>
-							<span class="lotteryName">bp****k</span>
-							<span class="winAmount">82491元</span>
-						</li>
-					
-						<li class="notice">
-							<span>江西11选5</span>
-							<span class="lotteryName">jm****l</span>
-							<span class="winAmount">7425元</span>
-						</li><li class="notice">
-							<span>五分11选5</span>
-							<span class="lotteryName">od****z</span>
-							<span class="winAmount">3474元</span>
-						</li><li class="notice">
-							<span>鼎汇一分彩</span>
-							<span class="lotteryName">ei****k</span>
-							<span class="winAmount">8705元</span>
-						</li><li class="notice">
-							<span>北京赛车</span>
-							<span class="lotteryName">ne****w</span>
-							<span class="winAmount">6827元</span>
-						</li><li class="notice">
-							<span>广东11选5</span>
-							<span class="lotteryName">yj****t</span>
-							<span class="winAmount">9032元</span>
-						</li><li class="notice">
-							<span>一分11选5</span>
-							<span class="lotteryName">dw****h</span>
-							<span class="winAmount">11400元</span>
-						</li><li class="notice">
-							<span>鼎汇五分彩</span>
-							<span class="lotteryName">la****w</span>
-							<span class="winAmount">43805元</span>
-						</li><li class="notice">
-							<span>重庆时时彩</span>
-							<span class="lotteryName">sc****3</span>
-							<span class="winAmount">31812元</span>
-						</li><li class="notice">
-							<span>三分11选5</span>
-							<span class="lotteryName">jy****7</span>
-							<span class="winAmount">18746元</span>
-						</li><li class="notice">
-							<span>鼎汇五分彩</span>
-							<span class="lotteryName">zh****w</span>
-							<span class="winAmount">18049元</span>
-						</li><li class="notice">
-							<span>三分11选5</span>
-							<span class="lotteryName">na****6</span>
-							<span class="winAmount">32637元</span>
-						</li><li class="notice">
-							<span>新疆时时彩</span>
-							<span class="lotteryName">cg****s</span>
-							<span class="winAmount">21100元</span>
-						</li><li class="notice">
-							<span>鼎汇五分彩</span>
-							<span class="lotteryName">kd****x</span>
-							<span class="winAmount">36857元</span>
-						</li><li class="notice">
-							<span>鼎汇三分彩</span>
-							<span class="lotteryName">sv****9</span>
-							<span class="winAmount">49410元</span>
-						</li><li class="notice">
-							<span>江西11选5</span>
-							<span class="lotteryName">lx****z</span>
-							<span class="winAmount">27423元</span>
-						</li><li class="notice">
-							<span>新疆时时彩</span>
-							<span class="lotteryName">vk****v</span>
-							<span class="winAmount">62582元</span>
-						</li><li class="notice">
-							<span>三分11选5</span>
-							<span class="lotteryName">wo****u</span>
-							<span class="winAmount">76540元</span>
-						</li><li class="notice">
-							<span>三分11选5</span>
-							<span class="lotteryName">kf****z</span>
-							<span class="winAmount">81497元</span>
-						</li><li class="notice">
-							<span>天津时时彩</span>
-							<span class="lotteryName">zt****n</span>
-							<span class="winAmount">76068元</span>
-						</li><li class="notice">
-							<span>三分11选5</span>
-							<span class="lotteryName">bp****k</span>
-							<span class="winAmount">82491元</span>
-						</li>
+					</c:forEach>
 				</ul>
 			</div>
 		</div>

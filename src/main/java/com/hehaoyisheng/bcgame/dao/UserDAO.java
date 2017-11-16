@@ -51,5 +51,5 @@ public interface UserDAO {
             " <if test=\"nickName != null\"> AND nickName=#{nickName}</if> " +
             " </trim> " +
             " </script> ")
-    List<User> select(User user);
+    List<User> select(User user, Integer from, Integer limit, Integer orderBy);
 }
