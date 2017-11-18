@@ -1,10 +1,14 @@
 package com.hehaoyisheng.bcgame.controller;
 
 import com.google.common.collect.Maps;
+import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
 import com.hehaoyisheng.bcgame.entity.Message;
+import com.hehaoyisheng.bcgame.entity.Sign;
 import com.hehaoyisheng.bcgame.entity.User;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
+import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
 import com.hehaoyisheng.bcgame.manager.MessageManager;
+import com.hehaoyisheng.bcgame.manager.SignManager;
 import com.hehaoyisheng.bcgame.manager.UserManager;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -24,15 +28,32 @@ public class UserController {
     private UserManager userManager;
 
     @Resource
+    private BcLotteryOrderManager bcLotteryOrderManager;
+
+    @Resource
     private MessageManager messageManager;
+
+    @Resource
+    private SignManager signManager;
 
     @RequestMapping("/index")
     public String index(@ModelAttribute("user") User user, Model model){
-        List<User> list = userManager.select(user);
+        List<User> list = userManager.select(user, null, null, null, null);
         System.out.println(list.get(0).getPassword());
         if(CollectionUtils.isEmpty(list)){
             return "login";
         }
+        //公告播报查询
+        List<Sign> signs = signManager.select(new Sign());
+        model.addAttribute("signs", signs);
+        //中奖播报查询
+        BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
+        bcLotteryOrder.setStatus(2);
+        List<BcLotteryOrder> bcLotteryOrders = bcLotteryOrderManager.select(bcLotteryOrder, 0, 10, null, null);
+        for(BcLotteryOrder b : bcLotteryOrders){
+            b.setAccount(b.getAccount().substring(0, 2) + "***" + b.getAccount().substring(b.getAccount().length() - 2, b.getAccount().length() -1));
+        }
+        model.addAttribute("lotterys", bcLotteryOrders);
         User selectUser = list.get(0);
         model.addAttribute("amount", selectUser.getMoney());
         return "index";
@@ -42,7 +63,7 @@ public class UserController {
     public String login(String account, String password, Model model){
         User user = new User();
         user.setUsername(account);
-        List<User> list = userManager.select(user);
+        List<User> list = userManager.select(user, null, null, null, null);
         System.out.println(account + "   " + password);
         System.out.println(list.get(0).getPassword());
         if(CollectionUtils.isEmpty(list) || !StringUtils.equals(list.get(0).getPassword(), password)){
@@ -61,7 +82,7 @@ public class UserController {
     @RequestMapping("/user/amount")
     @ResponseBody
     public Result amount(@ModelAttribute("user") User user){
-        List<User> list = userManager.select(user);
+        List<User> list = userManager.select(user, null, null, null, null);
         Map<String, Double> amount = Maps.newHashMap();
         if(!CollectionUtils.isEmpty(list)){
             amount.put("amount", list.get(0).getMoney());

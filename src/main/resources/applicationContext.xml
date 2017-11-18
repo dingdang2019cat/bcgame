@@ -58,6 +58,9 @@
         <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.ProxyDAO" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
-
+    <bean id="bcLotteryOrderDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.BcLotteryOrderDAO" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
 
 </beans>

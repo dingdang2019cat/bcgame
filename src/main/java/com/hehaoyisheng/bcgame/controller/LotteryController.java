@@ -40,7 +40,7 @@ public class LotteryController {
     @ResponseBody
     public Result doBet(@ModelAttribute("userId") User user, @PathVariable String gameType, int isTrace, int traceWinStop, int bounsType, List<Order> order, double amount, double count){
         //判断余额
-        user = userManager.select(user).get(0);
+        user = userManager.select(user, null, null, null, null).get(0);
         if(user.getMoney() < amount){
             //余额不足
         }

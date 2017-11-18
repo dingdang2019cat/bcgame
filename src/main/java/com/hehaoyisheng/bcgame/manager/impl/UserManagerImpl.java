@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -45,9 +46,9 @@ public class UserManagerImpl implements UserManager {
         return -1;
     }
 
-    public List<User> select(User user) {
+    public List<User> select(User user, Integer from, Integer limit, Date startTime, Date endTime) {
         try {
-            return userDAO.select(user);
+            return userDAO.select(user, from, limit, startTime, endTime);
         }catch (Exception e){
             e.printStackTrace();
             logger.error("insert Error: username:{}, ", e);

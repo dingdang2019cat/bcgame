@@ -2,36 +2,37 @@ package com.hehaoyisheng.bcgame.entity;
 
 import java.util.Date;
 
+//TODO 上线前调整表的默认值
 public class BcLotteryOrder {
-    private int id;
+    private Integer id;
     private String account;
-    private int accountId;
+    private Integer accountId;
     private double buyMoney;
-    private int buyZhuShu;
+    private Integer buyZhuShu;
     private Date createTime;
     private String haoMa;
     private String lotCode;
     private String lotName;
     private String lotType;
     private String lotteryHaoMa;
-    private int multiple;
+    private Integer multiple;
     private String playCode;
     private String playName;
     private String qiHao;
-    private int rollBackStatus;
-    private int status;
+    private Integer rollBackStatus;
+    private Integer status;
     private double winMoney;
-    private int winZhuShu;
+    private Integer winZhuShu;
     private String zhuiHao;
     private double minBonusOdds;
     private double rollBackMoney;
     private String shangji;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -43,11 +44,11 @@ public class BcLotteryOrder {
         this.account = account;
     }
 
-    public int getAccountId() {
+    public Integer getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(int accoutId) {
+    public void setAccountId(Integer accoutId) {
         this.accountId = accoutId;
     }
 
@@ -59,11 +60,11 @@ public class BcLotteryOrder {
         this.buyMoney = buyMoney;
     }
 
-    public int getBuyZhuShu() {
+    public Integer getBuyZhuShu() {
         return buyZhuShu;
     }
 
-    public void setBuyZhuShu(int buyZhuShu) {
+    public void setBuyZhuShu(Integer buyZhuShu) {
         this.buyZhuShu = buyZhuShu;
     }
 
@@ -115,11 +116,11 @@ public class BcLotteryOrder {
         this.lotteryHaoMa = lotteryHaoMa;
     }
 
-    public int getMultiple() {
+    public Integer getMultiple() {
         return multiple;
     }
 
-    public void setMultiple(int multiple) {
+    public void setMultiple(Integer multiple) {
         this.multiple = multiple;
     }
 
@@ -147,19 +148,19 @@ public class BcLotteryOrder {
         this.qiHao = qiHao;
     }
 
-    public int getRollBackStatus() {
+    public Integer getRollBackStatus() {
         return rollBackStatus;
     }
 
-    public void setRollBackStatus(int rollBackStatus) {
+    public void setRollBackStatus(Integer rollBackStatus) {
         this.rollBackStatus = rollBackStatus;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -171,11 +172,11 @@ public class BcLotteryOrder {
         this.winMoney = winMoney;
     }
 
-    public int getWinZhuShu() {
+    public Integer getWinZhuShu() {
         return winZhuShu;
     }
 
-    public void setWinZhuShu(int winZhuShu) {
+    public void setWinZhuShu(Integer winZhuShu) {
         this.winZhuShu = winZhuShu;
     }
 
