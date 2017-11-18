@@ -4,10 +4,13 @@ import com.google.common.collect.Lists;
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.entity.vo.LotteryTime;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
+import com.hehaoyisheng.bcgame.manager.UserManager;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Controller

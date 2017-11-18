@@ -113,4 +113,18 @@ public class UserController {
         List<Message> list = messageManager.select(message);
         return Result.success(list == null ? 0 : list.size());
     }
+
+    /**
+     * 投注和追号的记录
+     */
+    @RequestMapping("/game/index")
+    public String game(String tabId, @ModelAttribute("user") User user, Model model){
+        if(!StringUtils.isEmpty(tabId)){
+            if(tabId.equals("trace") || tabId.equals("gameBetList")){
+                model.addAttribute("account", user.getUsername());
+                return "gameBetList";
+            }
+        }
+        return null;
+    }
 }
