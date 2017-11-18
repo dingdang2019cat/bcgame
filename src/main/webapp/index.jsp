@@ -185,7 +185,7 @@
        	</label>
         <label>
 			<span>可用余额：</span>
-			<span id="userBalance" class="userBalance overflowEllipsis" title="3.9558" data-value="3.9558">3.9558</span>
+			<span id="userBalance" class="userBalance overflowEllipsis" title="${amount}" data-value="${amount}">${amount}</span>
 			<span>元</span>
 			<a href="javascript:;" class="accountHide" id="accountHide" data-value="false" title="隐藏金额"></a>
 		</label>
@@ -288,8 +288,8 @@
 				<ul class="noticeScrollList" id="webSiteNotice">
 					<c:forEach var="signs" items="${signs}">
 						<li class="notice">
-							<a href="/notice/index?id=${signs.id}" class="textUnderline" target="_blank">${signs.title}</a>
-							<span class="noticeTime">${sign.time}</span>
+							<a href="/notice/index?id=${signs.id}" class="textUnderline" target="_blank">${signs.key}</a>
+							<span class="noticeTime">${signs.time}</span>
 						</li>
 					</c:forEach>
 				</ul>
@@ -302,19 +302,19 @@
     	<div class="vlott">
     		
     			<a href="/lotts/cqssc/index" class="acqssc">
-					<p>本期截止：<span data-key="cqssc" data-time="235">${cqssc}</span></p>
+					<p>本期截止：<span data-key="cqssc" data-time="${cqssc}">${cqssc}</span></p>
 				</a>
     		
     			<a href="/lotts/gd11x5/index" class="agd11x5">
-					<p>本期截止：<span data-key="gd11x5" data-time="32845">${gd11x5}</span></p>
+					<p>本期截止：<span data-key="gd11x5" data-time="${gd11x5}">${gd11x5}</span></p>
 				</a>
     		
     			<a href="/lotts/pk10/index" class="apk10">
-					<p>本期截止：<span data-key="pk10" data-time="32755">${pk10}</span></p>
+					<p>本期截止：<span data-key="pk10" data-time="${pk10}">${pk10}</span></p>
 				</a>
     		
     			<a href="/lotts/3d/index" class="a3d">
-					<p>本期截止：<span data-key="3d" data-time="76165">${fc3d}</span></p>
+					<p>本期截止：<span data-key="3d" data-time="${fc3d}">${fc3d}</span></p>
 				</a>
     		
     	</div>
@@ -334,8 +334,8 @@
 					<c:forEach var="lotterys" items="${lotterys}">
 						<li class="notice">
 							<span>${lotterys.lotName}</span>
-							<span class="lotteryName">${lotterys.username}</span>
-							<span class="winAmount">${lotterys.money}元</span>
+							<span class="lotteryName">${lotterys.account}</span>
+							<span class="winAmount">${lotterys.winMoney}元</span>
 						</li>
 					</c:forEach>
 				</ul>

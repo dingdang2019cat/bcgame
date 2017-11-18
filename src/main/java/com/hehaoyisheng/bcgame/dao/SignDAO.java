@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface SignDAO {
 
-    @Insert("insert into sign (key, text) values (#{key}, #{text})")
+    @Insert("insert into sign (key, text, time) values (#{key}, #{text}, now())")
     int insert(Sign sign);
 
     @Update("update sign set text=#{text} where key=#{key}")

@@ -11,10 +11,10 @@ public class GameData {
      * 防止空指针，初始化彩票时间
      */
     static {
-        gameTime.put("cqssc", 0L);
-        gameTime.put("gd11x5", 0L);
-        gameTime.put("pk10", 0L);
-        gameTime.put("3d", 0L);
+        gameTime.put("cqssc", 100L);
+        gameTime.put("gd11x5", 100L);
+        gameTime.put("pk10", 100L);
+        gameTime.put("fc3d", 100L);
     }
 
     public static void main(String[] args){

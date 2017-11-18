@@ -1,9 +1,12 @@
 package com.hehaoyisheng.bcgame.entity;
 
+import java.util.Date;
+
 public class Sign {
     private int id;
     private String key;
     private String text;
+    private Date time;
 
     public int getId() {
         return id;
@@ -27,5 +30,13 @@ public class Sign {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 }

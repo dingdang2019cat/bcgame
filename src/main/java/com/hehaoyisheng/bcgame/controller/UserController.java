@@ -1,6 +1,7 @@
 package com.hehaoyisheng.bcgame.controller;
 
 import com.google.common.collect.Maps;
+import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
 import com.hehaoyisheng.bcgame.entity.Message;
 import com.hehaoyisheng.bcgame.entity.Sign;
@@ -43,6 +44,9 @@ public class UserController {
         if(CollectionUtils.isEmpty(list)){
             return "login";
         }
+        //用户信息
+        User selectUser = list.get(0);
+        model.addAttribute("amount", selectUser.getMoney());
         //公告播报查询
         List<Sign> signs = signManager.select(new Sign());
         model.addAttribute("signs", signs);
@@ -50,12 +54,18 @@ public class UserController {
         BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
         bcLotteryOrder.setStatus(2);
         List<BcLotteryOrder> bcLotteryOrders = bcLotteryOrderManager.select(bcLotteryOrder, 0, 10, null, null);
-        for(BcLotteryOrder b : bcLotteryOrders){
-            b.setAccount(b.getAccount().substring(0, 2) + "***" + b.getAccount().substring(b.getAccount().length() - 2, b.getAccount().length() -1));
+        System.out.println(bcLotteryOrders.size());
+        if(!CollectionUtils.isEmpty(bcLotteryOrders)){
+            for(BcLotteryOrder b : bcLotteryOrders){
+                b.setAccount(b.getAccount().substring(0, 2) + "***" + b.getAccount().substring(b.getAccount().length() - 2, b.getAccount().length() -1));
+            }
         }
         model.addAttribute("lotterys", bcLotteryOrders);
-        User selectUser = list.get(0);
-        model.addAttribute("amount", selectUser.getMoney());
+        //首页彩种剩余时间
+        model.addAttribute("cqssc", GameData.gameTime.get("cqssc"));
+        model.addAttribute("gd11x5", GameData.gameTime.get("gd11x5"));
+        model.addAttribute("pk10", GameData.gameTime.get("pk10"));
+        model.addAttribute("fc3d", GameData.gameTime.get("fc3d"));
         return "index";
     }
 
