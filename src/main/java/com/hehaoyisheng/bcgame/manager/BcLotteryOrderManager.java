@@ -11,4 +11,6 @@ public interface BcLotteryOrderManager {
     int update(BcLotteryOrder bcLotteryOrder);
 
     List<BcLotteryOrder> select(BcLotteryOrder bcLotteryOrder, Integer from, Integer limit, Date startTime, Date endTime);
+
+    int count(BcLotteryOrder bcLotteryOrder, Integer from, Integer limit, Date startTime, Date endTime);
 }

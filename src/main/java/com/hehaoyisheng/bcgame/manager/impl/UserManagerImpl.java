@@ -55,6 +55,16 @@ public class UserManagerImpl implements UserManager {
         }
         return null;
     }
+
+    public int count(User user, Integer from, Integer limit, Date startTime, Date endTime) {
+        try {
+            return userDAO.count(user, from, limit, startTime, endTime);
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("insert Error: username:{}, ", e);
+        }
+        return 0;
+    }
 }
 /*
     try {

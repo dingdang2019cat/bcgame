@@ -27,6 +27,7 @@ public class BcLotteryOrder {
     private double minBonusOdds;
     private double rollBackMoney;
     private String shangji;
+    private String orderId;
 
     public Integer getId() {
         return id;
@@ -210,5 +211,13 @@ public class BcLotteryOrder {
 
     public void setShangji(String shangji) {
         this.shangji = shangji;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 }
