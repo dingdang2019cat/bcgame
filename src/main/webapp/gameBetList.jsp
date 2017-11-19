@@ -11,26 +11,26 @@
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
     <meta http-equiv="expires" content="0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
-    <link rel="icon" href="./resource/favicon.ico"  type="image/x-icon" />
-    <link rel="stylesheet" href="./resource/reset.css?ver=20170908"/>
-    <link rel="stylesheet" href="./resource/wk-common.css?ver=20170908"/>
-    <script type="text/javascript" src="./resource/jquery-1.11.0.min.js?ver=20170908"></script>
-    <script type="text/javascript" src="./resource/jquery.timer.js?ver=20170908"></script>
-    <script type="text/javascript" src="./resource/layer.js?ver=20170908"></script>
-    <script type="text/javascript" src="./resource/jquery.cookie.js?ver=20170908"></script>
-    <script type="text/javascript" src="./resource/spinner.js?ver=20170908"></script>
-    <script type="text/javascript" src="./resource/audio/audio5.js?ver=20170908"></script>
-    <script type="text/javascript" src="./resource/base.js?ver=20170908"></script>
+    <link rel="icon" href="/resource/favicon.ico"  type="image/x-icon" />
+    <link rel="stylesheet" href="/resource/reset.css?ver=20170908"/>
+    <link rel="stylesheet" href="/resource/wk-common.css?ver=20170908"/>
+    <script type="text/javascript" src="/resource/jquery-1.11.0.min.js?ver=20170908"></script>
+    <script type="text/javascript" src="/resource/jquery.timer.js?ver=20170908"></script>
+    <script type="text/javascript" src="/resource/layer.js?ver=20170908"></script>
+    <script type="text/javascript" src="/resource/jquery.cookie.js?ver=20170908"></script>
+    <script type="text/javascript" src="/resource/spinner.js?ver=20170908"></script>
+    <script type="text/javascript" src="/resource/audio/audio5.js?ver=20170908"></script>
+    <script type="text/javascript" src="/resource/base.js?ver=20170908"></script>
 
 
-    <link rel="stylesheet" href="./resource/wk-accountCentre.css?ver=20170908" />
-    <script type="text/javascript" src="./resource/math.extends.js?ver=20170908"></script>
-    <script type="text/javascript" src="./resource/My97DatePicker/WdatePicker.js?ver=20170908"></script>
+    <link rel="stylesheet" href="/resource/wk-accountCentre.css?ver=20170908" />
+    <script type="text/javascript" src="/resource/math.extends.js?ver=20170908"></script>
+    <script type="text/javascript" src="/resource/My97DatePicker/WdatePicker.js?ver=20170908"></script>
     <script type="text/javascript">
-        var account ="#{account}";
+        var account ="${account}";
     </script>
-    <script type="text/javascript" src="./resource/game/index.js?ver=20170908"></script>
-    <script type="text/javascript" src="./resource/pagerAjax.js?ver=20170908"></script>
+    <script type="text/javascript" src="/resource/game/index.js?ver=20170908"></script>
+    <script type="text/javascript" src="/resource/pagerAjax.js?ver=20170908"></script>
 
 </head>
 <body>
