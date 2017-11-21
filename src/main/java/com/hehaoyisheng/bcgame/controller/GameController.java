@@ -103,6 +103,7 @@ public class GameController {
     @RequestMapping("/game/traceList")
     @ResponseBody
     public Result traceList(@ModelAttribute("user") User user, int rows, int page, String lotteryId, int status, Date startTime, Date endTime){
+
         return Result.success(null);
     }
 }
