@@ -11,6 +11,7 @@ import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -69,6 +70,23 @@ public class GameController {
         resultMap.put("total", total);
         resultMap.put("rows", resultList);
         return Result.success(resultMap);
+    }
+
+    /**
+     *  根据订单号获取订单详情
+     * @param id
+     * @return
+     */
+    @RequestMapping("/game/ajaxGetBet")
+    @ResponseBody
+    public LotteryOrder getOrderById(String id){
+        BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
+        bcLotteryOrder.setOrderId(id);
+        List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
+        if(!CollectionUtils.isEmpty(list)){
+            return OrderTransfar.bcLotteryToLottery(list.get(0));
+        }
+        return null;
     }
 
     /**
