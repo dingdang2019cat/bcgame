@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface TraceDAO {
-    @Insert("")
+    @Insert("insert into trace values (#{id}, #{account), #{createTime}, #{isWinStop}, #{lotteryId}, #{lotteryName}, #{startSeason}, ")
     int insert(Trace trace);
 
     @Update("")
@@ -17,4 +17,7 @@ public interface TraceDAO {
 
     @Select("")
     List<Trace> select(Trace trace, int from, int limit, Date startTime, Date endTime);
+
+    @Select("")
+    int count(Trace trace, int from, int limit, Date startTime, Date endTime);
 }
