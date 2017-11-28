@@ -2,7 +2,9 @@ package com.hehaoyisheng.bcgame.controller;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.hehaoyisheng.bcgame.dao.TraceDAO;
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
+import com.hehaoyisheng.bcgame.entity.Trace;
 import com.hehaoyisheng.bcgame.entity.User;
 import com.hehaoyisheng.bcgame.entity.transfar.OrderTransfar;
 import com.hehaoyisheng.bcgame.entity.vo.LotteryOrder;
@@ -22,12 +24,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 报表中心
+ */
 @Controller
 @SessionAttributes("user")
 public class GameController {
 
     @Resource
     private BcLotteryOrderManager bcLotteryOrderManager;
+
+    @Resource
+    private TraceDAO traceDAO;
 
     /**
      * 投注和追号的记录
@@ -91,19 +99,39 @@ public class GameController {
 
     /**
      * 追号查询
-     * @param user
-     * @param rows
-     * @param page
-     * @param lotteryId
-     * @param status
-     * @param startTime
-     * @param endTime
      * @return
      */
     @RequestMapping("/game/traceList")
     @ResponseBody
     public Result traceList(@ModelAttribute("user") User user, int rows, int page, String lotteryId, int status, Date startTime, Date endTime){
+        //计算页码
+        int from = rows * page;
+        Trace trace = new Trace();
+        trace.setAccount(user.getUsername());
+        trace.setLotteryId(lotteryId);
+        trace.setStatus(status);
+        List<Trace> list = traceDAO.select(trace, from, rows, startTime, endTime);
+        int count = traceDAO.count(trace, from, rows, startTime, endTime);
+        Map<String, Object> result = Maps.newHashMap();
+        result.put("content", list);
+        result.put("total", count);
+        return Result.success(result);
+    }
+
+    /**
+     * 团队投注详情
+     * @return
+     */
+    @RequestMapping("/game/teamList")
+    @ResponseBody
+    //TODO 修改SQL语句
+    public Result teamTraceList(@ModelAttribute("user") User user, String account, int rows, int page, String lotteryId, int status, Date startTime, Date endTime){
+        //计算页码
+        int from = rows * page;
+        List<LotteryOrder> resultList = Lists.newArrayList();
 
         return Result.success(null);
     }
+
+
 }

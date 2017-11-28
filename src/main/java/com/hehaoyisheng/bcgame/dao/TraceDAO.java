@@ -12,7 +12,7 @@ public interface TraceDAO {
     @Insert("insert into trace values (#{id}, #{account), #{createTime}, #{isWinStop}, #{lotteryId}, #{lotteryName}, #{startSeason}, ")
     int insert(Trace trace);
 
-    @Update("")
+    @Update("update trace set ")
     int update(Trace trace);
 
     @Select("")

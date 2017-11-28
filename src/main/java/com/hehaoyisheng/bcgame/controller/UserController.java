@@ -113,4 +113,28 @@ public class UserController {
         List<Message> list = messageManager.select(message);
         return Result.success(list == null ? 0 : list.size());
     }
+
+    /**
+     * 管理中心跳转
+     * @return
+     */
+    @RequestMapping("/user/index")
+    public String userIndex(){
+        //当前用户
+        //最大可调返点
+        //会员最大返点
+        //用户类型
+        return "userIndex";
+    }
+
+    /***
+     * 会员中心
+     * @return
+     */
+    @RequestMapping("/down/list")
+    @ResponseBody
+    public Result downList(){
+
+        return null;
+    }
 }
