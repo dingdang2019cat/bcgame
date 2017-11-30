@@ -19,22 +19,37 @@ public class RegistURLManagerImpl implements RegistURLManager {
 
     public int insert(RegistURL registURL) {
         try {
-
+            return registURLDAO.insert(registURL);
         }catch (Exception e){
-
+            logger.error("", e);
         }
         return -1;
     }
 
     public int update(RegistURL registURL) {
+        try {
+            return registURLDAO.update(registURL);
+        }catch (Exception e){
+            logger.error("", e);
+        }
         return -1;
     }
 
     public int delete(RegistURL registURL) {
+        try {
+            return registURLDAO.delete(registURL);
+        }catch (Exception e){
+            logger.error("", e);
+        }
         return -1;
     }
 
     public List<RegistURL> seletc(RegistURL registURL) {
+        try {
+            return registURLDAO.select(registURL);
+        }catch (Exception e){
+            logger.error("", e);
+        }
         return null;
     }
 }

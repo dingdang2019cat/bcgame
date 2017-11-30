@@ -1,16 +1,11 @@
 package com.hehaoyisheng.bcgame.controller;
 
 import com.google.common.collect.Maps;
+import com.hehaoyisheng.bcgame.common.BaseData;
 import com.hehaoyisheng.bcgame.common.GameData;
-import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
-import com.hehaoyisheng.bcgame.entity.Message;
-import com.hehaoyisheng.bcgame.entity.Sign;
-import com.hehaoyisheng.bcgame.entity.User;
+import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
-import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
-import com.hehaoyisheng.bcgame.manager.MessageManager;
-import com.hehaoyisheng.bcgame.manager.SignManager;
-import com.hehaoyisheng.bcgame.manager.UserManager;
+import com.hehaoyisheng.bcgame.manager.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +31,9 @@ public class UserController {
 
     @Resource
     private SignManager signManager;
+
+    @Resource
+    private RegistURLManager registURLManager;
 
     @RequestMapping("/index")
     public String index(@ModelAttribute("user") User user, Model model){
@@ -133,6 +131,7 @@ public class UserController {
      */
     @RequestMapping("/down/list")
     @ResponseBody
+    //TODO 没做完呢
     public Result downList(@ModelAttribute("user") User user, int rows, int page, String nextAccount, String account, Double beginAmount, Double endAmount, int userType, int isOnLine){
         int from = rows*(page - 1);
         Map<String, Object> resultMap = Maps.newHashMap();
@@ -161,6 +160,17 @@ public class UserController {
     }
 
     /**
+     * 修改昵称和预留信息
+     * @return
+     */
+    @RequestMapping("/info/setInformation")
+    @ResponseBody
+    public Result setInformation(@ModelAttribute("user") User user, String niceName, String message){
+
+        return Result.success("操作成功");
+    }
+
+    /**
      * 我也不知道为什么要加这个
      * @return
      */
@@ -171,6 +181,16 @@ public class UserController {
             return Result.faild("操作失败", 501);
         }
         return Result.success("操作成功");
+    }
+
+    /**
+     * 这个我也不知道是干嘛的
+     * @return
+     */
+    @RequestMapping("/user/getQuota")
+    @ResponseBody
+    public Result getQuota(){
+        return Result.success(null);
     }
 
     /**
@@ -212,9 +232,47 @@ public class UserController {
     }
 
     /**
+     * 银行列表
+     * @return
+     */
+    @RequestMapping("/info/getBankAll")
+    @ResponseBody
+    public Result getBankAll(){
+        return Result.success(BaseData.bankName);
+    }
+
+    /**
+     * 省份列表
+     * @return
+     */
+    @RequestMapping("/info/getBankAl")
+    @ResponseBody
+    public Result getProvinceAll(){
+        return Result.success(BaseData.province);
+    }
+
+    /**
+     * 绑定银行卡前确定资金密码
+     */
+    @RequestMapping("/user/verifySafePassword")
+    @ResponseBody
+    public Result verifySafePassword(@ModelAttribute("user") User user, String safePassword){
+        List<User> users = userManager.select(user, null, null, null, null,null,null);
+        if(CollectionUtils.isEmpty(users)){
+            return null;
+        }
+        if(StringUtils.equals(user.getDrawPwd(), safePassword)){
+            return Result.success(null);
+        }
+        return Result.faild("您输入的资金密码错误", 501);
+    }
+
+    /**
      * 银行卡列表
      * @return
      */
+    @RequestMapping("/user/showCard")
+    @ResponseBody
     public Result listCard(@ModelAttribute("user") User user){
         return null;
     }
@@ -229,12 +287,15 @@ public class UserController {
 
 
     /**
-     *
+     * 列出注册链接
      * @return
      */
     @RequestMapping("/user/listUserExtCode")
     @ResponseBody
     public Result listUserExtCode(@ModelAttribute("user") User user){
-        return null;
+        RegistURL registURL = new RegistURL();
+        registURL.setAccount(user.getUsername());
+        List<RegistURL> list = registURLManager.seletc(registURL);
+        return Result.success(list);
     }
 }
