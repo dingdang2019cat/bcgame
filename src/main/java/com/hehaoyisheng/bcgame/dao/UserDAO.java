@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface UserDAO {
 
-    @Insert("insert into user (username, password, drawFlag, createtime, ip, type, minBonusOdds, fandian, shangji, status) values (#{username}, #{password}, #{drawFlag}, #{createtime}, #{ip}, #{type}, #{minBonusOdds}, #{fandian}, #{shangji}, #{status} )")
+    @Insert("insert into user (username, password, drawFlag, createtime, ip, type, minBonusOdds, fandian, shangji, status, parentList) values (#{username}, #{password}, #{drawFlag}, #{createtime}, #{ip}, #{type}, #{minBonusOdds}, #{fandian}, #{shangji}, #{status}, #{parentList})")
+    @SelectKey(statement = "select last_insert_id()", keyProperty = "id", before = false, resultType = int.class)
     int insert(User user);
 
     @Update("<script> " +
@@ -32,9 +33,11 @@ public interface UserDAO {
             "</trim>" +
             " where id=#{id} " +
             " </script> ")
+    @SelectKey(statement = "select last_insert_id()", keyProperty = "id", before = false, resultType = int.class)
     int update(User user);
 
     @Delete("delete from user where id=#{id}")
+    @SelectKey(statement = "select last_insert_id()", keyProperty = "id", before = false, resultType = int.class)
     int delete(int id);
 
     @Select("<script> " +
@@ -48,11 +51,12 @@ public interface UserDAO {
             " <if test=\"user.type != null\"> AND type=#{user.type}</if> " +
             " <if test=\"user.nickName != null\"> AND nickName=#{user.nickName}</if> " +
             " <if test=\"startTime != null\"> AND<![CDATA[ createTime>#{startTime} AND createTime<${endTime} ]]></if> " +
+            " <if test=\"beginAmount != null\"> AND<![CDATA[ money>#{beginAmount} AND money<${endAmount} ]]></if> " +
             " </trim> " +
             " order by id desc" +
             " <if test=\"from != null\"> limit #{from},#{limit} </if> " +
             " </script> ")
-    List<User> select(@Param("user") User user, @Param("from") Integer from, @Param("limit") Integer limit, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+    List<User> select(@Param("user") User user, @Param("from") Integer from, @Param("limit") Integer limit, @Param("startTime") Date startTime, @Param("endTime") Date endTime, @Param("beginAmount") Double beginAmount, @Param("endAmount") Double endAmount);
 
     @Select("<script> " +
             "select count(*) " +
@@ -65,9 +69,13 @@ public interface UserDAO {
             " <if test=\"user.type != null\"> AND type=#{user.type}</if> " +
             " <if test=\"user.nickName != null\"> AND nickName=#{user.nickName}</if> " +
             " <if test=\"startTime != null\"> AND<![CDATA[ createTime>#{startTime} AND createTime<${endTime} ]]></if> " +
+            " <if test=\"beginAmount != null\"> AND<![CDATA[ money>#{beginAmount} AND money<${endAmount} ]]></if> " +
             " </trim> " +
             " order by id desc" +
             " <if test=\"from != null\"> limit #{from},#{limit} </if> " +
             " </script> ")
-    int count(@Param("user") User user, @Param("from") Integer from, @Param("limit") Integer limit, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+    int count(@Param("user") User user, @Param("from") Integer from, @Param("limit") Integer limit, @Param("startTime") Date startTime, @Param("endTime") Date endTime, @Param("beginAmount") Double beginAmount, @Param("endAmount") Double endAmount);
+
+    @Select("select sum(money) where parentList like %#{account },%")
+    double sum(@Param("account") String account);
 }

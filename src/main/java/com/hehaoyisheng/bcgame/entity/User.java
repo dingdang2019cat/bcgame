@@ -23,7 +23,9 @@ public class User {
     private double minBonusOdds;
     private double fandian;
     private String shangji;
+    private String parentList;
     private Integer status;
+    private String remark;
 
     public Integer getId() {
         return id;
@@ -177,11 +179,27 @@ public class User {
         this.shangji = shangji;
     }
 
+    public String getParentList() {
+        return parentList;
+    }
+
+    public void setParentList(String parentList) {
+        this.parentList = parentList;
+    }
+
     public Integer getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

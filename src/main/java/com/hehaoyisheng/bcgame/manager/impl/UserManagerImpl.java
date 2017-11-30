@@ -46,9 +46,9 @@ public class UserManagerImpl implements UserManager {
         return -1;
     }
 
-    public List<User> select(User user, Integer from, Integer limit, Date startTime, Date endTime) {
+    public List<User> select(User user, Integer from, Integer limit, Date startTime, Date endTime, Double beginAmount, Double endAmount) {
         try {
-            return userDAO.select(user, from, limit, startTime, endTime);
+            return userDAO.select(user, from, limit, startTime, endTime, beginAmount, endAmount);
         }catch (Exception e){
             e.printStackTrace();
             logger.error("insert Error: username:{}, ", e);
@@ -56,14 +56,23 @@ public class UserManagerImpl implements UserManager {
         return null;
     }
 
-    public int count(User user, Integer from, Integer limit, Date startTime, Date endTime) {
+    public int count(User user, Integer from, Integer limit, Date startTime, Date endTime, Double beginAmount, Double endAmount) {
         try {
-            return userDAO.count(user, from, limit, startTime, endTime);
+            return userDAO.count(user, from, limit, startTime, endTime, beginAmount, endAmount);
         }catch (Exception e){
             e.printStackTrace();
             logger.error("insert Error: username:{}, ", e);
         }
         return 0;
+    }
+
+    public double sum(String account) {
+        try {
+            return userDAO.sum(account);
+        }catch (Exception e){
+            logger.error("insert Error: username:{}, ", e);
+        }
+        return -1;
     }
 }
 /*

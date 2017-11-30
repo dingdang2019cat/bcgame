@@ -35,4 +35,11 @@ public class Result {
         result.setStatus(200);
         return result;
     }
+
+    public static Result faild(Object content, int status){
+        Result result = new Result();
+        result.setContent(content);
+        result.setStatus(status);
+        return result;
+    }
 }

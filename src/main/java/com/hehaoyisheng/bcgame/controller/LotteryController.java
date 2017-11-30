@@ -53,7 +53,7 @@ public class LotteryController {
             //正常投注余额计算
         }
         //判断余额
-        user = userManager.select(user, null, null, null, null).get(0);
+        user = userManager.select(user, null, null, null, null, null, null).get(0);
         if(user.getMoney() < buyMoney){
             //余额不足
         }

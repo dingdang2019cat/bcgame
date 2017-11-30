@@ -39,7 +39,7 @@ public class UserController {
 
     @RequestMapping("/index")
     public String index(@ModelAttribute("user") User user, Model model){
-        List<User> list = userManager.select(user, null, null, null, null);
+        List<User> list = userManager.select(user, null, null, null, null, null, null);
         System.out.println(list.get(0).getPassword());
         if(CollectionUtils.isEmpty(list)){
             return "login";
@@ -73,7 +73,7 @@ public class UserController {
     public String login(String account, String password, Model model){
         User user = new User();
         user.setUsername(account);
-        List<User> list = userManager.select(user, null, null, null, null);
+        List<User> list = userManager.select(user, null, null, null, null, null, null);
         System.out.println(account + "   " + password);
         System.out.println(list.get(0).getPassword());
         if(CollectionUtils.isEmpty(list) || !StringUtils.equals(list.get(0).getPassword(), password)){
@@ -92,7 +92,7 @@ public class UserController {
     @RequestMapping("/user/amount")
     @ResponseBody
     public Result amount(@ModelAttribute("user") User user){
-        List<User> list = userManager.select(user, null, null, null, null);
+        List<User> list = userManager.select(user, null, null, null, null, null, null);
         Map<String, Double> amount = Maps.newHashMap();
         if(!CollectionUtils.isEmpty(list)){
             amount.put("amount", list.get(0).getMoney());
@@ -119,7 +119,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("/user/index")
-    public String userIndex(){
+    public String userIndex(@ModelAttribute("user") User user){
         //当前用户
         //最大可调返点
         //会员最大返点
@@ -133,8 +133,108 @@ public class UserController {
      */
     @RequestMapping("/down/list")
     @ResponseBody
-    public Result downList(){
+    public Result downList(@ModelAttribute("user") User user, int rows, int page, String nextAccount, String account, Double beginAmount, Double endAmount, int userType, int isOnLine){
+        int from = rows*(page - 1);
+        Map<String, Object> resultMap = Maps.newHashMap();
+        //返点等信息的查询
+        List<User> users = userManager.select(user, null, null, null, null, null, null);
+        User selectUser = new User();
+        //不是根据用户名查询则直接查下级
+        if(StringUtils.isEmpty(account)){
+            user.setShangji(user.getUsername());
+        }else{
+            selectUser.setUsername(account);
+        }
+        //当为0时查询全部
+        if(userType != 0){
+            selectUser.setType(userType);
+        }
+        if(isOnLine != 0){
+            selectUser.setOnline(isOnLine);
+        }
+        List<User> childUsers = userManager.select(selectUser, from, rows, null, null, beginAmount, endAmount);
+        for(User u : childUsers){
+            double teamMoney = userManager.sum(u.getUsername());
 
+        }
+        return null;
+    }
+
+    /**
+     * 我也不知道为什么要加这个
+     * @return
+     */
+    @RequestMapping("/check/newPass")
+    @ResponseBody
+    public Result newPass(String password){
+        if(StringUtils.isEmpty(password)){
+            return Result.faild("操作失败", 501);
+        }
+        return Result.success("操作成功");
+    }
+
+    /**
+     * 更新密码
+     * @return
+     */
+    @RequestMapping("/safe/changePassWord")
+    @ResponseBody
+    public Result updatePass(@ModelAttribute("user") User user, String oldpass, String newpass){
+        List<User> users = userManager.select(user, null, null, null, null, null, null);
+        if(CollectionUtils.isEmpty(users)){
+            return null;
+        }
+        if(StringUtils.equals(users.get(0).getPassword(), oldpass)){
+            user.setPassword(newpass);
+            userManager.update(user);
+            return Result.success("修改成功！");
+        }
+        return Result.faild("旧密码错误", 603);
+    }
+
+    /**
+     * 更新资金密码
+     * @return
+     */
+    @RequestMapping("/safe/changeSafeWord")
+    @ResponseBody
+    public Result updateSafePass(@ModelAttribute("user") User user, String oldpass, String newpass){
+        List<User> users = userManager.select(user, null, null, null, null, null, null);
+        if(CollectionUtils.isEmpty(users)){
+           return null;
+        }
+        if(StringUtils.equals(users.get(0).getDrawPwd(), oldpass)){
+            user.setDrawPwd(newpass);
+            userManager.update(user);
+            return Result.success("修改成功！");
+        }
+        return Result.faild("旧资金密码错误", 605);
+    }
+
+    /**
+     * 银行卡列表
+     * @return
+     */
+    public Result listCard(@ModelAttribute("user") User user){
+        return null;
+    }
+
+    /**
+     * 添加银行卡
+     * @return
+     */
+    public Result insertCard(@ModelAttribute("user") User user){
+        return null;
+    }
+
+
+    /**
+     *
+     * @return
+     */
+    @RequestMapping("/user/listUserExtCode")
+    @ResponseBody
+    public Result listUserExtCode(@ModelAttribute("user") User user){
         return null;
     }
 }

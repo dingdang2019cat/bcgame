@@ -59,7 +59,7 @@ public class GameController {
     @ResponseBody
     public Result gameList(@ModelAttribute("user") User user, int rows, int page, String lotteryId, int status, Date startTime, Date endTime){
         //计算页码
-        int from = rows * page;
+        int from = rows * (page - 1);
         //查询
         BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
         bcLotteryOrder.setAccount(user.getUsername());
@@ -105,7 +105,7 @@ public class GameController {
     @ResponseBody
     public Result traceList(@ModelAttribute("user") User user, int rows, int page, String lotteryId, int status, Date startTime, Date endTime){
         //计算页码
-        int from = rows * page;
+        int from = rows * (page - 1);
         Trace trace = new Trace();
         trace.setAccount(user.getUsername());
         trace.setLotteryId(lotteryId);
@@ -127,11 +127,9 @@ public class GameController {
     //TODO 修改SQL语句
     public Result teamTraceList(@ModelAttribute("user") User user, String account, int rows, int page, String lotteryId, int status, Date startTime, Date endTime){
         //计算页码
-        int from = rows * page;
+        int from = rows * (page - 1);
         List<LotteryOrder> resultList = Lists.newArrayList();
 
         return Result.success(null);
     }
-
-
 }
