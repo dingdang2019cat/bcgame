@@ -26,6 +26,7 @@ public class BcLotteryOrder {
     private String zhuiHao;
     private double minBonusOdds;
     private double rollBackMoney;
+    private String parentList;
     private String shangji;
     private String orderId;
 
@@ -219,5 +220,13 @@ public class BcLotteryOrder {
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
+    }
+
+    public String getParentList() {
+        return parentList;
+    }
+
+    public void setParentList(String parentList) {
+        this.parentList = parentList;
     }
 }

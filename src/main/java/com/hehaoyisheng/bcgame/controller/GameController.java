@@ -129,7 +129,7 @@ public class GameController {
         //计算页码
         int from = rows * (page - 1);
         List<LotteryOrder> resultList = Lists.newArrayList();
-
+        
         return Result.success(null);
     }
 }

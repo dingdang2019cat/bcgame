@@ -18,9 +18,13 @@ public class User {
     private String name;
     //TODO new insert
     private String nickName;
-    private String cradNo;
-    private String bankName;
+    //预留信息
+    private String message;
     private double minBonusOdds;
+    private Integer qsType1;
+    private Integer qsType2;
+    private String answer1;
+    private String answer2;
     private double fandian;
     private String shangji;
     private String parentList;
@@ -139,22 +143,6 @@ public class User {
         this.nickName = nickName;
     }
 
-    public String getCradNo() {
-        return cradNo;
-    }
-
-    public void setCradNo(String cradNo) {
-        this.cradNo = cradNo;
-    }
-
-    public String getBankName() {
-        return bankName;
-    }
-
-    public void setBankName(String bankName) {
-        this.bankName = bankName;
-    }
-
     public double getMinBonusOdds() {
         return minBonusOdds;
     }
@@ -201,5 +189,44 @@ public class User {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Integer getQsType1() {
+        return qsType1;
+    }
+
+    public void setQsType1(Integer qsType1) {
+        this.qsType1 = qsType1;
+    }
+
+    public Integer getQsType2() {
+        return qsType2;
+    }
+
+    public void setQsType2(Integer qsType2) {
+        this.qsType2 = qsType2;
+    }
+
+    public String getAnswer1() {
+        return answer1;
+    }
+
+    public void setAnswer1(String answer1) {
+        this.answer1 = answer1;
+    }
+
+    public String getAnswer2() {
+        return answer2;
+    }
+
+    public void setAnswer2(String answer2) {
+        this.answer2 = answer2;
     }
 }

@@ -1,15 +1,21 @@
 package com.hehaoyisheng.bcgame.entity;
 
+import java.util.Date;
+
 /**
  * 用户绑定银行卡
  */
 public class BookCard {
     private int id;
-    private int accountId;
     private String account;
-    private String name;
-    private String cardNo;
-    private String bankName;
+    private String niceName;
+    private String card;
+    private Date createTime;
+    private String address;
+    private String parentAccount;
+    private Integer status;
+    private String userMark;
+    private Integer bankNameId;
 
     public int getId() {
         return id;
@@ -17,14 +23,6 @@ public class BookCard {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
     }
 
     public String getAccount() {
@@ -35,27 +33,67 @@ public class BookCard {
         this.account = account;
     }
 
-    public String getName() {
-        return name;
+    public String getNiceName() {
+        return niceName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNiceName(String niceName) {
+        this.niceName = niceName;
     }
 
-    public String getCardNo() {
-        return cardNo;
+    public String getCard() {
+        return card;
     }
 
-    public void setCardNo(String cardNo) {
-        this.cardNo = cardNo;
+    public void setCard(String card) {
+        this.card = card;
     }
 
-    public String getBankName() {
-        return bankName;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setBankName(String bankName) {
-        this.bankName = bankName;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getParentAccount() {
+        return parentAccount;
+    }
+
+    public void setParentAccount(String parentAccount) {
+        this.parentAccount = parentAccount;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getUserMark() {
+        return userMark;
+    }
+
+    public void setUserMark(String userMark) {
+        this.userMark = userMark;
+    }
+
+    public Integer getBankNameId() {
+        return bankNameId;
+    }
+
+    public void setBankNameId(Integer bankNameId) {
+        this.bankNameId = bankNameId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

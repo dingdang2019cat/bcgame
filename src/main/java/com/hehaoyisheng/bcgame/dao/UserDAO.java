@@ -26,10 +26,13 @@ public interface UserDAO {
             "<if test=\"time != null\" >time=#{time},</if>" +
             "<if test=\"online != null\" >online=#{online},</if>" +
             "<if test=\"drawPwd != null\" >drawPwd=#{drawPwd},</if>" +
+            "<if test=\"qsType1 != null\" >qsType1=#{qsType1},</if>" +
+            "<if test=\"qsType2 != null\" >qsType2=#{qsType2},</if>" +
+            "<if test=\"answer1 != null\" >answer1=#{answer1},</if>" +
+            "<if test=\"answer2 != null\" >answer2=#{answer2},</if>" +
             "<if test=\"name != null\" >name=#{name},</if>" +
+            "<if test=\"message != null\" >message=#{message},</if>" +
             "<if test=\"nickName != null\" >nickName=#{nickName},</if>" +
-            "<if test=\"cradNo != null\" >cradNo=#{cradNo},</if>" +
-            "<if test=\"bankName != null\" >bankName=#{bankName},</if>" +
             "</trim>" +
             " where id=#{id} " +
             " </script> ")

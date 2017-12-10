@@ -35,6 +35,9 @@ public class UserController {
     @Resource
     private RegistURLManager registURLManager;
 
+    @Resource
+    private BookCardManager bookCardManager;
+
     @RequestMapping("/index")
     public String index(@ModelAttribute("user") User user, Model model){
         List<User> list = userManager.select(user, null, null, null, null, null, null);
@@ -122,7 +125,32 @@ public class UserController {
         //最大可调返点
         //会员最大返点
         //用户类型
+        //是否有资金密码hasSafeWord
         return "userIndex";
+    }
+
+    /**
+     * 设置资金密码
+     * @return
+     */
+    @RequestMapping("/safe/setSafeInformation")
+    @ResponseBody
+    public Result setSafeInformation(@ModelAttribute("user") User user, String password, String safePassWord, Integer qsType1, Integer qsType2, String answer1, String answer2, String cardName){
+        List<User> users = userManager.select(user, null, null, null, null, null, null);
+        if(CollectionUtils.isEmpty(users)){
+            return null;
+        }
+        if(StringUtils.equals(users.get(0).getPassword(), password)){
+            user.setDrawPwd(safePassWord);
+            user.setQsType1(qsType1);
+            user.setQsType2(qsType2);
+            user.setAnswer1(answer1);
+            user.setAnswer2(answer2);
+            user.setName(cardName);
+            userManager.update(user);
+            return Result.success("操作成功!");
+        }
+        return Result.faild("登陆密码不正确", 501);
     }
 
     /***
@@ -166,7 +194,13 @@ public class UserController {
     @RequestMapping("/info/setInformation")
     @ResponseBody
     public Result setInformation(@ModelAttribute("user") User user, String niceName, String message){
-
+        if(!StringUtils.isEmpty(niceName)){
+            user.setNickName(niceName);
+        }
+        if(!StringUtils.isEmpty(message)){
+            user.setMessage(message);
+        }
+        userManager.update(user);
         return Result.success("操作成功");
     }
 
@@ -268,12 +302,38 @@ public class UserController {
     }
 
     /**
+     * 银行卡重复校验
+     * @return
+     */
+    //TODO
+    @RequestMapping("/check/card")
+    @ResponseBody
+    public Result checkCard(String card){
+        if(!StringUtils.isEmpty(card)){
+            BookCard bookCard = new BookCard();
+            bookCard.setCard(card);
+            List<BookCard> list = bookCardManager.select(bookCard);
+            if(CollectionUtils.isEmpty(list)){
+                return Result.success("");
+            }
+        }
+        return Result.faild("此银行卡已被使用！", 501);
+    }
+
+    /**
      * 银行卡列表
      * @return
      */
     @RequestMapping("/user/showCard")
     @ResponseBody
+    //TODO 返回值确认
     public Result listCard(@ModelAttribute("user") User user){
+        BookCard bookCard = new BookCard();
+        bookCard.setAccount(user.getUsername());
+        List<BookCard> list = bookCardManager.select(bookCard);
+        if(CollectionUtils.isEmpty(list)){
+            return Result.success(null);
+        }
         return null;
     }
 
@@ -281,10 +341,28 @@ public class UserController {
      * 添加银行卡
      * @return
      */
-    public Result insertCard(@ModelAttribute("user") User user){
-        return null;
+    @RequestMapping("/user/bindCard")
+    @ResponseBody
+    public Result insertCard(@ModelAttribute("user") User user, Integer bankNameId, String address, String niceName, String card, String safeWord){
+        BookCard bookCard = new BookCard();
+        bookCard.setAccount(user.getUsername());
+        bookCard.setBankNameId(bankNameId);
+        bookCard.setAddress(address);
+        bookCard.setCard(card);
+        bookCard.setNiceName(niceName);
+        bookCardManager.insert(bookCard);
+        return Result.success("添加成功！");
     }
 
+    /**
+     * 锁定银行卡
+     */
+    @RequestMapping("/user/stopCard")
+    @ResponseBody
+    //TODO
+    public Result stopCard(@ModelAttribute("user") User user){
+        return null;
+    }
 
     /**
      * 列出注册链接
