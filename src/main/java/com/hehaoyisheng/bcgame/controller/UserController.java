@@ -326,13 +326,12 @@ public class UserController {
      */
     @RequestMapping("/user/showCard")
     @ResponseBody
-    //TODO 返回值确认
     public Result listCard(@ModelAttribute("user") User user){
         BookCard bookCard = new BookCard();
         bookCard.setAccount(user.getUsername());
         List<BookCard> list = bookCardManager.select(bookCard);
         if(CollectionUtils.isEmpty(list)){
-            return Result.success(null);
+            return Result.success(list);
         }
         return null;
     }
