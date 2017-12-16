@@ -15,6 +15,7 @@ public class MoneyHistory {
     private String orderId;
     private String remark;
     private int type;
+    private String parentList;
     private String shangji;
 
     public int getId() {
@@ -119,5 +120,13 @@ public class MoneyHistory {
 
     public void setShangji(String shangji) {
         this.shangji = shangji;
+    }
+
+    public String getParentList() {
+        return parentList;
+    }
+
+    public void setParentList(String parentList) {
+        this.parentList = parentList;
     }
 }

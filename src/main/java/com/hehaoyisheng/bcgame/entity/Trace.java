@@ -18,7 +18,7 @@ public class Trace {
     private double traceAmount;
     private int traceNum;
     private String userMark;
-    private int winAmount;
+    private double winAmount;
 
     public String getId() {
         return id;
@@ -140,11 +140,11 @@ public class Trace {
         this.userMark = userMark;
     }
 
-    public int getWinAmount() {
+    public double getWinAmount() {
         return winAmount;
     }
 
-    public void setWinAmount(int winAmount) {
+    public void setWinAmount(double winAmount) {
         this.winAmount = winAmount;
     }
 }

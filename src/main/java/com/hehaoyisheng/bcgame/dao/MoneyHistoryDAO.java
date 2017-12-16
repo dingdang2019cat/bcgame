@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface MoneyHistoryDAO {
 
-    @Insert("insert into moneyHistory (account, accountId, afterMoney, bizDatetime, createDatetime, createUserId, money. orderId, remark, type, shangji) values (#{account}, #{accountId}, #{afterMoney}, #{bizDatetime}, #{createDatetime}, #{createUserId}, #{money}. #{orderId}, #{remark}, #{type}, #{shangji})")
+    @Insert("insert into moneyHistory (account, accountId, afterMoney, bizDatetime, createDatetime, createUserId, money. orderId, remark, type, shangji) values (#{account}, #{accountId}, #{afterMoney}, #{bizDatetime}, #{createDatetime}, #{createUserId}, #{money}. #{orderId}, #{remark}, #{type}, #{shangji}, #{parentList})")
     int insert(MoneyHistory moneyHistory);
 
     @Select("<script>" +
@@ -22,3 +22,4 @@ public interface MoneyHistoryDAO {
             "</script>")
     List<MoneyHistory> select(MoneyHistory moneyHistory, Integer start, Integer end);
 }
+

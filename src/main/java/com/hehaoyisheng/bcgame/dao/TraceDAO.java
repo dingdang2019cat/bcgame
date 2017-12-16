@@ -9,10 +9,10 @@ import java.util.Date;
 import java.util.List;
 
 public interface TraceDAO {
-    @Insert("insert into trace values (#{id}, #{account), #{createTime}, #{isWinStop}, #{lotteryId}, #{lotteryName}, #{startSeason}, ")
+    @Insert("insert into trace values (#{id}, #{account), #{createTime}, #{isWinStop}, #{lotteryId}, #{lotteryName}, #{startSeason}, #{traceAmount}, #{traceNum}")
     int insert(Trace trace);
 
-    @Update("update trace set ")
+    @Update("update trace set winAmount=#{winAmount}, ")
     int update(Trace trace);
 
     @Select("")
