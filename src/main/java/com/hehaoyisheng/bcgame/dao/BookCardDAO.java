@@ -15,12 +15,12 @@ public interface BookCardDAO {
     @Insert("insert into bookcard (account, niceName, card, createTime, parentAccount, userMark, bankNameId) values (#{account}, #{niceName}, #{card}, now(), #{parentAccount},, #{userMark}, #{bankNameId})")
     int insert(BookCard bookCard);
 
-    @Update("update bookcard set ")
+    @Update("update bookcard set status=#{status} where id=#{id}")
     int update(BookCard bookCard);
 
-    @Delete("")
+    @Delete("delete from bookcard where id=#{id}")
     int delete(int id);
 
-    @Select("")
+    @Select("select * from bookcard where account=#{account}")
     List<BookCard> select(BookCard bookCard);
 }

@@ -3,13 +3,13 @@ package com.hehaoyisheng.bcgame.controller;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.dao.TraceDAO;
-import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
-import com.hehaoyisheng.bcgame.entity.Trace;
-import com.hehaoyisheng.bcgame.entity.User;
+import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.transfar.OrderTransfar;
 import com.hehaoyisheng.bcgame.entity.vo.LotteryOrder;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
 import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
+import com.hehaoyisheng.bcgame.manager.DrawHistoryManager;
+import com.hehaoyisheng.bcgame.manager.RechargeManager;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +37,17 @@ public class GameController {
     @Resource
     private TraceDAO traceDAO;
 
+    @Resource
+    private RechargeManager rechargeManager;
+
+    @Resource
+    private DrawHistoryManager drawHistoryManager;
+
+    @RequestMapping("/report/index")
+    public String report(){
+        return "settlement";
+    }
+
     /**
      * 投注和追号的记录
      */
@@ -47,17 +58,17 @@ public class GameController {
                 model.addAttribute("account", user.getUsername());
                 return "gameBetList";
             }
+            return "settlement";
         }
         return null;
     }
 
     /**
      * 投注记录查询
-     * @return
      */
     @RequestMapping("/game/list")
     @ResponseBody
-    public Result gameList(@ModelAttribute("user") User user, int rows, int page, String lotteryId, int status, Date startTime, Date endTime){
+    public Result gameList(@ModelAttribute("user") User user, int rows, int page, String lotteryId, Integer status, Date startTime, Date endTime){
         //计算页码
         int from = rows * (page - 1);
         //查询
@@ -82,8 +93,6 @@ public class GameController {
 
     /**
      *  根据订单号获取订单详情
-     * @param id
-     * @return
      */
     @RequestMapping("/game/ajaxGetBet")
     @ResponseBody
@@ -99,11 +108,11 @@ public class GameController {
 
     /**
      * 追号查询
-     * @return
      */
     @RequestMapping("/game/traceList")
     @ResponseBody
-    public Result traceList(@ModelAttribute("user") User user, int rows, int page, String lotteryId, int status, Date startTime, Date endTime){
+    //TODO staut
+    public Result traceList(@ModelAttribute("user") User user, int rows, int page, String lotteryId, Integer status, Date startTime, Date endTime){
         //计算页码
         int from = rows * (page - 1);
         Trace trace = new Trace();
@@ -120,16 +129,98 @@ public class GameController {
 
     /**
      * 团队投注详情
-     * @return
      */
     @RequestMapping("/game/teamList")
     @ResponseBody
     //TODO 修改SQL语句
-    public Result teamTraceList(@ModelAttribute("user") User user, String account, int rows, int page, String lotteryId, int status, Date startTime, Date endTime){
+    public Result teamTraceList(@ModelAttribute("user") User user, String account, int rows, int page, String lotteryId, Integer status, Date startTime, Date endTime){
         //计算页码
         int from = rows * (page - 1);
+        //查询
+        BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
+        if(account != null){
+            bcLotteryOrder.setAccount(account);
+        }
+        bcLotteryOrder.setStatus(status);
+        bcLotteryOrder.setLotCode(lotteryId);
+        bcLotteryOrder.setParentList(user.getParentList());
+        List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, from, rows, startTime, endTime);
+        int total = bcLotteryOrderManager.count(bcLotteryOrder, from, rows, startTime, endTime);
+        //trans对象
         List<LotteryOrder> resultList = Lists.newArrayList();
-        
-        return Result.success(null);
+        for(BcLotteryOrder bcLotteryOrder1 : list){
+            resultList.add(OrderTransfar.bcLotteryToLottery(bcLotteryOrder1));
+        }
+        Map<String, Object> resultMap = Maps.newHashMap();
+        resultMap.put("obj", null);
+        resultMap.put("total", total);
+        resultMap.put("rows", resultList);
+        return Result.success(resultMap);
+    }
+
+    /**
+     * 充值记录
+     */
+    @RequestMapping("/report/rechargeList")
+    @ResponseBody
+    public Result rechargeList(@ModelAttribute("user") User user, int rows, int page, String account, Date startTime, Date endTime, int isIncludeChildFlag){
+        Map<String, Object> resultMap = Maps.newHashMap();
+        resultMap.put("obj", null);
+        int from = rows * (page - 1);
+        Recharge recharge = new Recharge();
+        if(isIncludeChildFlag != 0){
+            recharge.setParentList(user.getParentList());
+        }else{
+            recharge.setAccount(account);
+        }
+        List<Recharge> resultList = rechargeManager.select(recharge, from, rows, startTime, endTime);
+        int total = rechargeManager.count(recharge, startTime, endTime);
+        resultMap.put("total", total);
+        resultMap.put("rows", resultList);
+        return Result.success(resultMap);
+    }
+
+    /**
+     * 提现记录
+     */
+    @RequestMapping("/report/depositList")
+    @ResponseBody
+    public Result depositList(@ModelAttribute("user") User user, int rows, int page, String account, Date startTime, Date endTime, int isIncludeChildFlag){
+        Map<String, Object> resultMap = Maps.newHashMap();
+        resultMap.put("obj", null);
+        int from = rows * (page - 1);
+        DrawHistory drawHistory = new DrawHistory();
+        if(isIncludeChildFlag != 0){
+            drawHistory.setParentList(user.getParentList());
+        }else{
+            drawHistory.setAccount(account);
+        }
+        List<DrawHistory> resultList = drawHistoryManager.select(drawHistory, from, rows, startTime, endTime);
+        int total = drawHistoryManager.count(drawHistory, startTime, endTime);
+        resultMap.put("total", total);
+        resultMap.put("rows", resultList);
+        return Result.success(resultMap);
+    }
+
+    /**
+     * 团队帐变
+     */
+    @RequestMapping("/report/settlementList")
+    @ResponseBody
+    //TODO
+    public Result settlementList(@ModelAttribute("user") User user, int rows, int page, String account, Date begin, Date end, Integer status){
+        Map<String, Object> resultMap = Maps.newHashMap();
+        resultMap.put("obj", null);
+        int from = rows * (page - 1);
+        MoneyHistory moneyHistory = new MoneyHistory();
+        //包含下级
+        if(status != null && status == 1){
+            moneyHistory.setParentList(user.getParentList());
+        }else {
+            account = account == null ? user.getUsername() : account;
+            moneyHistory.setAccount(account);
+        }
+
+        return Result.success(resultMap);
     }
 }

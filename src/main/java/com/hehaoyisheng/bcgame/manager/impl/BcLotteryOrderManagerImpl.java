@@ -49,7 +49,7 @@ public class BcLotteryOrderManagerImpl implements BcLotteryOrderManager{
 
     public int count(BcLotteryOrder bcLotteryOrder, Integer from, Integer limit, Date startTime, Date endTime) {
         try {
-            return bcLotteryOrderDAO.count(bcLotteryOrder, from, limit, startTime, endTime);
+            return bcLotteryOrderDAO.count(bcLotteryOrder, startTime, endTime);
         }catch (Exception e){
             e.printStackTrace();
             logger.error("insert Error: username:{}, ", e);

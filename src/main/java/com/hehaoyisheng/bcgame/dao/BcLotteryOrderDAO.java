@@ -27,7 +27,8 @@ public interface BcLotteryOrderDAO {
             " <if test=\"bcLotteryOrder.lotCode != null\"> AND lotCode=#{bcLotteryOrder.lotCode}</if> " +
             " <if test=\"bcLotteryOrder.qiHao != null\"> AND qiHao=#{bcLotteryOrder.qiHao}</if> " +
             " <if test=\"bcLotteryOrder.orderId != null\"> AND qiHao=#{bcLotteryOrder.orderId}</if> " +
-            " <if test=\"startTime != null\"> AND<![CDATA[ createTime>#{startTime} AND createTime<${endTime} ]]></if> " +
+            " <if test=\"bcLotteryOrder.parentList != null\"> AND parentList like #{bcLotteryOrder.parentList}%</if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
             " order by id desc" +
             " <if test=\"from != null\"> limit #{from},#{limit} </if> " +
@@ -43,10 +44,9 @@ public interface BcLotteryOrderDAO {
             " <if test=\"bcLotteryOrder.lotCode != null\"> AND lotCode=#{bcLotteryOrder.lotCode}</if> " +
             " <if test=\"bcLotteryOrder.qiHao != null\"> AND qiHao=#{bcLotteryOrder.qiHao}</if> " +
             " <if test=\"bcLotteryOrder.orderId != null\"> AND qiHao=#{bcLotteryOrder.orderId}</if> " +
-            " <if test=\"startTime != null\"> AND<![CDATA[ createTime>#{startTime} AND createTime<${endTime} ]]></if> " +
+            " <if test=\"bcLotteryOrder.parentList != null\"> AND parentList like #{bcLotteryOrder.parentList}%</if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
-            " order by id desc" +
-            " <if test=\"from != null\"> limit #{from},#{limit} </if> " +
             " </script> ")
-    int count(@Param("bcLotteryOrder") BcLotteryOrder bcLotteryOrder, @Param("from") Integer from, @Param("limit") Integer limit, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+    int count(@Param("bcLotteryOrder") BcLotteryOrder bcLotteryOrder, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }

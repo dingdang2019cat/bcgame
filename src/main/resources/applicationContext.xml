@@ -70,4 +70,12 @@
         <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.RegistURLDAO" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+    <bean id="rechargeDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.RechargeDAO" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="drawHistoryDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.DrawHistoryDAO" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
 </beans>

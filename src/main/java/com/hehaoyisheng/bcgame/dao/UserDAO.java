@@ -75,10 +75,9 @@ public interface UserDAO {
             " <if test=\"beginAmount != null\"> AND<![CDATA[ money>#{beginAmount} AND money<${endAmount} ]]></if> " +
             " </trim> " +
             " order by id desc" +
-            " <if test=\"from != null\"> limit #{from},#{limit} </if> " +
             " </script> ")
     int count(@Param("user") User user, @Param("from") Integer from, @Param("limit") Integer limit, @Param("startTime") Date startTime, @Param("endTime") Date endTime, @Param("beginAmount") Double beginAmount, @Param("endAmount") Double endAmount);
 
-    @Select("select sum(money) where parentList like %#{account },%")
+    @Select("select sum(money) where parentList like #{account },%")
     double sum(@Param("account") String account);
 }

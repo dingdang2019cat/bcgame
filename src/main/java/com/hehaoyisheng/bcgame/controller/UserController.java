@@ -38,6 +38,11 @@ public class UserController {
     @Resource
     private BookCardManager bookCardManager;
 
+    @ModelAttribute("user1")
+    public User addUser(User user) {
+        return new User();
+    }
+
     @RequestMapping("/index")
     public String index(@ModelAttribute("user") User user, Model model){
         List<User> list = userManager.select(user, null, null, null, null, null, null);
@@ -126,7 +131,7 @@ public class UserController {
         //会员最大返点
         //用户类型
         //是否有资金密码hasSafeWord
-        return "userIndex";
+        return "user";
     }
 
     /**

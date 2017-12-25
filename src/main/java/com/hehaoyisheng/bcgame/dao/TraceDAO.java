@@ -8,16 +8,17 @@ import org.apache.ibatis.annotations.Update;
 import java.util.Date;
 import java.util.List;
 
+//TODO
 public interface TraceDAO {
-    @Insert("insert into trace values (#{id}, #{account), #{createTime}, #{isWinStop}, #{lotteryId}, #{lotteryName}, #{startSeason}, #{traceAmount}, #{traceNum}")
+    @Insert("insert into trace values (#{id}, #{account}, #{createTime}, #{isWinStop}, #{lotteryId}, #{lotteryName}, #{startSeason}, #{traceAmount}, #{traceNum})")
     int insert(Trace trace);
 
-    @Update("update trace set winAmount=#{winAmount}, ")
+    @Update("update trace set winAmount=#{winAmount} where id=#{id}")
     int update(Trace trace);
 
-    @Select("")
+    //@Select("")
     List<Trace> select(Trace trace, int from, int limit, Date startTime, Date endTime);
 
-    @Select("")
+    //@Select("")
     int count(Trace trace, int from, int limit, Date startTime, Date endTime);
 }

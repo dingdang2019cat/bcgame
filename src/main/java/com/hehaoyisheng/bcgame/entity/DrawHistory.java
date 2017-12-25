@@ -3,33 +3,41 @@ package com.hehaoyisheng.bcgame.entity;
 import java.util.Date;
 
 public class DrawHistory {
-    private int id;
-    private int accountId;
+    private String id;
     private String account;
-    private double money;
-    private Date time;
-    private String name;
+    private String card;
+    private double amount;
+    private Date createTime;
+    private String bankCode;
     private String bankName;
-    private String cardNo;
+    private String lastOperator;
     private int status;
-    private String orderid;
-    private String shangji;
+    private Date lastTime;
     private String remark;
+    private String parentList;
 
-    public int getId() {
+    public String getParentList() {
+        return parentList;
+    }
+
+    public void setParentList(String parentList) {
+        this.parentList = parentList;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
     }
 
     public String getAccount() {
@@ -40,28 +48,36 @@ public class DrawHistory {
         this.account = account;
     }
 
-    public double getMoney() {
-        return money;
+    public String getCard() {
+        return card;
     }
 
-    public void setMoney(double money) {
-        this.money = money;
+    public void setCard(String card) {
+        this.card = card;
     }
 
-    public Date getTime() {
-        return time;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
-    public String getName() {
-        return name;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getBankCode() {
+        return bankCode;
+    }
+
+    public void setBankCode(String bankCode) {
+        this.bankCode = bankCode;
     }
 
     public String getBankName() {
@@ -72,12 +88,12 @@ public class DrawHistory {
         this.bankName = bankName;
     }
 
-    public String getCardNo() {
-        return cardNo;
+    public String getLastOperator() {
+        return lastOperator;
     }
 
-    public void setCardNo(String cardNo) {
-        this.cardNo = cardNo;
+    public void setLastOperator(String lastOperator) {
+        this.lastOperator = lastOperator;
     }
 
     public int getStatus() {
@@ -88,27 +104,11 @@ public class DrawHistory {
         this.status = status;
     }
 
-    public String getOrderid() {
-        return orderid;
+    public Date getLastTime() {
+        return lastTime;
     }
 
-    public void setOrderid(String orderid) {
-        this.orderid = orderid;
-    }
-
-    public String getShangji() {
-        return shangji;
-    }
-
-    public void setShangji(String shangji) {
-        this.shangji = shangji;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setLastTime(Date lastTime) {
+        this.lastTime = lastTime;
     }
 }
