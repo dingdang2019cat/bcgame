@@ -5,9 +5,9 @@ import java.util.Date;
 public class BcLotteryHistory {
     private int id;
     private String lotteryType;
-    private String value;
-    private Date lotteryTime;
-    private String qiHao;
+    private String nums;
+    private Date openTime;
+    private String seasonId;
 
     public int getId() {
         return id;
@@ -25,27 +25,27 @@ public class BcLotteryHistory {
         this.lotteryType = lotteryType;
     }
 
-    public String getValue() {
-        return value;
+    public String getNums() {
+        return nums;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setNums(String nums) {
+        this.nums = nums;
     }
 
-    public Date getLotteryTime() {
-        return lotteryTime;
+    public Date getOpenTime() {
+        return openTime;
     }
 
-    public void setLotteryTime(Date lotteryTime) {
-        this.lotteryTime = lotteryTime;
+    public void setOpenTime(Date openTime) {
+        this.openTime = openTime;
     }
 
-    public String getQiHao() {
-        return qiHao;
+    public String getSeasonId() {
+        return seasonId;
     }
 
-    public void setQiHao(String qiHao) {
-        this.qiHao = qiHao;
+    public void setSeasonId(String seasonId) {
+        this.seasonId = seasonId;
     }
 }

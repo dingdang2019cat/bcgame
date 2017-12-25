@@ -78,4 +78,8 @@
         <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.DrawHistoryDAO" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+    <bean id="bcLotteryHistoryDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.BcLotteryHistoryDAO" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
 </beans>
