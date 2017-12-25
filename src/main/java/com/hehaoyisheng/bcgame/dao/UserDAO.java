@@ -53,6 +53,7 @@ public interface UserDAO {
             " <if test=\"user.online != null\"> AND online=#{user.online}</if> " +
             " <if test=\"user.type != null\"> AND type=#{user.type}</if> " +
             " <if test=\"user.nickName != null\"> AND nickName=#{user.nickName}</if> " +
+            " <if test=\"user.parentList != null\"> AND parentList like #{user.nickName}%</if> " +
             " <if test=\"startTime != null\"> AND<![CDATA[ createTime>#{startTime} AND createTime<${endTime} ]]></if> " +
             " <if test=\"beginAmount != null\"> AND<![CDATA[ money>#{beginAmount} AND money<${endAmount} ]]></if> " +
             " </trim> " +
@@ -71,13 +72,13 @@ public interface UserDAO {
             " <if test=\"user.online != null\"> AND online=#{user.online}</if> " +
             " <if test=\"user.type != null\"> AND type=#{user.type}</if> " +
             " <if test=\"user.nickName != null\"> AND nickName=#{user.nickName}</if> " +
+            " <if test=\"user.parentList != null\"> AND parentList like #{user.nickName}%</if> " +
             " <if test=\"startTime != null\"> AND<![CDATA[ createTime>#{startTime} AND createTime<${endTime} ]]></if> " +
             " <if test=\"beginAmount != null\"> AND<![CDATA[ money>#{beginAmount} AND money<${endAmount} ]]></if> " +
             " </trim> " +
-            " order by id desc" +
             " </script> ")
     int count(@Param("user") User user, @Param("from") Integer from, @Param("limit") Integer limit, @Param("startTime") Date startTime, @Param("endTime") Date endTime, @Param("beginAmount") Double beginAmount, @Param("endAmount") Double endAmount);
 
-    @Select("select sum(money) where parentList like #{account },%")
+    @Select("select sum(money) where parentList like #{account }%")
     double sum(@Param("account") String account);
 }

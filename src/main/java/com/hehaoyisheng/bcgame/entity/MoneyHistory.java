@@ -5,18 +5,15 @@ import java.util.Date;
 public class MoneyHistory {
     private int id;
     private String account;
-    private int accountId;
-    private double afterMoney;
-    private double beforeMoney;
-    private Date bizDatetime;
-    private Date createDatetime;
-    private int createUserId;
-    private double money;
-    private String orderId;
-    private String remark;
-    private int type;
+    private double amount;
+    private double balance;
+    private Date createTime;
+    private String changeType;
+    private String userMark;
+    private String seasonId;
+    private int unit;
     private String parentList;
-    private String shangji;
+    private String lotteryName;
 
     public int getId() {
         return id;
@@ -34,92 +31,60 @@ public class MoneyHistory {
         this.account = account;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
-    public double getAfterMoney() {
-        return afterMoney;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setAfterMoney(double afterMoney) {
-        this.afterMoney = afterMoney;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
-    public double getBeforeMoney() {
-        return beforeMoney;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setBeforeMoney(double beforeMoney) {
-        this.beforeMoney = beforeMoney;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getBizDatetime() {
-        return bizDatetime;
+    public String getChangeType() {
+        return changeType;
     }
 
-    public void setBizDatetime(Date bizDatetime) {
-        this.bizDatetime = bizDatetime;
+    public void setChangeType(String changeType) {
+        this.changeType = changeType;
     }
 
-    public Date getCreateDatetime() {
-        return createDatetime;
+    public String getUserMark() {
+        return userMark;
     }
 
-    public void setCreateDatetime(Date createDatetime) {
-        this.createDatetime = createDatetime;
+    public void setUserMark(String userMark) {
+        this.userMark = userMark;
     }
 
-    public int getCreateUserId() {
-        return createUserId;
+    public String getSeasonId() {
+        return seasonId;
     }
 
-    public void setCreateUserId(int createUserId) {
-        this.createUserId = createUserId;
+    public void setSeasonId(String seasonId) {
+        this.seasonId = seasonId;
     }
 
-    public double getMoney() {
-        return money;
+    public int getUnit() {
+        return unit;
     }
 
-    public void setMoney(double money) {
-        this.money = money;
-    }
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public String getShangji() {
-        return shangji;
-    }
-
-    public void setShangji(String shangji) {
-        this.shangji = shangji;
+    public void setUnit(int unit) {
+        this.unit = unit;
     }
 
     public String getParentList() {
@@ -128,5 +93,13 @@ public class MoneyHistory {
 
     public void setParentList(String parentList) {
         this.parentList = parentList;
+    }
+
+    public String getLotteryName() {
+        return lotteryName;
+    }
+
+    public void setLotteryName(String lotteryName) {
+        this.lotteryName = lotteryName;
     }
 }

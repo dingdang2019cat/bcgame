@@ -12,7 +12,8 @@ public class OrderTransfar {
      * @param orderId
      * @return
      */
-    public static BcLotteryOrder orderToBcLotteryOrder(Order order, String orderId){
+    //TODO
+    public static BcLotteryOrder orderToBcLotteryOrder(Order order, String orderId, String traceId){
         return null;
     }
 

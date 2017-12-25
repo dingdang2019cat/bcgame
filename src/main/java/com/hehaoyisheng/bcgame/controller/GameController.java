@@ -9,6 +9,7 @@ import com.hehaoyisheng.bcgame.entity.vo.LotteryOrder;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
 import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
 import com.hehaoyisheng.bcgame.manager.DrawHistoryManager;
+import com.hehaoyisheng.bcgame.manager.MoneyHistoryManager;
 import com.hehaoyisheng.bcgame.manager.RechargeManager;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -42,6 +43,9 @@ public class GameController {
 
     @Resource
     private DrawHistoryManager drawHistoryManager;
+
+    @Resource
+    private MoneyHistoryManager moneyHistoryManager;
 
     @RequestMapping("/report/index")
     public String report(){
@@ -120,7 +124,7 @@ public class GameController {
         trace.setLotteryId(lotteryId);
         trace.setStatus(status);
         List<Trace> list = traceDAO.select(trace, from, rows, startTime, endTime);
-        int count = traceDAO.count(trace, from, rows, startTime, endTime);
+        int count = traceDAO.count(trace, startTime, endTime);
         Map<String, Object> result = Maps.newHashMap();
         result.put("content", list);
         result.put("total", count);
@@ -207,7 +211,6 @@ public class GameController {
      */
     @RequestMapping("/report/settlementList")
     @ResponseBody
-    //TODO
     public Result settlementList(@ModelAttribute("user") User user, int rows, int page, String account, Date begin, Date end, Integer status){
         Map<String, Object> resultMap = Maps.newHashMap();
         resultMap.put("obj", null);
@@ -220,7 +223,8 @@ public class GameController {
             account = account == null ? user.getUsername() : account;
             moneyHistory.setAccount(account);
         }
-
+        resultMap.put("rows", moneyHistoryManager.select(moneyHistory, from, rows, begin, end));
+        resultMap.put("total", moneyHistoryManager.count(moneyHistory, begin, end));
         return Result.success(resultMap);
     }
 }

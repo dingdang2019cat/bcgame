@@ -2,7 +2,7 @@ package com.hehaoyisheng.bcgame.entity.vo;
 
 public class TraceOrder {
     private String seasonId;
-    private double price;
+    private int price;
 
     public String getSeasonId() {
         return seasonId;
@@ -12,11 +12,11 @@ public class TraceOrder {
         this.seasonId = seasonId;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 }

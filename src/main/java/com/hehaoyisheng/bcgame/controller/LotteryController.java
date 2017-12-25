@@ -4,14 +4,17 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
+import com.hehaoyisheng.bcgame.entity.Trace;
 import com.hehaoyisheng.bcgame.entity.User;
 import com.hehaoyisheng.bcgame.entity.transfar.OrderTransfar;
 import com.hehaoyisheng.bcgame.entity.vo.Order;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
 import com.hehaoyisheng.bcgame.entity.vo.TraceOrder;
 import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
+import com.hehaoyisheng.bcgame.manager.TraceManager;
 import com.hehaoyisheng.bcgame.manager.UserManager;
 import com.hehaoyisheng.bcgame.utils.CalculationUtils;
+import com.mysql.jdbc.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +35,9 @@ public class LotteryController {
     @Resource
     private BcLotteryOrderManager bcLotteryOrderManager;
 
+    @Resource
+    private TraceManager traceManager;
+
     /**
      * 投注
      * @param isTrace       是否追号
@@ -44,31 +50,54 @@ public class LotteryController {
      */
     @RequestMapping("/{gameType}/bet")
     @ResponseBody
-    public Result doBet(@ModelAttribute("userId") User user, @PathVariable String gameType, int isTrace, int traceWinStop, int bounsType, List<Order> order, double amount, double count, List<TraceOrder> traceOrders){
+    public Result doBet(@ModelAttribute("userId") User user, @PathVariable String gameType, int isTrace, Integer traceWinStop, Integer bounsType, List<Order> order, double amount, int count, int force, List<TraceOrder> traceOrders){
+        //获取期号
+        String sessionId = GameData.gameSeasonId.get(gameType);
+        //生成追单号
+        String traceId = gameType.substring(0, 1) + System.currentTimeMillis();
+        if(isTrace == 1){
+            //如果是追号
+            for(TraceOrder traceOrder : traceOrders){
+                Order o = order.get(0).clone(traceOrder.getSeasonId(), traceOrder.getPrice());
+                order.add(o);
+            }
+        }
         //计算总额
         double buyMoney = 0;
-        if(isTrace == 1){
-            //如果是追号的余额计算
-        }else{
-            //正常投注余额计算
+        for(Order o : order){
+            buyMoney += o.getBetCount() * o.getPrice() * o.getUnit();
+            if(o.getSeasonId() == null){
+                o.setSeasonId(sessionId);
+            }
         }
         //判断余额
         user = userManager.select(user, null, null, null, null, null, null).get(0);
         if(user.getMoney() < buyMoney){
             //余额不足
+            return Result.faild("余额不足", 501);
         }
-        //获取期号
         //扣减余额
         User updateUser = new User();
         updateUser.setId(user.getId());
         updateUser.setMoney(user.getMoney() - amount);
         userManager.update(updateUser);
+        //追单
+        if(isTrace == 1){
+            Trace trace = new Trace();
+            trace.setAccount(user.getUsername());
+            trace.setStartSeason(sessionId);
+            trace.setIsWinStop(traceWinStop);
+            trace.setLotteryId(gameType);
+            //trace.setLotteryName();
+            trace.setTraceAmount(buyMoney);
+            traceManager.insert(trace);
+        }
         //生成订单号
         String orderId = gameType.substring(0, 1) + System.currentTimeMillis();
         //下单
         for(int i = 0; i < order.size(); i++){
             Order o = order.get(i);
-            BcLotteryOrder bcLotteryOrder = OrderTransfar.orderToBcLotteryOrder(o, orderId + i);
+            BcLotteryOrder bcLotteryOrder = OrderTransfar.orderToBcLotteryOrder(o, orderId + i, isTrace == 1 ? traceId : null);
             bcLotteryOrderManager.insert(bcLotteryOrder);
         }
         return Result.success(null);
@@ -82,7 +111,7 @@ public class LotteryController {
     @ResponseBody
     public Result listTraceSeasonId(@PathVariable String gameType, int count){
         List<Map<String, String>> resultList = Lists.newArrayList();
-        Long qihao = GameData.gameSeasonId.get(gameType);
+        Long qihao = Long.valueOf(GameData.gameSeasonId.get(gameType));
         for(int i = 0; i < count; i++){
             Map<String, String> map = Maps.newHashMap();
             qihao =  CalculationUtils.traceList(qihao, gameType);

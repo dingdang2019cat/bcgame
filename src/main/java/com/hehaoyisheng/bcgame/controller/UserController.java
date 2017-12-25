@@ -1,10 +1,13 @@
 package com.hehaoyisheng.bcgame.controller;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.BaseData;
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.entity.*;
+import com.hehaoyisheng.bcgame.entity.transfar.UserTransfar;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
+import com.hehaoyisheng.bcgame.entity.vo.UserVO;
 import com.hehaoyisheng.bcgame.manager.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -164,18 +168,17 @@ public class UserController {
      */
     @RequestMapping("/down/list")
     @ResponseBody
-    //TODO 没做完呢
     public Result downList(@ModelAttribute("user") User user, int rows, int page, String nextAccount, String account, Double beginAmount, Double endAmount, int userType, int isOnLine){
         int from = rows*(page - 1);
         Map<String, Object> resultMap = Maps.newHashMap();
-        //返点等信息的查询
-        List<User> users = userManager.select(user, null, null, null, null, null, null);
         User selectUser = new User();
         //不是根据用户名查询则直接查下级
-        if(StringUtils.isEmpty(account)){
-            user.setShangji(user.getUsername());
-        }else{
+        if(!StringUtils.isEmpty(account)){
             selectUser.setUsername(account);
+        }if(!StringUtils.isEmpty(nextAccount)){
+            selectUser.setUsername(nextAccount);
+        }else{
+            user.setShangji(user.getUsername());
         }
         //当为0时查询全部
         if(userType != 0){
@@ -185,11 +188,20 @@ public class UserController {
             selectUser.setOnline(isOnLine);
         }
         List<User> childUsers = userManager.select(selectUser, from, rows, null, null, beginAmount, endAmount);
+        int total = userManager.count(selectUser, from, rows, null, null, beginAmount, endAmount);
+        List<UserVO> resultList = Lists.newArrayList();
         for(User u : childUsers){
             double teamMoney = userManager.sum(u.getUsername());
-
+            User user1 = new User();
+            user1.setParentList(u.getParentList());
+            int count = userManager.count(user1, null, null, null, null, null, null);
+            UserVO userVO = UserTransfar.userToUserVO(u, teamMoney, count);
+            resultList.add(userVO);
         }
-        return null;
+        resultMap.put("ohj", StringUtils.isEmpty(account) ? StringUtils.isEmpty(nextAccount) ? user.getUsername() : nextAccount : account);
+        resultMap.put("rows", resultList);
+        resultMap.put("total", total);
+        return Result.success(resultMap);
     }
 
     /**
@@ -379,5 +391,11 @@ public class UserController {
         registURL.setAccount(user.getUsername());
         List<RegistURL> list = registURLManager.seletc(registURL);
         return Result.success(list);
+    }
+
+    @RequestMapping("/user/getTeamInfo")
+    @ResponseBody
+    public Result getTeamInfo(@ModelAttribute("user") User user, Integer rows, Integer page, String account, Date begin, Date end, Integer status, String childAccount){
+        return Result.success(null);
     }
 }

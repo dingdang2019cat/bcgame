@@ -20,5 +20,5 @@ public interface TraceDAO {
     List<Trace> select(Trace trace, int from, int limit, Date startTime, Date endTime);
 
     //@Select("")
-    int count(Trace trace, int from, int limit, Date startTime, Date endTime);
+    int count(Trace trace, Date startTime, Date endTime);
 }
