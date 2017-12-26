@@ -13,7 +13,7 @@ public interface RechargeDAO {
     @Insert("insert into recharge (account, amount, bankName, bankNameCode, createTime, id, parentList) values (#{account}, #{amount}, #{bankName}, #{bankNameCode}, now(), #{id}, #{parentList})")
     int insert(Recharge recharge);
 
-    @Update("update recharge set realAmount=#{realAmount}, status=#{} where id=#{id}")
+    @Update("update recharge set realAmount=#{realAmount}, status=#{status} where id=#{id}")
     int update(Recharge recharge);
 
     @Select("<script> " +

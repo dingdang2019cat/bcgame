@@ -1,6 +1,7 @@
 package com.hehaoyisheng.bcgame.common;
 
 import com.google.common.collect.Maps;
+import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
 
 import java.util.Map;
 
@@ -16,6 +17,21 @@ public class GameData {
     public static Map<String, String> gameSeasonId = Maps.newConcurrentMap();
 
     /**
+     * 最后开奖
+     */
+    public static Map<String, BcLotteryHistory> lastOpen = Maps.newConcurrentMap();
+
+    /**
+     * 总期数
+     */
+    public static Map<String, Integer> seasonCount = Maps.newConcurrentMap();
+
+    /**
+     * 已开期数
+     */
+    public static Map<String, Integer> openCount = Maps.newConcurrentMap();
+
+    /**
      * 防止空指针，初始化彩票时间
      */
     static {
@@ -23,6 +39,8 @@ public class GameData {
         gameTime.put("gd11x5", 100L);
         gameTime.put("pk10", 100L);
         gameTime.put("fc3d", 100L);
+
+        seasonCount.put("cqssc", 120);
     }
 
     public static void main(String[] args){

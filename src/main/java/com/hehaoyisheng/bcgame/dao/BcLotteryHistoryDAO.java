@@ -12,6 +12,6 @@ public interface BcLotteryHistoryDAO {
     int insert(BcLotteryHistory bcLotteryHistory);
     @Update("update bcLotteryHistory set nums=#{nums} where seasonId=#{seasonId} and lotteryType=#{lotteryType}")
     int update(BcLotteryHistory bcLotteryHistory);
-    @Select("select * from bcLotteryHistory where lotteryType=#{lotteryType} oder by seasonId limit 0,5")
+    @Select("select * from bcLotteryHistory where lotteryType=#{lotteryType} oder by id desc limit 0,5")
     List<BcLotteryHistory> select(BcLotteryHistory bcLotteryHistory);
 }

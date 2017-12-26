@@ -1,21 +1,44 @@
 package com.hehaoyisheng.bcgame.controller;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.GameData;
+import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
+import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
+import com.hehaoyisheng.bcgame.entity.Trace;
 import com.hehaoyisheng.bcgame.entity.User;
+import com.hehaoyisheng.bcgame.entity.transfar.OrderTransfar;
+import com.hehaoyisheng.bcgame.entity.vo.LotteryOrder;
 import com.hehaoyisheng.bcgame.entity.vo.LotteryTime;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
+import com.hehaoyisheng.bcgame.manager.BcLotteryHistoryManager;
+import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
+import com.hehaoyisheng.bcgame.manager.TraceManager;
 import com.hehaoyisheng.bcgame.manager.UserManager;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @SessionAttributes("user")
 public class IndexController {
+
+    @Resource
+    private TraceManager traceManager;
+
+    @Resource
+    private BcLotteryOrderManager bcLotteryOrderManager;
+
+    @Resource
+    private UserManager userManager;
+
+    @Resource
+    private BcLotteryHistoryManager bcLotteryHistoryManager;
 
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login(){
@@ -38,17 +61,85 @@ public class IndexController {
 
     @RequestMapping("/lotts/{gameType}/index")
     //TODO
-    public String gamePage(@ModelAttribute("user") User user, @PathVariable String gameType){
+    public String gamePage(@ModelAttribute("user") User user, @PathVariable String gameType, Model model){
         //开奖图片
+
+        //最近开奖
+        BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
+        bcLotteryHistory.setLotteryType(gameType);
+        List<BcLotteryHistory> bcLotteryHistories = bcLotteryHistoryManager.select(bcLotteryHistory);
         //最近中奖
+        BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
+        //bcLotteryOrder.setStatus();
+        List<BcLotteryOrder> bcLotteryOrderList = bcLotteryOrderManager.select(bcLotteryOrder, 0, 15, null, null);
         //最近投注
-        //
+        BcLotteryOrder bcLotteryOrder1 = new BcLotteryOrder();
+        bcLotteryOrder1.setAccount(user.getUsername());
+        List<BcLotteryOrder> bcLotteryOrderList1 = bcLotteryOrderManager.select(bcLotteryOrder1, 0, 5, null, null);
+        //最近追号
+        Trace trace = new Trace();
+        trace.setAccount(user.getUsername());
+        List<Trace> traceList = traceManager.select(trace, 0, 5, null, null);
+        //传值
+        model.addAttribute("recentOpen", bcLotteryHistories);
+        model.addAttribute("recentWin", bcLotteryOrderList);
+        model.addAttribute("recentBet", bcLotteryOrderList1);
+        model.addAttribute("recentTrace", traceList);
+        if(gameType.endsWith("k3")){
+            return "k3";
+        }else if(gameType.endsWith("pk10")){
+            return "pk10";
+        }else if(gameType.endsWith("ssc")){
+            return "ssc";
+        }
         return null;
     }
 
     @RequestMapping("/lotts/{gameType}/info")
     @ResponseBody
+    //TODO
     public Result info(@ModelAttribute("user") User user, @PathVariable String gameType){
-        return Result.success(null);
+        Map<String, Object> resultMap = Maps.newHashMap();
+        //剩余时间(s)
+        resultMap.put("allSecond", 35);
+        //余额
+        User user1 = new User();
+        user1.setUsername(user.getUsername());
+        List<User> users = userManager.select(user1, null,null,null,null,null,null);
+        resultMap.put("amount", users.get(0).getMoney());
+        //最近投注
+        BcLotteryOrder bcLotteryOrder1 = new BcLotteryOrder();
+        bcLotteryOrder1.setAccount(user.getUsername());
+        List<BcLotteryOrder> bcLotteryOrderList1 = bcLotteryOrderManager.select(bcLotteryOrder1, 0, 5, null, null);
+        List<LotteryOrder> lotteryOrderList = Lists.newArrayList();
+        for(BcLotteryOrder bcLotteryOrder : bcLotteryOrderList1){
+            LotteryOrder lotteryOrder = OrderTransfar.bcLotteryToLottery(bcLotteryOrder);
+            lotteryOrderList.add(lotteryOrder);
+        }
+        resultMap.put("bets", lotteryOrderList);
+        //最后开奖
+        resultMap.put("lastOpen", GameData.lastOpen.get(gameType));
+        //开奖号码下文字显示
+        String[] numStatus = {"前三：<span style='color: green'>组六</span>", "中三：<span style='color: purple'>组三</span>", "后三：<span style='color: purple'>组三</span>"};
+        resultMap.put("numStatus", numStatus);
+        //最近开奖
+        BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
+        bcLotteryHistory.setLotteryType(gameType);
+        List<BcLotteryHistory> bcLotteryHistories = bcLotteryHistoryManager.select(bcLotteryHistory);
+        resultMap.put("bcLotteryHistories", bcLotteryHistories);
+        //期号统计
+        Map<String, Integer> seasonCount = Maps.newHashMap();
+        seasonCount.put("allCount", GameData.seasonCount.get(gameType));
+        seasonCount.put("openCount", GameData.openCount.get(gameType));
+        resultMap.put("seasonCount", seasonCount);
+        //期号
+        resultMap.put("seasonId", GameData.gameSeasonId.get(gameType));
+        //最近追号
+        //最近追号
+        Trace trace = new Trace();
+        trace.setAccount(user.getUsername());
+        List<Trace> traces = traceManager.select(trace, 0, 5, null, null);
+        resultMap.put("traces", traces);
+        return Result.success(resultMap);
     }
 }
