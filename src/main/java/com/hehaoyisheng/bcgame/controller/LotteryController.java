@@ -123,5 +123,4 @@ public class LotteryController {
         return Result.success(resultList);
     }
 
-    
 }
