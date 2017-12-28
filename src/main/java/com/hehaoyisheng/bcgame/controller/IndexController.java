@@ -160,6 +160,7 @@ public class IndexController {
     @ResponseBody
     public String initData(){
         GameThread gameThread = new GameThread();
-        return "开奖完成！";
+        gameThread.initData("cqssc");
+        return "初始化完成！";
     }
 }

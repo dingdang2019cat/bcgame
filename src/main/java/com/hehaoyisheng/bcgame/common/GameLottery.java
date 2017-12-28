@@ -16,6 +16,7 @@ public class GameLottery {
 
     //12345,12345,12345,12345,12345     1,2,3,4,5
 
+
     /**
      * 复式开奖
      * @param lotteryNumber 开奖号码
@@ -27,8 +28,10 @@ public class GameLottery {
         //根据复式种类切割开奖数据
         Integer[] lotteryNumberCount = GameLotteryData.lotteryNumberCount.get(playCode);
         lotteryNumber = lotteryNumber.substring(lotteryNumberCount[0], lotteryNumberCount[1]);
+        System.out.println("lotteryNumber " + lotteryNumber);
         //将投注开奖数字转化为数组
         String[] lotteryNumbers = lotteryNumber.split(",");
+        betNumber = betNumber.replace("-,", "");
         String[] betNumbers = betNumber.split(",");
         if(lotteryNumbers.length != betNumbers.length){
             logger.error("lottery error! the lotteryNumber.length != betNumbers.length, lotteryNumber={}, betNumber={}, playCode is " + playCode, lotteryNumber, betNumber);
@@ -36,6 +39,7 @@ public class GameLottery {
         //如果复式命中的位数是全部投注的位数即为中奖
         int winCount = 0;
         for(int i = 0; i < lotteryNumbers.length; i++){
+            System.out.println(betNumbers[i] + "---" + lotteryNumbers[i]);
             if(betNumbers[i].contains(lotteryNumbers[i])){
                 winCount++;
             }
@@ -82,6 +86,8 @@ public class GameLottery {
         lotteryNumber = lotteryNumber.substring(lotteryNumberCount[0], lotteryNumberCount[1]);
         //将投注开奖数字转化为数组
         String[] lotteryNumbers = lotteryNumber.split(",");
+        betNumber = betNumber.replace("-,", "");
+        //betNumber = betNumber.replace(",-", "");
         String[] betNumbers = betNumber.split(",");
         boolean flag = false;
         for(int i = 0; i < betNumbers.length; i++){
@@ -172,12 +178,14 @@ public class GameLottery {
     //根据复式种类切割开奖数据
         Integer[] lotteryNumberCount = GameLotteryData.lotteryNumberCount.get(playCode);
         lotteryNumber = lotteryNumber.substring(lotteryNumberCount[0], lotteryNumberCount[1]);
+        System.out.println(lotteryNumber);
         //将投注开奖数字转化为数组
         String[] lotteryNumbers = lotteryNumber.split(",");
         int max = 0;
         for(String s : lotteryNumbers){
             max += Integer.valueOf(s);
         }
+        System.out.println(max);
         return betNumber.contains(max + "") ? 1 : 0;
     }
 
@@ -223,12 +231,10 @@ public class GameLottery {
     }
 
     public static void main(String[] args) {
-        String s = "1+1";
-        System.out.println(s);
-        for(String ss : s.split("\\+")){
-            System.out.println(ss);
-        }
-
+        String s = "8,1,6,5,9";
+        String ss = "5,6";
+        int a = sscZxLottery(s, ss, "ssc_star3_mid_group3");
+        System.out.println(a);
     }
 
     /**
@@ -305,4 +311,5 @@ public class GameLottery {
         return list;
 
     }
+
 }

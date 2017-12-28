@@ -304,11 +304,7 @@ public class HttpClientUtil {
     }
 
     public static void main(String[] args) {
-        Map<String , String> map = Maps.newHashMap();
-        map.put("nourl", "1");
-        map.put("lotid", "cqssc");
-        map.put("uid", "");
-        String s = sendHttpPost("http://917500.cn/Home/Article/timelimit.html", map);
+        String s = sendHttpPost("http://917500.cn/Home/Lottery/kaijianghao/lotid/cqssc.html?page=1&nourl=1");
         System.out.println(s);
     }
 }

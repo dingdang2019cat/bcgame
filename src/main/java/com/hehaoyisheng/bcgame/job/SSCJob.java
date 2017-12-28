@@ -3,7 +3,12 @@ package com.hehaoyisheng.bcgame.job;
 
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
+import com.hehaoyisheng.bcgame.manager.BcLotteryHistoryManager;
 import com.hehaoyisheng.bcgame.utils.HttpClientUtil;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
@@ -20,7 +25,7 @@ public class SSCJob {
     DateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
 
     @Resource
-    private BcLotteryHistory bcLotteryHistory;
+    private BcLotteryHistoryManager bcLotteryHistoryManager;
 
     private String type;
 
@@ -32,12 +37,12 @@ public class SSCJob {
         this.format = format;
     }
 
-    public BcLotteryHistory getBcLotteryHistory() {
-        return bcLotteryHistory;
+    public BcLotteryHistoryManager getBcLotteryHistoryManager() {
+        return bcLotteryHistoryManager;
     }
 
-    public void setBcLotteryHistory(BcLotteryHistory bcLotteryHistory) {
-        this.bcLotteryHistory = bcLotteryHistory;
+    public void setBcLotteryHistoryManager(BcLotteryHistoryManager bcLotteryHistoryManager) {
+        this.bcLotteryHistoryManager = bcLotteryHistoryManager;
     }
 
     public String getType() {
@@ -51,7 +56,7 @@ public class SSCJob {
     public void execute() throws JobExecutionException {
         System.out.println("----------------------------------");
         System.out.println(format.format(new Date()));
-        if(bcLotteryHistory == null){
+        if(bcLotteryHistoryManager == null){
             System.out.println("is null");
         }
         System.out.println("----------------------------------");
@@ -62,18 +67,30 @@ public class SSCJob {
         if(type.equals("cqssc") && qiHaoInt < 24 || qiHaoInt > 96){
             longTime = 300L;
         }
+        if(qiHaoInt == 23){
+            longTime = 28800000L;
+        }
         GameData.gameTime.put(type, System.currentTimeMillis() + longTime);
-        /*
         for(int i = 0; i < 60; i++){
-            String html = HttpClientUtil.sendHttpGet("http://917500.cn/Home/Lottery/kaijianghao/lotid/" + type + ".html?page=1&nourl=1");
-            String[] result = html.split("<td>");
-
             try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
+                String result= HttpClientUtil.sendHttpGet("http://917500.cn/Home/Lottery/kaijianghao/lotid/" + type + ".html?page=1&nourl=1");
+                Document document = Jsoup.parse(result);
+                Elements elements = document.getElementsByTag("tr");
+                for(Element element : elements){
+                    Elements elements1 = element.getElementsByTag("td");
+                    for(Element element1 : elements1){
+                        System.out.println(element1.val());
+                    }
+                }
+                Thread.sleep(1000);
+            }catch (Exception e){
+                try {
+                    Thread.sleep(1000);
+                }catch (Exception e1){
+                    e1.printStackTrace();
+                }
                 e.printStackTrace();
             }
         }
-        */
     }
 }

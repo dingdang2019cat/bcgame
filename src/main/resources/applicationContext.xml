@@ -92,18 +92,19 @@
         <property name="targetMethod" value="execute"/>
     </bean>
 
-    <bean id="simpleTriggerFactoryBean1" name="simpleTriggerFactoryBean1" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+    <bean id="cronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="jobDetail1" />
-        <property name="name" value="cqssc"/>
-        <property name="group" value="ssc"/>
+        <property name="cronExpression" value="0 3/5 0-2 * * ?" />
     </bean>
 
-    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
+    <bean id="schedulerfactory" name="schedulerfactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
         <property name="triggers">
             <list>
-                <ref bean="simpleTriggerFactoryBean1"/>
+                <ref bean="cronTriggerBean"/>
             </list>
         </property>
-        <property name="autoStartup" value="false" />
+        <property name="autoStartup" value="true" />
     </bean>
+
+
 </beans>
