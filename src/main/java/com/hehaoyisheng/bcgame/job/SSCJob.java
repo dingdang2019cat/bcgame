@@ -14,28 +14,22 @@ import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class SSCJob {
 
-    DateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+    private static DateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
 
     @Resource
     private BcLotteryHistoryManager bcLotteryHistoryManager;
 
     private String type;
-
-    public DateFormat getFormat() {
-        return format;
-    }
-
-    public void setFormat(DateFormat format) {
-        this.format = format;
-    }
 
     public BcLotteryHistoryManager getBcLotteryHistoryManager() {
         return bcLotteryHistoryManager;
@@ -53,7 +47,7 @@ public class SSCJob {
         this.type = type;
     }
 
-    public void execute() throws JobExecutionException {
+    public void execute(){
         System.out.println("----------------------------------");
         System.out.println(format.format(new Date()));
         if(bcLotteryHistoryManager == null){
@@ -67,7 +61,7 @@ public class SSCJob {
         if(type.equals("cqssc") && qiHaoInt < 24 || qiHaoInt > 96){
             longTime = 300L;
         }
-        if(qiHaoInt == 23){
+        if(type.equals("cqssc") && qiHaoInt == 23){
             longTime = 28800000L;
         }
         GameData.gameTime.put(type, System.currentTimeMillis() + longTime);
@@ -78,9 +72,17 @@ public class SSCJob {
                 Elements elements = document.getElementsByTag("tr");
                 for(Element element : elements){
                     Elements elements1 = element.getElementsByTag("td");
-                    for(Element element1 : elements1){
-                        System.out.println(element1.val());
+                    String qihao =  elements1.get(0).val();
+                    BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
+                    bcLotteryHistory.setLotteryType(type);
+                    bcLotteryHistory.setSeasonId(qihao);
+                    List<BcLotteryHistory> bcLotteryHistoryList = bcLotteryHistoryManager.select(bcLotteryHistory);
+                    if(CollectionUtils.isEmpty(bcLotteryHistoryList)){
+                        break;
                     }
+                    bcLotteryHistory.setNums(elements1.get(2).val());
+                    bcLotteryHistoryManager.insert(bcLotteryHistory);
+                    return;
                 }
                 Thread.sleep(1000);
             }catch (Exception e){
