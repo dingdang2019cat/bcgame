@@ -82,4 +82,29 @@
         <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.BcLotteryHistoryDAO" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+
+    <!-- 调度 -->
+    <bean id="sscJob1" class="com.hehaoyisheng.bcgame.job.SSCJob">
+        <property name="type" value="cqssc" />
+        <property name="time" value="0" />
+    </bean>
+    <bean id="jobDetail1" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="sscJob1" />
+        <property name="targetMethod" value="execute"/>
+    </bean>
+
+    <bean id="simpleTriggerFactoryBean1" name="simpleTriggerFactoryBean1" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="jobDetail1" />
+        <property name="name" value="cqssc"/>
+        <property name="group" value="ssc"/>
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
+        <property name="triggers">
+            <list>
+                <ref bean="simpleTriggerFactoryBean1"/>
+            </list>
+        </property>
+        <property name="autoStartup" value="false" />
+    </bean>
 </beans>

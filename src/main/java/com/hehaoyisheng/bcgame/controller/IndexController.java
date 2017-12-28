@@ -55,6 +55,7 @@ public class IndexController {
     public Result info(){
         List<LotteryTime> list = Lists.newArrayList();
         list.add(new LotteryTime("cqssc", (GameData.gameTime.get("cqssc") - System.currentTimeMillis()) / 1000));
+        System.out.println(GameData.gameTime.get("cqssc") - System.currentTimeMillis());
         list.add(new LotteryTime("gd11x5", GameData.gameTime.get("gd11x5")));
         list.add(new LotteryTime("pk10", GameData.gameTime.get("pk10")));
         list.add(new LotteryTime("3d", GameData.gameTime.get("3d")));
@@ -156,8 +157,9 @@ public class IndexController {
     }
 
     @RequestMapping("/init/Data")
+    @ResponseBody
     public String initData(){
         GameThread gameThread = new GameThread();
-        return null;
+        return "开奖完成！";
     }
 }
