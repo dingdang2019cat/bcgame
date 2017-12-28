@@ -23,7 +23,6 @@ public class SSCJob {
     private BcLotteryHistory bcLotteryHistory;
 
     private String type;
-    private Long time;
 
     public DateFormat getFormat() {
         return format;
@@ -49,14 +48,6 @@ public class SSCJob {
         this.type = type;
     }
 
-    public Long getTime() {
-        return time;
-    }
-
-    public void setTime(Long time) {
-        this.time = time;
-    }
-
     public void execute() throws JobExecutionException {
         System.out.println("----------------------------------");
         System.out.println(format.format(new Date()));
@@ -71,7 +62,8 @@ public class SSCJob {
         if(type.equals("cqssc") && qiHaoInt < 24 || qiHaoInt > 96){
             longTime = 300L;
         }
-        GameData.gameTime.put(type, System.currentTimeMillis() + time);
+        GameData.gameTime.put(type, System.currentTimeMillis() + longTime);
+        /*
         for(int i = 0; i < 60; i++){
             String html = HttpClientUtil.sendHttpGet("http://917500.cn/Home/Lottery/kaijianghao/lotid/" + type + ".html?page=1&nourl=1");
             String[] result = html.split("<td>");
@@ -82,5 +74,6 @@ public class SSCJob {
                 e.printStackTrace();
             }
         }
+        */
     }
 }

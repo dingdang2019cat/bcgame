@@ -86,7 +86,6 @@
     <!-- 调度 -->
     <bean id="sscJob1" class="com.hehaoyisheng.bcgame.job.SSCJob">
         <property name="type" value="cqssc" />
-        <property name="time" value="0" />
     </bean>
     <bean id="jobDetail1" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="sscJob1" />
