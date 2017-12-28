@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/resource/wk-common.css?ver=20171208"/>
     <script type="text/javascript" src="/resource/jquery-1.11.0.min.js?ver=20171208"></script>
     <script type="text/javascript" src="/resource/jquery.timer.js?ver=20171208"></script>
-    <script type="text/javascript" src="/resource/layer/layer.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/layer.js?ver=20171208"></script>
     <script type="text/javascript" src="/resource/jquery.cookie.js?ver=20171208"></script>
     <script type="text/javascript" src="/resource/spinner.js?ver=20171208"></script>
     <script type="text/javascript" src="/resource/audio/audio5.js?ver=20171208"></script>
@@ -51,7 +51,7 @@
     </script>
     <style>
         body {
-            background: url('/res/home/images/bg.jpg') center top no-repeat;
+            background: url('/images/home/bg.jpg') center top no-repeat;
             background-size: 100% 100%;
         }
     </style>
@@ -24467,12 +24467,12 @@
                                 </tr>
                                 </thead>
                                 <tbody id="openList">
-                                <c:forEach var="history" items="${history}">
+                                <c:forEach var="recentOpen1" items="${recentOpen}">
                                 <tr class="beforeLottNumDetail">
 
 
 
-                                    <td class="smallFont12">${history.seasonId}</td>
+                                    <td class="smallFont12">${recentOpen1.seasonId}</td>
                                     <td class="fontColorTheme beforeLottNum">
 
                                         <span>3</span>
@@ -24501,266 +24501,21 @@
                             </h3>
                             <div class="lotteryListReport">
                                 <table class="beforeLottNumList" id="rewardList">
+                                    <c:forEach var="recentWin1" items="${recentWin}">
+                                        <tr class="beforeLottNumDetail">
+                                            <td> </td>
+                                            <td width="30%" class="lotteryListImg">
 
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
+                                                ${recentWin1.lotName}
+                                            </td>
+                                            <td width="30%">${recentWin1.account}</td>
+                                            <td width="40%">
+                                                <span class="fontColorRed">${recentWin1.winMoney}</span>
+                                                <span>元</span>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
 
-                                            五分11选5
-                                        </td>
-                                        <td width="30%">bh****v</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">9823</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            广东11选5
-                                        </td>
-                                        <td width="30%">dw****m</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">7054</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            江西11选5
-                                        </td>
-                                        <td width="30%">yv****c</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">1641</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            三分11选5
-                                        </td>
-                                        <td width="30%">fb****k</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">1186</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            北京赛车
-                                        </td>
-                                        <td width="30%">dp****a</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">5821</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            广东11选5
-                                        </td>
-                                        <td width="30%">ao****8</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">12461</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            北京赛车
-                                        </td>
-                                        <td width="30%">qo****8</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">16895</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            鼎汇三分彩
-                                        </td>
-                                        <td width="30%">on****m</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">47347</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            鼎汇三分彩
-                                        </td>
-                                        <td width="30%">iq****y</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">35194</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            广东11选5
-                                        </td>
-                                        <td width="30%">fr****o</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">37662</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            重庆时时彩
-                                        </td>
-                                        <td width="30%">uu****v</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">39760</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            北京赛车
-                                        </td>
-                                        <td width="30%">ge****2</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">49823</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            鼎汇三分彩
-                                        </td>
-                                        <td width="30%">nr****s</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">46123</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            广东11选5
-                                        </td>
-                                        <td width="30%">gi****7</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">21676</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            北京赛车
-                                        </td>
-                                        <td width="30%">ql****t</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">21879</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            北京赛车
-                                        </td>
-                                        <td width="30%">tj****d</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">93745</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            五分11选5
-                                        </td>
-                                        <td width="30%">ao****v</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">70370</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            鼎汇三分彩
-                                        </td>
-                                        <td width="30%">tp****2</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">54230</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            五分11选5
-                                        </td>
-                                        <td width="30%">rj****2</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">81719</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
-
-                                    <tr class="beforeLottNumDetail">
-                                        <td> </td>
-                                        <td width="30%" class="lotteryListImg">
-
-                                            三分11选5
-                                        </td>
-                                        <td width="30%">go****0</td>
-                                        <td width="40%">
-                                            <span class="fontColorRed">78196</span>
-                                            <span>元</span>
-                                        </td>
-                                    </tr>
 
                                 </table>
                             </div>
@@ -24782,56 +24537,17 @@
                                 </tr>
                                 </thead>
                                 <tbody id="betTable">
+                                <c:forEach var="recentBet1" items="${recentBet}">
+                                <tr class="beforeLottNumDetail" onclick="showGeneralDetailArea('${recentBet1.orderId}', 0, 1)">
+                                    <td class="betListLottName overflowEllipsis" title="${recentBet1.lotName}">${recentBet1.lotName}</td>
+                                    <td class="betListPlayName overflowEllipsis" title="${recentBet1.playName}">${recentBet1.playName}</td>
+                                    <td>￥${recentBet1.buyMoney}</td>
 
-                                <tr class="beforeLottNumDetail" onclick="showGeneralDetailArea('DCQ122556db5719b8374357', 0, 1)">
-                                    <td class="betListLottName overflowEllipsis" title="重庆时时彩">重庆时时彩</td>
-                                    <td class="betListPlayName overflowEllipsis" title="后三直选复式">后三直选复式</td>
-                                    <td>￥0.02</td>
-
-
-                                    <td class="fontColorRed">-0.02</td>
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail" onclick="showGeneralDetailArea('DCQ1225598d255f9c1841be', 0, 1)">
-                                    <td class="betListLottName overflowEllipsis" title="重庆时时彩">重庆时时彩</td>
-                                    <td class="betListPlayName overflowEllipsis" title="后三直选复式">后三直选复式</td>
-                                    <td>￥0.04</td>
-
-
-                                    <td class="fontColorRed">-0.04</td>
+                                    <td class="fontColorRed">${recentBet1.winMoney}</td>
 
                                 </tr>
+                                </c:forEach>
 
-                                <tr class="beforeLottNumDetail" onclick="showGeneralDetailArea('DCQ12257268500dc993488a', 0, 1)">
-                                    <td class="betListLottName overflowEllipsis" title="重庆时时彩">重庆时时彩</td>
-                                    <td class="betListPlayName overflowEllipsis" title="后三直选复式">后三直选复式</td>
-                                    <td>￥0.02</td>
-
-
-                                    <td class="fontColorRed">-0.02</td>
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail" onclick="showGeneralDetailArea('DCQ1225e053ae8a2cc24b04', 0, 1)">
-                                    <td class="betListLottName overflowEllipsis" title="重庆时时彩">重庆时时彩</td>
-                                    <td class="betListPlayName overflowEllipsis" title="后三直选复式">后三直选复式</td>
-                                    <td>￥0.2</td>
-
-
-                                    <td class="fontColorRed">-0.2</td>
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail" onclick="showGeneralDetailArea('DCQ122522ff8023ca59485f', 0, 1)">
-                                    <td class="betListLottName overflowEllipsis" title="重庆时时彩">重庆时时彩</td>
-                                    <td class="betListPlayName overflowEllipsis" title="后三直选复式">后三直选复式</td>
-                                    <td>￥0.02</td>
-
-
-                                    <td class="fontColorRed">-0.02</td>
-
-                                </tr>
 
                                 </tbody>
                             </table>
@@ -24846,46 +24562,18 @@
                                 </tr>
                                 </thead>
                                 <tbody id="traceTable">
-
-                                <tr class="beforeLottNumDetail" onclick="showTraceSummary('ZCQ12256806f487ec9846e4')">
-                                    <td>065</td>
-                                    <td>已完成</td>
-                                    <td class="fontColorTheme">0.16</td>
-
-
-                                    <td class="fontColorRed">-0.16</td>
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail" onclick="showTraceSummary('ZCQ1225e8520cbbdf6b4456')">
-                                    <td>065</td>
-                                    <td>已完成</td>
-                                    <td class="fontColorTheme">0.1</td>
+                                <c:forEach var="recentTrace1" items="${recentTrace}">
+                                <tr class="beforeLottNumDetail" onclick="showTraceSummary('${recentTrace1.id}')">
+                                    <td>${recentTrace1.startSeason}</td>
+                                    <td>${recentTrace1.status}</td>
+                                    <td class="fontColorTheme">${recentTrace1.finishTraceAmount}</td>
 
 
-                                    <td class="fontColorRed">-0.1</td>
+                                    <td class="fontColorRed">${recentTrace1.winAmount}</td>
 
                                 </tr>
+                                </c:forEach>
 
-                                <tr class="beforeLottNumDetail" onclick="showTraceSummary('ZCQ12257c09b90bdbb04bde')">
-                                    <td>065</td>
-                                    <td>已完成</td>
-                                    <td class="fontColorTheme">0.1</td>
-
-
-                                    <td class="fontColorRed">-0.1</td>
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail" onclick="showTraceSummary('ZCQ1225a441397695c745af')">
-                                    <td>065</td>
-                                    <td>已完成</td>
-                                    <td class="fontColorTheme">1</td>
-
-
-                                    <td class="fontColorRed">-1</td>
-
-                                </tr>
 
                                 </tbody>
                             </table>

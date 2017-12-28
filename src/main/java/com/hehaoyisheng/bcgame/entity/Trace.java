@@ -14,7 +14,7 @@ public class Trace {
     private String lotteryId;
     private String lotteryName;
     private String startSeason;
-    private int status;
+    private Integer status;
     private double traceAmount;
     private int traceNum;
     private String userMark;
@@ -108,11 +108,11 @@ public class Trace {
         this.startSeason = startSeason;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

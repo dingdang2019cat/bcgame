@@ -3,6 +3,7 @@ package com.hehaoyisheng.bcgame.controller;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.GameData;
+import com.hehaoyisheng.bcgame.common.GameThread;
 import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
 import com.hehaoyisheng.bcgame.entity.Trace;
@@ -21,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -52,7 +54,7 @@ public class IndexController {
     @RequestMapping("info")
     public Result info(){
         List<LotteryTime> list = Lists.newArrayList();
-        list.add(new LotteryTime("cqssc", GameData.gameTime.get("cqssc")));
+        list.add(new LotteryTime("cqssc", (GameData.gameTime.get("cqssc") - System.currentTimeMillis()) / 1000));
         list.add(new LotteryTime("gd11x5", GameData.gameTime.get("gd11x5")));
         list.add(new LotteryTime("pk10", GameData.gameTime.get("pk10")));
         list.add(new LotteryTime("3d", GameData.gameTime.get("3d")));
@@ -80,7 +82,12 @@ public class IndexController {
         Trace trace = new Trace();
         trace.setAccount(user.getUsername());
         List<Trace> traceList = traceManager.select(trace, 0, 5, null, null);
+        bcLotteryHistories = bcLotteryHistories == null ? new ArrayList<BcLotteryHistory>() : bcLotteryHistories;
+        bcLotteryOrderList = bcLotteryOrderList == null ? new ArrayList<BcLotteryOrder>() : bcLotteryOrderList;
+        bcLotteryOrderList1 = bcLotteryOrderList1 == null ? new ArrayList<BcLotteryOrder>() : bcLotteryOrderList1;
+        traceList = traceList == null ? new ArrayList<Trace>() : traceList;
         //传值
+        model.addAttribute("username", user.getUsername());
         model.addAttribute("recentOpen", bcLotteryHistories);
         model.addAttribute("recentWin", bcLotteryOrderList);
         model.addAttribute("recentBet", bcLotteryOrderList1);
@@ -101,7 +108,12 @@ public class IndexController {
     public Result info(@ModelAttribute("user") User user, @PathVariable String gameType){
         Map<String, Object> resultMap = Maps.newHashMap();
         //剩余时间(s)
-        resultMap.put("allSecond", 35);
+        resultMap.put("allSecond", (GameData.gameTime.get(gameType) - System.currentTimeMillis()) / 1000);
+        System.out.println(" --------------------------------------------------------- ");
+        System.out.println(GameData.gameTime.get(gameType));
+        System.out.println(System.currentTimeMillis());
+        System.out.println((GameData.gameTime.get(gameType) - System.currentTimeMillis()));
+        System.out.println(" --------------------------------------------------------- ");
         //余额
         User user1 = new User();
         user1.setUsername(user.getUsername());
@@ -141,5 +153,11 @@ public class IndexController {
         List<Trace> traces = traceManager.select(trace, 0, 5, null, null);
         resultMap.put("traces", traces);
         return Result.success(resultMap);
+    }
+
+    @RequestMapping("/init/Data")
+    public String initData(){
+        GameThread gameThread = new GameThread();
+        return null;
     }
 }
