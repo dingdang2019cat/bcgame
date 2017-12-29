@@ -104,7 +104,7 @@ public class LotteryController {
             bcLotteryOrder.setAccount(user.getUsername());
             bcLotteryOrder.setParentList(user.getParentList());
             bcLotteryOrder.setLotCode(gameType);
-            bcLotteryOrder.setOrderId(orderId);
+            bcLotteryOrder.setOrderId(orderId + i);
             bcLotteryOrder.setTraceId(traceId);
             bcLotteryOrder.setBuyZhuShu(o.getBetCount());
             bcLotteryOrder.setMultiple(o.getPrice());
@@ -136,11 +136,11 @@ public class LotteryController {
         Long qihao = Long.valueOf(GameData.gameSeasonId.get(gameType));
         for(int i = 0; i < count; i++){
             Map<String, String> map = Maps.newHashMap();
-            qihao =  CalculationUtils.traceList(qihao, gameType);
             map.put("seasonId", qihao.toString());
             String time = CalculationUtils.lotteryTime(qihao, gameType);
             map.put("openTime", time);
             resultList.add(map);
+            qihao =  CalculationUtils.traceList(qihao, gameType);
         }
         return Result.success(resultList);
     }

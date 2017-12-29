@@ -10,24 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d9eca47-e4e3-4674-a62b-72f4885b8b41" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/vo/OrderModel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/vo/TraceModel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/My97DatePicker/calendar.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/My97DatePicker/lang/zh-cn.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/My97DatePicker/skin/WdatePicker.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/My97DatePicker/skin/default/datepicker.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resource/My97DatePicker/skin/default/img.gif" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/GameType.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/GameType.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/GameController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/GameController.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/dao/BcLotteryOrderDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/dao/BcLotteryOrderDAO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/BcLotteryOrder.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/BcLotteryOrder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/transfar/OrderTransfar.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/transfar/OrderTransfar.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/vo/LotteryOrder.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/vo/LotteryOrder.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/database.properties" afterPath="$PROJECT_DIR$/src/main/resources/database.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dispatche.xml" afterPath="$PROJECT_DIR$/src/main/resources/dispatche.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/CalculationUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/CalculationUtils.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -51,11 +36,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="112" column="9" lean-forward="false" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
+            <state relative-caret-position="214">
+              <caret line="107" column="40" lean-forward="false" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LotteryController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="104" column="63" lean-forward="true" selection-start-line="104" selection-start-column="63" selection-end-line="104" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CalculationUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/CalculationUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -65,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="152">
-              <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -90,7 +95,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bg.</find>
       <find>dd.mp3</find>
       <find>model</find>
       <find>jobFactorySet</find>
@@ -120,6 +124,7 @@
       <find>type</find>
       <find>bet</find>
       <find>/game/ajaxGetBet</find>
+      <find>listTraceSeasonId</find>
     </findStrings>
     <replaceStrings>
       <replace>Proxy</replace>
@@ -146,7 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/impl/DrawHistoryManagerImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/settlement.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/MoneyHistoryManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/impl/MoneyHistoryManagerImpl.java" />
@@ -192,11 +196,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/vo/LotteryOrder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/dao/BcLotteryOrderDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/GameType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/transfar/OrderTransfar.java" />
         <option value="$PROJECT_DIR$/src/main/resources/dispatche.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/GameController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/database.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/CalculationUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java" />
       </list>
     </option>
   </component>
@@ -798,7 +803,7 @@
       <workItem from="1514479566087" duration="6532000" />
       <workItem from="1514495166243" duration="2458000" />
       <workItem from="1514529373100" duration="1543000" />
-      <workItem from="1514573418154" duration="5942000" />
+      <workItem from="1514573418154" duration="6617000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1510146952533</created>
@@ -940,7 +945,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514486073933</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="报表中心接入">
+      <created>1514579382980</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1514579382981</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -949,7 +961,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="298376000" />
+    <option name="totallyTimeSpent" value="299051000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -962,6 +974,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50472194" sideWeight="0.50208336" order="5" side_tool="true" content_ui="tabs" />
@@ -984,7 +997,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.51626444" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898772" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22395833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22395833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -1019,7 +1032,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context-support/4.3.9.RELEASE/spring-context-support-4.3.9.RELEASE-sources.jar!/org/springframework/scheduling/quartz/SchedulerAccessor.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context-support/4.3.9.RELEASE/spring-context-support-4.3.9.RELEASE-sources.jar!/org/springframework/scheduling/quartz/SchedulerFactoryBean.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.9.RELEASE/spring-beans-4.3.9.RELEASE.jar!/org/springframework/beans/factory/FactoryBean.class" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.9.RELEASE/spring-beans-4.3.9.RELEASE.jar!/org/springframework/beans/factory/BeanNameAware.class" />
@@ -1355,14 +1367,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="122" column="53" lean-forward="false" selection-start-line="122" selection-start-column="53" selection-end-line="122" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/dispatche.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -1382,15 +1386,31 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
-          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/CalculationUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="112" column="9" lean-forward="false" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
+        <state relative-caret-position="214">
+          <caret line="107" column="40" lean-forward="false" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="104" column="63" lean-forward="true" selection-start-line="104" selection-start-column="63" selection-end-line="104" selection-end-column="63" />
           <folding />
         </state>
       </provider>
