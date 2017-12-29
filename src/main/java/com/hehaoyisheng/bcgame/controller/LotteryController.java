@@ -3,13 +3,12 @@ package com.hehaoyisheng.bcgame.controller;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.GameData;
+import com.hehaoyisheng.bcgame.common.GameType;
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
 import com.hehaoyisheng.bcgame.entity.Trace;
 import com.hehaoyisheng.bcgame.entity.User;
 import com.hehaoyisheng.bcgame.entity.transfar.OrderTransfar;
-import com.hehaoyisheng.bcgame.entity.vo.Order;
-import com.hehaoyisheng.bcgame.entity.vo.Result;
-import com.hehaoyisheng.bcgame.entity.vo.TraceOrder;
+import com.hehaoyisheng.bcgame.entity.vo.*;
 import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
 import com.hehaoyisheng.bcgame.manager.TraceManager;
 import com.hehaoyisheng.bcgame.manager.UserManager;
@@ -50,21 +49,24 @@ public class LotteryController {
      */
     @RequestMapping("/{gameType}/bet")
     @ResponseBody
-    public Result doBet(@ModelAttribute("userId") User user, @PathVariable String gameType, int isTrace, Integer traceWinStop, Integer bounsType, List<Order> order, double amount, int count, int force, List<TraceOrder> traceOrders){
+    public Result doBet(@ModelAttribute("user") User user, @PathVariable String gameType, int isTrace, Integer traceWinStop, Integer bounsType, OrderModel order, double amount, int count, int force, TraceModel traceOrders){
+        List<Order> orders = order.getOrder();
+        List<TraceOrder> traces = traceOrders.getTraceOrders();
         //获取期号
         String sessionId = GameData.gameSeasonId.get(gameType);
         //生成追单号
         String traceId = gameType.substring(0, 1) + System.currentTimeMillis();
+
         if(isTrace == 1){
             //如果是追号
-            for(TraceOrder traceOrder : traceOrders){
-                Order o = order.get(0).clone(traceOrder.getSeasonId(), traceOrder.getPrice());
-                order.add(o);
+            for(TraceOrder traceOrder : traces){
+                Order o = orders.get(0).clone(traceOrder.getSeasonId(), traceOrder.getPrice());
+                orders.add(o);
             }
         }
         //计算总额
         double buyMoney = 0;
-        for(Order o : order){
+        for(Order o : orders){
             buyMoney += o.getBetCount() * o.getPrice() * o.getUnit();
             if(o.getSeasonId() == null){
                 o.setSeasonId(sessionId);
@@ -94,13 +96,33 @@ public class LotteryController {
         }
         //生成订单号
         String orderId = gameType.substring(0, 1) + System.currentTimeMillis();
+        List<LotteryOrder> resultList = Lists.newArrayList();
         //下单
-        for(int i = 0; i < order.size(); i++){
-            Order o = order.get(i);
-            BcLotteryOrder bcLotteryOrder = OrderTransfar.orderToBcLotteryOrder(o, orderId + i, isTrace == 1 ? traceId : null);
+        for(int i = 0; i < orders.size(); i++){
+            Order o = orders.get(i);
+            BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
+            bcLotteryOrder.setAccount(user.getUsername());
+            bcLotteryOrder.setParentList(user.getParentList());
+            bcLotteryOrder.setLotCode(gameType);
+            bcLotteryOrder.setOrderId(orderId);
+            bcLotteryOrder.setTraceId(traceId);
+            bcLotteryOrder.setBuyZhuShu(o.getBetCount());
+            bcLotteryOrder.setMultiple(o.getPrice());
+            bcLotteryOrder.setMinBonusOdds(o.getUnit());
+            bcLotteryOrder.setBuyMoney(o.getBetCount() * o.getPrice() * o.getUnit());
+            bcLotteryOrder.setPlayCode(o.getPlayId());
+            bcLotteryOrder.setQiHao(o.getSeasonId());
+            bcLotteryOrder.setHaoMa(o.getContent());
+            bcLotteryOrder.setQiHao(sessionId);
+            bcLotteryOrder.setLotName(GameType.gameType.get(gameType));
+            bcLotteryOrder.setZhuiHao(isTrace + "");
+            System.out.println("---------------------------------");
+            System.out.println(bcLotteryOrder.getAccount());
+            System.out.println("---------------------------------");
             bcLotteryOrderManager.insert(bcLotteryOrder);
+            resultList.add(OrderTransfar.bcLotteryToLottery(bcLotteryOrder));
         }
-        return Result.success(null);
+        return Result.success(resultList);
     }
 
     /**

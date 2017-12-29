@@ -154,6 +154,4 @@
         </property>
         <property name="autoStartup" value="true" />
     </bean>
-
-
 </beans>

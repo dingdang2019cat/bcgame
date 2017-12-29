@@ -26,6 +26,7 @@ public class BcLotteryOrder {
     private String zhuiHao;
     private double minBonusOdds;
     private double rollBackMoney;
+    private String traceId;
     private String parentList;
     private String shangji;
     private String orderId;
@@ -228,5 +229,13 @@ public class BcLotteryOrder {
 
     public void setParentList(String parentList) {
         this.parentList = parentList;
+    }
+
+    public String getTraceId() {
+        return traceId;
+    }
+
+    public void setTraceId(String traceId) {
+        this.traceId = traceId;
     }
 }

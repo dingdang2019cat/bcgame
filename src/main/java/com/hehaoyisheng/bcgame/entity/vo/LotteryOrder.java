@@ -1,5 +1,8 @@
 package com.hehaoyisheng.bcgame.entity.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class LotteryOrder {
@@ -9,6 +12,8 @@ public class LotteryOrder {
     private double bonusRate;
     private int bonusType;
     private String content;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
     //彩票分组名称
     private String groupName;
@@ -18,6 +23,8 @@ public class LotteryOrder {
     private String id;
     //是否追号
     private int isTrace;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date lastTime;
     //彩票id
     private String lotteryId;

@@ -7,17 +7,6 @@ import com.hehaoyisheng.bcgame.entity.vo.Order;
 public class OrderTransfar {
 
     /**
-     * 投注转换
-     * @param order
-     * @param orderId
-     * @return
-     */
-    //TODO
-    public static BcLotteryOrder orderToBcLotteryOrder(Order order, String orderId, String traceId){
-        return null;
-    }
-
-    /**
      * 查询转换
      */
     public static LotteryOrder bcLotteryToLottery(BcLotteryOrder bcLotteryOrder){
@@ -38,6 +27,7 @@ public class OrderTransfar {
         lotteryOrder.setPlayerId(bcLotteryOrder.getPlayCode());
         lotteryOrder.setPlayName(bcLotteryOrder.getPlayName());
         lotteryOrder.setWin(bcLotteryOrder.getWinMoney());
+        lotteryOrder.setSeasonId(bcLotteryOrder.getQiHao());
         return lotteryOrder;
     }
 }

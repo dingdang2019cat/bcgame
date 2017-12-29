@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface BcLotteryOrderDAO {
 
-    @Insert("insert into bcLotteryOrder (account, accountId, buyMoney, buyZhuShu, haoMa, lotCode, lotName, lotType, multiple, playCode, playName, qiHao, minBonusOdds, shangji, orderId) values (#{account}, #{accountId}, #{buyMoney}, #{buyZhuShu}, #{haoMa}, #{lotCode}, #{lotName}, #{lotType}, #{multiple}, #{playCode}, #{playName}, #{qiHao}, #{minBonusOdds}, #{shangji}, #{orderId} )")
+    @Insert("insert into bcLotteryOrder (account, accountId, buyMoney, buyZhuShu, haoMa, lotCode, lotName, lotType, multiple, playCode, playName, qiHao, minBonusOdds, shangji, orderId, traceId, createTime, zhuiHao) values (#{account}, #{accountId}, #{buyMoney}, #{buyZhuShu}, #{haoMa}, #{lotCode}, #{lotName}, #{lotType}, #{multiple}, #{playCode}, #{playName}, #{qiHao}, #{minBonusOdds}, #{shangji}, #{orderId}, #{traceId}, now(), #{zhuiHao} )")
     int insert(BcLotteryOrder bcLotteryOrder);
 
     @Update("update bcLotteryOrder set status=#{status}")
@@ -23,10 +23,10 @@ public interface BcLotteryOrderDAO {
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
             " <if test=\"bcLotteryOrder.id != null\"> AND id=#{bcLotteryOrder.id}</if> " +
             " <if test=\"bcLotteryOrder.status != null\"> AND status=#{bcLotteryOrder.status}</if> " +
-            " <if test=\"bcLotteryOrder.accountId != null\"> AND accountId=#{bcLotteryOrder.accountId}</if> " +
+            " <if test=\"bcLotteryOrder.account != null\"> AND account=#{bcLotteryOrder.account}</if> " +
             " <if test=\"bcLotteryOrder.lotCode != null\"> AND lotCode=#{bcLotteryOrder.lotCode}</if> " +
             " <if test=\"bcLotteryOrder.qiHao != null\"> AND qiHao=#{bcLotteryOrder.qiHao}</if> " +
-            " <if test=\"bcLotteryOrder.orderId != null\"> AND qiHao=#{bcLotteryOrder.orderId}</if> " +
+            " <if test=\"bcLotteryOrder.orderId != null\"> AND orderId=#{bcLotteryOrder.orderId}</if> " +
             " <if test=\"bcLotteryOrder.parentList != null\"> AND parentList like #{bcLotteryOrder.parentList}%</if> " +
             " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
@@ -40,7 +40,7 @@ public interface BcLotteryOrderDAO {
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
             " <if test=\"bcLotteryOrder.id != null\"> AND id=#{bcLotteryOrder.id}</if> " +
             " <if test=\"bcLotteryOrder.status != null\"> AND status=#{bcLotteryOrder.status}</if> " +
-            " <if test=\"bcLotteryOrder.accountId != null\"> AND accountId=#{bcLotteryOrder.accountId}</if> " +
+            " <if test=\"bcLotteryOrder.account != null\"> AND account=#{bcLotteryOrder.account}</if> " +
             " <if test=\"bcLotteryOrder.lotCode != null\"> AND lotCode=#{bcLotteryOrder.lotCode}</if> " +
             " <if test=\"bcLotteryOrder.qiHao != null\"> AND qiHao=#{bcLotteryOrder.qiHao}</if> " +
             " <if test=\"bcLotteryOrder.orderId != null\"> AND qiHao=#{bcLotteryOrder.orderId}</if> " +

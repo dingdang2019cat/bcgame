@@ -73,6 +73,7 @@ public class GameController {
     @RequestMapping("/game/list")
     @ResponseBody
     public Result gameList(@ModelAttribute("user") User user, int rows, int page, String lotteryId, Integer status, Date startTime, Date endTime){
+        lotteryId = StringUtils.isEmpty(lotteryId) ? null : lotteryId;
         //计算页码
         int from = rows * (page - 1);
         //查询
@@ -105,6 +106,9 @@ public class GameController {
         bcLotteryOrder.setOrderId(id);
         List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
         if(!CollectionUtils.isEmpty(list)){
+            System.out.println("----------------------");
+            System.out.println(list.get(0).getLotName());
+            System.out.println("----------------------");
             return OrderTransfar.bcLotteryToLottery(list.get(0));
         }
         return null;
