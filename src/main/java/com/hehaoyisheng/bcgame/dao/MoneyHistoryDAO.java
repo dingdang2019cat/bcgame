@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface MoneyHistoryDAO {
 
-    @Insert("insert into moneyHistory (account, accountId, afterMoney, bizDatetime, createDatetime, createUserId, money. orderId, remark, type, shangji) values (#{account}, #{accountId}, #{afterMoney}, #{bizDatetime}, #{createDatetime}, #{createUserId}, #{money}. #{orderId}, #{remark}, #{type}, #{shangji}, #{parentList})")
+    @Insert("insert into moneyHistory (account, amount, balance, createTime, changeType, userMark, seasonId. unit, parentList, lotteryName, playName) values (#{account}, #{amount}, #{balance}, now(), #{changeType}, #{userMark}, #{seasonId}, #{unit}, #{parentList}, #{lotteryName}, #{playName})")
     int insert(MoneyHistory moneyHistory);
 
     @Select("<script> " +
@@ -21,7 +21,7 @@ public interface MoneyHistoryDAO {
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
             " <if test=\"moneyHistory.account != null\"> AND account=#{moneyHistory.account}</if> " +
             " <if test=\"moneyHistory.parentList != null\"> AND parentList like #{moneyHistory.parentList}%</if> " +
-            " <if test=\"startTime != null\"> AND<![CDATA[ createTime>#{startTime} AND createTime<${endTime} ]]></if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
             " order by id desc" +
             " <if test=\"from != null\"> limit #{from},#{limit} </if> " +
@@ -34,7 +34,7 @@ public interface MoneyHistoryDAO {
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
             " <if test=\"moneyHistory.account != null\"> AND account=#{moneyHistory.account}</if> " +
             " <if test=\"moneyHistory.parentList != null\"> AND parentList like #{moneyHistory.parentList},%</if> " +
-            " <if test=\"startTime != null\"> AND<![CDATA[ createTime>#{startTime} AND createTime<${endTime} ]]></if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
             " </script> ")
     int count(@Param("moneyHistory") MoneyHistory moneyHistory, @Param("startTime") Date startTime, @Param("endTime") Date endTime);

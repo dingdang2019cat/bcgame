@@ -24,6 +24,7 @@ public interface DrawHistoryDAO {
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
             " <if test=\"drawHistory.account != null\"> AND account=#{drawHistory.account}</if> " +
             " <if test=\"drawHistory.parentList != null\"> AND parentList like #{drawHistory.parentList}%</if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
             " order by id desc" +
             " <if test=\"from != null\"> limit #{from},#{limit} </if> " +
@@ -35,6 +36,7 @@ public interface DrawHistoryDAO {
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
             " <if test=\"drawHistory.account != null\"> AND account=#{drawHistory.account}</if> " +
             " <if test=\"drawHistory.parentList != null\"> AND parentList like #{drawHistory.parentList}%</if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
             " order by id desc" +
             " </script> ")

@@ -11,9 +11,18 @@ public class MoneyHistory {
     private String changeType;
     private String userMark;
     private String seasonId;
-    private int unit;
+    private double unit;
     private String parentList;
     private String lotteryName;
+    private String playName;
+
+    public String getPlayName() {
+        return playName;
+    }
+
+    public void setPlayName(String playName) {
+        this.playName = playName;
+    }
 
     public int getId() {
         return id;
@@ -79,11 +88,11 @@ public class MoneyHistory {
         this.seasonId = seasonId;
     }
 
-    public int getUnit() {
+    public double getUnit() {
         return unit;
     }
 
-    public void setUnit(int unit) {
+    public void setUnit(double unit) {
         this.unit = unit;
     }
 

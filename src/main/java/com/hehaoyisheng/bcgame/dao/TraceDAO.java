@@ -11,7 +11,7 @@ import java.util.List;
 
 //TODO
 public interface TraceDAO {
-    @Insert("insert into trace values (#{id}, #{account}, #{createTime}, #{isWinStop}, #{lotteryId}, #{lotteryName}, #{startSeason}, #{traceAmount}, #{traceNum})")
+    @Insert("insert into trace (id, account, createTime, isWinStop, lotteryId, lotteryName, startSeason, traceAmount, traceNum) values (#{id}, #{account}, #{createTime}, #{isWinStop}, #{lotteryId}, #{lotteryName}, #{startSeason}, #{traceAmount}, #{traceNum})")
     int insert(Trace trace);
 
     @Update("update trace set winAmount=#{winAmount} where id=#{id}")
@@ -24,7 +24,7 @@ public interface TraceDAO {
             " <if test=\"trace.status != null\"> AND status=#{trace.status}</if> " +
             " <if test=\"trace.lotteryId != null\"> AND lotteryId=#{trace.lotteryId}</if> " +
             " <if test=\"trace.account != null\"> AND account=#{trace.account}</if> " +
-            " <if test=\"startTime != null\"> AND<![CDATA[ createTime>#{startTime} AND createTime<${endTime} ]]></if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
             " order by id desc" +
             " <if test=\"from != null\"> limit #{from},#{limit} </if> " +
@@ -38,8 +38,8 @@ public interface TraceDAO {
             " <if test=\"trace.status != null\"> AND status=#{trace.status}</if> " +
             " <if test=\"trace.lotteryId != null\"> AND lotteryId=#{trace.lotteryId}</if> " +
             " <if test=\"trace.account != null\"> AND account=#{trace.account}</if> " +
-            " <if test=\"startTime != null\"> AND<![CDATA[ createTime>#{startTime} AND createTime<${endTime} ]]></if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
             " </script> ")
-    int count(Trace trace, Date startTime, Date endTime);
+    int count(@Param("trace")Trace trace, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }

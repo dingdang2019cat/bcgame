@@ -5,11 +5,13 @@ import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.common.GameType;
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
+import com.hehaoyisheng.bcgame.entity.MoneyHistory;
 import com.hehaoyisheng.bcgame.entity.Trace;
 import com.hehaoyisheng.bcgame.entity.User;
 import com.hehaoyisheng.bcgame.entity.transfar.OrderTransfar;
 import com.hehaoyisheng.bcgame.entity.vo.*;
 import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
+import com.hehaoyisheng.bcgame.manager.MoneyHistoryManager;
 import com.hehaoyisheng.bcgame.manager.TraceManager;
 import com.hehaoyisheng.bcgame.manager.UserManager;
 import com.hehaoyisheng.bcgame.utils.CalculationUtils;
@@ -36,6 +38,9 @@ public class LotteryController {
 
     @Resource
     private TraceManager traceManager;
+
+    @Resource
+    private MoneyHistoryManager moneyHistoryManager;
 
     /**
      * 投注
@@ -86,6 +91,7 @@ public class LotteryController {
         //追单
         if(isTrace == 1){
             Trace trace = new Trace();
+            trace.setId(traceId);
             trace.setAccount(user.getUsername());
             trace.setStartSeason(sessionId);
             trace.setIsWinStop(traceWinStop);
@@ -99,6 +105,9 @@ public class LotteryController {
         List<LotteryOrder> resultList = Lists.newArrayList();
         //下单
         for(int i = 0; i < orders.size(); i++){
+            if(isTrace == 1 && i == 0){
+                continue;
+            }
             Order o = orders.get(i);
             BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
             bcLotteryOrder.setAccount(user.getUsername());
@@ -111,9 +120,9 @@ public class LotteryController {
             bcLotteryOrder.setMinBonusOdds(o.getUnit());
             bcLotteryOrder.setBuyMoney(o.getBetCount() * o.getPrice() * o.getUnit());
             bcLotteryOrder.setPlayCode(o.getPlayId());
+            bcLotteryOrder.setPlayName(GameType.playName.get(o.getPlayId()));
             bcLotteryOrder.setQiHao(o.getSeasonId());
             bcLotteryOrder.setHaoMa(o.getContent());
-            bcLotteryOrder.setQiHao(sessionId);
             bcLotteryOrder.setLotName(GameType.gameType.get(gameType));
             bcLotteryOrder.setZhuiHao(isTrace + "");
             System.out.println("---------------------------------");
@@ -122,6 +131,17 @@ public class LotteryController {
             bcLotteryOrderManager.insert(bcLotteryOrder);
             resultList.add(OrderTransfar.bcLotteryToLottery(bcLotteryOrder));
         }
+        MoneyHistory moneyHistory = new MoneyHistory();
+        moneyHistory.setAccount(user.getUsername());
+        moneyHistory.setParentList(user.getParentList());
+        moneyHistory.setAmount(0 - buyMoney);
+        moneyHistory.setBalance(user.getMoney() - amount);
+        moneyHistory.setChangeType(isTrace == 1 ? "追号扣款" : "投注扣款");
+        moneyHistory.setSeasonId(sessionId);
+        moneyHistory.setLotteryName(GameType.gameType.get(gameType));
+        moneyHistory.setPlayName(GameType.playName.get(orders.get(0).getPlayId()));
+        moneyHistoryManager.insert(moneyHistory);
+        //TODO Unit
         return Result.success(resultList);
     }
 
