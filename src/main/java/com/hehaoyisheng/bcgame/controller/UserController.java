@@ -91,6 +91,8 @@ public class UserController {
             return "login";
         }
         user.setId(list.get(0).getId());
+        user.setParentList(list.get(0).getParentList());
+        user.setShangji(list.get(0).getShangji());
         model.addAttribute("user", user);
         return "redirect:/index";
     }
@@ -180,8 +182,8 @@ public class UserController {
         }else{
             user.setShangji(user.getUsername());
         }
-        //当为0时查询全部
-        if(userType != 0){
+        //当为2时查询全部
+        if(userType != 2){
             selectUser.setType(userType);
         }
         if(isOnLine != 0){
@@ -193,7 +195,7 @@ public class UserController {
         for(User u : childUsers){
             double teamMoney = userManager.sum(u.getUsername());
             User user1 = new User();
-            user1.setParentList(u.getParentList());
+            user1.setParentList(u.getParentList() + "%");
             int count = userManager.count(user1, null, null, null, null, null, null);
             UserVO userVO = UserTransfar.userToUserVO(u, teamMoney, count);
             resultList.add(userVO);
@@ -391,6 +393,21 @@ public class UserController {
         registURL.setAccount(user.getUsername());
         List<RegistURL> list = registURLManager.seletc(registURL);
         return Result.success(list);
+    }
+
+    @RequestMapping("/openUser/regist")
+    @ResponseBody
+    public Result regist(@ModelAttribute("user") User user1, Integer userType, String account, String passWord, Double rebateRatio){
+        User user = new User();
+        user.setType(userType);
+        user.setUsername(account);
+        user.setPassword(passWord);
+        user.setMinBonusOdds(rebateRatio);
+        user.setFandian(rebateRatio);
+        user.setShangji(user1.getUsername());
+        user.setParentList(user1.getParentList() + account + ",");
+        userManager.insert(user);
+        return Result.success("注册成功！");
     }
 
     @RequestMapping("/user/getTeamInfo")

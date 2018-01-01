@@ -20,6 +20,7 @@ public class BcLotteryOrder {
     private String playName;
     private String qiHao;
     private Integer rollBackStatus;
+    //0-未开， 1-已中奖， 2-未中奖， 10-已撤单
     private Integer status;
     private double winMoney;
     private Integer winZhuShu;

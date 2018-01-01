@@ -27,7 +27,7 @@ public interface BcLotteryOrderDAO {
             " <if test=\"bcLotteryOrder.lotCode != null\"> AND lotCode=#{bcLotteryOrder.lotCode}</if> " +
             " <if test=\"bcLotteryOrder.qiHao != null\"> AND qiHao=#{bcLotteryOrder.qiHao}</if> " +
             " <if test=\"bcLotteryOrder.orderId != null\"> AND orderId=#{bcLotteryOrder.orderId}</if> " +
-            " <if test=\"bcLotteryOrder.parentList != null\"> AND parentList like #{bcLotteryOrder.parentList}%</if> " +
+            " <if test=\"bcLotteryOrder.parentList != null\"> AND parentList like #{bcLotteryOrder.parentList}</if> " +
             " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
             " order by id desc" +
@@ -44,7 +44,7 @@ public interface BcLotteryOrderDAO {
             " <if test=\"bcLotteryOrder.lotCode != null\"> AND lotCode=#{bcLotteryOrder.lotCode}</if> " +
             " <if test=\"bcLotteryOrder.qiHao != null\"> AND qiHao=#{bcLotteryOrder.qiHao}</if> " +
             " <if test=\"bcLotteryOrder.orderId != null\"> AND qiHao=#{bcLotteryOrder.orderId}</if> " +
-            " <if test=\"bcLotteryOrder.parentList != null\"> AND parentList like #{bcLotteryOrder.parentList}%</if> " +
+            " <if test=\"bcLotteryOrder.parentList != null\"> AND parentList like #{bcLotteryOrder.parentList}</if> " +
             " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
             " </script> ")

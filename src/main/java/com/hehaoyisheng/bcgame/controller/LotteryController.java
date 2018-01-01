@@ -96,7 +96,7 @@ public class LotteryController {
             trace.setStartSeason(sessionId);
             trace.setIsWinStop(traceWinStop);
             trace.setLotteryId(gameType);
-            //trace.setLotteryName();
+            trace.setLotteryName(GameType.playName.get(orders.get(0).getPlayId()));
             trace.setTraceAmount(buyMoney);
             traceManager.insert(trace);
         }

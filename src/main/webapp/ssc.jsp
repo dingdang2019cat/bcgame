@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <title>鼎汇·万客 - 重庆时时彩</title>
-    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>fv
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
     <meta http-equiv="expires" content="0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
@@ -301,19 +302,19 @@
                 <p class="countDownTitle">
                     <span>第</span> <span class="fontColorTheme" id="saleSeasonId">20171226-024</span> <span>期 剩余投注时间</span>
                 </p>
-                <div class="countDown" id="saleAllSecond" data-second="26936">
-                    <label class="hour"> <a href="javascript:;" id="saleHour">07</a> <span class="tips">时</span></label>
-                    <label class="minute"> <a href="javascript:;" id="saleMintue">28</a> <span class="tips">分</span></label>
-                    <label class="second"> <a href="javascript:;" id="saleSecond">56</a> <span class="tips">秒</span></label>
+                <div class="countDown" id="saleAllSecond" data-second="${saleAllSecond}">
+                    <label class="hour"> <a href="javascript:;" id="saleHour">00</a> <span class="tips">时</span></label>
+                    <label class="minute"> <a href="javascript:;" id="saleMintue">00</a> <span class="tips">分</span></label>
+                    <label class="second"> <a href="javascript:;" id="saleSecond">00</a> <span class="tips">秒</span></label>
                 </div>
                 <div class="currLottNumBox">
                     <label for="#" class="currLottNum">
                         <span>共</span>
-                        <span class="openCount" id="allCount">120</span>
+                        <span class="openCount" id="allCount">${allCount}</span>
                         <span>期,已开</span>
-                        <span class="openCount" id="openCount">23</span>
+                        <span class="openCount" id="openCount">${openCount}</span>
                         <span>期,剩余</span>
-                        <span class="openCount" id="remainCount">97</span>
+                        <span class="openCount" id="remainCount">${remainCount}</span>
                         <span>期</span>
                     </label>
                     <label for="#" class="audioCountBox">
@@ -326,7 +327,7 @@
             <!--开奖号码-->
             <div class="lotteryNumArea">
                 <p id="maxPlan" data-plan="200">
-                    <span>第</span> <span class="fontColorTheme" id="openSeasonId">20171226-023</span> <span>期 开奖结果</span>
+                    <span>第</span> <span class="fontColorTheme" id="openSeasonId">${openSeasonId}</span> <span>期 开奖结果</span>
                 </p>
                 <!--<a href="trend" class="lotteryTrend" target="_blank">开奖走势</a>-->
                 <div class="lotteryNumBox">
@@ -24474,19 +24475,12 @@
 
                                     <td class="smallFont12">${recentOpen1.seasonId}</td>
                                     <td class="fontColorTheme beforeLottNum">
-
-                                        <span>3</span>
-
-                                        <span>4</span>
-
-                                        <span>1</span>
-
-                                        <span>0</span>
-
-                                        <span>0</span>
-
+                                        <c:set value="${ fn:split(recentOpen1.nums, ',') }" var="str1" />
+                                        <c:forEach items="${ str1 }" var="s">
+                                            <span>${s}</span>
+                                        </c:forEach>
                                     </td>
-                                    </tr>
+                                </tr>
                                 </c:forEach>
                                 </tr>
 
@@ -24765,7 +24759,7 @@
             <strong>请核准您的投注信息</strong>
         </p>
         <p>
-            <label><span>彩种：重庆时时彩</span></label> <label>期号：<span id="saleSeasonId1">20171226-024</span></label>
+            <label><span>彩种：重庆时时彩</span></label> <label>期号：<span id="saleSeasonId1">${saleSeasonId1}</span></label>
         </p>
         <div class="betCfmDetail">
             <span class="betCfmDetailTitle">详情：</span>

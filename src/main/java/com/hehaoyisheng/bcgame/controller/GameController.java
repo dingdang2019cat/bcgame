@@ -151,7 +151,7 @@ public class GameController {
         }
         bcLotteryOrder.setStatus(status);
         bcLotteryOrder.setLotCode(lotteryId);
-        bcLotteryOrder.setParentList(user.getParentList());
+        bcLotteryOrder.setParentList(user.getParentList() + "%");
         List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, from, rows, startTime, endTime);
         int total = bcLotteryOrderManager.count(bcLotteryOrder, from, rows, startTime, endTime);
         //trans对象
@@ -177,7 +177,7 @@ public class GameController {
         int from = rows * (page - 1);
         Recharge recharge = new Recharge();
         if(isIncludeChildFlag != 0){
-            recharge.setParentList(user.getParentList());
+            recharge.setParentList(user.getParentList() + "%");
         }else{
             recharge.setAccount(account);
         }
@@ -199,7 +199,7 @@ public class GameController {
         int from = rows * (page - 1);
         DrawHistory drawHistory = new DrawHistory();
         if(isIncludeChildFlag != 0){
-            drawHistory.setParentList(user.getParentList());
+            drawHistory.setParentList(user.getParentList() + "%");
         }else{
             drawHistory.setAccount(account);
         }
@@ -222,9 +222,9 @@ public class GameController {
         MoneyHistory moneyHistory = new MoneyHistory();
         //包含下级
         if(status != null && status == 1){
-            moneyHistory.setParentList(user.getParentList());
+            moneyHistory.setParentList(user.getParentList() + "%");
         }else {
-            account = account == null ? user.getUsername() : account;
+            account = StringUtils.isEmpty(account) ? user.getUsername() : account;
             moneyHistory.setAccount(account);
         }
         resultMap.put("rows", moneyHistoryManager.select(moneyHistory, from, rows, begin, end));

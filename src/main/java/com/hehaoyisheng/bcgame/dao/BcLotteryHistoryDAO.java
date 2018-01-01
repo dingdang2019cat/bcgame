@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface BcLotteryHistoryDAO {
-    @Insert("insert into bcLotteryHistory values(#{lotteryType}, #{nums}, #{openTime}, #{seasonId})")
+    @Insert("insert into bcLotteryHistory (lotteryType, nums, openTime, seasonId) values(#{lotteryType}, #{nums}, now(), #{seasonId})")
     int insert(BcLotteryHistory bcLotteryHistory);
     @Update("update bcLotteryHistory set nums=#{nums} where seasonId=#{seasonId} and lotteryType=#{lotteryType}")
     int update(BcLotteryHistory bcLotteryHistory);

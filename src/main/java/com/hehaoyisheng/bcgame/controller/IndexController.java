@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.common.GameThread;
+import com.hehaoyisheng.bcgame.common.GameType;
 import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
 import com.hehaoyisheng.bcgame.entity.Trace;
@@ -73,7 +74,7 @@ public class IndexController {
         List<BcLotteryHistory> bcLotteryHistories = bcLotteryHistoryManager.select(bcLotteryHistory);
         //最近中奖
         BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
-        //bcLotteryOrder.setStatus();
+        bcLotteryOrder.setStatus(1);
         List<BcLotteryOrder> bcLotteryOrderList = bcLotteryOrderManager.select(bcLotteryOrder, 0, 15, null, null);
         //最近投注
         BcLotteryOrder bcLotteryOrder1 = new BcLotteryOrder();
@@ -88,6 +89,13 @@ public class IndexController {
         bcLotteryOrderList1 = bcLotteryOrderList1 == null ? new ArrayList<BcLotteryOrder>() : bcLotteryOrderList1;
         traceList = traceList == null ? new ArrayList<Trace>() : traceList;
         //传值
+        model.addAttribute("saleSeasonId1", GameData.gameSeasonId.get(gameType));
+        model.addAttribute("saleAllSecond", (GameData.gameTime.get(gameType) - System.currentTimeMillis()) / 1000);
+        model.addAttribute("openSeasonId", GameData.lastOpen.get(gameType).getSeasonId());
+        model.addAttribute("allCount", GameData.seasonCount.get(gameType));
+        model.addAttribute("openCount", GameData.openCount.get(gameType));
+        model.addAttribute("remainCount", GameData.seasonCount.get(gameType) - GameData.openCount.get(gameType));
+        //model.addAttribute("openSeasonId", GameData.lastOpen.get(gameType).getSeasonId());
         model.addAttribute("username", user.getUsername());
         model.addAttribute("recentOpen", bcLotteryHistories);
         model.addAttribute("recentWin", bcLotteryOrderList);
@@ -131,7 +139,11 @@ public class IndexController {
         }
         resultMap.put("bets", lotteryOrderList);
         //最后开奖
-        resultMap.put("lastOpen", GameData.lastOpen.get(gameType));
+        Map<String, Object> lastOpen = Maps.newHashMap();
+        lastOpen.put("seasonId", GameData.lastOpen.get(gameType).getSeasonId());
+        lastOpen.put("seasonId", GameData.lastOpen.get(gameType).getOpenTime().getTime());
+        lastOpen.put("nums", GameData.lastOpen.get(gameType).getNums().split(","));
+        resultMap.put("lastOpen", lastOpen);
         //开奖号码下文字显示
         String[] numStatus = {"前三：<span style='color: green'>组六</span>", "中三：<span style='color: purple'>组三</span>", "后三：<span style='color: purple'>组三</span>"};
         resultMap.put("numStatus", numStatus);
@@ -139,7 +151,7 @@ public class IndexController {
         BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
         bcLotteryHistory.setLotteryType(gameType);
         List<BcLotteryHistory> bcLotteryHistories = bcLotteryHistoryManager.select(bcLotteryHistory);
-        resultMap.put("bcLotteryHistories", bcLotteryHistories);
+        resultMap.put("opens", bcLotteryHistories);
         //期号统计
         Map<String, Integer> seasonCount = Maps.newHashMap();
         seasonCount.put("allCount", GameData.seasonCount.get(gameType));
@@ -147,7 +159,6 @@ public class IndexController {
         resultMap.put("seasonCount", seasonCount);
         //期号
         resultMap.put("seasonId", GameData.gameSeasonId.get(gameType));
-        //最近追号
         //最近追号
         Trace trace = new Trace();
         trace.setAccount(user.getUsername());
@@ -159,8 +170,16 @@ public class IndexController {
     @RequestMapping("/init/Data")
     @ResponseBody
     public String initData(){
-        GameThread gameThread = new GameThread();
-        gameThread.initData("cqssc");
+        try {
+            GameThread gameThread = new GameThread();
+            gameThread.initData("cqssc");
+            Thread.sleep(1000);
+            gameThread.initData("xjssc");
+            Thread.sleep(1000);
+            gameThread.initData("tjssc");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return "初始化完成！";
     }
 }

@@ -20,6 +20,5 @@ public class GameThread {
         Long time = jsonObject.getLong("lefttime");
         GameData.gameSeasonId.put(type, qiHao);
         GameData.gameTime.put(type, System.currentTimeMillis() + (time * 1000));
-
     }
 }

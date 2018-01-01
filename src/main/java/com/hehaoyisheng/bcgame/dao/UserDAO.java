@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UserDAO {
 
-    @Insert("insert into user (username, password, drawFlag, createtime, ip, type, minBonusOdds, fandian, shangji, status, parentList) values (#{username}, #{password}, #{drawFlag}, #{createtime}, #{ip}, #{type}, #{minBonusOdds}, #{fandian}, #{shangji}, #{status}, #{parentList})")
+    @Insert("insert into user (username, password, createtime, type, minBonusOdds, fandian, shangji, parentList) values (#{username}, #{password}, now(), #{type}, #{minBonusOdds}, #{fandian}, #{shangji}, #{parentList})")
     @SelectKey(statement = "select last_insert_id()", keyProperty = "id", before = false, resultType = int.class)
     int insert(User user);
 
@@ -53,7 +53,7 @@ public interface UserDAO {
             " <if test=\"user.online != null\"> AND online=#{user.online}</if> " +
             " <if test=\"user.type != null\"> AND type=#{user.type}</if> " +
             " <if test=\"user.nickName != null\"> AND nickName=#{user.nickName}</if> " +
-            " <if test=\"user.parentList != null\"> AND parentList like #{user.nickName}%</if> " +
+            " <if test=\"user.parentList != null\"> AND parentList like #{user.nickName}</if> " +
             " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " <if test=\"beginAmount != null\"> AND<![CDATA[ money>#{beginAmount} AND money<${endAmount} ]]></if> " +
             " </trim> " +
@@ -72,13 +72,13 @@ public interface UserDAO {
             " <if test=\"user.online != null\"> AND online=#{user.online}</if> " +
             " <if test=\"user.type != null\"> AND type=#{user.type}</if> " +
             " <if test=\"user.nickName != null\"> AND nickName=#{user.nickName}</if> " +
-            " <if test=\"user.parentList != null\"> AND parentList like #{user.nickName}%</if> " +
+            " <if test=\"user.parentList != null\"> AND parentList like #{user.nickName}</if> " +
             " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " <if test=\"beginAmount != null\"> AND<![CDATA[ money>#{beginAmount} AND money<${endAmount} ]]></if> " +
             " </trim> " +
             " </script> ")
     int count(@Param("user") User user, @Param("from") Integer from, @Param("limit") Integer limit, @Param("startTime") Date startTime, @Param("endTime") Date endTime, @Param("beginAmount") Double beginAmount, @Param("endAmount") Double endAmount);
 
-    @Select("select sum(money) where parentList like #{account }%")
+    @Select("select sum(money) where parentList like #{account }")
     double sum(@Param("account") String account);
 }
