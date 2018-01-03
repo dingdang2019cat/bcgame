@@ -50,7 +50,6 @@ public class UserController {
     @RequestMapping("/index")
     public String index(@ModelAttribute("user") User user, Model model){
         List<User> list = userManager.select(user, null, null, null, null, null, null);
-        System.out.println(list.get(0).getPassword());
         if(CollectionUtils.isEmpty(list)){
             return "login";
         }
@@ -90,9 +89,9 @@ public class UserController {
             model.addAttribute("errorTips", "用户名或密码错误！");
             return "login";
         }
+        user.setTime(new Date());
         user.setId(list.get(0).getId());
         user.setParentList(list.get(0).getParentList());
-        user.setShangji(list.get(0).getShangji());
         model.addAttribute("user", user);
         return "redirect:/index";
     }

@@ -87,14 +87,14 @@ public class SSCJob {
         }
         if(type.equals("xjssc")){
             if(qiHaoInt == 96){
-                qiHao = format1.format(new Date(System.currentTimeMillis())) + "001";
+                qiHao = format1.format(new Date(System.currentTimeMillis())) + "01";
             }else {
                 qiHao = (Long.valueOf(qiHao) + 1) + "";
             }
         }
         if(type.equals("tjssc")){
             if(qiHaoInt == 84){
-                qiHao = format1.format(new Date(System.currentTimeMillis() + 14400000L)) + "001";
+                qiHao = format1.format(new Date(System.currentTimeMillis() + 14400000L)) + "01";
             }else {
                 qiHao = (Long.valueOf(qiHao) + 1) + "";
             }

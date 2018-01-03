@@ -10,7 +10,8 @@ public class UserTransfar {
         userVO.setAmount(user.getMoney());
         userVO.setLoginTime(user.getTime());
         userVO.setRebateRatio(0);
-        userVO.setTeamAmount(teamAmount);
+        userVO.setTeamAmount(0);
+        userVO.setLoginTime(user.getTime());
         userVO.setTeamCount(teamCount);
         userVO.setUserMark(user.getRemark());
         userVO.setUserType(user.getType());

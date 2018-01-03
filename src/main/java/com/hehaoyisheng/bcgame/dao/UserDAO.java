@@ -53,7 +53,7 @@ public interface UserDAO {
             " <if test=\"user.online != null\"> AND online=#{user.online}</if> " +
             " <if test=\"user.type != null\"> AND type=#{user.type}</if> " +
             " <if test=\"user.nickName != null\"> AND nickName=#{user.nickName}</if> " +
-            " <if test=\"user.parentList != null\"> AND parentList like #{user.nickName}</if> " +
+            " <if test=\"user.parentList != null\"> AND parentList like #{user.parentList}</if> " +
             " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " <if test=\"beginAmount != null\"> AND<![CDATA[ money>#{beginAmount} AND money<${endAmount} ]]></if> " +
             " </trim> " +
@@ -72,7 +72,7 @@ public interface UserDAO {
             " <if test=\"user.online != null\"> AND online=#{user.online}</if> " +
             " <if test=\"user.type != null\"> AND type=#{user.type}</if> " +
             " <if test=\"user.nickName != null\"> AND nickName=#{user.nickName}</if> " +
-            " <if test=\"user.parentList != null\"> AND parentList like #{user.nickName}</if> " +
+            " <if test=\"user.parentList != null\"> AND parentList like #{user.parentList}</if> " +
             " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " <if test=\"beginAmount != null\"> AND<![CDATA[ money>#{beginAmount} AND money<${endAmount} ]]></if> " +
             " </trim> " +
