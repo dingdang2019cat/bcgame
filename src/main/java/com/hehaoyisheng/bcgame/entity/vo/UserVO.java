@@ -5,7 +5,7 @@ import java.util.Date;
 public class UserVO {
     private String account;
     private double amount;
-    private Date loginTime;
+    private String loginTime;
     private double rebateRatio;
     private double teamAmount;
     private int teamCount;
@@ -29,11 +29,11 @@ public class UserVO {
         this.amount = amount;
     }
 
-    public Date getLoginTime() {
+    public String getLoginTime() {
         return loginTime;
     }
 
-    public void setLoginTime(Date loginTime) {
+    public void setLoginTime(String loginTime) {
         this.loginTime = loginTime;
     }
 

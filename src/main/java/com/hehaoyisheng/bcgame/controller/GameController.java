@@ -7,10 +7,7 @@ import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.transfar.OrderTransfar;
 import com.hehaoyisheng.bcgame.entity.vo.LotteryOrder;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
-import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
-import com.hehaoyisheng.bcgame.manager.DrawHistoryManager;
-import com.hehaoyisheng.bcgame.manager.MoneyHistoryManager;
-import com.hehaoyisheng.bcgame.manager.RechargeManager;
+import com.hehaoyisheng.bcgame.manager.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +44,9 @@ public class GameController {
     @Resource
     private MoneyHistoryManager moneyHistoryManager;
 
+    @Resource
+    private UserManager userManager;
+
     @RequestMapping("/report/index")
     public String report(){
         return "settlement";
@@ -57,6 +57,9 @@ public class GameController {
      */
     @RequestMapping("/game/index")
     public String game(String tabId, @ModelAttribute("user") User user, Model model){
+        List<User> users = userManager.select(user, null, null, null, null, null, null);
+        model.addAttribute("nickName", users.get(0).getNickName());
+        model.addAttribute("amount", users.get(0).getMoney());
         if(!StringUtils.isEmpty(tabId)){
             if(tabId.equals("trace") || tabId.equals("gameBetList")){
                 model.addAttribute("account", user.getUsername());

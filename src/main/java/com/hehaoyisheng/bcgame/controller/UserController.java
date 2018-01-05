@@ -16,6 +16,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +57,7 @@ public class UserController {
         //用户信息
         User selectUser = list.get(0);
         model.addAttribute("amount", selectUser.getMoney());
+        model.addAttribute("nickName", selectUser.getNickName());
         //公告播报查询
         List<Sign> signs = signManager.select(new Sign());
         model.addAttribute("signs", signs);
@@ -90,6 +92,7 @@ public class UserController {
             return "login";
         }
         user.setTime(new Date());
+        userManager.update(user);
         user.setId(list.get(0).getId());
         user.setParentList(list.get(0).getParentList());
         model.addAttribute("user", user);
@@ -130,12 +133,20 @@ public class UserController {
      * @return
      */
     @RequestMapping("/user/index")
-    public String userIndex(@ModelAttribute("user") User user){
+    public String userIndex(@ModelAttribute("user") User user, Model model){
         //当前用户
+        List<User> users = userManager.select(user, null, null, null, null, null,null);
         //最大可调返点
         //会员最大返点
         //用户类型
         //是否有资金密码hasSafeWord
+
+        model.addAttribute("nickName", users.get(0).getNickName());
+        model.addAttribute("amount", users.get(0).getMoney());
+        model.addAttribute("account", user.getUsername());
+        model.addAttribute("userType", users.get(0).getType());
+        model.addAttribute("playerMaxRatio", users.get(0).getFandian());
+        model.addAttribute("maxRatio", users.get(0).getFandian() > 0.3 ? users.get(0).getFandian() - 0.3 : 0);
         return "user";
     }
 
@@ -348,10 +359,11 @@ public class UserController {
         BookCard bookCard = new BookCard();
         bookCard.setAccount(user.getUsername());
         List<BookCard> list = bookCardManager.select(bookCard);
-        if(CollectionUtils.isEmpty(list)){
+        if(!CollectionUtils.isEmpty(list)){
             return Result.success(list);
         }
-        return null;
+        list = Lists.newArrayList();
+        return Result.success(list);
     }
 
     /**
@@ -409,9 +421,54 @@ public class UserController {
         return Result.success("注册成功！");
     }
 
+    /**
+     * 团队详情
+     */
     @RequestMapping("/user/getTeamInfo")
     @ResponseBody
     public Result getTeamInfo(@ModelAttribute("user") User user, Integer rows, Integer page, String account, Date begin, Date end, Integer status, String childAccount){
         return Result.success(null);
+    }
+
+    /**
+     * 修改备注
+     */
+    @RequestMapping("/user/updateHremark")
+    @ResponseBody
+    public Result updateHremark(String account, String homeRemark){
+        User user = new User();
+        user.setUsername(account);
+        user.setRemark(homeRemark);
+        userManager.update(user);
+        return Result.success("修改成功！");
+    }
+
+    @RequestMapping("/info/getProvinceAll")
+    @ResponseBody
+    public Result getProvinceAll1(){
+        return Result.success(BaseData.province);
+    }
+
+
+    @RequestMapping("/message/messageTable")
+    public String messageTable(@ModelAttribute("user") User user, int rows, int page, Model model){
+        Message message = new Message();
+        message.setAccount(user.getUsername());
+        List<Message> list = messageManager.select(message);
+        if(CollectionUtils.isEmpty(list)){
+            model.addAttribute("messages", new ArrayList<Message>());
+            return "message";
+        }
+        for(Message message1 : list){
+            if(message1.getAccount().equals(user.getUsername())){
+                message1.setAccount("我");
+            }
+            if(message1.getAuthor().equals(user.getUsername())){
+                message1.setAuthor("我");
+            }
+        }
+        model.addAttribute("messages", list);
+        model.addAttribute("count", list.size());
+        return "message";
     }
 }

@@ -53,16 +53,18 @@
                 <div class="hotLotteryList" style="height: 384px;">
                     <i></i>
                     <a href="/lotts/cqssc/index" class="acqsscIcon" title="重庆时时彩"></a>
+                    <!--
                     <a href="/lotts/sj1fc/index" class="asj1fcIcon" title="鼎汇一分彩"></a>
                     <a href="/lotts/sj_mmc/index" class="ammcIcon" title="鼎汇40秒"></a>
                     <a href="/lotts/tiger/index" class="atigerIcon" title="鼎汇秒秒彩"></a>
+                    -->
                 </div>
                 <div class="lotteryList" id="lotteryList">
 
                     <div class="lottDetail">
                         <i class="lotteryTitle title_ssc" title="时时彩"></i>
                         <div class="lotteryDetdailList">
-
+                            <!--
                             <ul class="lotteryGroupList">
 
                                 <li><a href="/lotts/tiger/index" class="lottplayExplain">鼎汇秒秒彩</a></li>
@@ -88,7 +90,7 @@
                                 <li><a href="/lotts/dj1_5/index" class="lottplayExplain">东京1.5</a></li>
 
                             </ul>
-
+                            -->
                             <ul class="lotteryGroupList">
 
                                 <li><a href="/lotts/cqssc/index" class="lottplayExplain">重庆时时彩</a></li>
@@ -109,7 +111,7 @@
                                 <li><a href="/lotts/pk10/index" class="lottplayExplain">北京赛车</a></li>
 
                             </ul>
-
+                            <!--
                             <ul class="lotteryGroupList">
 
                                 <li><a href="/lotts/ffpk10/index" class="lottplayExplain">分分PK10</a></li>
@@ -119,7 +121,7 @@
                                 <li><a href="/lotts/f5pk10/index" class="lottplayExplain">5分PK10</a></li>
 
                             </ul>
-
+                            -->
                         </div>
                     </div>
 
@@ -141,7 +143,7 @@
                     <div class="lottDetail">
                         <i class="lotteryTitle title_11x5" title="11选5"></i>
                         <div class="lotteryDetdailList">
-
+                            <!--
                             <ul class="lotteryGroupList">
 
                                 <li><a href="/lotts/f1_11x5/index" class="lottplayExplain">一分11选5</a></li>
@@ -149,7 +151,7 @@
                                 <li><a href="/lotts/f3_11x5/index" class="lottplayExplain">三分11选5</a></li>
 
                             </ul>
-
+                            -->
                             <ul class="lotteryGroupList">
 
                                 <li><a href="/lotts/ah11x5/index" class="lottplayExplain">安徽11选5</a></li>
@@ -185,13 +187,13 @@
         </div>
         <a href="/user/index?tabId=msg" class="inMail"><i></i>站内信<span id="platNoticeNumSpan"></span></a>
         <a href="/activity/index" class="activityIcon"><i></i>活动中心</a>
-        <label class="username overflowEllipsis" title="冰红茶">
-            昵称：未设置
+        <label class="username overflowEllipsis" title="${nickName}">
+            昵称：${nickName}
 
         </label>
         <label>
             <span>可用余额：</span>
-            <span id="userBalance" class="userBalance overflowEllipsis" title="22.9920" data-value="22.9920">22.9920</span>
+            <span id="userBalance" class="userBalance overflowEllipsis" title="${amount}" data-value="${amount}">${amount}</span>
             <span>元</span>
             <a href="javascript:;" class="accountHide" id="accountHide" data-value="false" title="隐藏金额"></a>
         </label>

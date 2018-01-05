@@ -66,6 +66,7 @@ public class IndexController {
     @RequestMapping("/lotts/{gameType}/index")
     //TODO
     public String gamePage(@ModelAttribute("user") User user, @PathVariable String gameType, Model model){
+        List<User> users = userManager.select(user, null, null, null, null, null, null);
         //开奖图片
 
         //最近开奖
@@ -101,6 +102,8 @@ public class IndexController {
         model.addAttribute("recentWin", bcLotteryOrderList);
         model.addAttribute("recentBet", bcLotteryOrderList1);
         model.addAttribute("recentTrace", traceList);
+        model.addAttribute("nickName", users.get(0).getNickName());
+        model.addAttribute("amount", users.get(0).getMoney());
         if(gameType.endsWith("k3")){
             return "k3";
         }else if(gameType.endsWith("pk10")){

@@ -204,13 +204,13 @@
         </div>
         <a href="/user/index?tabId=msg" class="inMail"><i></i>站内信<span id="platNoticeNumSpan"></span></a>
         <a href="/activity/index" class="activityIcon"><i></i>活动中心</a>
-        <label class="username overflowEllipsis" title="冰红茶">
-            昵称：冰红茶
+        <label class="username overflowEllipsis" title="${nickName}">
+            昵称：${nickName}
 
         </label>
         <label>
             <span>可用余额：</span>
-            <span id="userBalance" class="userBalance overflowEllipsis" title="27.3552" data-value="27.3552">27.3552</span>
+            <span id="userBalance" class="userBalance overflowEllipsis" title="${amount}" data-value="${amount}">${amount}</span>
             <span>元</span>
             <a href="javascript:;" class="accountHide" id="accountHide" data-value="false" title="隐藏金额"></a>
         </label>
@@ -25263,7 +25263,7 @@
     <ul class="allGameList">
 
 
-
+        <!--
         <li class="gameDetail">
             <a href="/lotts/tiger/index">
                 <span>鼎汇秒秒彩</span>
@@ -25328,7 +25328,7 @@
 
             </a>
         </li>
-
+        -->
 
 
         <li class="gameDetail">
@@ -25357,7 +25357,7 @@
         </li>
 
 
-
+        <!--
         <li class="gameDetail">
             <a href="/lotts/ffpk10/index">
                 <span>分分PK10</span>
@@ -25378,7 +25378,7 @@
 
             </a>
         </li>
-
+         -->
 
 
 
@@ -25400,7 +25400,7 @@
 
 
 
-
+        <!--
         <li class="gameDetail">
             <a href="/lotts/f1_11x5/index">
                 <span>一分11选5</span>
@@ -25414,7 +25414,7 @@
 
             </a>
         </li>
-
+         -->
 
 
         <li class="gameDetail">

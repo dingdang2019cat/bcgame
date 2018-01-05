@@ -20,6 +20,6 @@ public interface MessageDAO {
     @Delete("delete from message where id=#{id}")
     int delete(int id);
 
-    @Select("select * from message <where> <if test=\"account != null\">account=#{account}</if></where> order by id desc")
+    @Select("select * from message <where> <if test=\"account != null\">account=#{account} or author=#{account}</if></where> order by id desc")
     List<Message> select(Message message);
 }
