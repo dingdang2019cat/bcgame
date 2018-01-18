@@ -43,6 +43,9 @@ public class UserController {
     @Resource
     private BookCardManager bookCardManager;
 
+    @Resource
+    private NoticeManager noticeManager;
+
     @ModelAttribute("user1")
     public User addUser(User user) {
         return new User();
@@ -470,5 +473,52 @@ public class UserController {
         model.addAttribute("messages", list);
         model.addAttribute("count", list.size());
         return "message";
+    }
+
+    /**
+     * 公告
+     */
+    @RequestMapping("notice/index")
+    public String notice(@ModelAttribute("user") User user, Model model){
+        List<User> users = userManager.select(user, null, null, null, null,null,null);
+        if(CollectionUtils.isEmpty(users)){
+            return null;
+        }
+        model.addAttribute("nickName", users.get(0).getNickName());
+        model.addAttribute("amount", users.get(0).getMoney());
+        return "notice";
+    }
+
+    /**
+     * 公告列表
+     * @return
+     */
+    @RequestMapping("/notice/list")
+    @ResponseBody
+    public Result noticeList(int pageNo, int pageSize){
+        int from = (pageNo - 1) * pageSize;
+        List<Notice> list = noticeManager.select(null, from, pageSize);
+        int totalRecords = noticeManager.count();
+        int bottomPageNo = (totalRecords % pageSize) == 0 ? totalRecords / pageSize : totalRecords / pageSize + 1;
+        int topPageNo = 1;
+        int previousPageNo = pageNo > 1 ? 1 : pageNo - 1;
+        int nextPageNo = pageNo < (bottomPageNo - 1) ? pageNo + 1 : bottomPageNo;
+        Map<String, Object> map = Maps.newHashMap();
+        map.put("totalRecords", totalRecords);
+        map.put("bottomPageNo", bottomPageNo);
+        map.put("topPageNo", topPageNo);
+        map.put("previousPageNo", previousPageNo);
+        map.put("nextPageNo", nextPageNo);
+        map.put("totalPages", bottomPageNo);
+        map.put("list", list);
+        return Result.success(map);
+    }
+
+    @RequestMapping("/helpCenter/index")
+    public String helpCenter(@ModelAttribute("user") User user, Model model){
+        List<User> users = userManager.select(user, null, null, null, null,null,null);
+        model.addAttribute("nickName", users.get(0).getNickName());
+        model.addAttribute("amount", users.get(0).getMoney());
+        return "help";
     }
 }

@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <title>鼎汇·万客 - 重庆时时彩</title>
-    <meta http-equiv="pragma" content="no-cache"/>fv
+    <meta http-equiv="pragma" content="no-cache"/>
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
     <meta http-equiv="expires" content="0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>

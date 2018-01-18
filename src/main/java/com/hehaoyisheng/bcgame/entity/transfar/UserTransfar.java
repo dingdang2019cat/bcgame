@@ -13,7 +13,9 @@ public class UserTransfar {
         UserVO userVO = new UserVO();
         userVO.setAccount(user.getUsername());
         userVO.setAmount(user.getMoney());
-        userVO.setLoginTime(simpleDateFormat.format(user.getTime()));
+        if(user.getTime() != null){
+            userVO.setLoginTime(simpleDateFormat.format(user.getTime()));
+        }
         userVO.setRebateRatio(0);
         userVO.setTeamAmount(teamAmount);
         userVO.setTeamCount(teamCount);

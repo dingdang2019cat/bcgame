@@ -86,6 +86,14 @@
         <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.MessageDAO" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+    <bean id="noticeDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.NoticeDAO" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="helpDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.HelpDAO" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
 
     <!-- 调度 -->
     <bean id="sscJob" class="com.hehaoyisheng.bcgame.job.SSCJob">
