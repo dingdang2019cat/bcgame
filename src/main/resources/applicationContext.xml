@@ -184,4 +184,8 @@
         </property>
         <property name="autoStartup" value="true" />
     </bean>
+
+    <bean id="lotteryThread" class="com.hehaoyisheng.bcgame.common.LotteryThread">
+        <property name="bcLotteryOrderManager" ref="bcLotteryOrderManagerImpl" />
+    </bean>
 </beans>
