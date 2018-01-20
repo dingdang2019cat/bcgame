@@ -41,6 +41,10 @@ public class GameData {
         gameTime.put("fc3d", 100L);
 
         seasonCount.put("cqssc", 120);
+
+        lastOpen.put("cqssc", new BcLotteryHistory());
+
+        openCount.put("cqssc", 0);
     }
 
     public static void main(String[] args){

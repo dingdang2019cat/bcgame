@@ -17,10 +17,7 @@ import com.hehaoyisheng.bcgame.manager.UserManager;
 import com.hehaoyisheng.bcgame.utils.CalculationUtils;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -28,6 +25,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/lotts")
+@SessionAttributes("user")
 public class LotteryController {
 
     @Resource
@@ -55,6 +53,7 @@ public class LotteryController {
     @RequestMapping("/{gameType}/bet")
     @ResponseBody
     public Result doBet(@ModelAttribute("user") User user, @PathVariable String gameType, int isTrace, Integer traceWinStop, Integer bounsType, OrderModel order, double amount, int count, int force, TraceModel traceOrders){
+        System.out.println(" userName is the " + user.getUsername());
         List<Order> orders = order.getOrder();
         List<TraceOrder> traces = traceOrders.getTraceOrders();
         //获取期号
@@ -78,15 +77,16 @@ public class LotteryController {
             }
         }
         //判断余额
-        user = userManager.select(user, null, null, null, null, null, null).get(0);
-        if(user.getMoney() < buyMoney){
+        User user1 = userManager.select(user, null, null, null, null, null, null).get(0);
+        if(user1.getMoney() < buyMoney){
+            System.out.println("余额不足" + user.getUsername() + user1.getMoney() + "   " + buyMoney);
             //余额不足
             return Result.faild("余额不足", 501);
         }
         //扣减余额
         User updateUser = new User();
         updateUser.setId(user.getId());
-        updateUser.setMoney(user.getMoney() - amount);
+        updateUser.setMoney(user1.getMoney() - amount);
         userManager.update(updateUser);
         //追单
         if(isTrace == 1){
@@ -111,7 +111,7 @@ public class LotteryController {
             Order o = orders.get(i);
             BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
             bcLotteryOrder.setAccount(user.getUsername());
-            bcLotteryOrder.setParentList(user.getParentList());
+            bcLotteryOrder.setParentList(user1.getParentList());
             bcLotteryOrder.setLotCode(gameType);
             bcLotteryOrder.setOrderId(orderId + i);
             bcLotteryOrder.setTraceId(traceId);
@@ -133,9 +133,9 @@ public class LotteryController {
         }
         MoneyHistory moneyHistory = new MoneyHistory();
         moneyHistory.setAccount(user.getUsername());
-        moneyHistory.setParentList(user.getParentList());
+        moneyHistory.setParentList(user1.getParentList());
         moneyHistory.setAmount(0 - buyMoney);
-        moneyHistory.setBalance(user.getMoney() - amount);
+        moneyHistory.setBalance(user1.getMoney() - amount);
         moneyHistory.setChangeType(isTrace == 1 ? "追号扣款" : "投注扣款");
         moneyHistory.setSeasonId(sessionId);
         moneyHistory.setLotteryName(GameType.gameType.get(gameType));

@@ -2,17 +2,20 @@ package com.hehaoyisheng.bcgame.common;
 
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
 import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
+@Component
 public class LotteryThread {
 
     //线程池
     private static ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 
+    @Resource
     private BcLotteryOrderManager bcLotteryOrderManager;
 
     public ExecutorService getCachedThreadPool() {
@@ -37,8 +40,10 @@ public class LotteryThread {
         bcLotteryOrder.setQiHao(seasonId);
         bcLotteryOrder.setStatus(0);
         List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
+        Runnable runnable = null;
         if(lotteryType.contains("ssc")){
-
+            runnable = new SSCLottery(bcLotteryOrderManager, list, looteryContent);
         }
+        cachedThreadPool.execute(runnable);
     }
 }
