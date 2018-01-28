@@ -72,42 +72,12 @@
                 <div class="hotLotteryList">
                     <i></i>
                     <a href="/lotts/cqssc/index" class="acqsscIcon" title="重庆时时彩"></a>
-                    <a href="/lotts/sj1fc/index" class="asj1fcIcon" title="鼎汇一分彩"></a>
-                    <a href="/lotts/sj_mmc/index" class="ammcIcon" title="鼎汇40秒"></a>
-                    <a href="/lotts/tiger/index" class="atigerIcon" title="鼎汇秒秒彩"></a>
                 </div>
                 <div class="lotteryList" id="lotteryList">
 
                     <div class="lottDetail">
                         <i class="lotteryTitle title_ssc" title="时时彩"></i>
                         <div class="lotteryDetdailList">
-
-                            <ul class="lotteryGroupList">
-
-                                <li><a href="/lotts/tiger/index" class="lottplayExplain">鼎汇秒秒彩</a></li>
-
-                                <li><a href="/lotts/sj_mmc/index" class="lottplayExplain">鼎汇40秒</a></li>
-
-                                <li><a href="/lotts/sj1fc/index" class="lottplayExplain">鼎汇一分彩</a></li>
-
-                                <li><a href="/lotts/sj3fc/index" class="lottplayExplain">鼎汇三分彩</a></li>
-
-                                <li><a href="/lotts/sj5fc/index" class="lottplayExplain">鼎汇五分彩</a></li>
-
-                                <li><a href="/lotts/gppl5/index" class="lottplayExplain">高频排列5</a></li>
-
-                            </ul>
-
-                            <ul class="lotteryGroupList">
-
-                                <li><a href="/lotts/tx1fc/index" class="lottplayExplain">腾讯分分彩</a></li>
-
-                                <li><a href="/lotts/jndbsc/index" class="lottplayExplain">加拿大3.5</a></li>
-
-                                <li><a href="/lotts/dj1_5/index" class="lottplayExplain">东京1.5</a></li>
-
-                            </ul>
-
                             <ul class="lotteryGroupList">
 
                                 <li><a href="/lotts/cqssc/index" class="lottplayExplain">重庆时时彩</a></li>
@@ -126,16 +96,6 @@
                             <ul class="lotteryGroupList">
 
                                 <li><a href="/lotts/pk10/index" class="lottplayExplain">北京赛车</a></li>
-
-                            </ul>
-
-                            <ul class="lotteryGroupList">
-
-                                <li><a href="/lotts/ffpk10/index" class="lottplayExplain">分分PK10</a></li>
-
-                                <li><a href="/lotts/f3pk10/index" class="lottplayExplain">3分PK10</a></li>
-
-                                <li><a href="/lotts/f5pk10/index" class="lottplayExplain">5分PK10</a></li>
 
                             </ul>
 
@@ -161,13 +121,6 @@
                         <i class="lotteryTitle title_11x5" title="11选5"></i>
                         <div class="lotteryDetdailList">
 
-                            <ul class="lotteryGroupList">
-
-                                <li><a href="/lotts/f1_11x5/index" class="lottplayExplain">一分11选5</a></li>
-
-                                <li><a href="/lotts/f3_11x5/index" class="lottplayExplain">三分11选5</a></li>
-
-                            </ul>
 
                             <ul class="lotteryGroupList">
 
@@ -300,7 +253,7 @@
             <!--开奖倒计时-->
             <div class="countDownBox">
                 <p class="countDownTitle">
-                    <span>第</span> <span class="fontColorTheme" id="saleSeasonId">20171226-024</span> <span>期 剩余投注时间</span>
+                    <span>第</span> <span class="fontColorTheme" id="saleSeasonId">${saleSeasonId1}</span> <span>期 剩余投注时间</span>
                 </p>
                 <div class="countDown" id="saleAllSecond" data-second="${saleAllSecond}">
                     <label class="hour"> <a href="javascript:;" id="saleHour">00</a> <span class="tips">时</span></label>

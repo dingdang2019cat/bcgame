@@ -1,7 +1,9 @@
 package com.hehaoyisheng.bcgame.common;
 
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
+import com.hehaoyisheng.bcgame.manager.BcLotteryOddsManager;
 import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
+import com.hehaoyisheng.bcgame.manager.UserManager;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -17,6 +19,10 @@ public class LotteryThread {
 
     @Resource
     private BcLotteryOrderManager bcLotteryOrderManager;
+
+    @Resource
+    private UserManager userManager;
+
 
     public ExecutorService getCachedThreadPool() {
         return cachedThreadPool;
@@ -35,6 +41,7 @@ public class LotteryThread {
     }
 
     public synchronized void lottery(String lotteryType, String seasonId, String looteryContent){
+        System.out.println("begin");
         BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
         bcLotteryOrder.setLotType(lotteryType);
         bcLotteryOrder.setQiHao(seasonId);
@@ -42,7 +49,7 @@ public class LotteryThread {
         List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
         Runnable runnable = null;
         if(lotteryType.contains("ssc")){
-            runnable = new SSCLottery(bcLotteryOrderManager, list, looteryContent);
+            runnable = new SSCLottery(bcLotteryOrderManager, userManager, list, looteryContent);
         }
         cachedThreadPool.execute(runnable);
     }

@@ -32,6 +32,11 @@ public class GameData {
     public static Map<String, Integer> openCount = Maps.newConcurrentMap();
 
     /**
+     * 赔率
+     */
+    public static Map<String, Double> oddsMap = Maps.newHashMap();
+
+    /**
      * 防止空指针，初始化彩票时间
      */
     static {
@@ -41,6 +46,7 @@ public class GameData {
         gameTime.put("fc3d", 100L);
 
         seasonCount.put("cqssc", 120);
+        seasonCount.put("xjssc", 96);
 
         lastOpen.put("cqssc", new BcLotteryHistory());
 

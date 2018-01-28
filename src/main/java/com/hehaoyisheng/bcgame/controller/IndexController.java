@@ -144,7 +144,7 @@ public class IndexController {
         //最后开奖
         Map<String, Object> lastOpen = Maps.newHashMap();
         lastOpen.put("seasonId", GameData.lastOpen.get(gameType).getSeasonId());
-        lastOpen.put("seasonId", GameData.lastOpen.get(gameType).getOpenTime().getTime());
+        //lastOpen.put("seasonId", GameData.lastOpen.get(gameType).getOpenTime().getTime());
         lastOpen.put("nums", GameData.lastOpen.get(gameType).getNums().split(","));
         resultMap.put("lastOpen", lastOpen);
         //开奖号码下文字显示

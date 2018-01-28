@@ -28,6 +28,7 @@ public class OrderTransfar {
         lotteryOrder.setPlayName(bcLotteryOrder.getPlayName());
         lotteryOrder.setWin(bcLotteryOrder.getWinMoney());
         lotteryOrder.setSeasonId(bcLotteryOrder.getQiHao());
+        lotteryOrder.setStatus(bcLotteryOrder.getStatus() == 10 ? 4 : bcLotteryOrder.getStatus());
         return lotteryOrder;
     }
 }

@@ -31,6 +31,24 @@ public class BcLotteryOrder {
     private String parentList;
     private String shangji;
     private String orderId;
+    private double odds;
+    private int bounsType;
+
+    public int getBounsType() {
+        return bounsType;
+    }
+
+    public void setBounsType(int bounsType) {
+        this.bounsType = bounsType;
+    }
+
+    public double getOdds() {
+        return odds;
+    }
+
+    public void setOdds(double odds) {
+        this.odds = odds;
+    }
 
     public Integer getId() {
         return id;

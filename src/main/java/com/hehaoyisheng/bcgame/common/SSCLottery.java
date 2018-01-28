@@ -1,8 +1,10 @@
 package com.hehaoyisheng.bcgame.common;
 
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
+import com.hehaoyisheng.bcgame.entity.User;
+import com.hehaoyisheng.bcgame.manager.BcLotteryOddsManager;
 import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
-import org.springframework.stereotype.Component;
+import com.hehaoyisheng.bcgame.manager.UserManager;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -11,9 +13,12 @@ public class SSCLottery implements Runnable{
 
     private BcLotteryOrderManager bcLotteryOrderManager;
 
+    private UserManager userManager;
+
     private List<BcLotteryOrder> bcLotteryOrders;
 
     private String looteryContent;
+
 
     public List<BcLotteryOrder> getBcLotteryOrders() {
         return bcLotteryOrders;
@@ -31,10 +36,11 @@ public class SSCLottery implements Runnable{
         this.looteryContent = looteryContent;
     }
 
-    public SSCLottery(BcLotteryOrderManager bcLotteryOrderManager, List<BcLotteryOrder> bcLotteryOrders, String looteryContent){
+    public SSCLottery(BcLotteryOrderManager bcLotteryOrderManager, UserManager userManager,  List<BcLotteryOrder> bcLotteryOrders, String looteryContent){
         this.bcLotteryOrderManager = bcLotteryOrderManager;
         this.bcLotteryOrders = bcLotteryOrders;
         this.looteryContent = looteryContent;
+        this.userManager = userManager;
     }
 
     public void run() {
@@ -64,12 +70,16 @@ public class SSCLottery implements Runnable{
                 }else {
                     winCount = GameLottery.sscFsLottery(looteryContent, betNumber, playCode);
                 }
+                bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * (bcLotteryOrder.getMinBonusOdds() / 2));
+                bcLotteryOrder.setWinZhuShu(winCount);
                 if(winCount > 0){
                     bcLotteryOrder.setStatus(1);
+                    User u = new User();
+                    u.setUsername(bcLotteryOrder.getAccount());
+                    userManager.update(u, bcLotteryOrder.getWinMoney());
                 }else {
                     bcLotteryOrder.setStatus(2);
                 }
-                bcLotteryOrder.setWinMoney(bcLotteryOrder.getMinBonusOdds() * winCount);
                 bcLotteryOrderManager.update(bcLotteryOrder);
             }catch (Exception e){
                 e.printStackTrace();

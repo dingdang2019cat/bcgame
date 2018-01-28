@@ -4,19 +4,14 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.common.GameType;
-import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
-import com.hehaoyisheng.bcgame.entity.MoneyHistory;
-import com.hehaoyisheng.bcgame.entity.Trace;
-import com.hehaoyisheng.bcgame.entity.User;
+import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.transfar.OrderTransfar;
 import com.hehaoyisheng.bcgame.entity.vo.*;
-import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
-import com.hehaoyisheng.bcgame.manager.MoneyHistoryManager;
-import com.hehaoyisheng.bcgame.manager.TraceManager;
-import com.hehaoyisheng.bcgame.manager.UserManager;
+import com.hehaoyisheng.bcgame.manager.*;
 import com.hehaoyisheng.bcgame.utils.CalculationUtils;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -40,6 +35,9 @@ public class LotteryController {
     @Resource
     private MoneyHistoryManager moneyHistoryManager;
 
+    @Resource
+    private BcLotteryOddsManager bcLotteryOddsManager;
+
     /**
      * 投注
      * @param isTrace       是否追号
@@ -54,6 +52,13 @@ public class LotteryController {
     @ResponseBody
     public Result doBet(@ModelAttribute("user") User user, @PathVariable String gameType, int isTrace, Integer traceWinStop, Integer bounsType, OrderModel order, double amount, int count, int force, TraceModel traceOrders){
         System.out.println(" userName is the " + user.getUsername());
+        //初始化赔率
+        if(CollectionUtils.isEmpty(GameData.oddsMap)){
+            List<BcLotteryOdds> bcLotteryOddsList = bcLotteryOddsManager.select(null, null, null);
+            for(BcLotteryOdds bcLotteryOdds : bcLotteryOddsList){
+                GameData.oddsMap.put(bcLotteryOdds.getPlayType(), bcLotteryOdds.getOdds());
+            }
+        }
         List<Order> orders = order.getOrder();
         List<TraceOrder> traces = traceOrders.getTraceOrders();
         //获取期号
@@ -125,6 +130,9 @@ public class LotteryController {
             bcLotteryOrder.setHaoMa(o.getContent());
             bcLotteryOrder.setLotName(GameType.gameType.get(gameType));
             bcLotteryOrder.setZhuiHao(isTrace + "");
+            bcLotteryOrder.setStatus(0);
+            bcLotteryOrder.setBounsType(bounsType);
+            bcLotteryOrder.setOdds(GameData.oddsMap.get(o.getPlayId() + bounsType));
             System.out.println("---------------------------------");
             System.out.println(bcLotteryOrder.getAccount());
             System.out.println("---------------------------------");
@@ -163,6 +171,24 @@ public class LotteryController {
             qihao =  CalculationUtils.traceList(qihao, gameType);
         }
         return Result.success(resultList);
+    }
+
+    @RequestMapping("/{gameType}/cancelOrder")
+    @ResponseBody
+    public Result cancelOrder(@ModelAttribute("user") User user, @PathVariable String gameType, String ids){
+        BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
+        bcLotteryOrder.setAccount(user.getUsername());
+        bcLotteryOrder.setOrderId(ids);
+        List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
+        if(CollectionUtils.isEmpty(list)){
+            return null;
+        }
+        list.get(0).setStatus(10);
+        bcLotteryOrderManager.update(list.get(0));
+        User u = new User();
+        u.setUsername(user.getUsername());
+        userManager.update(u, list.get(0).getBuyMoney());
+        return Result.success("操作成功！");
     }
 
 }

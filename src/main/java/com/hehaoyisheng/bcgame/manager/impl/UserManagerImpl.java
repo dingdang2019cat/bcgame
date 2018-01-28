@@ -37,6 +37,15 @@ public class UserManagerImpl implements UserManager {
         return -1;
     }
 
+    public int update(User user, double money) {
+        try {
+            return userDAO.updateMoney(user, money);
+        }catch (Exception e){
+            logger.error("insert Error: username:{}, ", e);
+        }
+        return -1;
+    }
+
     public int delete(int id) {
         try {
             return userDAO.delete(id);

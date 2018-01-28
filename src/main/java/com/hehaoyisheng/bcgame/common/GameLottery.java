@@ -27,6 +27,8 @@ public class GameLottery {
     public static int sscFsLottery(@Nonnull String lotteryNumber, @Nonnull String betNumber, @Nonnull String playCode){
         //根据复式种类切割开奖数据
         Integer[] lotteryNumberCount = GameLotteryData.lotteryNumberCount.get(playCode);
+        System.out.println(lotteryNumberCount[0] + "   " + lotteryNumberCount[1]);
+        System.out.println(lotteryNumber);
         lotteryNumber = lotteryNumber.substring(lotteryNumberCount[0], lotteryNumberCount[1]);
         System.out.println("lotteryNumber " + lotteryNumber);
         //将投注开奖数字转化为数组

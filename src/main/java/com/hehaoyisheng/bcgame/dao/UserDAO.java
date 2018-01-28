@@ -39,6 +39,16 @@ public interface UserDAO {
     @SelectKey(statement = "select last_insert_id()", keyProperty = "id", before = false, resultType = int.class)
     int update(User user);
 
+    @Update("<script> " +
+            "update user " +
+            "<trim prefix=\"set\" suffixOverrides=\",\"> " +
+            "<if test=\"money > 0\" >money=money + #{money},</if>" +
+            "<if test=\"money > 0\" >money=money - #{money},</if>" +
+            "</trim>" +
+            " where username=#{username} " +
+            " </script> ")
+    int updateMoney(User user, double money);
+
     @Delete("delete from user where id=#{id}")
     @SelectKey(statement = "select last_insert_id()", keyProperty = "id", before = false, resultType = int.class)
     int delete(int id);

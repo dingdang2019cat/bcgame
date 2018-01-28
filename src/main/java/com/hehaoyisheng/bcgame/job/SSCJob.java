@@ -3,6 +3,7 @@ package com.hehaoyisheng.bcgame.job;
 
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.common.GameType;
+import com.hehaoyisheng.bcgame.common.LotteryThread;
 import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
 import com.hehaoyisheng.bcgame.manager.BcLotteryHistoryManager;
 import com.hehaoyisheng.bcgame.utils.HttpClientUtil;
@@ -31,6 +32,9 @@ public class SSCJob {
 
     @Resource
     private BcLotteryHistoryManager bcLotteryHistoryManager;
+
+    @Resource
+    private LotteryThread lotteryThread;
 
     private String type;
 
@@ -116,6 +120,7 @@ public class SSCJob {
                     bcLotteryHistoryManager.insert(bcLotteryHistory);
                     bcLotteryHistory.setOpenTime(new Date());
                     GameData.lastOpen.put(type, bcLotteryHistory);
+                    lotteryThread.lottery(type, qihao, bcLotteryHistory.getNums());
                     break;
                 }
                 Thread.sleep(10000);

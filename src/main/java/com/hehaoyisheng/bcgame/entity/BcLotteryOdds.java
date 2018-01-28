@@ -5,6 +5,7 @@ public class BcLotteryOdds {
     private String lotteryType;
     private String playType;
     private double odds;
+    private Integer bounsType;
 
     public int getId() {
         return id;
@@ -36,5 +37,13 @@ public class BcLotteryOdds {
 
     public void setOdds(double odds) {
         this.odds = odds;
+    }
+
+    public Integer getBounsType() {
+        return bounsType;
+    }
+
+    public void setBounsType(Integer bounsType) {
+        this.bounsType = bounsType;
     }
 }
