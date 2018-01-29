@@ -10,14 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d9eca47-e4e3-4674-a62b-72f4885b8b41" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/ssc.jsp" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/LotteryThread.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/LotteryThread.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/SSCLottery.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/SSCLottery.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/dao/BcLotteryOddsDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/dao/BcLotteryOddsDAO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/BcLotteryOddsManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/BcLotteryOddsManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/impl/BcLotteryOddsManagerImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/impl/BcLotteryOddsManagerImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/GameType.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/GameType.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/test.java" afterPath="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/test.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -45,107 +39,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LotteryThread.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/LotteryThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="56" column="93" lean-forward="false" selection-start-line="56" selection-start-column="93" selection-end-line="56" selection-end-column="93" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SSCLottery.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/SSCLottery.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
-              <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/UserManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="41" column="49" lean-forward="true" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+            <state relative-caret-position="266">
+              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ssc.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/ssc.jsp">
+      <file leaf-file-name="GameType.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/GameType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LotteryController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="115" column="36" lean-forward="true" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MoneyHistory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/MoneyHistory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BcLotteryOddsDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/dao/BcLotteryOddsDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="133" lean-forward="false" selection-start-line="11" selection-start-column="133" selection-end-line="11" selection-end-column="133" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BcLotteryOddsManagerImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/impl/BcLotteryOddsManagerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="18" column="58" lean-forward="false" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BcLotteryOddsManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/BcLotteryOddsManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+            <state relative-caret-position="1104">
+              <caret line="117" column="48" lean-forward="false" selection-start-line="117" selection-start-column="48" selection-end-line="117" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -270,14 +178,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/dao/BcLotteryOrderDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/BcLotteryOrder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/BcLotteryOdds.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/GameType.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/dao/BcLotteryOddsDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/BcLotteryOddsManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/impl/BcLotteryOddsManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/test.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/LotteryThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/SSCLottery.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/GameType.java" />
       </list>
     </option>
   </component>
@@ -846,7 +754,7 @@
       <workItem from="1516473891745" duration="5003000" />
       <workItem from="1516558164548" duration="16438000" />
       <workItem from="1517156595906" duration="18000" />
-      <workItem from="1517161299739" duration="4945000" />
+      <workItem from="1517161299739" duration="5372000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1510146952533</created>
@@ -1016,7 +924,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516286396791</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="报表中心接入">
+      <created>1517187035935</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1517187035935</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1025,7 +940,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="451333000" />
+    <option name="totallyTimeSpent" value="451760000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1399,14 +1314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/GameType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/entity/BcLotteryOdds.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1424,14 +1331,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="41" column="49" lean-forward="true" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -1488,6 +1387,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/SSCLottery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="146" column="47" lean-forward="false" selection-start-line="146" selection-start-column="47" selection-end-line="146" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/manager/UserManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -1496,21 +1413,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/controller/LotteryController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/utils/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="115" column="36" lean-forward="true" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
+        <state relative-caret-position="266">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/SSCLottery.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hehaoyisheng/bcgame/common/GameType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="1104">
+          <caret line="117" column="48" lean-forward="false" selection-start-line="117" selection-start-column="48" selection-end-line="117" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
