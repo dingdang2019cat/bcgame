@@ -56,7 +56,7 @@ public class LotteryController {
         if(CollectionUtils.isEmpty(GameData.oddsMap)){
             List<BcLotteryOdds> bcLotteryOddsList = bcLotteryOddsManager.select(null, null, null);
             for(BcLotteryOdds bcLotteryOdds : bcLotteryOddsList){
-                GameData.oddsMap.put(bcLotteryOdds.getPlayType(), bcLotteryOdds.getOdds());
+                GameData.oddsMap.put(bcLotteryOdds.getPlayType() + ":" + bcLotteryOdds.getBounsType(), bcLotteryOdds.getOdds());
             }
         }
         List<Order> orders = order.getOrder();
@@ -132,7 +132,7 @@ public class LotteryController {
             bcLotteryOrder.setZhuiHao(isTrace + "");
             bcLotteryOrder.setStatus(0);
             bcLotteryOrder.setBounsType(bounsType);
-            bcLotteryOrder.setOdds(GameData.oddsMap.get(o.getPlayId() + bounsType));
+            bcLotteryOrder.setOdds(GameData.oddsMap.get(o.getPlayId() + ":" + bounsType));
             System.out.println("---------------------------------");
             System.out.println(bcLotteryOrder.getAccount());
             System.out.println("---------------------------------");

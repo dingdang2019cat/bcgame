@@ -14,6 +14,15 @@ public class BcLotteryOddsManagerImpl implements BcLotteryOddsManager {
     @Resource
     private BcLotteryOddsDAO bcLotteryOddsDAO;
 
+    public int insert(BcLotteryOdds bcLotteryOdds) {
+        try {
+            return bcLotteryOddsDAO.insert(bcLotteryOdds);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public List<BcLotteryOdds> select(String lottery, String playType, Integer bounsType) {
         try {
             return bcLotteryOddsDAO.select(lottery, playType, bounsType);

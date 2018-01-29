@@ -1,12 +1,16 @@
 package com.hehaoyisheng.bcgame.dao;
 
 import com.hehaoyisheng.bcgame.entity.BcLotteryOdds;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
 public interface BcLotteryOddsDAO {
+
+    @Insert("insert bcLotteryOdds (lotteryType, playType, odds, bounsType) values (#{lotteryType}, #{playType}, #{odds}, #{bounsType})")
+    int insert(BcLotteryOdds bcLotteryOdds);
 
     @Select("<script> " +
             "select * " +
