@@ -104,10 +104,11 @@ public class IndexController {
         model.addAttribute("recentTrace", traceList);
         model.addAttribute("nickName", users.get(0).getNickName());
         model.addAttribute("amount", users.get(0).getMoney());
+        model.addAttribute("account", users.get(0).getUsername());
         if(gameType.endsWith("k3")){
             return "k3";
         }else if(gameType.endsWith("pk10")){
-            return "pk10";
+            return "bjsc";
         }else if(gameType.endsWith("ssc")){
             return "ssc";
         }
@@ -180,6 +181,8 @@ public class IndexController {
             gameThread.initData("xjssc");
             Thread.sleep(1000);
             gameThread.initData("tjssc");
+            Thread.sleep(1000);
+            gameThread.initData("pk10");
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -113,6 +113,10 @@
         <property name="type" value="tjssc" />
     </bean>
 
+    <bean id="pk10" class="com.hehaoyisheng.bcgame.job.SSCJob">
+        <property name="type" value="pk10" />
+    </bean>
+
     <bean id="cqsscDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="sscJob" />
         <property name="targetMethod" value="execute"/>
@@ -132,6 +136,13 @@
         <property name="targetMethod" value="execute"/>
         <property name="name" value="tjsscJob" />
         <property name="group" value="sscJob" />
+    </bean>
+
+    <bean id="pk10Detail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="pk10" />
+        <property name="targetMethod" value="execute"/>
+        <property name="name" value="pk10Job" />
+        <property name="group" value="pk10Job" />
     </bean>
 
     <bean id="tjsscTigger1" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
@@ -176,6 +187,13 @@
         <property name="group" value="ssc" />
     </bean>
 
+    <bean id="pk10Tigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="pk10Detail" />
+        <property name="cronExpression" value="0 3/5 9-23 * * ?" />
+        <property name="name" value="pk10" />
+        <property name="group" value="pk10" />
+    </bean>
+
     <bean id="schedulerfactory" name="schedulerfactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
         <property name="triggers">
             <list>
@@ -185,6 +203,7 @@
                 <ref bean="xjsscTigger1"/>
                 <ref bean="xjsscTigger2"/>
                 <ref bean="tjsscTigger1"/>
+                <ref bean="pk10Tigger"/>
             </list>
         </property>
         <property name="autoStartup" value="true" />

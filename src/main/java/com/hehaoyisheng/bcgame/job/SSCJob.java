@@ -67,7 +67,10 @@ public class SSCJob {
         System.out.println("----------------------------------");
         String qiHao1 = GameData.gameSeasonId.get(type);
         Long longTime = 600000L;
-        Integer qiHaoInt = Integer.valueOf(qiHao1.substring(8, count));
+        Integer qiHaoInt = 0;
+        if(type.contains("ssc")){
+            qiHaoInt = Integer.valueOf(qiHao1.substring(8, count));
+        }
         GameData.openCount.put(type, qiHaoInt);
         //判断时间间隔
         if(type.equals("cqssc") && qiHaoInt < 24 || qiHaoInt > 96){
@@ -78,6 +81,8 @@ public class SSCJob {
             longTime = 24600000L;
         }else if(type.equals("tjssc") && qiHaoInt == 84){
             longTime = 46200000L;
+        }else if(type.equals("pk10")){
+            longTime = 300000L;
         }
         GameData.gameTime.put(type, System.currentTimeMillis() + longTime);
         String qiHao = qiHao1;
@@ -103,20 +108,25 @@ public class SSCJob {
                 qiHao = (Long.valueOf(qiHao) + 1) + "";
             }
         }
-        System.out.println(qiHao + "    " + type);
+        if(type.equals("pk10")){
+            qiHao = (Integer.valueOf(qiHao) + 1) + "";
+        }
         GameData.gameSeasonId.put(type, qiHao);
         while (true){
             try {
                 String result= HttpClientUtil.sendHttpGet("http://917500.cn/Home/Lottery/kaijianghao/lotid/" + type + ".html?page=1&nourl=1");
+                if(type.equals("pk10")){
+                    System.out.println(result);
+                }
                 String[] results = result.split("<td>");
                 String qihao = results[1].replace("</td>", "").substring(0, count);
                 BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
                 bcLotteryHistory.setLotteryType(type);
                 bcLotteryHistory.setSeasonId(qihao);
                 List<BcLotteryHistory> bcLotteryHistoryList = bcLotteryHistoryManager.select(bcLotteryHistory);
-                System.out.println(qiHao);
+                System.out.println(qiHao + " .... " + qiHao1);
                 if(CollectionUtils.isEmpty(bcLotteryHistoryList) && qihao.equals(qiHao1) && !results[3].contains("?") && !results[3].contains("正在")){
-                    bcLotteryHistory.setNums(results[3].replace("<em >", "").replace("</em></td>", "").substring(0, 9));
+                    bcLotteryHistory.setNums(results[3].replace("<em style=\"font-size: 12px;\">", "").replace("<em >", "").replace("</em></td>", "").substring(0, 9));
                     bcLotteryHistoryManager.insert(bcLotteryHistory);
                     bcLotteryHistory.setOpenTime(new Date());
                     GameData.lastOpen.put(type, bcLotteryHistory);

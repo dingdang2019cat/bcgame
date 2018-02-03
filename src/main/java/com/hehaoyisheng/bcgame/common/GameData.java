@@ -51,6 +51,9 @@ public class GameData {
         lastOpen.put("cqssc", new BcLotteryHistory());
 
         openCount.put("cqssc", 0);
+        openCount.put("tjssc", 0);
+        openCount.put("xjssc", 0);
+        openCount.put("pk10", 0);
     }
 
     public static void main(String[] args){

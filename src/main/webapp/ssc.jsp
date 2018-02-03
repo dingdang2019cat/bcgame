@@ -24725,7 +24725,7 @@
             </label>
         </p>
         <p>
-            <label> <span>付款账户：lnzyz1212</span>
+            <label> <span>付款账户：${account}</span>
             </label>
         </p>
         <div class="dialogBtn">
@@ -24743,7 +24743,7 @@
         <div class="improveHeaderInfo">
             <p class="improveHeaderTitle">
                 <span>亲爱的</span>
-                <span>lnzyz1212</span>
+                <span>${account}</span>
                 <span>,感谢您选择鼎汇·万客平台，请完善以下个人信息</span>
             </p>
             <span class="improveHeaderTips">为了让鼎汇·万客更好的给您提供服务，请修改密码并牢记，不要泄露给其他人</span>
