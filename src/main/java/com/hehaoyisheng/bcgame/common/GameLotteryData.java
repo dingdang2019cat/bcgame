@@ -68,6 +68,9 @@ public class GameLotteryData {
         lotteryNumberCount.put("ssc_star3_last_none2", new Integer[]{4, 9, 2});
 
 
+        //lotteryNumberCount.put("pk10_star1_dwd", new Integer[]{0, 9, 2});
+
+
         dxdsLottery.put("大", "56789");
         dxdsLottery.put("小", "01234");
         dxdsLottery.put("单", "13579");

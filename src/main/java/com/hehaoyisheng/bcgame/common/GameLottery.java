@@ -232,11 +232,115 @@ public class GameLottery {
         return winCount;
     }
 
+    /**
+     *  pk10定位胆
+     */
+    public static int pk10DwdLottery(@Nonnull String lotteryNumber, @Nonnull String betNumber,@Nonnull String playCode){
+        //将投注开奖数字转化为数组
+        String[] betNumbers = betNumber.split(",");
+        String[] lotteryNumbers = lotteryNumber.split(",");
+        int winCount = 0;
+        int start = 0;
+        int max = 5;
+        if(playCode.contains("last")){
+            start = 5;
+            max = 10;
+        }
+        for(int i = 0; start < max; start++, i++){
+            if(pk10SubString(betNumbers[i]).contains(lotteryNumbers[start])){
+                winCount++;
+            }
+        }
+        return winCount;
+    }
+
+    /**
+     * pk10复式
+     * @param lotteryNumber
+     * @param betNumber
+     * @return
+     */
+    public static int pk10FsLottery(@Nonnull String lotteryNumber, @Nonnull String betNumber){
+        boolean result = true;
+        //将投注开奖数字转化为数组
+        String[] betNumbers = betNumber.split(",");
+        String[] lotteryNumbers = lotteryNumber.split(",");
+        for(int i = 0; i < betNumbers.length; i++){
+            if(!pk10SubString(betNumbers[i]).contains(lotteryNumbers[i])){
+                result = false;
+            }
+        }
+        return result ? 1 : 0;
+    }
+
+    /**
+     * 猜前几
+     * @return
+     */
+    public static int pk10CqLottery(@Nonnull String lotteryNumber, @Nonnull String betNumber){
+        int winCount = 0;
+        //将投注开奖数字转化为数组
+        String[] betNumbers = betNumber.split(",");
+        String[] lotteryNumbers = lotteryNumber.split(",");
+        for(int i = 0; i < betNumbers.length; i++){
+            if(!pk10SubString(betNumbers[i]).contains(lotteryNumbers[i])){
+                winCount += 1;
+            }
+        }
+        return winCount;
+    }
+
+    /**
+     * 冠亚和
+     * @return
+     */
+    public static int pk10Gyh(@Nonnull String lotteryNumber, @Nonnull String betNumber){
+        String[] lotteryNumbers = lotteryNumber.split(",");
+        String sumString = "";
+        Integer sum = Integer.valueOf(lotteryNumbers[0]) + Integer.valueOf(lotteryNumbers[1]);
+        if(sum < 10){
+            sumString = "0" + sum;
+        }
+        if(betNumber.contains(sumString)){
+            return 1;
+        }
+        return 0;
+    }
+
+    /**
+     * pk10龙虎
+     * @return
+     */
+    public static int pk10Lh(@Nonnull String lotteryNumber, @Nonnull String betNumber){
+        //将投注开奖数字转化为数组
+        String[] betNumbers = betNumber.split(",");
+        String[] lotteryNumbers = lotteryNumber.split(",");
+        int winCount = 0;
+        for(int i = 0; i < 5; i++){
+            String bet = betNumbers[i];
+            if(bet.equals("-")){
+                continue;
+            }
+            if(Integer.valueOf(lotteryNumbers[i]) > Integer.valueOf(lotteryNumbers[lotteryNumbers.length - 1 - i])){
+                winCount += bet.contains("龙") ? 1 : 0;
+            }else if(Integer.valueOf(lotteryNumbers[i]) < Integer.valueOf(lotteryNumbers[lotteryNumbers.length - 1 - i])){
+                winCount += bet.contains("虎") ? 1 : 0;
+            }
+        }
+        return winCount;
+    }
+
     public static void main(String[] args) {
-        String s = "8,1,6,5,9";
-        String ss = "5,6";
-        int a = sscZxLottery(s, ss, "ssc_star3_mid_group3");
-        System.out.println(a);
+        String s = "0102";
+        System.out.println(s.substring(2, 4));
+    }
+
+    private static String pk10SubString(String betNumber){
+        String result = "";
+        for(int i = 0; (i * 2 + 2) < betNumber.length() ; i++){
+            result += betNumber.substring(i * 2, i * 2 + 2) + ",";
+        }
+        return result;
     }
 
     /**

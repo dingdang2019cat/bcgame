@@ -4810,7 +4810,7 @@
                     <span class="fontColorRed" id="traceAllMoney">0.00</span> <span class="fontColorGray">追号方案总金额(元)</span>
                 </div>
                 <div class="cfmAppNumInfoDetail">
-                    <span class="userBalance">26.4227</span> <span class="fontColorGray">账户可用余额(元)</span>
+                    <span class="userBalance">${amount}</span> <span class="fontColorGray">账户可用余额(元)</span>
                 </div>
                 <div class="cfmAppNumInfoDetail">
                     <span class="seasonTime">00:00:00</span> <span class="fontColorGray">本期投注截止</span>
@@ -4849,7 +4849,7 @@
             </label>
         </p>
         <p>
-            <label> <span>付款账户：lnzyz1212</span>
+            <label> <span>付款账户：${account}</span>
             </label>
         </p>
         <div class="dialogBtn">

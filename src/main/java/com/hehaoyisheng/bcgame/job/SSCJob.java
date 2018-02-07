@@ -109,15 +109,12 @@ public class SSCJob {
             }
         }
         if(type.equals("pk10")){
-            qiHao = (Integer.valueOf(qiHao) + 1) + "";
+            qiHao = (Long.valueOf(qiHao) + 1) + "";
         }
         GameData.gameSeasonId.put(type, qiHao);
         while (true){
             try {
                 String result= HttpClientUtil.sendHttpGet("http://917500.cn/Home/Lottery/kaijianghao/lotid/" + type + ".html?page=1&nourl=1");
-                if(type.equals("pk10")){
-                    System.out.println(result);
-                }
                 String[] results = result.split("<td>");
                 String qihao = results[1].replace("</td>", "").substring(0, count);
                 BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
