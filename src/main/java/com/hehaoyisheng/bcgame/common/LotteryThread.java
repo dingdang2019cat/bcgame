@@ -55,6 +55,8 @@ public class LotteryThread {
         Runnable runnable = null;
         if(lotteryType.contains("ssc")){
             runnable = new SSCLottery(bcLotteryOrderManager, userManager, moneyHistoryManager, list, looteryContent);
+        }else if(lotteryType.contains("pk10")){
+            runnable = new PK10Lottery(bcLotteryOrderManager, userManager, moneyHistoryManager, list, looteryContent);
         }
         cachedThreadPool.execute(runnable);
     }

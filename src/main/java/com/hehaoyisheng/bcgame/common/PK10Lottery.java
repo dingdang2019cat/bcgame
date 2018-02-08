@@ -56,7 +56,17 @@ public class PK10Lottery implements Runnable{
                 String playCode = bcLotteryOrder.getPlayCode();
                 String betNumber = bcLotteryOrder.getHaoMa();
                 int winCount = 0;
-                
+                if(playCode.contains("fs")){
+                    winCount = GameLottery.pk10FsLottery(looteryContent, betNumber);
+                }else if(playCode.contains("_dj")){
+                    winCount = GameLottery.pk10CqLottery(looteryContent, betNumber);
+                }else if(playCode.contains("dwd")){
+                    winCount = GameLottery.pk10DwdLottery(looteryContent, betNumber, playCode);
+                }else if(playCode.contains("_lh")){
+                    winCount = GameLottery.pk10Lh(looteryContent, betNumber);
+                }else if(playCode.contains("star2_and")){
+                    winCount = GameLottery.pk10Gyh(looteryContent, betNumber);
+                }
                 bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * (bcLotteryOrder.getMinBonusOdds() / 2));
                 bcLotteryOrder.setWinZhuShu(winCount);
                 LotteryCommon.addMoneyAndHistory(winCount, bcLotteryOrderManager, bcLotteryOrder, userManager, moneyHistoryManager);

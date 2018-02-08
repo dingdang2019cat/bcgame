@@ -32,6 +32,16 @@ public class BcLotteryOrder {
     private String shangji;
     private String orderId;
     private double odds;
+    private double gaofan;
+
+    public double getGaofan() {
+        return gaofan;
+    }
+
+    public void setGaofan(double gaofan) {
+        this.gaofan = gaofan;
+    }
+
     private int bounsType;
 
     public int getBounsType() {

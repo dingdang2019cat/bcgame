@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/resource/wk-common.css?ver=20180105"/>
     <script type="text/javascript" src="/resource/jquery-1.11.0.min.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/jquery.timer.js?ver=20180105"></script>
-    <script type="text/javascript" src="/resource/layer/layer.js?ver=20180105"></script>
+    <script type="text/javascript" src="/resource/layer.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/jquery.cookie.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/spinner.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/audio/audio5.js?ver=20180105"></script>
@@ -47,7 +47,7 @@
     </script>
     <style>
         body {
-            background: url('/res/home/images/lott-pk10/pk10-bg.jpg') center no-repeat;
+            background: url('/resource/pk10-bg.jpg') center no-repeat;
             background-size: 100% 100%;
         }
     </style>
@@ -241,7 +241,7 @@
         <div class="mainWidth">
             <!--彩种Logo-->
             <div class="lotteryLogo">
-                <img src="/res/home/images/lottTypes/cz_pk10-theme-black.png" class="betsType" />
+                <img src="/images/cz_pk10-theme-black.png" class="betsType" />
                 <!--<span class="betsType">北京赛车</span>
                     <img src="/res/home/images/lotteryLogo-ssc.png" class="betsType" />
                     <img src="/res/home/images/lotteryLogo-115.png" class="betsType" style="display: none;" />-->
@@ -4613,8 +4613,7 @@
 
 
                                 </tr>
-
-                                </tr>
+                                </c:forEach>
 
                                 </tbody>
                             </table>

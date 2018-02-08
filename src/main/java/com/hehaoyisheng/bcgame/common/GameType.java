@@ -116,5 +116,22 @@ public class GameType {
             playName.put("ssc_side_lhh", "龙虎和");
             playName.put("ssc_dxds", "大小单双");
             playName.put("ssc_side_tema", "特码");
+            playName.put("pk10_side_lh", "龙虎");
+            playName.put("pk10_side_gy_and", "冠亚和大小单双");
+            playName.put("pk10_side_ds", "大小");
+            playName.put("pk10_star1_dwd", "前五定位胆");
+            playName.put("pk10_star1_dwd_last", "后五定位胆");
+            playName.put("pk10_star2_and", "冠亚和");
+            playName.put("pk10_star2", "前二复式");
+            playName.put("pk10_star2_dj", "猜前二");
+            playName.put("pk10_star3", "前三复式");
+            playName.put("pk10_star3_single", "前三直选单式");
+            playName.put("pk10_star3_dj", "猜前三");
+            playName.put("pk10_star4", "前四复式");
+            playName.put("pk10_star4_single", "前四直选单式");
+            playName.put("pk10_star4_dj", "猜前四");
+            playName.put("pk10_star5", "前五复式");
+            playName.put("pk10_star5_single", "前五直选单式");
+            playName.put("pk10_star5_dj", "猜前五");
         }
 }

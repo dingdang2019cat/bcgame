@@ -7,6 +7,16 @@ public class BcLotteryOdds {
     private double odds;
     private Integer bounsType;
 
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    private Integer count;
+
     public int getId() {
         return id;
     }
