@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Recharge {
     private String account;
-    private int amount;
+    private double amount;
     private String bankName;
     private String bankNameCode;
     private Date createTime;
     private String id;
-    private Integer realAmount;
+    private Double realAmount;
     private Integer rechargeType;
     private Integer status;
     private String parentList;
@@ -30,11 +30,11 @@ public class Recharge {
         this.account = account;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -70,11 +70,11 @@ public class Recharge {
         this.id = id;
     }
 
-    public Integer getRealAmount() {
+    public Double getRealAmount() {
         return realAmount;
     }
 
-    public void setRealAmount(Integer realAmount) {
+    public void setRealAmount(Double realAmount) {
         this.realAmount = realAmount;
     }
 

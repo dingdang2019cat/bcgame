@@ -5,6 +5,7 @@ import com.hehaoyisheng.bcgame.dao.BcLotteryOddsDAO;
 import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
 import com.hehaoyisheng.bcgame.entity.BcLotteryOdds;
 import com.hehaoyisheng.bcgame.manager.BcLotteryHistoryManager;
+import com.hehaoyisheng.bcgame.pay.Pay;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,6 +18,7 @@ import java.io.IOException;
 
 public class test {
     public static void main(String[] args) throws IOException {
+        /*
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         //LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
         //lotteryThread.lottery("cqssc", "20180121024", "0,0,0,1,0");
@@ -55,5 +57,8 @@ public class test {
             bcLotteryOddsDAO.insert(bcLotteryOdds1);
         }
         System.out.println(elements.size());
+        */
+
+        Pay.b2cPay(100D, "", null, System.currentTimeMillis() + "");
     }
 }
