@@ -49,15 +49,15 @@
         gloas.userMinRatio = 0.00;		//用户点差
         gloas.noneMinRatio = ${maxRatio};		//无需配合返点
         gloas.stepRatio = 0.1;							//点差步长
-        gloas.accountRecharge = false;	//下级充值功能
+        gloas.accountRecharge = true;	//下级充值功能
         gloas.hasSafeWord = true;
-        gloas.lockStatus = false;
+        gloas.lockStatus = true;
         gloas.userType = 1;//用户类型
         gloas.userType = 1;
-        gloas.contractStatus = false; //契约功能
+        gloas.contractStatus = 3; //契约功能
         gloas.dailyWagesStatus = false;
         gloas.dailyWagesTrans = false;// 日工资仅传递的权限
-        gloas.dailyWagesOpen = false;// 日工资开通日薪的权限
+        gloas.dailyWagesOpen = true;// 日工资开通日薪的权限
     </script>
 
 </head>

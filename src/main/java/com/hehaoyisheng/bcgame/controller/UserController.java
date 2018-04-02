@@ -46,6 +46,9 @@ public class UserController {
     @Resource
     private NoticeManager noticeManager;
 
+    @Resource
+    private RechargeManager rechargeManager;
+
     @ModelAttribute("user1")
     public User addUser(User user) {
         return new User();
@@ -520,5 +523,90 @@ public class UserController {
         model.addAttribute("nickName", users.get(0).getNickName());
         model.addAttribute("amount", users.get(0).getMoney());
         return "help";
+    }
+
+    @RequestMapping("/newMessage")
+    @ResponseBody
+    public Result newMessage(){
+        Recharge recharge = new Recharge();
+        recharge.setStatus(0);
+        List<Recharge> list = rechargeManager.select(recharge, null, null, null, null);
+        if(CollectionUtils.isEmpty(list)){
+            return Result.faild(null, 0);
+        }
+        //status为200时有新提款
+        return Result.success(null);
+    }
+
+    @RequestMapping("/shanchu")
+    @ResponseBody
+    public Result shanchu(String account){
+        return Result.success(null);
+    }
+
+    @RequestMapping("/dlaccountList")
+    @ResponseBody
+    public Map<String, Object> dlaccountList(Integer pageNumber, Integer accountType, Integer online, String account, Integer agentId, Integer searchType){
+        List<Map<String, Object>> result = Lists.newArrayList();
+        User user = new User();
+        List<User> list = userManager.select(user, null, null, null, null, null, null);
+        int total = userManager.count(user, null, null, null, null, null, null);
+        for(User u : list){
+            Map<String, Object> map = Maps.newHashMap();
+            map.put("account", u.getUsername());
+            map.put("money", u.getMoney());
+            map.put("gameShare", u.getFandian());
+            map.put("userName", u.getName());
+            map.put("accountType", u.getType());
+            map.put("createDatetime", u.getCreatetime());
+            map.put("lastLoginDatetime", u.getTime());
+            map.put("lastLoginIp", u.getIp());
+            map.put("online", u.getOnline());
+            map.put("accountStatus", u.getStatus());
+            result.add(map);
+        }
+        Map<String, Object> resultMap = Maps.newHashMap();
+        resultMap.put("total", total);
+        resultMap.put("rows", result);
+        return resultMap;
+    }
+
+    @RequestMapping("/chongqian")
+    @ResponseBody
+    public Result chongqian(String account, Double money){
+        User user = new User();
+        user.setUsername(account);
+        userManager.update(user, money);
+        return Result.success(null);
+    }
+
+    @RequestMapping("/gameRecord")
+    @ResponseBody
+    public Map<String, Object> gameRecord(){
+        //List<Map<String, Object>> result = Lists.newArrayList();
+        BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
+        List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
+        int total = bcLotteryOrderManager.count(bcLotteryOrder, null, null, null, null);
+        Map<String, Object> resultMap = Maps.newHashMap();
+        Map<String, Double> aggsData = Maps.newHashMap();
+        aggsData.put("buyMoney", 0.0);
+        aggsData.put("winMoney", 0.0);
+        resultMap.put("total", total);
+        resultMap.put("aggsData", aggsData);
+        resultMap.put("rows", list);
+        return resultMap;
+    }
+
+    @RequestMapping("/chedan")
+    @ResponseBody
+    public Map<String, Boolean> chedan(Integer id){
+
+        return null;
+    }
+
+    @RequestMapping("/shanchudingdan")
+    @ResponseBody
+    public Map<String, Boolean> shanchudingdan(Integer id){
+        return null;
     }
 }

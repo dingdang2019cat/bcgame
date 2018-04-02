@@ -11,6 +11,7 @@ public class Recharge {
     private String id;
     private Integer realAmount;
     private Integer rechargeType;
+    //
     private Integer status;
     private String parentList;
 
