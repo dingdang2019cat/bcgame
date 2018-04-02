@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface BcLotteryOddsDAO {
 
-    @Insert("insert bcLotteryOdds (lotteryType, playType, odds, bounsType) values (#{lotteryType}, #{playType}, #{odds}, #{bounsType})")
+    @Insert("insert bcLotteryOdds (lotteryType, playType, odds, bounsType, count) values (#{lotteryType}, #{playType}, #{odds}, #{bounsType}, #{count})")
     int insert(BcLotteryOdds bcLotteryOdds);
 
     @Select("<script> " +

@@ -112,18 +112,29 @@ public class SSCJob {
             qiHao = (Long.valueOf(qiHao) + 1) + "";
         }
         GameData.gameSeasonId.put(type, qiHao);
+        if(type.equals("pk10")){
+            System.out.println("!!!!!!!!!!!1");
+        }
         while (true){
             try {
+                if(type.equals("pk10")){
+                    System.out.println("-----------------");
+                }
                 String result= HttpClientUtil.sendHttpGet("http://917500.cn/Home/Lottery/kaijianghao/lotid/" + type + ".html?page=1&nourl=1");
                 String[] results = result.split("<td>");
                 String qihao = results[1].replace("</td>", "").substring(0, count);
+                qihao = qihao.replace("\n", "");
+                qihao = qihao.replace("\r", "");
+                qihao = qihao.trim();
                 BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
                 bcLotteryHistory.setLotteryType(type);
                 bcLotteryHistory.setSeasonId(qihao);
                 List<BcLotteryHistory> bcLotteryHistoryList = bcLotteryHistoryManager.select(bcLotteryHistory);
-                System.out.println(qiHao + " .... " + qiHao1);
+                System.out.println(qihao + " .... " + qiHao1);
+                System.out.println(qihao.equals(qiHao1));
+                System.out.println(results[3]);
                 if(CollectionUtils.isEmpty(bcLotteryHistoryList) && qihao.equals(qiHao1) && !results[3].contains("?") && !results[3].contains("正在")){
-                    bcLotteryHistory.setNums(results[3].replace("<em style=\"font-size: 12px;\">", "").replace("<em >", "").replace("</em></td>", "").substring(0, 9));
+                    bcLotteryHistory.setNums(results[3].replace("<em style=\"font-size: 12px;\">", "").replace("<em >", "").replace("</em></td>", "").replace("\r", "").replace("\n", "").split(" ")[0]);
                     bcLotteryHistoryManager.insert(bcLotteryHistory);
                     bcLotteryHistory.setOpenTime(new Date());
                     GameData.lastOpen.put(type, bcLotteryHistory);

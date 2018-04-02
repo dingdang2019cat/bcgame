@@ -93,6 +93,15 @@ public class LotteryController {
         updateUser.setId(user.getId());
         updateUser.setMoney(user1.getMoney() - amount);
         userManager.update(updateUser);
+        //判断高返点
+        double fandian = user1.getFandian();
+        if(gameType.contains("pk10")){
+            fandian = fandian > 0.3 ? fandian - 0.3 : 0;
+        }else if(gameType.contains("k3")){
+            fandian = fandian > 0.2 ? fandian - 0.2 : 0;
+        }else if(gameType.contains("3d") || gameType.contains("pl3")){
+            fandian = fandian > 1.6 ? fandian - 1.6 : 0;
+        }
         //追单
         if(isTrace == 1){
             Trace trace = new Trace();
@@ -133,6 +142,7 @@ public class LotteryController {
             bcLotteryOrder.setStatus(0);
             bcLotteryOrder.setBounsType(bounsType);
             bcLotteryOrder.setOdds(GameData.oddsMap.get(o.getPlayId() + ":" + bounsType));
+            bcLotteryOrder.setGaofan(fandian / 100);
             System.out.println("---------------------------------");
             System.out.println(bcLotteryOrder.getAccount());
             System.out.println("---------------------------------");

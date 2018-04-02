@@ -47,8 +47,13 @@ public class GameData {
 
         seasonCount.put("cqssc", 120);
         seasonCount.put("xjssc", 96);
+        seasonCount.put("tjssc", 84);
+        seasonCount.put("pk10", 179);
 
         lastOpen.put("cqssc", new BcLotteryHistory());
+        lastOpen.put("xjssc", new BcLotteryHistory());
+        lastOpen.put("tjssc", new BcLotteryHistory());
+        lastOpen.put("pk10", new BcLotteryHistory());
 
         openCount.put("cqssc", 0);
         openCount.put("tjssc", 0);
