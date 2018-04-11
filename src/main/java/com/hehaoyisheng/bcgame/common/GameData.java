@@ -54,11 +54,13 @@ public class GameData {
         lastOpen.put("xjssc", new BcLotteryHistory());
         lastOpen.put("tjssc", new BcLotteryHistory());
         lastOpen.put("pk10", new BcLotteryHistory());
+        lastOpen.put("gd11x5", new BcLotteryHistory());
 
         openCount.put("cqssc", 0);
         openCount.put("tjssc", 0);
         openCount.put("xjssc", 0);
         openCount.put("pk10", 0);
+        openCount.put("gd11x5", 0);
     }
 
     public static void main(String[] args){

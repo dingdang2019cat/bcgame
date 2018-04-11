@@ -248,29 +248,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<button class="btn btn-default">昨日</button>
 					<button class="btn btn-default">本周</button>
 					<div class="form-group">
-						<div class="input-group">
-							<input type="text" class="form-control" id="account" placeholder="会员账号">
-						</div>
-						<div class="input-group">
-							<label class="sr-only" for="type">类型</label> 
-							<select class="form-control" id="type">
-								<option value="9">全部类型</option>
-								<option value="0">等待开奖</option>
-								<option value="1">已中奖</option>
-								<option value="2">未中奖</option>
-								<option value="10">撤单</option>
-								<option value="5">派奖回滚成功</option>
-								<option value="6">回滚异常的</option>
-								<option value="7">开奖异常</option>
-								<option value="8">和局</option>
-							</select>
-						</div>
-						<div class="input-group">
-							<label class="sr-only" for="czType">彩种类型</label> 
-							<select class="form-control" id="czType">
-								<option value="-1">全部彩种</option>
-							</select>
-						</div>
+
 					</div>
 					<button class="btn btn-primary" onclick="search();">查询</button>
 				</div>
@@ -281,12 +259,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<button class="btn btn-default">上周</button>
 					<button class="btn btn-default">本月</button>
 					<button class="btn btn-default">上月</button>
-					<div class="input-group">
-						<input type="text" class="form-control" id="yxQiHao" placeholder="投注期号">
-					</div>
-					<div class="input-group">
-						<input type="text" class="form-control" id="yxOrder" placeholder="订单号">
-					</div>
 				</div>
 			</div>
 		</div>
@@ -409,112 +381,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				showAllSummary:true,
 				columns : [ 
 				   {
-					field : 'orderId',
-					title : '订单号',
+					field : 'id',
+					title : '通知编号',
 					align : 'center',
 					valign : 'bottom',
 					formatter : orderFormatter
 				}, {
-					field : 'account',
-					title : '投注账号',
+					field : 'title',
+					title : '通知标题',
 					align : 'center',
 					valign : 'middle',
 					events : operateEvents,
 					formatter : accountFormatter
 				}, {
-					title : '彩种名称',
-					align : 'center',
-					valign : 'middle',
-					formatter : czFormatter
-				}, {
-					field : 'qiHao',
-					title : '期号',
+					field : 'author',
+					title : '作者',
 					align : 'center',
 					valign : 'middle'
 				}, {
-					field : 'playName',
-					title : '玩法名称',
+					field : 'time',
+					title : '时间',
 					align : 'center',
 					width : '100',
 					valign : 'middle'
 				}, {
-					field : 'haoMa',
-					title : '投注号码',
-					align : 'center',
-					width : '140',
-					formatter : wsFormatter
-				}, {
-					field : 'createTime',
-					title : '投注时间',
-					width : '150',
-					align : 'center',
-					formatter : dateFormatter
-				}, {
-					field : 'buyZhuShu',
-					title : '注数',
-					align : 'center'
-				},{
-					field : 'multiple',
-					title : '倍数',
-					align : 'center',
-					pageSummaryFormat:function(rows,aggsData){
-						return "小计:";
-					},
-					allSummaryFormat:function(rows,aggsData){
-						return "总计:";
-					}
-				},{
-					field : 'buyMoney',
-					title : '投注金额',
-					width : '50',
-					align : 'center',
-					pageSummaryFormat:function(rows,aggsData){
-						var r=0,row;
-						for(var i=rows.length-1;i>=0;i--){
-							row=rows[i];
-							if(row.buyMoney != null && row.status < 4){
-								r = r+row.buyMoney;
-							}
-						}
-						return r.toFixed(2);
-					},
-					allSummaryFormat:function(rows,aggsData){
-						if(!aggsData){
-							return "0.00"
-						}
-						return aggsData.buyMoney ? aggsData.buyMoney.toFixed(2) : "0.00";
-					}
-				},
-				 {
-					field : 'winMoney',
-					title : '中奖金额',
-					width : '50',
-					align : 'center',
-					pageSummaryFormat:function(rows,aggsData){
-						var r=0,row;
-						for(var i=rows.length-1;i>=0;i--){
-							row=rows[i];
-							if(row.winMoney != null){
-								r = r+row.winMoney;
-							}
-						}
-						return r.toFixed(2);
-					},
-					allSummaryFormat:function(rows,aggsData){
-						if(!aggsData){
-							return "0.00"
-						}
-						return aggsData.winMoney ? aggsData.winMoney.toFixed(2) : "0.00";
-					}
-				},
-				 {
-					field : 'status',
-					title : '状态',
-					width : '80',
-					align : 'center',
-					formatter : statusFormatter
-				},
-				{
 					field : 'status',
 					title : '操作',
 					width : '80',

@@ -52,7 +52,8 @@ public class IndexController {
      * 首页几个彩票的倒计时
      * @return
      */
-    @RequestMapping("info")
+    @RequestMapping("/info")
+    @ResponseBody
     public Result info(){
         List<LotteryTime> list = Lists.newArrayList();
         list.add(new LotteryTime("cqssc", (GameData.gameTime.get("cqssc") - System.currentTimeMillis()) / 1000));
