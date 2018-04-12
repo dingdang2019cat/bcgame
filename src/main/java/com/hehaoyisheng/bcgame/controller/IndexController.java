@@ -5,25 +5,21 @@ import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.common.GameThread;
 import com.hehaoyisheng.bcgame.common.GameType;
-import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
-import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
-import com.hehaoyisheng.bcgame.entity.Trace;
-import com.hehaoyisheng.bcgame.entity.User;
+import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.transfar.OrderTransfar;
 import com.hehaoyisheng.bcgame.entity.vo.LotteryOrder;
 import com.hehaoyisheng.bcgame.entity.vo.LotteryTime;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
-import com.hehaoyisheng.bcgame.manager.BcLotteryHistoryManager;
-import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
-import com.hehaoyisheng.bcgame.manager.TraceManager;
-import com.hehaoyisheng.bcgame.manager.UserManager;
+import com.hehaoyisheng.bcgame.manager.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +38,9 @@ public class IndexController {
 
     @Resource
     private BcLotteryHistoryManager bcLotteryHistoryManager;
+
+    @Resource
+    private MessageManager messageManager;
 
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login(){
@@ -188,5 +187,51 @@ public class IndexController {
             e.printStackTrace();
         }
         return "初始化完成！";
+    }
+
+    /**
+     * 发送站内信
+     * @param user
+     * @param rever
+     * @param sendContent
+     * @param title
+     * @param contactType
+     * @return
+     */
+    @RequestMapping("/message/messageSend")
+    @ResponseBody
+    public Result messageSend(@ModelAttribute("user") User user, String rever, String sendContent, String title, Integer contactType){
+        Message message = new Message();
+        message.setAuthor(user.getUsername());
+        message.setStatus(1);
+        message.setTitle(title);
+        message.setText(sendContent);
+        if(StringUtils.isEmpty(rever)){
+            return null;
+        }
+        if(rever.equals("上级")){
+            message.setAccount(user.getShangji());
+        }else{
+            User user1 = new User();
+            user1.setParentList(user.getParentList() + rever + ",");
+            List<User> user2 = userManager.select(user1, null, null, null, null, null, null);
+            if(CollectionUtils.isEmpty(user2)){
+                return null;
+            }
+            message.setAccount(rever);
+        }
+        messageManager.insert(message);
+        return Result.success("操作成功！");
+    }
+
+    /**
+     * 删除站内信
+     * @param id
+     * @return
+     */
+    @RequestMapping("/message/messageDeleteBatch")
+    @ResponseBody
+    public Result messageDeleteBatch(Integer id){
+        return Result.success(1);
     }
 }

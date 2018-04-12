@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface MessageDAO {
 
-    @Insert("insert into message (account, title, text, status, readTime, createTime, author) values (#{account}, #{title}, #{text}, #{status}, #{readTime}, #{createTime}, #{author})")
+    @Insert("insert into message (account, title, text, status, readTime, createTime, author) values (#{account}, #{title}, #{text}, #{status}, #{readTime}, now(), #{author})")
     int insert(Message message);
 
     @Update("update message set status=#{status},readTime=#{readTime} where id=#{id}")
