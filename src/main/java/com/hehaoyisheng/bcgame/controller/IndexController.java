@@ -232,6 +232,7 @@ public class IndexController {
     @RequestMapping("/message/messageDeleteBatch")
     @ResponseBody
     public Result messageDeleteBatch(Integer id){
+        messageManager.delete(id);
         return Result.success(1);
     }
 }
