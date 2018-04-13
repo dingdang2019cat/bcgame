@@ -111,6 +111,8 @@ public class IndexController {
             return "bjsc";
         }else if(gameType.endsWith("ssc")){
             return "ssc";
+        }else if(gameType.endsWith("11x5")){
+            return "11x5";
         }
         return null;
     }

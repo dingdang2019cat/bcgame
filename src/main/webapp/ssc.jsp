@@ -24319,6 +24319,7 @@
                                         <!--</label>-->
                                     </div>
                                     <div class="betsInfoTypeList">
+                                        <!--
                                         <select class="labelCond betsInfoType" id="bounsType">
 
 
@@ -24329,10 +24330,9 @@
                                                 1700-12.5%(高返)
                                             </option>
                                         </select>
-
-
-
                                         </select>
+                                        -->
+                                        <input type="range" defaultValue="12.5" min="0" max="12.5" step="0.1" onchange="changeBouns()" id="bounsNumRange"/>&nbsp;<span id="bounsNum">1700-12.5%</span>
                                     </div>
                                 </div>
                             </div>
