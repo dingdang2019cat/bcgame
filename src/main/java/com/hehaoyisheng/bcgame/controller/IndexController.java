@@ -185,6 +185,12 @@ public class IndexController {
             gameThread.initData("tjssc");
             Thread.sleep(1000);
             gameThread.initData("pk10");
+            Thread.sleep(1000);
+            gameThread.initData("gd115");
+            Thread.sleep(1000);
+            gameThread.initData("jx115");
+            Thread.sleep(1000);
+            gameThread.initData("sd115");
         }catch (Exception e){
             e.printStackTrace();
         }

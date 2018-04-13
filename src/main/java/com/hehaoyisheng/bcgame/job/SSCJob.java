@@ -111,15 +111,29 @@ public class SSCJob {
         if(type.equals("pk10")){
             qiHao = (Long.valueOf(qiHao) + 1) + "";
         }
-        GameData.gameSeasonId.put(type, qiHao);
-        if(type.equals("pk10")){
-            System.out.println("!!!!!!!!!!!1");
+
+        if(type.equals("gd11x5") || type.equals("jx11x5")){
+            if(qiHaoInt == 84){
+                qiHao = format1.format(new Date(System.currentTimeMillis())) + "01";
+            }else{
+                qiHao = (Long.valueOf(qiHao) + 1) + "";
+            }
         }
+
+        if(type.equals("sd11x5")){
+            if(qiHaoInt == 87){
+                qiHao = format1.format(new Date(System.currentTimeMillis())) + "01";
+            }else{
+                qiHao = (Long.valueOf(qiHao) + 1) + "";
+            }
+        }
+
+        if(type.endsWith("11x5")){
+            type = type.replace("11x5", "115");
+        }
+        GameData.gameSeasonId.put(type, qiHao);
         while (true){
             try {
-                if(type.equals("pk10")){
-                    System.out.println("-----------------");
-                }
                 String result= HttpClientUtil.sendHttpGet("http://917500.cn/Home/Lottery/kaijianghao/lotid/" + type + ".html?page=1&nourl=1");
                 String[] results = result.split("<td>");
                 String qihao = results[1].replace("</td>", "").substring(0, count);

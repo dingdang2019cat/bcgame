@@ -50,7 +50,7 @@ public class GameData {
         seasonCount.put("tjssc", 84);
         seasonCount.put("pk10", 179);
         seasonCount.put("gd11x5", 84);
-        seasonCount.put("11x5", 84);
+        //seasonCount.put("11x5", 84);
 
         lastOpen.put("cqssc", new BcLotteryHistory());
         lastOpen.put("xjssc", new BcLotteryHistory());

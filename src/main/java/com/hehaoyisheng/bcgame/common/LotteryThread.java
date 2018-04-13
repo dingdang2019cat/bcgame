@@ -45,6 +45,12 @@ public class LotteryThread {
         this.bcLotteryOrderManager = bcLotteryOrderManager;
     }
 
+    /**
+     * 分配开奖线程
+     * @param lotteryType
+     * @param seasonId
+     * @param looteryContent
+     */
     public synchronized void lottery(String lotteryType, String seasonId, String looteryContent){
         System.out.println("begin");
         BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
