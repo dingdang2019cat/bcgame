@@ -3150,7 +3150,7 @@
                     <span class="fontColorRed" id="traceAllMoney">0.00</span> <span class="fontColorGray">追号方案总金额(元)</span>
                 </div>
                 <div class="cfmAppNumInfoDetail">
-                    <span class="userBalance">35.7103</span> <span class="fontColorGray">账户可用余额(元)</span>
+                    <span class="userBalance">${amount}</span> <span class="fontColorGray">账户可用余额(元)</span>
                 </div>
                 <div class="cfmAppNumInfoDetail">
                     <span class="seasonTime">00:00:00</span> <span class="fontColorGray">本期投注截止</span>
@@ -3697,75 +3697,6 @@
     </h3>
     <ul class="allGameList">
 
-
-
-        <li class="gameDetail">
-            <a href="/lotts/tiger/index">
-                <span>鼎汇秒秒彩</span>
-                <i class="hot">H</i>
-            </a>
-        </li>
-
-        <li class="gameDetail">
-            <a href="/lotts/sj_mmc/index">
-                <span>鼎汇40秒</span>
-                <i class="hot">H</i>
-            </a>
-        </li>
-
-        <li class="gameDetail">
-            <a href="/lotts/sj1fc/index">
-                <span>鼎汇一分彩</span>
-                <i class="hot">H</i>
-            </a>
-        </li>
-
-        <li class="gameDetail">
-            <a href="/lotts/sj3fc/index">
-                <span>鼎汇三分彩</span>
-
-            </a>
-        </li>
-
-        <li class="gameDetail">
-            <a href="/lotts/sj5fc/index">
-                <span>鼎汇五分彩</span>
-
-            </a>
-        </li>
-
-        <li class="gameDetail">
-            <a href="/lotts/gppl5/index">
-                <span>高频排列5</span>
-
-            </a>
-        </li>
-
-
-
-        <li class="gameDetail">
-            <a href="/lotts/tx1fc/index">
-                <span>腾讯分分彩</span>
-
-            </a>
-        </li>
-
-        <li class="gameDetail">
-            <a href="/lotts/jndbsc/index">
-                <span>加拿大3.5</span>
-
-            </a>
-        </li>
-
-        <li class="gameDetail">
-            <a href="/lotts/dj1_5/index">
-                <span>东京1.5</span>
-
-            </a>
-        </li>
-
-
-
         <li class="gameDetail">
             <a href="/lotts/cqssc/index">
                 <span>重庆时时彩</span>
@@ -3794,31 +3725,6 @@
 
 
         <li class="gameDetail">
-            <a href="/lotts/ffpk10/index">
-                <span>分分PK10</span>
-
-            </a>
-        </li>
-
-        <li class="gameDetail">
-            <a href="/lotts/f3pk10/index">
-                <span>3分PK10</span>
-
-            </a>
-        </li>
-
-        <li class="gameDetail">
-            <a href="/lotts/f5pk10/index">
-                <span>5分PK10</span>
-
-            </a>
-        </li>
-
-
-
-
-
-        <li class="gameDetail">
             <a href="/lotts/jsk3/index">
                 <span>江苏快3</span>
 
@@ -3831,25 +3737,6 @@
 
             </a>
         </li>
-
-
-
-
-
-        <li class="gameDetail">
-            <a href="/lotts/f1_11x5/index">
-                <span>一分11选5</span>
-
-            </a>
-        </li>
-
-        <li class="gameDetail">
-            <a href="/lotts/f3_11x5/index">
-                <span>三分11选5</span>
-
-            </a>
-        </li>
-
 
 
         <li class="gameDetail">
