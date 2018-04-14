@@ -71,6 +71,9 @@ public class SSCJob {
         if(type.contains("ssc")){
             qiHaoInt = Integer.valueOf(qiHao1.substring(8, count));
         }
+        if(type.contains("11x5")){
+            qiHaoInt = Integer.valueOf(qiHao1.substring(8, count));
+        }
         GameData.openCount.put(type, qiHaoInt);
         //判断时间间隔
         if(type.equals("cqssc") && qiHaoInt < 24 || qiHaoInt > 96){
@@ -127,14 +130,10 @@ public class SSCJob {
                 qiHao = (Long.valueOf(qiHao) + 1) + "";
             }
         }
-
-        if(type.endsWith("11x5")){
-            type = type.replace("11x5", "115");
-        }
         GameData.gameSeasonId.put(type, qiHao);
         while (true){
             try {
-                String result= HttpClientUtil.sendHttpGet("http://917500.cn/Home/Lottery/kaijianghao/lotid/" + type + ".html?page=1&nourl=1");
+                String result= HttpClientUtil.sendHttpGet("http://917500.cn/Home/Lottery/kaijianghao/lotid/" + (type.endsWith("11x5") ? type.replace("11x5", "115") : type) + ".html?page=1&nourl=1");
                 String[] results = result.split("<td>");
                 String qihao = results[1].replace("</td>", "").substring(0, count);
                 qihao = qihao.replace("\n", "");

@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!DOCTYPE html>
@@ -23,7 +24,7 @@
     <link rel="stylesheet" href="/resource/wk-common.css?ver=20180323"/>
     <script type="text/javascript" src="/resource/jquery-1.11.0.min.js?ver=20180323"></script>
     <script type="text/javascript" src="/resource/jquery.timer.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/layer/layer.js?ver=20180323"></script>
+    <script type="text/javascript" src="/resource/layer.js?ver=20180323"></script>
     <script type="text/javascript" src="/resource/jquery.cookie.js?ver=20180323"></script>
     <script type="text/javascript" src="/resource/spinner.js?ver=20180323"></script>
     <script type="text/javascript" src="/resource/audio/audio5.js?ver=20180323"></script>
@@ -47,7 +48,7 @@
         hs.lottery.betInAmountMax = 1000.00;
         hs.lottery.gameSecondMax =  25;
         hs.lottery.k3 = false;
-        var account ="lnzyz1212";
+        var account ="${username}";
     </script>
     <style>
         body {
@@ -239,10 +240,10 @@
         <div class="mainWidth">
             <!--彩种Logo-->
             <div class="lotteryLogo">
-                <img src="/res/home/images/lottTypes/cz_gd11x5-theme-black.png" class="betsType logogd11x5" />
+                <img src="/resource/lottTypes/${gameType}.png" class="betsType logogd11x5" />
                 <!--<span class="betsType">广东11选5</span>
-                    <img src="/res/home/images/lotteryLogo-ssc.png" class="betsType" />
-                    <img src="/res/home/images/lotteryLogo-115.png" class="betsType" style="display: none;" />-->
+                    <img src="/resource/lotteryLogo-ssc.png" class="betsType" />
+                    <img src="/resource/lotteryLogo-115.png" class="betsType" style="display: none;" />-->
                 <!--<p class="currLottNumBox">-->
                 <!--<span>当前已开</span>-->
                 <!--<span class="openCount" id="openCount">7</span>-->
@@ -8185,117 +8186,17 @@
                                 </tr>
                                 </thead>
                                 <tbody id="openList">
-
-                                <tr class="beforeLottNumDetail">
-
-
-
-                                    <td class="smallFont12">20180413-007</td>
-                                    <td class="fontColorTheme beforeLottNum">
-
-                                        <span>01</span>
-
-                                        <span>11</span>
-
-                                        <span>04</span>
-
-                                        <span>06</span>
-
-                                        <span>10</span>
-
-                                    </td>
-
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail">
-
-
-
-                                    <td class="smallFont12">20180413-006</td>
-                                    <td class="fontColorTheme beforeLottNum">
-
-                                        <span>10</span>
-
-                                        <span>07</span>
-
-                                        <span>11</span>
-
-                                        <span>09</span>
-
-                                        <span>06</span>
-
-                                    </td>
-
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail">
-
-
-
-                                    <td class="smallFont12">20180413-005</td>
-                                    <td class="fontColorTheme beforeLottNum">
-
-                                        <span>01</span>
-
-                                        <span>09</span>
-
-                                        <span>10</span>
-
-                                        <span>06</span>
-
-                                        <span>07</span>
-
-                                    </td>
-
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail">
-
-
-
-                                    <td class="smallFont12">20180413-004</td>
-                                    <td class="fontColorTheme beforeLottNum">
-
-                                        <span>05</span>
-
-                                        <span>08</span>
-
-                                        <span>03</span>
-
-                                        <span>10</span>
-
-                                        <span>07</span>
-
-                                    </td>
-
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail">
-
-
-
-                                    <td class="smallFont12">20180413-003</td>
-                                    <td class="fontColorTheme beforeLottNum">
-
-                                        <span>01</span>
-
-                                        <span>06</span>
-
-                                        <span>02</span>
-
-                                        <span>04</span>
-
-                                        <span>09</span>
-
-                                    </td>
-
-
-                                </tr>
-
+                                <c:forEach var="recentOpen1" items="${recentOpen}">
+                                    <tr class="beforeLottNumDetail">
+                                        <td class="smallFont12">${recentOpen1.seasonId}</td>
+                                        <td class="fontColorTheme beforeLottNum">
+                                            <c:set value="${ fn:split(recentOpen1.nums, ',') }" var="str1" />
+                                            <c:forEach items="${ str1 }" var="s">
+                                                <span>${s}</span>
+                                            </c:forEach>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>

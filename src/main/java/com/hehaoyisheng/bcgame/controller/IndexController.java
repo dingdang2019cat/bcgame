@@ -57,8 +57,8 @@ public class IndexController {
         List<LotteryTime> list = Lists.newArrayList();
         list.add(new LotteryTime("cqssc", (GameData.gameTime.get("cqssc") - System.currentTimeMillis()) / 1000));
         System.out.println(GameData.gameTime.get("cqssc") - System.currentTimeMillis());
-        list.add(new LotteryTime("gd11x5", GameData.gameTime.get("gd11x5")));
-        list.add(new LotteryTime("pk10", GameData.gameTime.get("pk10")));
+        list.add(new LotteryTime("gd11x5", (GameData.gameTime.get("gd11x5") - System.currentTimeMillis()) / 1000));
+        list.add(new LotteryTime("pk10", (GameData.gameTime.get("pk10") - System.currentTimeMillis()) / 1000));
         list.add(new LotteryTime("3d", GameData.gameTime.get("3d")));
         return Result.success(list);
     }
@@ -67,8 +67,6 @@ public class IndexController {
     //TODO
     public String gamePage(@ModelAttribute("user") User user, @PathVariable String gameType, Model model){
         List<User> users = userManager.select(user, null, null, null, null, null, null);
-        //开奖图片
-
         //最近开奖
         BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
         bcLotteryHistory.setLotteryType(gameType);
@@ -105,6 +103,9 @@ public class IndexController {
         model.addAttribute("nickName", users.get(0).getNickName());
         model.addAttribute("amount", users.get(0).getMoney());
         model.addAttribute("account", users.get(0).getUsername());
+        model.addAttribute("gameType", gameType);
+        model.addAttribute("maxFandian", users.get(0).getFandian());
+        model.addAttribute("maxBouns", 1700 + (users.get(0).getFandian() * 20));
         if(gameType.endsWith("k3")){
             return "k3";
         }else if(gameType.endsWith("pk10")){
@@ -186,11 +187,11 @@ public class IndexController {
             Thread.sleep(1000);
             gameThread.initData("pk10");
             Thread.sleep(1000);
-            gameThread.initData("gd115");
+            gameThread.initData("gd11x5");
             Thread.sleep(1000);
-            gameThread.initData("jx115");
+            gameThread.initData("jx11x5");
             Thread.sleep(1000);
-            gameThread.initData("sd115");
+            gameThread.initData("sd11x5");
         }catch (Exception e){
             e.printStackTrace();
         }

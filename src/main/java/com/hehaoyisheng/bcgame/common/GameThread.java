@@ -11,7 +11,7 @@ public class GameThread {
     public void initData(String type) {
         Map<String, String> map = Maps.newHashMap();
         map.put("nourl", "1");
-        map.put("lotid", type);
+        map.put("lotid", type.endsWith("11x5") ? type.replace("11x5", "115") : type);
         map.put("uid", "");
         String result = HttpClientUtil.sendHttpPost("http://917500.cn/Home/Article/timelimit.html", map);
         JSONObject jsonObject = JSONObject.parseObject(result);

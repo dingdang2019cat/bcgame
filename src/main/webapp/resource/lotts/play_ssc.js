@@ -1183,10 +1183,4 @@ var lottery = {
 	
 };
 
-function changeBouns(){
-	var bounsNumRange = $("#bounsNumRange").val();
-	var bounsNum = bounsNumRange * 20 + 1700;
-    $("#bounsNum").text(bounsNum + "-" + bounsNumRange + "%");
-}
-
 lottery = jQuery.extend(BaseLottery,lottery);

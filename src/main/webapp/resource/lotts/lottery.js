@@ -840,6 +840,8 @@ $(function() {
 			var ratio = parseFloat($("#userRatio").attr("data-ratio"));
 			ratio = ratio.sub(playRatio);
 //			ratio = ratio.mul(100); //百分比
+
+			/*
 			var opts = '';
 			if(ratio>0) {
 				opts += '<option value="0">'+maxBonus+'-0%(高奖)</option>';
@@ -848,18 +850,29 @@ $(function() {
 				opts += '<option value="0">'+minBonus+'</option>';
 			}
 			$("#bounsType").html(opts);
-			var bonus = null;
-			if($("#bounsType").val() == 1){
-				bonus = $(this).attr("data-bonus");
-			} else {
-				bonus = $(this).attr("data-MaxBonus");
-			}
-			$("#playBonus").html(bonus);
+			*/
+
+			var fandian = $("#bounsNumRange").attr("max");
+			maxBonus = (fandian * 20 + 1700) / (1700 / minBonus);
+            //$("#bounsNumRange").attr("max", maxBonus);
+            //$("#bounsNumRange").val(maxBonus);
+			$("#bounsNum").text(maxBonus);
+
+            /*
+            var bonus = null;
+            if($("#bounsType").val() == 1){
+                bonus = $(this).attr("data-bonus");
+            } else {
+                bonus = $(this).attr("data-MaxBonus");
+            }
+            */
+			$("#playBonus").html(maxBonus);
 		}
 		$(".numList a").removeClass("active");
 		$(".singleNum").val('');
 		refererPage();
 	});
+
 	
 	//任选切换位置
 	$(".anySelect").change(function(){
@@ -2491,4 +2504,21 @@ function k3Sum(){
 		html += '<span style="color:#00ddcb;">' + sum + '</span>&emsp;' + daXiao + danShuang;
 		$beforeLottNum.next('.k3SumTd').append(html);
 	});
+}
+
+function changeBouns(){
+    var play = $(".lottTypeBox:visible")
+        .find(".lottTypeDetail.active");
+	var bouns = play.attr("data-bonus");
+	var beishu = 1700 / +bouns;
+    var max = $("#bounsNumRange").attr("max");
+    var bounsNumRange = $("#bounsNumRange").val();
+    var bounsNum = ((bounsNumRange * 20 + +bouns) / beishu).toFixed(2);
+    if(max == bounsNumRange){
+        $("#bounsNum").text(bounsNum);
+	}else{
+        bounsNumRange = max - bounsNumRange;
+        bounsNumRange = bounsNumRange.toFixed(1);
+        $("#bounsNum").text(bounsNum + "-" + bounsNumRange + "%");
+	}
 }

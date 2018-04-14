@@ -56,38 +56,6 @@
         </td>
     </tr>
     </c:forEach>
-
-    <input id="messageSendContet_7234" value="可以玩嘛" type="hidden" />
-    <tr class="listDetail ">
-        <td>可以玩嘛</td>
-        <td style="text-align:left; padding-left:20px;position: relative;" id="messageTitle_7234">
-            可以玩嘛
-
-        </td>
-        <td>
-
-
-
-
-            我
-
-
-
-
-
-        </td>
-        <td>2017-11-17 01:40:09</td>
-        <td>
-
-
-
-            lnzyzioio
-
-        </td>
-        <td class="operate">
-            <a href="javascript:;" onclick="messageDetail('7234','可以玩嘛');" class="operateBtn delete fontColorTheme">查看</a>
-            <a href="javascript:;" onclick="messageDelete('7234');" class="operateBtn delete fontColorTheme">删除</a>
-        </td>
     </tr>
 
 </table>

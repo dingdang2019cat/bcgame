@@ -19,7 +19,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
     <meta http-equiv="expires" content="0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
-    <link rel="icon" href="/res/home/images/favicon.ico"  type="image/x-icon" />
+    <link rel="icon" href="/resource/favicon.ico"  type="image/x-icon" />
     <link rel="stylesheet" href="/resource/reset.css?ver=20171208"/>
     <link rel="stylesheet" href="/resource/wk-common.css?ver=20171208"/>
     <script type="text/javascript" src="/resource/jquery-1.11.0.min.js?ver=20171208"></script>
@@ -237,7 +237,7 @@
         <div class="mainWidth">
             <!--彩种Logo-->
             <div class="lotteryLogo">
-                <img src="/resource/lottTypes/cz_cqssc-theme-black.png" class="betsType logocqssc" />
+                <img src="/resource/lottTypes/${gameType}.png" class="betsType logocqssc" />
                 <!--<span class="betsType">重庆时时彩</span>
                     <img src="/res/home/images/lotteryLogo-ssc.png" class="betsType" />
                     <img src="/res/home/images/lotteryLogo-115.png" class="betsType" style="display: none;" />-->
@@ -24332,7 +24332,7 @@
                                         </select>
                                         </select>
                                         -->
-                                        <input type="range" defaultValue="12.5" min="0" max="12.5" step="0.1" onchange="changeBouns()" id="bounsNumRange"/>&nbsp;<span id="bounsNum">1700-12.5%</span>
+                                        <input type="range" value="12.5" min="0" max="${maxFandian}" step="0.1" onchange="changeBouns()" id="bounsNumRange"/>&nbsp;<span id="bounsNum">${maxBouns}</span>
                                     </div>
                                 </div>
                             </div>
@@ -24435,7 +24435,6 @@
                                     </td>
                                 </tr>
                                 </c:forEach>
-                                </tr>
 
                                 </tbody>
                             </table>
