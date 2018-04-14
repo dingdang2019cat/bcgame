@@ -8084,6 +8084,7 @@
                                         <!--</label>-->
                                     </div>
                                     <div class="betsInfoTypeList">
+                                        <!--
                                         <select class="labelCond betsInfoType" id="bounsType">
 
 
@@ -8098,6 +8099,8 @@
 
 
                                         </select>
+                                        -->
+                                        <input type="range" value="${maxFandian}" min="0" max="${maxFandian}" step="0.1" onchange="changeBouns()" id="bounsNumRange"/>&nbsp;<span id="bounsNum">${maxBouns}</span>
                                     </div>
                                 </div>
                             </div>

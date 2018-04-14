@@ -330,6 +330,15 @@ public class GameLottery {
         return winCount;
     }
 
+    /**
+     * 11x5 定位胆
+     * @return
+     */
+    public static int bc11x5Dwd(){
+        int winCount = 0;
+        return winCount;
+    }
+
     public static void main(String[] args) {
         String s = "0102";
         System.out.println(s.substring(2, 4));

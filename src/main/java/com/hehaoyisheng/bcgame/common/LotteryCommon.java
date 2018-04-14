@@ -37,7 +37,7 @@ public class LotteryCommon {
 
         if(bcLotteryOrder.getBounsType() == 1){
             //TODO
-            double money = bcLotteryOrder.getBuyMoney() * bcLotteryOrder.getGaofan();
+            double money = bcLotteryOrder.getBuyMoney() * bcLotteryOrder.getGaofan() / 100;
             userManager.update(u, money);
             MoneyHistory moneyHistory = new MoneyHistory();
             moneyHistory.setAccount(bcLotteryOrder.getAccount());

@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/resource/wk-common.css?ver=20180323"/>
     <script type="text/javascript" src="/resource/jquery-1.11.0.min.js?ver=20180323"></script>
     <script type="text/javascript" src="/resource/jquery.timer.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/layer/layer.js?ver=20180323"></script>
+    <script type="text/javascript" src="/resource/layer.js?ver=20180323"></script>
     <script type="text/javascript" src="/resource/jquery.cookie.js?ver=20180323"></script>
     <script type="text/javascript" src="/resource/spinner.js?ver=20180323"></script>
     <script type="text/javascript" src="/resource/audio/audio5.js?ver=20180323"></script>
@@ -241,7 +241,7 @@
         <div class="mainWidth">
             <!--彩种Logo-->
             <div class="lotteryLogo">
-                <img src="/resource/lottTypes/cz_jsk3-theme-black.png" class="betsType logojsk3" />
+                <img src="/resource/lottTypes/${gameType}.png" class="betsType logojsk3" />
                 <!--<span class="betsType">江苏快3</span>
                 <img src="/resource/lotteryLogo-ssc.png" class="betsType" />
                 <img src="/resource/lotteryLogo-115.png" class="betsType" style="display: none;" />-->
@@ -580,7 +580,7 @@
 
 
 
-                            <link rel="stylesheet" href="/resource/wk-lottery-k3.css?ver=20180323"/>
+                            <link rel="stylesheet" href="/resource/wk-lottery-k3.css"/>
                             <!--选号列表-->
 
                             <!-- 号码盘 -->

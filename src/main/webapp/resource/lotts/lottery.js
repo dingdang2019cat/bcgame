@@ -856,7 +856,7 @@ $(function() {
 			maxBonus = (fandian * 20 + 1700) / (1700 / minBonus);
             //$("#bounsNumRange").attr("max", maxBonus);
             //$("#bounsNumRange").val(maxBonus);
-			$("#bounsNum").text(maxBonus);
+			$("#bounsNum").text(maxBonus.toFixed(2));
 
             /*
             var bonus = null;
@@ -866,7 +866,7 @@ $(function() {
                 bonus = $(this).attr("data-MaxBonus");
             }
             */
-			$("#playBonus").html(maxBonus);
+			$("#playBonus").html(maxBonus.toFixed(2));
 		}
 		$(".numList a").removeClass("active");
 		$(".singleNum").val('');
@@ -1519,6 +1519,15 @@ $(function() {
 
 		// 高返高奖
 		var bounsType = $("#bounsType").val();
+
+        var max = $("#bounsNumRange").attr("max");
+
+		var bounsRange = $("#bounsNumRange").val();
+
+		var bouns = $("#bounsNum").text();
+
+        //var bouns = ${"#bounsNum"}.text();
+
 		// 倍数
 		var price = parseInt($("#betPrice").val());
 		// 单价
@@ -1534,7 +1543,9 @@ $(function() {
 
 		var formInputs = '<input type="hidden" name="isTrace" value="0"/>';
 		formInputs += '<input type="hidden" name="traceWinStop" value="0"/>';
-		formInputs += '<input type="hidden" name="bounsType" value="'+bounsType+'"/>';
+		formInputs += '<input type="hidden" name="bounsRange" value="'+(max - bounsRange)+'"/>';
+		formInputs += '<input type="hidden" name="bouns" value="'+bouns+'"/>';
+		//formInputs += '<input type="hidden" name="bounsType" value="'+bounsType+'"/>';
 		formInputs += '<input type="hidden" name="order[0].playId" value="'+info.id+'"/>';
 		formInputs += '<input type="hidden" name="order[0].content" value="'+info.content+'"/>';
 		formInputs += '<input type="hidden" name="order[0].betCount" value="'+info.count+'"/>';
@@ -1579,6 +1590,7 @@ $(function() {
 		var allAmount = 0;
 		var allCount = 0;
 
+
 		if($("tr.appNumDetail").length == 0){
 			$.alert("您未选择号码！");
 			return;
@@ -1587,7 +1599,12 @@ $(function() {
 //		var url = "bet?isTrace=0&traceWinStop=0";
 		var formInputs = '<input type="hidden" name="isTrace" value="0"/>';
 		formInputs += '<input type="hidden" name="traceWinStop" value="0"/>';
-		formInputs += '<input type="hidden" name="bounsType" value="'+$("#bounsType").val()+'"/>';
+		//formInputs += '<input type="hidden" name="bounsType" value="'+$("#bounsType").val()+'"/>';
+        var bounsRange = $("#bounsNumRange").val();
+        var max = $("#bounsNumRange").attr("max");
+        var bouns = $("#bounsNum").text();
+        formInputs += '<input type="hidden" name="bounsRange" value="'+(max - bounsRange)+'"/>';
+        formInputs += '<input type="hidden" name="bouns" value="'+bouns+'"/>';
 		var trs = '';
 		$("tr.appNumDetail").each(function() {
 			var id = $(this).attr("data-id"); // 玩法
@@ -1633,7 +1650,12 @@ $(function() {
 		
 		var formInputs = '<input type="hidden" name="isTrace" value="1"/>';
 		formInputs += '<input type="hidden" name="traceWinStop" value="'+v+'"/>';
-		formInputs += '<input type="hidden" name="bounsType" value="'+$("#bounsType").val()+'"/>';
+        var bounsRange = $("#bounsNumRange").val();
+        var max = $("#bounsNumRange").attr("max");
+        var bouns = $("#bounsNum").text();
+        formInputs += '<input type="hidden" name="bounsRange" value="'+(max - bounsRange)+'"/>';
+        formInputs += '<input type="hidden" name="bouns" value="'+bouns+'"/>';
+		//formInputs += '<input type="hidden" name="bounsType" value="'+$("#bounsType").val()+'"/>';
 		
 		var trs = '';
 		

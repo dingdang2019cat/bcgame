@@ -24332,7 +24332,7 @@
                                         </select>
                                         </select>
                                         -->
-                                        <input type="range" value="12.5" min="0" max="${maxFandian}" step="0.1" onchange="changeBouns()" id="bounsNumRange"/>&nbsp;<span id="bounsNum">${maxBouns}</span>
+                                        <input type="range" value="${maxFandian}" min="0" max="${maxFandian}" step="0.1" onchange="changeBouns()" id="bounsNumRange"/>&nbsp;<span id="bounsNum">${maxBouns}</span>
                                     </div>
                                 </div>
                             </div>
