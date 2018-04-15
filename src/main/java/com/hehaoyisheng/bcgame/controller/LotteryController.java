@@ -51,6 +51,16 @@ public class LotteryController {
     @RequestMapping("/{gameType}/bet")
     @ResponseBody
     public Result doBet(@ModelAttribute("user") User user, @PathVariable String gameType, int isTrace, Integer traceWinStop, Integer bounsType, String bouns, Double bounsRange, OrderModel order, double amount, int count, int force, TraceModel traceOrders){
+        double bouns1 = Double.valueOf(bouns.split("-")[0]);
+        if(gameType.contains("ssc") && bouns1 > 1970){
+            return Result.faild("赔率过高，无法下注", 400);
+        }
+        if(gameType.contains("11x5") && bouns1 > 1950){
+            return Result.faild("赔率过高，无法下注", 400);
+        }
+        if(gameType.contains("pk10") && bouns1 > 1950){
+            return Result.faild("赔率过高，无法下注", 400);
+        }
         System.out.println(" userName is the " + user.getUsername());
         //初始化赔率
         if(CollectionUtils.isEmpty(GameData.oddsMap)){

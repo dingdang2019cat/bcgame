@@ -183,7 +183,7 @@
 
                             <ul class="lotteryGroupList">
 
-                                <li><a href="/lotts/ah11x5/index" class="lottplayExplain">安徽11选5</a></li>
+
 
                                 <li><a href="/lotts/gd11x5/index" class="lottplayExplain">广东11选5</a></li>
 
@@ -549,29 +549,6 @@
                                             <span class="highBonusRebate">1700+12.2%</span>
                                         </td>
                                     </tr>
-
-
-
-
-
-
-
-
-
-
-
-                                    <tr data-ratio="0.2" class="listDetail">
-                                        <td>安徽快三</td>
-                                        <td>1700平级奖金组</td>
-                                        <td>0-12.3%</td>
-                                        <td data-ratio="85.00">
-                                            <span class="highBonusRebate">1946</span>
-                                        </td>
-                                        <td data-ratio="1700.00">
-                                            <span class="highBonusRebate">1700+12.3%</span>
-                                        </td>
-                                    </tr>
-
 
 
 

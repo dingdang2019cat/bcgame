@@ -154,7 +154,7 @@
                             -->
                             <ul class="lotteryGroupList">
 
-                                <li><a href="/lotts/ah11x5/index" class="lottplayExplain">安徽11选5</a></li>
+
 
                                 <li><a href="/lotts/gd11x5/index" class="lottplayExplain">广东11选5</a></li>
 
@@ -297,28 +297,6 @@
                             <select id="lotteryId" name="lotteryId" class="labelCond selectCond lotteryId">
                                 <option value="">所有彩种</option>
 
-                                <option value="tiger">鼎汇秒秒彩</option>
-
-                                <option value="sj_mmc">鼎汇40秒</option>
-
-                                <option value="sj1fc">鼎汇一分彩</option>
-
-                                <option value="sj3fc">鼎汇三分彩</option>
-
-                                <option value="sj5fc">鼎汇五分彩</option>
-
-                                <option value="gppl5">高频排列5</option>
-
-                                <option value="tx1fc">腾讯分分彩</option>
-
-                                <option value="jnd3_5">加拿大卑斯彩</option>
-
-                                <option value="jndbsc">加拿大3.5</option>
-
-                                <option value="tw5fc">台湾5分彩</option>
-
-                                <option value="dj1_5">东京1.5</option>
-
                                 <option value="cqssc">重庆时时彩</option>
 
                                 <option value="tjssc">天津时时彩</option>
@@ -329,23 +307,10 @@
 
                                 <option value="pk10">北京赛车</option>
 
-                                <option value="ffpk10">分分PK10</option>
-
-                                <option value="f3pk10">3分PK10</option>
-
-                                <option value="f5pk10">5分PK10</option>
-
-                                <option value="ahk3">安徽快3</option>
 
                                 <option value="jsk3">江苏快3</option>
 
                                 <option value="shk3">上海快3</option>
-
-                                <option value="f1_11x5">一分11选5</option>
-
-                                <option value="f3_11x5">三分11选5</option>
-
-                                <option value="ah11x5">安徽11选5</option>
 
                                 <option value="gd11x5">广东11选5</option>
 

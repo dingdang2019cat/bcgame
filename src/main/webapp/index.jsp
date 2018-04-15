@@ -119,9 +119,7 @@
                     			<ul class="lotteryGroupList">
 		                    		
 			                    		<li><a href="/lotts/shk3/index" class="lottplayExplain">上海快3</a></li>
-		                    		
-			                    		<li><a href="/lotts/ahk3/index" class="lottplayExplain">安徽快3</a></li>
-		                    		
+
 			                    		<li><a href="/lotts/jsk3/index" class="lottplayExplain">江苏快3</a></li>
 		                    		
 	                   			</ul>
@@ -145,7 +143,7 @@
 		                    		
 			                    		<li><a href="/lotts/gd11x5/index" class="lottplayExplain">广东11选5</a></li>
 		                    		
-			                    		<li><a href="/lotts/ah11x5/index" class="lottplayExplain">安徽11选5</a></li>
+
 		                    		
 			                    		<li><a href="/lotts/jx11x5/index" class="lottplayExplain">江西11选5</a></li>
 		                    		

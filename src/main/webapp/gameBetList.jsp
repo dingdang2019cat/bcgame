@@ -155,7 +155,7 @@
 
                                 <li><a href="/lotts/gd11x5/index" class="lottplayExplain">广东11选5</a></li>
 
-                                <li><a href="/lotts/ah11x5/index" class="lottplayExplain">安徽11选5</a></li>
+
 
                                 <li><a href="/lotts/jx11x5/index" class="lottplayExplain">江西11选5</a></li>
 
@@ -489,8 +489,6 @@
 
                                     <option value="shk3">上海快3</option>
 
-                                    <option value="ahk3">安徽快3</option>
-
                                     <option value="jsk3">江苏快3</option>
 
                                     <option value="f1_11x5">一分11选5</option>
@@ -499,7 +497,6 @@
 
                                     <option value="gd11x5">广东11选5</option>
 
-                                    <option value="ah11x5">安徽11选5</option>
 
                                     <option value="jx11x5">江西11选5</option>
 
