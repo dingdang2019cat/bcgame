@@ -222,6 +222,7 @@
                 <ref bean="xjsscTigger2"/>
                 <ref bean="tjsscTigger1"/>
                 <ref bean="pk10Tigger"/>
+                <ref bean="gd11x5Tigger"/>
             </list>
         </property>
         <property name="autoStartup" value="true" />

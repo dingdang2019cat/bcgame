@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 <head>
-<title>代理平台</title>
+<title>管理平台</title>
 <meta charset="utf-8">
 </head>
 <body>

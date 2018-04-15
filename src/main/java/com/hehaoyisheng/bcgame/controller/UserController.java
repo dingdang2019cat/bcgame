@@ -152,7 +152,8 @@ public class UserController {
         model.addAttribute("account", user.getUsername());
         model.addAttribute("userType", users.get(0).getType());
         model.addAttribute("playerMaxRatio", users.get(0).getFandian());
-        model.addAttribute("maxRatio", users.get(0).getFandian() > 0.3 ? users.get(0).getFandian() - 0.3 : 0);
+        //model.addAttribute("maxRatio", users.get(0).getFandian() > 0.3 ? users.get(0).getFandian() - 0.3 : 0);
+        model.addAttribute("maxRatio", users.get(0).getFandian());
         return "user";
     }
 

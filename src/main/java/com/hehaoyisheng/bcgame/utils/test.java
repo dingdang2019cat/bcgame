@@ -18,15 +18,18 @@ import java.io.IOException;
 
 public class test {
     public static void main(String[] args) throws IOException {
-        /*
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         //LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
         //lotteryThread.lottery("cqssc", "20180121024", "0,0,0,1,0");
         BcLotteryOddsDAO bcLotteryOddsDAO = (BcLotteryOddsDAO) applicationContext.getBean("bcLotteryOddsDAO");
-        Document document = Jsoup.parse(new File("C:\\Users\\Administrator\\IdeaProjects\\bcgame\\src\\main\\webapp\\ssc.jsp"), "utf-8");
+        Document document = Jsoup.parse(new File("Z:\\bcgame\\bcgame\\src\\main\\webapp\\11x5.jsp"), "utf-8");
         Elements elements = document.getElementsByClass("lottTypeDetail");
         for(Element element : elements){
             String playCode = element.attr("data-show").replace("#", "");
+            String playName = element.attr("data-title");
+            System.out.println("playName.put(\"" + playCode + "\", \"" + playName + "\");");
+
+            /*
             String max = element.attr("data-maxbonus");
             String bouns = element.attr("data-bonus");
             BcLotteryOdds bcLotteryOdds = new BcLotteryOdds();
@@ -55,10 +58,10 @@ public class test {
 
             bcLotteryOddsDAO.insert(bcLotteryOdds);
             bcLotteryOddsDAO.insert(bcLotteryOdds1);
+            */
         }
         System.out.println(elements.size());
-        */
 
-        Pay.b2cPay(100D, "", null, System.currentTimeMillis() + "");
+        //Pay.b2cPay(100D, "", null, System.currentTimeMillis() + "");
     }
 }

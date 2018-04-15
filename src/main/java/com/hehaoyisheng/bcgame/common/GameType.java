@@ -14,6 +14,9 @@ public class GameType {
             gameType.put("tjssc", "天津时时彩");
             gameType.put("xjssc", "新疆时时彩");
             gameType.put("pk10", "北京赛车");
+            gameType.put("gd11x5", "广东11选5");
+            gameType.put("jx11x5", "江西11选5");
+            gameType.put("sd11x5", "山东11选5");
 
             playName.put("ssc_star5", "五星复式");
             playName.put("ssc_star5_single", "五星单式");
@@ -133,5 +136,40 @@ public class GameType {
             playName.put("pk10_star5", "前五复式");
             playName.put("pk10_star5_single", "前五直选单式");
             playName.put("pk10_star5_dj", "猜前五");
+            playName.put("n11x5_x1", "任选一任选复式");
+            playName.put("n11x5_x1_single", "任选一任选单式");
+            playName.put("n11x5_dwd", "定位胆");
+            playName.put("n11x5_front3_nx1", "前三不定位");
+            playName.put("n11x5_x2", "任选二任选复式");
+            playName.put("n11x5_x2_single", "任选二任选单式");
+            playName.put("n11x5_x2_dt", "任选二任选胆拖");
+            playName.put("n11x5_star2_front", "前二直选复式");
+            playName.put("n11x5_star2_front_single", "前二直选单式");
+            playName.put("n11x5_star2_group", "前二组选复式");
+            playName.put("n11x5_star2_group_single", "前二组选单式");
+            playName.put("n11x5_star2_group_dt", "前二组选胆拖");
+            playName.put("n11x5_x3", "任选三任选复式");
+            playName.put("n11x5_x3_single", "任选三任选单式");
+            playName.put("n11x5_x3_dt", "任选三任选胆拖");
+            playName.put("n11x5_star3_front", "前三直选复式");
+            playName.put("n11x5_star3_front_single", "前三直选单式");
+            playName.put("n11x5_star3_group", "前三组选复式");
+            playName.put("n11x5_star3_group_single", "前三组选单式");
+            playName.put("n11x5_star3_group_dt", "前三组选胆拖");
+            playName.put("n11x5_x4", "任选四任选复式");
+            playName.put("n11x5_x4_single", "任选四任选单式");
+            playName.put("n11x5_x4_dt", "任选四任选胆拖");
+            playName.put("n11x5_x5", "任选五任选复式");
+            playName.put("n11x5_x5_single", "任选五任选单式");
+            playName.put("n11x5_x5_dt", "任选五任选胆拖");
+            playName.put("n11x5_x6", "任选六任选复式");
+            playName.put("n11x5_x6_single", "任选六任选单式");
+            playName.put("n11x5_x6_dt", "任选六任选胆拖");
+            playName.put("n11x5_x7", "任选七任选复式");
+            playName.put("n11x5_x7_single", "任选七任选单式");
+            playName.put("n11x5_x7_dt", "任选七任选胆拖");
+            playName.put("n11x5_x8", "任选八任选复式");
+            playName.put("n11x5_x8_single", "任选八任选单式");
+            playName.put("n11x5_x8_dt", "任选八任选胆拖");
         }
 }
