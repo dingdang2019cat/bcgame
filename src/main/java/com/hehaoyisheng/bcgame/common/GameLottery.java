@@ -334,14 +334,48 @@ public class GameLottery {
      * 11x5 定位胆
      * @return
      */
-    public static int bc11x5Dwd(){
+    public static int bc11x5Dwd(@Nonnull String lotteryNumber, @Nonnull String betNumber){
         int winCount = 0;
+        //将投注开奖数字转化为数组
+        String[] betNumbers = betNumber.split(",");
+        String[] lotteryNumbers = lotteryNumber.split(",");
+        for(int i = 0; i < 5; i++){
+            String bet = betNumbers[i];
+            String bet1 = "";
+            if(bet.equals("-")){
+                continue;
+            }
+            for(int j = 0; j < bet.length() - 2; j += 2){
+                bet1 += bet.substring(j, j + 2) + ",";
+            }
+            if(bet1.contains(lotteryNumbers[i])){
+                winCount++;
+            }
+        }
         return winCount;
     }
 
+    public static int bc11x5rxfs(@Nonnull String lotteryNumber, @Nonnull String betNumber, @Nonnull String playCode){
+        int winCount = 0;
+        //将投注开奖数字转化为数组
+        String[] betNumbers = betNumber.split(",");
+        String[] lotteryNumbers = lotteryNumber.split(",");
+        int count = Integer.valueOf(playCode.substring(playCode.length() - 1, playCode.length()));
+        List<String> ss = combine(betNumbers, count);
+        for(int i = 0; i < 5; i++){
+            for(String s : ss.get(i).split(" ")){
+                s.equals(lotteryNumbers[i]);
+            }
+        }
+        return 0;
+    }
+
+
     public static void main(String[] args) {
-        String s = "0102";
-        System.out.println(s.substring(2, 4));
+        String[] ss = {"01", "02", "03"};
+        for(String s : combine(ss, 2)){
+            System.out.println(s);
+        }
     }
 
     private static String pk10SubString(String betNumber){

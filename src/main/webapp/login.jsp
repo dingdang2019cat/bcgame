@@ -30,7 +30,6 @@
 			    <!-- 登录方式 -->
 			    <div class="loginMethod">
 			       <a href="javascript:;" class="loginBtn active">正常登录</a>
-			       <a href="javascript:;" class="safeLoginBtn">安全登录</a>
 			    </div>
 		        <!-- 正常登录 -->
 				<form class="loginForm" action="/login" id="loginForm" method="post" data-token="yWvNoHo9">

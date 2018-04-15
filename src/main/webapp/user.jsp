@@ -215,7 +215,6 @@
             </div>
         </div>
         <a href="/user/index?tabId=msg" class="inMail"><i></i>站内信<span id="platNoticeNumSpan"></span></a>
-        <a href="/activity/index" class="activityIcon"><i></i>活动中心</a>
         <label class="username overflowEllipsis" title="${nickName}">
             昵称：${nickName}
 
@@ -228,13 +227,6 @@
         </label>
         <a href="javascript:;" class="recharge" onclick="javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney'}"></a>
         <a href="javascript:;" class="drawMoney" onclick="javascript:if('0' == 2 || '0' == 3){$.alert('您的提现功能已被冻结！');}else{window.location.href='/deposit/deposit'}"></a>
-        <label class="outstandingTopBox">
-            <a href="javascript:;" class="outstandingIcon"></a>
-            <div class="outstandingNav">
-                <a href="/recharge/rechargeOutstanding">催充值未到账</a>
-                <a href="/deposit/depositOutstanding">催提现未到账</a>
-            </div>
-        </label>
         <div class="headerR">
             <a href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&configID=62880&jid=3635228849&s=1" class="customerService" target="_blank"><i></i>联系客服</a>
             <a href="javascript:;" class="refresh" id="refererUser"><i></i>刷新</a>
