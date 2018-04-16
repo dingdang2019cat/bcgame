@@ -80,8 +80,8 @@ public class UserController {
         model.addAttribute("lotterys", bcLotteryOrders);
         //首页彩种剩余时间
         model.addAttribute("cqssc", (GameData.gameTime.get("cqssc") - System.currentTimeMillis()) / 1000);
-        model.addAttribute("gd11x5", GameData.gameTime.get("gd11x5"));
-        model.addAttribute("pk10", GameData.gameTime.get("pk10"));
+        model.addAttribute("gd11x5", (GameData.gameTime.get("cqssc") - System.currentTimeMillis()) / 1000);
+        model.addAttribute("pk10", (GameData.gameTime.get("cqssc") - System.currentTimeMillis()) / 1000);
         model.addAttribute("fc3d", GameData.gameTime.get("fc3d"));
         return "index";
     }

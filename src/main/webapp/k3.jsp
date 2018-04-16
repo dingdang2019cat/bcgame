@@ -2717,20 +2717,7 @@
                                         <!--</label>-->
                                     </div>
                                     <div class="betsInfoTypeList">
-                                        <select class="labelCond betsInfoType" id="bounsType">
-
-
-                                            <option value="0">
-                                                1950-0%(高奖)
-                                            </option>
-                                            <option value="1">
-                                                1700-12.5%(高返)
-                                            </option>
-                                        </select>
-
-
-
-                                        </select>
+                                        <input type="range" value="${maxFandian}" min="0" max="${maxFandian}" step="0.1" onchange="changeBouns()" id="bounsNumRange"/>&nbsp;<span id="bounsNum">${maxBouns}</span>
                                     </div>
                                 </div>
                             </div>
@@ -2822,100 +2809,17 @@
                                 </thead>
                                 <tbody id="openList">
 
-                                <tr class="beforeLottNumDetail">
-
-
-                                    <td class="smallFont12">023</td>
-                                    <td class="fontColorTheme beforeLottNum k3">
-
-                                        <span class="k3-2" data-value="2"></span>
-
-                                        <span class="k3-2" data-value="2"></span>
-
-                                        <span class="k3-4" data-value="4"></span>
-
-                                    </td>
-                                    <td class="k3SumTd"></td>
-
-
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail">
-
-
-                                    <td class="smallFont12">022</td>
-                                    <td class="fontColorTheme beforeLottNum k3">
-
-                                        <span class="k3-3" data-value="3"></span>
-
-                                        <span class="k3-5" data-value="5"></span>
-
-                                        <span class="k3-6" data-value="6"></span>
-
-                                    </td>
-                                    <td class="k3SumTd"></td>
-
-
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail">
-
-
-                                    <td class="smallFont12">021</td>
-                                    <td class="fontColorTheme beforeLottNum k3">
-
-                                        <span class="k3-1" data-value="1"></span>
-
-                                        <span class="k3-1" data-value="1"></span>
-
-                                        <span class="k3-2" data-value="2"></span>
-
-                                    </td>
-                                    <td class="k3SumTd"></td>
-
-
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail">
-
-
-                                    <td class="smallFont12">020</td>
-                                    <td class="fontColorTheme beforeLottNum k3">
-
-                                        <span class="k3-1" data-value="1"></span>
-
-                                        <span class="k3-2" data-value="2"></span>
-
-                                        <span class="k3-5" data-value="5"></span>
-
-                                    </td>
-                                    <td class="k3SumTd"></td>
-
-
-
-                                </tr>
-
-                                <tr class="beforeLottNumDetail">
-
-
-                                    <td class="smallFont12">019</td>
-                                    <td class="fontColorTheme beforeLottNum k3">
-
-                                        <span class="k3-2" data-value="2"></span>
-
-                                        <span class="k3-3" data-value="3"></span>
-
-                                        <span class="k3-6" data-value="6"></span>
-
-                                    </td>
-                                    <td class="k3SumTd"></td>
-
-
-
-                                </tr>
+                                <c:forEach var="recentOpen1" items="${recentOpen}">
+                                    <tr class="beforeLottNumDetail">
+                                        <td class="smallFont12">${recentOpen1.seasonId}</td>
+                                        <td class="fontColorTheme beforeLottNum">
+                                            <c:set value="${ fn:split(recentOpen1.nums, ',') }" var="str1" />
+                                            <c:forEach items="${ str1 }" var="s">
+                                                <span>${s}</span>
+                                            </c:forEach>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
 
                                 </tbody>
                             </table>

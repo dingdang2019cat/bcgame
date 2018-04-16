@@ -18,6 +18,7 @@ import java.io.IOException;
 
 public class test {
     public static void main(String[] args) throws IOException {
+        /*
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         //LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
         //lotteryThread.lottery("cqssc", "20180121024", "0,0,0,1,0");
@@ -28,8 +29,6 @@ public class test {
             String playCode = element.attr("data-show").replace("#", "");
             String playName = element.attr("data-title");
             System.out.println("playName.put(\"" + playCode + "\", \"" + playName + "\");");
-
-            /*
             String max = element.attr("data-maxbonus");
             String bouns = element.attr("data-bonus");
             BcLotteryOdds bcLotteryOdds = new BcLotteryOdds();
@@ -58,10 +57,22 @@ public class test {
 
             bcLotteryOddsDAO.insert(bcLotteryOdds);
             bcLotteryOddsDAO.insert(bcLotteryOdds1);
-            */
+
         }
         System.out.println(elements.size());
 
         //Pay.b2cPay(100D, "", null, System.currentTimeMillis() + "");
+        */
+
+        String result = HttpClientUtil.sendHttpGet("http://pub.icaile.com/jsk3kjjg.php");
+
+        Document document = Jsoup.parse(result);
+
+        Elements elements = document.getElementsByClass("nth-child-1");
+        Elements elements1 = document.getElementsByClass("nth-child-3");
+
+        for(int i = 0; i < elements.size(); i++){
+            System.out.println(elements.get(i).text() + "    " + elements1.get(i).text());
+        }
     }
 }

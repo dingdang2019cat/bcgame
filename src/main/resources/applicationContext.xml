@@ -121,6 +121,14 @@
         <property name="type" value="gd11x5" />
     </bean>
 
+    <bean id="jsk3Job" class="com.hehaoyisheng.bcgame.job.K3Job">
+        <property name="type" value="jsk3" />
+    </bean>
+
+    <bean id="shk3Job" class="com.hehaoyisheng.bcgame.job.K3Job">
+        <property name="type" value="shk3" />
+    </bean>
+
     <bean id="cqsscDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="sscJob" />
         <property name="targetMethod" value="execute"/>
@@ -154,6 +162,20 @@
         <property name="targetMethod" value="execute"/>
         <property name="name" value="gd11x5Job" />
         <property name="group" value="11x5Job" />
+    </bean>
+
+    <bean id="jsk3Detail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="jsk3Job" />
+        <property name="targetMethod" value="execute"/>
+        <property name="name" value="jsk3Job" />
+        <property name="group" value="k3Job" />
+    </bean>
+
+    <bean id="shk3Detail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="shk3Job" />
+        <property name="targetMethod" value="execute"/>
+        <property name="name" value="shk3Job" />
+        <property name="group" value="k3Job" />
     </bean>
 
     <bean id="tjsscTigger1" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
@@ -212,6 +234,20 @@
         <property name="group" value="11x5" />
     </bean>
 
+    <bean id="jsk3Tigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="jsk3Detail" />
+        <property name="cronExpression" value="0 3/10 9-22 * * ?" />
+        <property name="name" value="gd11x5" />
+        <property name="group" value="11x5" />
+    </bean>
+
+    <bean id="shk3Tigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="shk3Detail" />
+        <property name="cronExpression" value="0 3/10 9-22 * * ?" />
+        <property name="name" value="gd11x5" />
+        <property name="group" value="11x5" />
+    </bean>
+
     <bean id="schedulerfactory" name="schedulerfactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
         <property name="triggers">
             <list>
@@ -223,6 +259,8 @@
                 <ref bean="tjsscTigger1"/>
                 <ref bean="pk10Tigger"/>
                 <ref bean="gd11x5Tigger"/>
+                <ref bean="jsk3Tigger"/>
+                <ref bean="shk3Tigger"/>
             </list>
         </property>
         <property name="autoStartup" value="true" />
