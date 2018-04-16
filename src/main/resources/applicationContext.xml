@@ -222,7 +222,7 @@
 
     <bean id="pk10Tigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="pk10Detail" />
-        <property name="cronExpression" value="0 3/5 9-23 * * ?" />
+        <property name="cronExpression" value="0 4/5 9-23 * * ?" />
         <property name="name" value="pk10" />
         <property name="group" value="pk10" />
     </bean>
