@@ -17,6 +17,8 @@ public class GameType {
             gameType.put("gd11x5", "广东11选5");
             gameType.put("jx11x5", "江西11选5");
             gameType.put("sd11x5", "山东11选5");
+            gameType.put("jsk3", "江苏快3");
+            gameType.put("shk3", "上海快3");
 
             playName.put("ssc_star5", "五星复式");
             playName.put("ssc_star5_single", "五星单式");
@@ -171,5 +173,14 @@ public class GameType {
             playName.put("n11x5_x8", "任选八任选复式");
             playName.put("n11x5_x8_single", "任选八任选单式");
             playName.put("n11x5_x8_dt", "任选八任选胆拖");
+            playName.put("k3_and_dxds", "和值大小单双");
+            playName.put("k3_and_last", "和尾大小单双");
+            playName.put("k3_star3_and", "和值");
+            playName.put("k3_star1", "单挑一骰");
+            playName.put("k3_star2_same_not", "二不同");
+            playName.put("k3_star2_same", "二同号");
+            playName.put("k3_star3_link", "三连号");
+            playName.put("k3_star3_same_not", "三不同");
+            playName.put("k3_star3_same", "三同号");
         }
 }

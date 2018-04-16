@@ -232,7 +232,7 @@
             <div class="accountCentreContent platNoticeContentBox">
                 <!-- 公告详情-->
                 <div class="noticeDetailHeader">
-                    <p class="noticeDetailTitle" id="noticeDetailTitle">【平台更新】2018年01月05日版本升级更新</p>
+                    <p class="noticeDetailTitle" id="noticeDetailTitle">【平台测试】2018年04月16日测试</p>
                     <p class="noticeDetailDate" id="noticeDetailDate">2018-01-05 22:43:41.0</p>
                     <p class="noticeDetailSize">
                         <a href="javascript:;" class="noticeFontSize smallFont14 active" id="smallFont14">A</a>
@@ -241,87 +241,7 @@
                     </p>
                 </div>
                 <div class="noticeDetailText" id="noticeDetailText">
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-                        <span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;">尊敬的鼎汇·万客用户：</span>
-                    </p>
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-	<span style="color:#666666;"><br />
-</span>
-                    </p>
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><strong>01月05日平台更新细节：</strong></span>
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;">为了您的充值和游戏体验更加舒适、顺畅，本平台将升级到最新版本，具体更新内容如下：</span></span>
-                    </p>
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-color:#EEEEEE;"><span style="font-size:14px;font-family:'Microsoft YaHei';">&nbsp; &nbsp; &nbsp; </span><strong><span style="font-family:'Microsoft YaHei';font-size:14px;">1.</span></strong><strong><span style="font-family:'Microsoft YaHei';font-size:14px;">新增玩法</span></strong><strong><span style="font-family:'Microsoft YaHei';font-size:14px;">：</span></strong><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;">时时彩系列新增“</span><span style="color:#666666;font-size:14px;font-weight:700;font-family:'Microsoft YaHei';">斗牛</span><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;">”玩法（牛牛，大小单双）。</span></span></span>
-                    </p>
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-color:#EEEEEE;"><span style="font-family:'Microsoft YaHei';font-size:14px;">&nbsp; &nbsp; &nbsp; </span><strong><span style="font-family:'Microsoft YaHei';font-size:14px;">2.站内信优化：</span></strong><span style="font-family:'Microsoft YaHei';font-size:14px;">新增批量删除功能。</span></span></span>
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-color:#EEEEEE;"><span style="font-family:Microsoft YaHei;"><span style="font-family:'Microsoft YaHei';font-size:14px;">&nbsp; &nbsp; &nbsp; </span><strong><span style="font-family:'Microsoft YaHei';font-size:14px;">3.投诉建议功能：</span></strong></span><span style="color:#666666;font-size:14px;font-family:'Microsoft YaHei';">电脑PC端新增投诉建议功能，欢迎随时给平台提出意见和建议。</span></span></span>
-                    </p>
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-color:#EEEEEE;"><span style="font-family:Microsoft YaHei;"><span style="font-family:'Microsoft YaHei';font-size:14px;">&nbsp; &nbsp; &nbsp; </span><strong><span style="font-family:'Microsoft YaHei';font-size:14px;">4.下级充值功能：</span></strong></span><span style="color:#666666;font-size:14px;font-family:'Microsoft YaHei';">删除“红包”和“其他”两种备注类型。</span></span></span>
-                    </p>
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-color:#EEEEEE;"><span style="font-family:Microsoft YaHei;"><span style="font-family:'Microsoft YaHei';font-size:14px;">&nbsp; &nbsp; &nbsp; </span><strong><span style="font-family:'Microsoft YaHei';font-size:14px;">5.银行维护状态：</span></strong></span><span style="color:#666666;font-size:14px;font-family:'Microsoft YaHei';">新增银行维护状态，维护期间，仍可绑卡，不可充提。</span></span></span>
-                    </p>
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-color:#EEEEEE;"><span style="font-family:Microsoft YaHei;"><span style="font-family:'Microsoft YaHei';font-size:14px;">&nbsp; &nbsp; &nbsp;</span><strong><span style="font-family:'Microsoft YaHei';font-size:14px;"> 6.公告跳转功能：</span></strong></span><span style="color:#666666;font-size:14px;font-family:'Microsoft YaHei';">点击某条轮播的公告可跳转至某具体公告，不再是默认公告页。</span></span></span>
-                    </p>
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-color:#EEEEEE;"><span style="font-family:Microsoft YaHei;"><span style="font-family:'Microsoft YaHei';font-size:14px;">&nbsp; &nbsp; &nbsp; </span><strong><span style="font-family:'Microsoft YaHei';font-size:14px;">7.投注页面优化：</span></strong></span><span style="color:#666666;font-size:14px;font-family:'Microsoft YaHei';">点击投注页下方的我的投注中的任意一条投注记录或追号记录可以直接显示详情。</span></span></span>
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-color:#EEEEEE;"><span style="color:#666666;font-size:14px;font-family:'Microsoft YaHei';"><span style="font-family:Microsoft YaHei;"><span style="font-family:'Microsoft YaHei';font-size:14px;">&nbsp; &nbsp; &nbsp; </span><strong><span style="font-family:'Microsoft YaHei';font-size:14px;">8.时时彩组三单式：</span></strong></span><span style="color:#666666;font-size:14px;font-family:'Microsoft YaHei';">录入格式变更，录入格式由两位变更为三位，即录入如112,223这样的格式，各为一注。</span></span></span></span>
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-color:#EEEEEE;"><span style="color:#666666;font-size:14px;font-family:'Microsoft YaHei';"><span style="font-family:Microsoft YaHei;"><span style="font-family:'Microsoft YaHei';font-size:14px;">&nbsp; &nbsp; &nbsp;&nbsp;</span><strong><span style="font-family:'Microsoft YaHei';font-size:14px;">9.充值引导优化：</span></strong></span><span style="color:#666666;font-size:14px;font-family:'Microsoft YaHei';">平台推荐的充值方式将会显示“充值有奖”的红色标签。</span></span></span></span>
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';"><span style="color:#666666;font-size:14px;font-family:&quot;"><span style="font-family:'Microsoft YaHei';font-size:14px;">&nbsp; &nbsp; </span><strong><span style="font-family:'Microsoft YaHei';font-size:14px;">10.以及其他相关功能的升级和优化。</span></strong></span></span></span>
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-                        <span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;background-color:#EEEEEE;"></span></span>
-                    </p>
-                    <p>
-                        <br />
-                    </p>
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-                        <strong><span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;">温馨提示：更新将于01月06日凌晨2点开始，通常需1-2个小时，更新过程将影响您的游戏操作。</span></strong><strong><span style="color:#009999;font-family:'Microsoft YaHei';font-size:14px;">请您提前做好游戏规划</span></strong>
-                    </p>
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-	<span style="color:#009999;"><strong><br />
-</strong></span>
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-                        <span style="color:#333333;font-family:&quot;font-size:14px;"><span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;">请您周知如上更新，感谢您对我们的信任与支持！</span></span>
-                    </p>
-                    <p style="color:#000033;font-family:'Microsoft YaHei';font-size:14px;">
-                        <br />
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-	<span style="color:#333333;"><span style="color:#666666;"><span style="font-family:'Microsoft YaHei';font-size:14px;"></span><br />
-</span></span>
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-                        <span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;">--鼎汇·万客运营部--</span>
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-                        <span style="color:#666666;font-family:'Microsoft YaHei';font-size:14px;">2018年01月05日</span>
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-                        <img src="https://upload.cc/i/wXYbDW.png" alt="" />
-                    </p>
-                    <p style="color:#000033;font-family:&quot;font-size:14px;">
-                        <br />
-                    </p>
-                    <div>
-                        <br />
-                    </div>
+                   <p>平台测试期间禁用公告系统！</p>
                 </div>
             </div>
         </div>
