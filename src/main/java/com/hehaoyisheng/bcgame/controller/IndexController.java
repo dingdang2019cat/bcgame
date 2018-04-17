@@ -244,4 +244,13 @@ public class IndexController {
         messageManager.delete(id);
         return Result.success(1);
     }
+
+    @RequestMapping("/admin")
+    public String admin(@ModelAttribute("user") User user){
+        if(user == null){
+            return "adminLogin";
+        }
+        return "dlaccount.jsp";
+    }
+
 }
