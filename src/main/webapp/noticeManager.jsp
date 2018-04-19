@@ -126,7 +126,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 复制工具 -->
 <script src="common/jquery.zclip.min.js"></script>
 
-
+<script src="resource/wysiwyg.js"></script>
+<link rel="stylesheet" href="resource/editor.css"/>
+<link rel="apple-touch-icon" href="//mindmup.s3.amazonaws.com/lib/img/apple-touch-icon.png" />
+<link rel="shortcut icon" href="http://mindmup.s3.amazonaws.com/lib/img/favicon.ico" >
+<link href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+<link href="index.css" rel="stylesheet">
 
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
@@ -242,178 +250,74 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="form-group">
 				<div class="form-inline">
 					<div class="input-group">
-						<input type="text" class="form-control" value="<%=s %> 00:00:00" id="begin" placeholder="开始日期"> <span class="glyphicon glyphicon-th form-control-feedback" aria-hidden="true"></span>
+						<input type="text" class="form-control" id="noticeTitle"  placeholder="标题">
 					</div>
-					<button class="btn btn-default">今日</button>
-					<button class="btn btn-default">昨日</button>
-					<button class="btn btn-default">本周</button>
+
 					<div class="form-group">
 
 					</div>
-					<button class="btn btn-primary" onclick="search();">查询</button>
-				</div>
-				<div class="form-inline" style="margin-top: 5px;">
-					<div class="input-group">
-						<input type="text" id="end" value="<%=s %> 23:59:59" class="form-control" placeholder="线束日期"> <span class="glyphicon glyphicon-th form-control-feedback" aria-hidden="true"></span>
-					</div>
-					<button class="btn btn-default">上周</button>
-					<button class="btn btn-default">本月</button>
-					<button class="btn btn-default">上月</button>
+					<button class="btn btn-primary" onclick="search();">保存</button>
 				</div>
 			</div>
 		</div>
-		<table id="datagrid_tb"  data-show-footer="true"></table>
+		<div id="datagrid_tb">
+		<div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+			<div class="btn-group">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b class="caret"></b></a>
+				<ul class="dropdown-menu">
+				</ul>
+			</div>
+			<div class="btn-group">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+					<li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
+					<li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
+				</ul>
+			</div>
+			<div class="btn-group">
+				<a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="icon-bold"></i></a>
+				<a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="icon-italic"></i></a>
+				<a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="icon-strikethrough"></i></a>
+				<a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="icon-underline"></i></a>
+			</div>
+			<div class="btn-group">
+				<a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="icon-list-ul"></i></a>
+				<a class="btn" data-edit="insertorderedlist" title="Number list"><i class="icon-list-ol"></i></a>
+				<a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="icon-indent-left"></i></a>
+				<a class="btn" data-edit="indent" title="Indent (Tab)"><i class="icon-indent-right"></i></a>
+			</div>
+			<div class="btn-group">
+				<a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a>
+				<a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="icon-align-center"></i></a>
+				<a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="icon-align-right"></i></a>
+				<a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="icon-align-justify"></i></a>
+			</div>
+			<div class="btn-group">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="icon-link"></i></a>
+				<div class="dropdown-menu input-append">
+					<input class="span2" placeholder="URL" type="text" data-edit="createLink"/>
+					<button class="btn" type="button">Add</button>
+				</div>
+				<a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="icon-cut"></i></a>
+
+			</div>
+
+			<div class="btn-group">
+				<a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
+				<input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+			</div>
+			<div class="btn-group">
+				<a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>
+				<a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
+			</div>
+		</div>
+		<div id="editor">testaaaa</div>
+		</div>
 
 	</div>
-	
-	<div class="modal fade" id="editmodel"
-		tabindex="-1" role="dialog" aria-labelledby="editLabel"
-		aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="editLabel">订单详情</h4>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered table-striped"
-						style="clear: both">
-						<tbody>
-							<tr>
-								<td width="20%" class="text-center" colspan="4">订单号:<span id="dingdh"></span></td>
-							</tr>
-							<tr>
-								<td width="20%" class="text-right">账号:</td>
-								<td width="35%" class="text-left"><span id="zhangh"></span></td>
-								<td width="20%" class="text-right">单注金额:</td>
-								<td width="35%" class="text-left"><span id="danzje"></span></td>
-							</tr>
-							<tr>
-								<td width="20%" class="text-right">下注时间:</td>
-								<td width="35%" class="text-left"><span id="xiazsj"></span></td>
-								<td width="20%" class="text-right">投注注数:</td>
-								<td width="35%" class="text-left"><span id="touzzs"></span></td>
-							</tr>
-							<tr>
-								<td width="20%" class="text-right">彩种:</td>
-								<td width="35%" class="text-left"><span id="caiz"></span></td>
-								<td width="20%" class="text-right">倍数:</td>
-								<td width="35%" class="text-left"><span id="beis"></span></td>
-							</tr>
-							<tr>
-								<td width="20%" class="text-right">期号:</td>
-								<td width="35%" class="text-left"><span id="qih"></span></td>
-								<td width="20%" class="text-right">投注总额:</td>
-								<td width="35%" class="text-left"><span id="touzze"></span></td>
-							</tr>
-							<tr>
-								<td width="20%" class="text-right">玩法:</td>
-								<td width="35%" class="text-left"><span id="wanf"></span></td>
-								<!-- 如果是第二版则显示赔率 -->
-								<td width="20%" class="text-right version1">单注奖金:</td>
-								<td width="35%" class="text-left version1"><span id="danzjj"></span></td>
-								
-								<td width="20%" class="text-right version2 hide">赔率:</td>
-								<td width="35%" class="text-left version2 hide"><span id="peilv"></span></td>
-							</tr>
-							<tr>
-								<td width="20%" class="text-right">开奖号码:</td>
-								<td width="35%" class="text-left"><span id="kaijhm"></span></td>
-								<td width="20%" class="text-right">中奖注数:</td>
-								<td width="35%" class="text-left"><span id="zhongjzs"></span></td>
-							</tr>
-							<tr>
-								<td width="20%" class="text-right">状态:</td>
-								<td width="35%" class="text-left"><span id="zhuangt"></span></td>
-								<td width="20%" class="text-right ">中奖金额:</td>
-								<td width="35%" class="text-left"><span id="zhongjje"></span></td>
-							</tr>
-							
-								
-								
-							
-							<tr>
-								<td width="20%" class="text-right">盈亏:</td>
-								<td width="35%" class="text-left"><span id="yingkui"></span></td>
-							</tr>
-							<tr>
-							<td width="20%" class="text-right" colspan="4">
-							<textarea class="form-control" rows="3" id="touzhm"></textarea>
-							</td>
-								 
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+
 	<script type="text/javascript">
-		function getTab() {
-			var options = {
-				language : 'zh-CN',
-				autoclose : 1,
-			    weekStart: 1,
-		        todayBtn:  1,
-		        autoclose: 1,
-		        todayHighlight: 1,
-		        startView: 2,
-		        forceParse: 0,
-		        showSecond:1,
-		        minuteStep:1,
-				format : 'yyyy-mm-dd hh:ii:00'
-			};
-			$('#begin').datetimepicker(options);
-			options.format="yyyy-mm-dd hh:ii:59";
-			$('#end').datetimepicker(options);
-
-			window.table = new Game.Table({
-				id : 'datagrid_tb',
-				url : 'gameRecord',
-				queryParams : queryParams,//参数
-				toolbar : $('#toolbar'),
-				showPageSummary:true,
-				showAllSummary:true,
-				columns : [ 
-				   {
-					field : 'id',
-					title : '通知编号',
-					align : 'center',
-					valign : 'bottom',
-					formatter : orderFormatter
-				}, {
-					field : 'title',
-					title : '通知标题',
-					align : 'center',
-					valign : 'middle',
-					events : operateEvents,
-					formatter : accountFormatter
-				}, {
-					field : 'author',
-					title : '作者',
-					align : 'center',
-					valign : 'middle'
-				}, {
-					field : 'time',
-					title : '时间',
-					align : 'center',
-					width : '100',
-					valign : 'middle'
-				}, {
-					field : 'status',
-					title : '操作',
-					width : '80',
-					align : 'center',
-					formatter : cdorder
-				}
-			]
-			});
-		}
 		function accountFormatter(value, row, index) {
 			return '<a class="detail" href="javascript:void(0)" title="用户详情"><span class="text-danger">'+value+'</span></a>';
 		}
@@ -753,8 +657,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			return params
 		}
 		$(function() {
+            $('#editor').wysiwyg();
 			bindbtn();
-			getTab();
 		})
 		
 			function czGroup(){
@@ -776,8 +680,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		
 		function search() {
-			$('.zhtj').val('0');
-			$("#datagrid_tb").bootstrapTable('refreshOptions',{pageNumber:1});
+            $.ajax({
+                url:"admin/noticeBaocun",
+                data : {
+                    "content" : $("#editor").html(),
+					"title" : $("#noticeTitle").val()
+                },
+                dataType:"json",
+                success:function(j){
+                    if(j.status == 200){
+                        alert("成功!");
+                    }else{
+                        alert("失败！");
+                    }
+                }
+            });
 		}
 
 		function setDate(begin, end) {

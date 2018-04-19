@@ -3,9 +3,14 @@ package com.hehaoyisheng.bcgame.common;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 public class GameData {
+
+    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     /**
      * 游戏时间
      */
@@ -51,6 +56,26 @@ public class GameData {
         gameTime.put("jsk3", 100L);
         gameTime.put("shk3", 100L);
 
+        String time = simpleDateFormat.format(new Date());
+
+        String timePl = time.split(" ")[0] + " 19:55:00";
+        String time3d = time.split(" ")[0] + " 21:10:00";
+
+        Date pl = null;
+        Date fc3d = null;
+
+        try {
+            pl = simpleDateFormat.parse(timePl);
+            fc3d = simpleDateFormat.parse(timePl);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        gameTime.put("pl3", pl.getTime());
+        gameTime.put("pl5", pl.getTime());
+        gameTime.put("3d", fc3d.getTime());
+
         seasonCount.put("cqssc", 120);
         seasonCount.put("xjssc", 96);
         seasonCount.put("tjssc", 84);
@@ -60,6 +85,9 @@ public class GameData {
         seasonCount.put("sd11x5", 87);
         seasonCount.put("jsk3", 82);
         seasonCount.put("shk3", 82);
+        seasonCount.put("pl3", 1);
+        seasonCount.put("pl5", 1);
+        seasonCount.put("3d", 1);
         //seasonCount.put("11x5", 84);
 
         lastOpen.put("cqssc", new BcLotteryHistory());
@@ -71,6 +99,9 @@ public class GameData {
         lastOpen.put("sd11x5", new BcLotteryHistory());
         lastOpen.put("jsk3", new BcLotteryHistory());
         lastOpen.put("shk3", new BcLotteryHistory());
+        lastOpen.put("pl3", new BcLotteryHistory());
+        lastOpen.put("pl5", new BcLotteryHistory());
+        lastOpen.put("3d", new BcLotteryHistory());
 
         openCount.put("cqssc", 0);
         openCount.put("tjssc", 0);
@@ -81,6 +112,9 @@ public class GameData {
         openCount.put("sd11x5", 0);
         openCount.put("jsk3", 0);
         openCount.put("shk3", 0);
+        openCount.put("pl3", 0);
+        openCount.put("pl5", 0);
+        openCount.put("3d", 0);
     }
 
     public static void main(String[] args){

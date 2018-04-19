@@ -180,7 +180,7 @@
         -->
         <div class="headerR">
             <label class="serviceSuggest">
-                <a href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&configID=62880&jid=3635228849&s=1" class="customerService" target="_blank"><i></i>联系客服</a>
+                <a href="http://dkc.duokebo.com/webchat/chat.aspx?siteid=730985" class="customerService" target="_blank"><i></i>联系客服</a>
                 <!--<a href="/user/suggestIndex" class="suggestUrl">投诉建议</a>-->
             </label>
             <a href="javascript:;" class="refresh" id="refererUser"><i></i>刷新</a>

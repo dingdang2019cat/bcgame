@@ -158,7 +158,7 @@
         <a href="javascript:;" class="drawMoney" onclick="javascript:if('0' == 2 || '0' == 3){$.alert('您的提现功能已被冻结！');}else{window.location.href='/deposit/deposit'}"></a>
         <div class="headerR">
             <label class="serviceSuggest">
-                <a href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&configID=62880&jid=3635228849&s=1" class="customerService" target="_blank"><i></i>联系客服</a>
+                <a href="http://dkc.duokebo.com/webchat/chat.aspx?siteid=730985" class="customerService" target="_blank"><i></i>联系客服</a>
             </label>
             <a href="javascript:;" class="refresh" id="refererUser"><i></i>刷新</a>
             <a href="/logout" class="userQuit"><i></i>登出</a>
@@ -405,7 +405,7 @@
                 <div class="helpCenterIndex-r">
                     <h3>在线客服</h3>
                     <div class="helpOnlineService">
-                        <a href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&configID=62880&jid=3635228849&s=1" class="btn" target="_blank">点击开始</a>
+                        <a href="http://dkc.duokebo.com/webchat/chat.aspx?siteid=730985" class="btn" target="_blank">点击开始</a>
                     </div>
                     <span>以下是我们的客服人员，我们绝对不会以任何形式向您索要您的账号和密码，请妥善保管好您的账号信息！</span>
                     <div class="onlineServicePersons">
@@ -453,7 +453,7 @@
                 <div class="helpCenterCommonContent" id="helpCenterCommonContent"></div>
                 <div class="helpCenterCommonBtn">
                     <p>如果以上内容无法解决您的问题，请联系我们的客服</p>
-                    <a href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&configID=62880&jid=3635228849&s=1" class="btn helpCenterServiceOL" target="_blank">在线咨询</a>
+                    <a href="http://dkc.duokebo.com/webchat/chat.aspx?siteid=730985" class="btn helpCenterServiceOL" target="_blank">在线咨询</a>
                 </div>
             </div>
         </div>

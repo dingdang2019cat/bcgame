@@ -1,6 +1,8 @@
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
+<% SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); %>
+<% String sss = simpleDateFormat.format(System.currentTimeMillis()); %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -200,7 +202,7 @@
         <a href="javascript:;" class="recharge" onclick="javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney'}"></a>
         <a href="javascript:;" class="drawMoney" onclick="javascript:if('0' == 2 || '0' == 3){$.alert('您的提现功能已被冻结！');}else{window.location.href='/deposit/deposit'}"></a>
         <div class="headerR">
-            <a href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&configID=62880&jid=3635228849&s=1" class="customerService" target="_blank"><i></i>联系客服</a>
+            <a href="http://dkc.duokebo.com/webchat/chat.aspx?siteid=730985" class="customerService" target="_blank"><i></i>联系客服</a>
             <a href="javascript:;" class="refresh" id="refererUser"><i></i>刷新</a>
             <a href="/logout" class="userQuit"><i></i>登出</a>
         </div>
@@ -259,10 +261,10 @@
         <!-- 列表 -->
         <div class="leftListArea">
             <div class="leftListDetail">
-                <a class="leftListBigItem centreNavDetail gameBetListA" data-id="#gameBetList"><i></i>投注记录</a>
+                <a class="leftListBigItem centreNavDetail gameBetListA${gameBetList}" data-id="#gameBetList"><i></i>投注记录</a>
             </div>
             <div class="leftListDetail">
-                <a class="leftListBigItem centreNavDetail traceA" data-id="#trace"><i></i>追号记录</a>
+                <a class="leftListBigItem centreNavDetail traceA${gameBetList}" data-id="#trace"><i></i>追号记录</a>
             </div>
             <div class="leftListDetail">
                 <a class="leftListBigItem centreNavDetail betListA" data-id="#betList" href="/report/index?tabId=betList"><i></i>团队投注明细</a>
@@ -368,9 +370,9 @@
                         </label>
                         <label>
                             <span class="labelTitle">投注时间：</span>
-                            <input type="text" class="labelCond Wdate" id="conditionStartTime" value="2017-11-19 00:00:00" name="startTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 135px;"/>
+                            <input type="text" class="labelCond Wdate" id="conditionStartTime" value="<%=sss %> 00:00:00" name="startTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 135px;"/>
                             <span>~</span>
-                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="2017-11-19 23:59:59" name="endTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 135px;" />
+                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="<%=sss %> 23:59:59" name="endTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 135px;" />
                         </label>
                         <label>
                             <a href="javascript:;" class="btn" id="search">搜索</a>
@@ -519,9 +521,9 @@
                                 </select>
                             </label>
                             <label><span class="labelTitle">追号时间：</span>
-                                <input type="text" class="labelCond Wdate startTime" value="2017-11-19 00:00:00" name="startTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 135px;" />
+                                <input type="text" class="labelCond Wdate startTime" value="<%=sss %> 00:00:00" name="startTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 135px;" />
                                 <span>~</span>
-                                <input type="text" class="labelCond Wdate endTime" value="2017-11-19 23:59:59" name="endTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 135px;" />
+                                <input type="text" class="labelCond Wdate endTime" value="<%=sss %> 23:59:59" name="endTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width: 135px;" />
                             </label>
                             <label>
                                 <a href="javascript:;" class="btn" id="searchTraceList">搜索</a>
@@ -763,9 +765,9 @@
                         </label>
                         <label>
                             <span class="labelTitle">投注时间：</span>
-                            <input type="text" class="labelCond Wdate" id="conditionStartTime" value="2017-11-19 00:00:00" name="beginTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:135px;"/>
+                            <input type="text" class="labelCond Wdate" id="conditionStartTime" value="<%=sss %> 00:00:00" name="beginTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:135px;"/>
                             <span>~</span>
-                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="2017-11-19 23:59:59" name="endTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:135px;" />
+                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="<%=sss %> 23:59:59" name="endTime" onClick="WdatePicker({startDate: '%y-%M-%d 04:00:00',dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:135px;" />
                         </label>
                         <label>
                             <a href="javascript:;" class="btn" id="betInBtn">搜索</a>

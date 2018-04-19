@@ -42,6 +42,9 @@ public class IndexController {
     @Resource
     private MessageManager messageManager;
 
+    @Resource
+    private NoticeManager noticeManager;
+
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login(){
         return "login";
@@ -59,7 +62,7 @@ public class IndexController {
         System.out.println(GameData.gameTime.get("cqssc") - System.currentTimeMillis());
         list.add(new LotteryTime("gd11x5", (GameData.gameTime.get("gd11x5") - System.currentTimeMillis()) / 1000));
         list.add(new LotteryTime("pk10", (GameData.gameTime.get("pk10") - System.currentTimeMillis()) / 1000));
-        list.add(new LotteryTime("3d", GameData.gameTime.get("3d")));
+        list.add(new LotteryTime("3d", (GameData.gameTime.get("3d") - System.currentTimeMillis()) / 1000));
         return Result.success(list);
     }
 
@@ -110,10 +113,12 @@ public class IndexController {
             return "k3";
         }else if(gameType.endsWith("pk10")){
             return "bjsc";
-        }else if(gameType.endsWith("ssc")){
+        }else if(gameType.endsWith("ssc") || gameType.equals("pl5")){
             return "ssc";
         }else if(gameType.endsWith("11x5")){
             return "11x5";
+        }else if(gameType.equals("pl3") || gameType.equals("3d")){
+            return "pl3";
         }
         return null;
     }
@@ -250,7 +255,21 @@ public class IndexController {
         if(user == null){
             return "adminLogin";
         }
-        return "dlaccount.jsp";
+        return "dlaccount";
     }
 
+    @RequestMapping("/admin/noticeInsert")
+    public String noticeInsert(){
+        return "noticeInsert";
+    }
+
+    @RequestMapping("/admin/noticeBaocun")
+    @ResponseBody
+    public Result noticeBaocun(String content, String title){
+        Notice notice = new Notice();
+        notice.setContent(content);
+        notice.setTitle(title);
+        noticeManager.insert(notice);
+        return Result.success("操作成功！");
+    }
 }

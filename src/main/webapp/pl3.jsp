@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2018/4/13
-  Time: 10:08
+  User: lnzyz
+  Date: 2018/4/20
+  Time: 4:39
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,31 +14,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>鼎汇·万客 - 广东11选5</title>
+    <title>鼎汇·万客 - 排列三</title>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
     <meta http-equiv="expires" content="0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
-    <link rel="icon" href="/resouce/favicon.ico"  type="image/x-icon" />
-    <link rel="stylesheet" href="/resource/reset.css?ver=20180323"/>
-    <link rel="stylesheet" href="/resource/wk-common.css?ver=20180323"/>
-    <script type="text/javascript" src="/resource/jquery-1.11.0.min.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/jquery.timer.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/layer.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/jquery.cookie.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/spinner.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/audio/audio5.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/base.js?ver=20180323"></script>
+
+    <link rel="icon" href="/resource/favicon.ico"  type="image/x-icon" />
+    <link rel="stylesheet" href="/resource/reset.css?ver=20171208"/>
+    <link rel="stylesheet" href="/resource/wk-common.css?ver=20171208"/>
+    <script type="text/javascript" src="/resource/jquery-1.11.0.min.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/jquery.timer.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/layer.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/jquery.cookie.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/spinner.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/audio/audio5.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/base.js?ver=20171208"></script>
 
 
-    <link rel="stylesheet" href="/resource/wk-lottery.css?ver=20180323"/>
-    <link rel="stylesheet" href="/resource/theme-black.css?ver=20180323"/>
-    <script type="text/javascript" src="/resource/math.extends.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/lotts/play.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/lotts/play_11x5.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/lotts/fire.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/lotts/lottery.js?ver=20180323"></script>
-    <script type="text/javascript" src="/resource/ajaxfileupload.js?ver=20180323"></script>
+    <link rel="stylesheet" href="/resource/wk-lottery.css?ver=20171208"/>
+    <link rel="stylesheet" href="/resource/theme-black.css?ver=20171208"/>
+    <script type="text/javascript" src="/resource/math.extends.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/lotts/play.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/lotts/play_3d.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/lotts/fire.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/lotts/lottery.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/ajaxfileupload.js?ver=20171208"></script>
+
+
     <script type="text/javascript">
         var hs = hs || {};
         hs.lottery = function() {};
@@ -48,11 +51,11 @@
         hs.lottery.betInAmountMax = 1000.00;
         hs.lottery.gameSecondMax =  25;
         hs.lottery.k3 = false;
-        var account ="${username}";
+        var account ="lnzyz1212";
     </script>
     <style>
         body {
-            background: url('/images/home/bg.jpg') center top no-repeat;
+            background: url('/res/home/images/bg.jpg') center top no-repeat;
             background-size: 100% 100%;
         }
     </style>
@@ -72,12 +75,16 @@
                 <div class="hotLotteryList">
                     <i></i>
                     <a href="/lotts/cqssc/index" class="acqsscIcon" title="重庆时时彩"></a>
+                    <a href="/lotts/sj1fc/index" class="asj1fcIcon" title="鼎汇一分彩"></a>
+                    <a href="/lotts/sj_mmc/index" class="ammcIcon" title="鼎汇40秒"></a>
+                    <a href="/lotts/tiger/index" class="atigerIcon" title="鼎汇秒秒彩"></a>
                 </div>
                 <div class="lotteryList" id="lotteryList">
 
                     <div class="lottDetail">
                         <i class="lotteryTitle title_ssc" title="时时彩"></i>
                         <div class="lotteryDetdailList">
+
 
                             <ul class="lotteryGroupList">
 
@@ -122,10 +129,7 @@
                         <i class="lotteryTitle title_11x5" title="11选5"></i>
                         <div class="lotteryDetdailList">
 
-
                             <ul class="lotteryGroupList">
-
-
 
                                 <li><a href="/lotts/gd11x5/index" class="lottplayExplain">广东11选5</a></li>
 
@@ -232,19 +236,20 @@
         <div class="mainWidth">
             <!--彩种Logo-->
             <div class="lotteryLogo">
-                <img src="/resource/lottTypes/${gameType}.png" class="betsType logogd11x5" />
-                <!--<span class="betsType">广东11选5</span>
-                    <img src="/resource/lotteryLogo-ssc.png" class="betsType" />
-                    <img src="/resource/lotteryLogo-115.png" class="betsType" style="display: none;" />-->
+                <img src="/resource/lottTypes/${gameType}.png" class="betsType logocqssc" />
+                <!--<span class="betsType">排列三</span>
+                    <img src="/res/home/images/lotteryLogo-ssc.png" class="betsType" />
+                    <img src="/res/home/images/lotteryLogo-115.png" class="betsType" style="display: none;" />-->
                 <!--<p class="currLottNumBox">-->
                 <!--<span>当前已开</span>-->
-                <!--<span class="openCount" id="openCount">7</span>-->
+                <!--<span class="openCount" id="openCount">0</span>-->
                 <!--<span>/</span>-->
-                <!--<span id="allCount">84</span>-->
+                <!--<span id="allCount">1</span>-->
                 <!--<span>期</span>-->
                 <!--</p>-->
             </div>
 
+            <!--开奖倒计时-->
             <!--开奖倒计时-->
             <div class="countDownBox">
                 <p class="countDownTitle">
@@ -281,52 +286,48 @@
                 <div class="lotteryNumBox">
                     <div class="lotteryNumList">
                         <!---新开奖号码动画-->
-                        <ul class="lotteryNum 11x5" id="openNums" data-num="01,02,03,04,05,06,07,08,09,10,11">
+                        <ul class="lotteryNum 3d" id="openNums" data-num="0,1,2,3,4,5,6,7,8,9">
 
                             <li class="lottNumDetail">
 
+                                <p class="">
+                                    <span class="bigNum0"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum1"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum2"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum3"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum4"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum5"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum6"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum7"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum8"></span>
+                                </p>
+
                                 <p class="active">
-                                    <span class="bigNum01"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum02"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum03"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum04"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum05"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum06"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum07"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum08"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum09"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum10"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum11"></span>
+                                    <span class="bigNum9"></span>
                                 </p>
 
                             </li>
@@ -334,47 +335,43 @@
                             <li class="lottNumDetail">
 
                                 <p class="">
-                                    <span class="bigNum01"></span>
+                                    <span class="bigNum0"></span>
                                 </p>
 
                                 <p class="">
-                                    <span class="bigNum02"></span>
+                                    <span class="bigNum1"></span>
                                 </p>
 
                                 <p class="">
-                                    <span class="bigNum03"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum04"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum05"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum06"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum07"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum08"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum09"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum10"></span>
+                                    <span class="bigNum2"></span>
                                 </p>
 
                                 <p class="active">
-                                    <span class="bigNum11"></span>
+                                    <span class="bigNum3"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum4"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum5"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum6"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum7"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum8"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum9"></span>
                                 </p>
 
                             </li>
@@ -382,143 +379,43 @@
                             <li class="lottNumDetail">
 
                                 <p class="">
-                                    <span class="bigNum01"></span>
+                                    <span class="bigNum0"></span>
                                 </p>
 
                                 <p class="">
-                                    <span class="bigNum02"></span>
+                                    <span class="bigNum1"></span>
                                 </p>
 
                                 <p class="">
-                                    <span class="bigNum03"></span>
+                                    <span class="bigNum2"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum3"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum4"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum5"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum6"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum7"></span>
                                 </p>
 
                                 <p class="active">
-                                    <span class="bigNum04"></span>
+                                    <span class="bigNum8"></span>
                                 </p>
 
                                 <p class="">
-                                    <span class="bigNum05"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum06"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum07"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum08"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum09"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum10"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum11"></span>
-                                </p>
-
-                            </li>
-
-                            <li class="lottNumDetail">
-
-                                <p class="">
-                                    <span class="bigNum01"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum02"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum03"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum04"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum05"></span>
-                                </p>
-
-                                <p class="active">
-                                    <span class="bigNum06"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum07"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum08"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum09"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum10"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum11"></span>
-                                </p>
-
-                            </li>
-
-                            <li class="lottNumDetail">
-
-                                <p class="">
-                                    <span class="bigNum01"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum02"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum03"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum04"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum05"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum06"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum07"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum08"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum09"></span>
-                                </p>
-
-                                <p class="active">
-                                    <span class="bigNum10"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum11"></span>
+                                    <span class="bigNum9"></span>
                                 </p>
 
                             </li>
@@ -528,11 +425,11 @@
                 </div>
                 <p class="lottTypeTips overflowEllipsis" id="openNumStatus">
 
-                    <span class="lottTypeInfo">单双：2单3双</span>
+                    <span class="lottTypeInfo">组选：组六</span>
 
                     <span class="lottTypeInfo"></span>
 
-                    <span class="lottTypeInfo">中位：06</span>
+                    <span class="lottTypeInfo">和值：20</span>
 
                 </p>
             </div>
@@ -550,35 +447,19 @@
                         <ul class="lottNav">
 
 
-                            <li class="lottNavDetail" data-show="#group_0" data-hide=".lottTypeBox"><a href="javascript:;">选一</a></li>
+                            <li class="lottNavDetail" data-show="#group_0" data-hide=".lottTypeBox"><a href="javascript:;">三星</a></li>
 
 
 
-                            <li class="lottNavDetail" data-show="#group_1" data-hide=".lottTypeBox"><a href="javascript:;">选二</a></li>
+                            <li class="lottNavDetail" data-show="#group_1" data-hide=".lottTypeBox"><a href="javascript:;">后二</a></li>
 
 
 
-                            <li class="lottNavDetail" data-show="#group_2" data-hide=".lottTypeBox"><a href="javascript:;">选三</a></li>
+                            <li class="lottNavDetail" data-show="#group_2" data-hide=".lottTypeBox"><a href="javascript:;">前二</a></li>
 
 
 
-                            <li class="lottNavDetail" data-show="#group_3" data-hide=".lottTypeBox"><a href="javascript:;">选四</a></li>
-
-
-
-                            <li class="lottNavDetail" data-show="#group_4" data-hide=".lottTypeBox"><a href="javascript:;">选五</a></li>
-
-
-
-                            <li class="lottNavDetail" data-show="#group_5" data-hide=".lottTypeBox"><a href="javascript:;">选六</a></li>
-
-
-
-                            <li class="lottNavDetail" data-show="#group_6" data-hide=".lottTypeBox"><a href="javascript:;">选七</a></li>
-
-
-
-                            <li class="lottNavDetail" data-show="#group_7" data-hide=".lottTypeBox"><a href="javascript:;">选八</a></li>
+                            <li class="lottNavDetail" data-show="#group_3" data-hide=".lottTypeBox"><a href="javascript:;">定位胆</a></li>
 
 
                         </ul>
@@ -590,19 +471,31 @@
 
 
                         <div class="lottTypeList">
-                            <span class="lottTypeTitle">任选一中一</span>
+                            <span class="lottTypeTitle">直选</span>
                             <ul class="lottType">
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x1" data-remark="从01-11共11个号码中选择1个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01 开奖：01,W,X,Y,Z（不限顺序）" data-title="任选一任选复式" data-ratio="0.30" data-MaxBonus="4.27" data-bonus="3.74"><a href="javascript:;">复式</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3" data-remark="每位至少选择一个号码，竞猜开奖号码，号码和位置都对应即中奖"
+                                    data-example="投注：456 开奖：456 即中奖" data-title="三星直选复式" data-ratio="1.60" data-MaxBonus="1918.00" data-bonus="1700.00"><a href="javascript:;">复式</a></li>
 
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x1_single" data-remark="从01-11中手动输入1个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01 开奖：01,W,X,Y,Z（不限顺序）" data-title="任选一任选单式" data-ratio="0.30" data-MaxBonus="4.27" data-bonus="3.74"><a href="javascript:;">单式</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_single" data-remark="每位至少选择一个号码，竞猜开奖号码，号码和位置都对应即中奖"
+                                    data-example="投注：456 开奖：456 即中奖" data-title="三星直选单式" data-ratio="1.60" data-MaxBonus="1918.00" data-bonus="1700.00"><a href="javascript:;">单式</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_and" data-remark="至少选择一个和值，竞猜开奖号码数字之和 即中奖"
+                                    data-example="投注：和值1 开奖：001,010,100 即中奖" data-title="三星直选和值" data-ratio="1.60" data-MaxBonus="1918.00" data-bonus="1700.00"><a href="javascript:;">和值</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_kd" data-remark="所选数值等于开奖号码的最大与最小数字相减之差，即为中奖"
+                                    data-example="投注：跨度8 开奖：(1)数字08x（不限顺序）,x≠9; (2)数字19x（不限顺序），x≠0" data-title="三星直选跨度" data-ratio="1.60" data-MaxBonus="1918.00" data-bonus="1700.00"><a href="javascript:;">跨度</a></li>
 
 
                             </ul>
@@ -611,13 +504,49 @@
 
 
                         <div class="lottTypeList">
-                            <span class="lottTypeTitle">定位胆</span>
+                            <span class="lottTypeTitle">组选</span>
                             <ul class="lottType">
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_dwd" data-remark="从第一位、第二位、第三位任意1个位置或多个位置上选择1个号码，所选号码与相同位置上的开奖号码一致，即为中奖"
-                                    data-example="投注：01(第一位) 开奖：01,*,*,*,*" data-title="定位胆" data-ratio="0.30" data-MaxBonus="21.38" data-bonus="18.70"><a href="javascript:;">定位胆</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_group3" data-remark="从0-9中选择2个数字组成两注，所选号码与开奖号码相同，顺序不限"
+                                    data-example="投注：112 开奖：112（不限顺序）" data-title="三星组三" data-ratio="1.60" data-MaxBonus="639.32" data-bonus="566.66"><a href="javascript:;">组三</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_group6" data-remark="从0-9中任意选择3个号码组成一注，所选号码与开奖号码相同，顺序不限"
+                                    data-example="投注：123 开奖：123（不限顺序）" data-title="三星组六" data-ratio="1.60" data-MaxBonus="319.66" data-bonus="283.33"><a href="javascript:;">组六</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_group3_single" data-remark="从0-9中录入3个数字组成1注，所录入号码与开奖号码相同，顺序不限"
+                                    data-example="投注：112 开奖：112（不限顺序）" data-title="三星组三单式" data-ratio="1.60" data-MaxBonus="639.32" data-bonus="566.66"><a href="javascript:;">组三单式</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_group6_single" data-remark="从0-9中任意选择3个号码组成一注，所选号码与开奖号码相同，顺序不限"
+                                    data-example="投注：123 开奖：123（不限顺序）" data-title="三星组六单式" data-ratio="1.60" data-MaxBonus="319.66" data-bonus="283.33"><a href="javascript:;">组六单式</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_group_and" data-remark="至少选择一个和值，竞猜开奖号码之和(不含豹子号)"
+                                    data-example="投注：和值6 开奖：(1) 015（不限顺序）中组六 (2)033（不限顺序），中组三" data-title="三星组三和值" data-ratio="1.60" data-MaxBonus="639.32" data-bonus="566.66"><a href="javascript:;">和值</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_group_contains" data-remark="从0-9中任意选择1个包胆号码，开奖号码中任意1位与所选包胆号码相同(不含豹子号)，即为中奖"
+                                    data-example="投注：包胆3开奖：(1) 3xx或者33x（不限顺序）,中组三 (2)3xy（不限顺序）,中组六   注：x≠y≠3" data-title="三星组选包胆" data-ratio="1.60" data-MaxBonus="639.32" data-bonus="566.66"><a href="javascript:;">包胆</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_group36_single" data-remark="手动输入号码，3个数字为一注组六,两个数字为一注组三，所选号码与开奖号码相同，顺序不限，即为中奖"
+                                    data-example="投注：(01),(123) 开奖：(1)001（不限顺序）即中组三，(2)123（不限顺序）即中组六" data-title="三星混合组选" data-ratio="1.60" data-MaxBonus="639.32" data-bonus="566.66"><a href="javascript:;">混合组选</a></li>
 
 
                             </ul>
@@ -631,8 +560,14 @@
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_front3_nx1" data-remark="从01-11共11个号码中选择1个号码，每注由1个号码组成，只要当期顺序摇出的第一位、第二位、第三位开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01(第一位) 开奖：01,X,Y,*,*" data-title="前三不定位" data-ratio="0.30" data-MaxBonus="7.12" data-bonus="6.23"><a href="javascript:;">不定位</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_none1" data-remark="从0-9中至少选择1个号码投注，竞猜开奖号码中包含这个号码，包含即中奖"
+                                    data-example="投注：1 开奖：1xx（不限顺序） 即中奖" data-title="三星一码不定位" data-ratio="1.60" data-MaxBonus="7.07" data-bonus="6.27"><a href="javascript:;">一码不定位</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star3_none2" data-remark="从0-9中至少选择2个号码投注，竞猜开奖号码中包含这2个号码，包含即中奖"
+                                    data-example="投注：1，2  开奖：12x（不限顺序） 即中奖" data-title="三星二码不定位" data-ratio="1.60" data-MaxBonus="35.52" data-bonus="31.48"><a href="javascript:;">二码不定位</a></li>
 
 
                             </ul>
@@ -647,46 +582,31 @@
 
 
                         <div class="lottTypeList">
-                            <span class="lottTypeTitle">任选二中二</span>
-                            <ul class="lottType">
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x2" data-remark="从01-11共11个号码中选择2个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02 开奖：01,02,X,Y,Z（不限顺序）" data-title="任选二任选复式" data-ratio="0.30" data-MaxBonus="10.69" data-bonus="9.35"><a href="javascript:;">复式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x2_single" data-remark="从01-11中手动输入2个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02 开奖：01,02,X,Y,Z（不限顺序）" data-title="任选二任选单式" data-ratio="0.30" data-MaxBonus="10.69" data-bonus="9.35"><a href="javascript:;">单式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x2_dt" data-remark="从01-11共11个号码中至少选择2个以上号码进行投注，每注需至少包括1个胆码及1个拖码。只要当期的5个开奖号码中有2个包含所选号码（每注包含2个号码），即为中奖"
-                                    data-example="投注：01,02 开奖：01,02,X,Y,Z（不限顺序）" data-title="任选二任选胆拖" data-ratio="0.30" data-MaxBonus="10.69" data-bonus="9.35"><a href="javascript:;">胆拖</a></li>
-
-
-                            </ul>
-                        </div>
-
-
-
-                        <div class="lottTypeList">
                             <span class="lottTypeTitle">直选</span>
                             <ul class="lottType">
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_star2_front" data-remark="从01-11共11个号码中选择2个不重复的号码组成一注，所选号码与当期顺序摇出的5个号码中 的前2个号码相同，且顺序一致，即为中奖"
-                                    data-example="投注：01,02 开奖：01,02,*,*,*" data-title="前二直选复式" data-ratio="0.30" data-MaxBonus="213.84" data-bonus="187.00"><a href="javascript:;">复式</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_last" data-remark="每位至少选择一个号码，竞猜开奖号码的后二位，号码和位置都对应即中奖"
+                                    data-example="投注：*45 开奖：*45 即中奖" data-title="后二直选复式" data-ratio="1.60" data-MaxBonus="191.80" data-bonus="170.00"><a href="javascript:;">复式</a></li>
 
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_star2_front_single" data-remark="手动输入2个号码组成一注，所输入的号码与当期顺序摇出的5个号码中 的前2个号码相同，且顺序一致，即为中奖"
-                                    data-example="投注：01,02 开奖：01,02,*,*,*" data-title="前二直选单式" data-ratio="0.30" data-MaxBonus="213.84" data-bonus="187.00"><a href="javascript:;">单式</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_last_single" data-remark="每位至少选择一个号码，竞猜开奖号码的后二位，号码和位置都对应即中奖"
+                                    data-example="投注：*45 开奖：*45 即中奖" data-title="后二直选单式" data-ratio="1.60" data-MaxBonus="191.80" data-bonus="170.00"><a href="javascript:;">单式</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_last_and" data-remark="至少选择一个和值，竞猜开奖号码后二位数字之和"
+                                    data-example="投注：和值1 开奖：*01,*10 即中奖" data-title="后二直选和值" data-ratio="1.60" data-MaxBonus="191.80" data-bonus="170.00"><a href="javascript:;">和值</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_last_kd" data-remark="所选数值等于开奖号码的后二位最大与最小数字相减之差"
+                                    data-example="投注：跨度8 开奖：*08, *19, *80, *91 即中奖" data-title="后二直选跨度" data-ratio="1.60" data-MaxBonus="191.80" data-bonus="170.00"><a href="javascript:;">跨度</a></li>
 
 
                             </ul>
@@ -700,20 +620,26 @@
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_star2_group" data-remark="从01-11共11个号码中选择2个不重复的号码组成一注，所选号码与当期顺序摇出的5个号码中 的前2个号码相同，且顺序不限，即为中奖"
-                                    data-example="投注：01,02 开奖：01,02,*,*,*（不限顺序）" data-title="前二组选复式" data-ratio="0.30" data-MaxBonus="106.92" data-bonus="93.50"><a href="javascript:;">复式</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_last_group" data-remark="从0-9中选择2个数字组成一注，所选号码与开奖号码的后二位相同，顺序不限"
+                                    data-example="投注：5,8 开奖：*58(不限顺序) 即中奖" data-title="后二组选复式" data-ratio="1.60" data-MaxBonus="95.90" data-bonus="85.00"><a href="javascript:;">复式</a></li>
 
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_star2_group_single" data-remark="手动输入2个号码组成一注，所输入的号码与当期顺序摇出的5个号码中 的前2个号码相同，且顺序不限，即为中奖"
-                                    data-example="投注：01,02 开奖：01,02,*,*,*（不限顺序）" data-title="前二组选单式" data-ratio="0.30" data-MaxBonus="106.92" data-bonus="93.50"><a href="javascript:;">单式</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_last_group_single" data-remark="从0-9中选择2个数字组成一注，所选号码与开奖号码的后二位相同，顺序不限"
+                                    data-example="投注：5,8 开奖：*58(不限顺序) 即中奖" data-title="后二组选单式" data-ratio="1.60" data-MaxBonus="95.90" data-bonus="85.00"><a href="javascript:;">单式</a></li>
 
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_star2_group_dt" data-remark="从01-11共11个号码中至少选择2个以上号码进行投注，每注需至少包括1个胆码及1个拖码。只要当期的前二位开奖号码中有2个包含所选号码（每注包含2个号码），即为中奖"
-                                    data-example="投注：01,02 开奖：01,02,*,*,*（不限顺序）" data-title="前二组选胆拖" data-ratio="0.30" data-MaxBonus="106.92" data-bonus="93.50"><a href="javascript:;">胆拖</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_last_group_and" data-remark="所选数值等于开奖号码的后二位数字相加之和（不含对子）"
+                                    data-example="投注：和值1 开奖：*10（不限顺序） 即中奖" data-title="后二组选和值" data-ratio="1.60" data-MaxBonus="95.90" data-bonus="85.00"><a href="javascript:;">和值</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_last_group_contains" data-remark="从0-9中任意选择1个号码，开奖号码的后二位中任意1位包含所选的包胆号码相同（不含对子）"
+                                    data-example="投注：包胆8；开奖：*x8（不限顺序，x≠8） 即中奖" data-title="后二组选包胆" data-ratio="1.60" data-MaxBonus="95.90" data-bonus="85.00"><a href="javascript:;">包胆</a></li>
 
 
                             </ul>
@@ -728,46 +654,31 @@
 
 
                         <div class="lottTypeList">
-                            <span class="lottTypeTitle">任选三中三</span>
-                            <ul class="lottType">
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x3" data-remark="从01-11共11个号码中选择3个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03 开奖：01,02,03,Y,Z（不限顺序）" data-title="任选三任选复式" data-ratio="0.30" data-MaxBonus="32.07" data-bonus="28.05"><a href="javascript:;">复式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x3_single" data-remark="从01-11中手动输入3个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03 开奖：01,02,03,Y,Z（不限顺序）" data-title="任选三任选单式" data-ratio="0.30" data-MaxBonus="32.07" data-bonus="28.05"><a href="javascript:;">单式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x3_dt" data-remark="从01-11共11个号码中至少选择3个以上号码进行投注，每注需至少包括1个胆码及2个拖码。只要当期的5个开奖号码中有3个包含所选号码（每注包含3个号码），即为中奖"
-                                    data-example="投注：01,02,03 开奖：01,02,03,Y,Z（不限顺序）" data-title="任选三任选胆拖" data-ratio="0.30" data-MaxBonus="32.07" data-bonus="28.05"><a href="javascript:;">胆拖</a></li>
-
-
-                            </ul>
-                        </div>
-
-
-
-                        <div class="lottTypeList">
                             <span class="lottTypeTitle">直选</span>
                             <ul class="lottType">
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_star3_front" data-remark="从01-11共11个号码中选择3个不重复的号码组成一注，所选号码与当期顺序摇出的5个号码中 的前3个号码相同，且顺序一致，即为中奖"
-                                    data-example="投注：01,02,03 开奖：01,02,03,*,*" data-title="前三直选复式" data-ratio="0.30" data-MaxBonus="1924.56" data-bonus="1683.00"><a href="javascript:;">复式</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_front" data-remark="每位至少选择一个号码，竞猜开奖号码的前二位，号码和位置都对应即中奖"
+                                    data-example="投注：45* 开奖：45* 即中奖" data-title="前二直选复式" data-ratio="1.60" data-MaxBonus="191.80" data-bonus="170.00"><a href="javascript:;">复式</a></li>
 
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_star3_front_single" data-remark="手动输入3个号码组成一注，所输入的号码与当期顺序摇出的5个号码中 的前3个号码相同，且顺序一致，即为中奖"
-                                    data-example="投注：01,02,03 开奖：01,02,03,*,*" data-title="前三直选单式" data-ratio="0.30" data-MaxBonus="1924.56" data-bonus="1683.00"><a href="javascript:;">单式</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_front_single" data-remark="每位至少选择一个号码，竞猜开奖号码的前二位，号码和位置都对应即中奖"
+                                    data-example="投注：45* 开奖：45* 即中奖" data-title="前二直选单式" data-ratio="1.60" data-MaxBonus="191.80" data-bonus="170.00"><a href="javascript:;">单式</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_front_and" data-remark="至少选择一个和值，竞猜开奖号码前二位数字之和"
+                                    data-example="投注：和值1 开奖：01*,10* 即中奖" data-title="前二直选和值" data-ratio="1.60" data-MaxBonus="191.80" data-bonus="170.00"><a href="javascript:;">和值</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_front_kd" data-remark="所选数值等于开奖号码的前二位最大与最小数字相减之差"
+                                    data-example="投注：跨度8 开奖：08*, 19*, 80*, 91* 即中奖" data-title="前二直选跨度" data-ratio="1.60" data-MaxBonus="191.80" data-bonus="170.00"><a href="javascript:;">跨度</a></li>
 
 
                             </ul>
@@ -781,20 +692,26 @@
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_star3_group" data-remark="从01-11共11个号码中选择3个不重复的号码组成一注，所选号码与当期顺序摇出的5个号码中 的前3个号码相同，且顺序不限，即为中奖"
-                                    data-example="投注：01,02,03 开奖：01,02,03,*,*（不限顺序）" data-title="前三组选复式" data-ratio="0.30" data-MaxBonus="320.76" data-bonus="280.50"><a href="javascript:;">复式</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_front_group" data-remark="从0-9中选择2个数字组成一注，所选号码与开奖号码的前二位相同，顺序不限"
+                                    data-example="投注：5,8 开奖：58*(不限顺序) 即中奖" data-title="前二组选复式" data-ratio="1.60" data-MaxBonus="95.90" data-bonus="85.00"><a href="javascript:;">复式</a></li>
 
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_star3_group_single" data-remark="手动输入3个号码组成一注，所输入的号码与当期顺序摇出的5个号码中 的前3个号码相同，且顺序不限，即为中奖"
-                                    data-example="投注：01,02,03 开奖：01,02,03,*,*（不限顺序）" data-title="前三组选单式" data-ratio="0.30" data-MaxBonus="320.76" data-bonus="280.50"><a href="javascript:;">单式</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_front_group_single" data-remark="从0-9中选择2个数字组成一注，所选号码与开奖号码的前二位相同，顺序不限"
+                                    data-example="投注：5,8 开奖：58*(不限顺序) 即中奖" data-title="前二组选单式" data-ratio="1.60" data-MaxBonus="95.90" data-bonus="85.00"><a href="javascript:;">单式</a></li>
 
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_star3_group_dt" data-remark="从01-11共11个号码中至少选择2个以上号码进行投注，每注需至少包括1个胆码及1个拖码。只要当期的前二位开奖号码中有2个包含所选号码（每注包含2个号码），即为中奖"
-                                    data-example="投注：01,02 开奖：01,02,*,*,*（不限顺序）" data-title="前三组选胆拖" data-ratio="0.30" data-MaxBonus="320.76" data-bonus="280.50"><a href="javascript:;">胆拖</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_front_group_and" data-remark="所选数值等于开奖号码的前二位数字相加之和（不含对子）"
+                                    data-example="投注：和值1 开奖：10*（不限顺序） 即中奖" data-title="前二组选和值" data-ratio="1.60" data-MaxBonus="95.90" data-bonus="85.00"><a href="javascript:;">和值</a></li>
+
+
+
+
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star2_front_group_contains" data-remark="从0-9中任意选择1个号码，开奖号码的前二位中任意1位包含所选的包胆号码相同（不含对子）"
+                                    data-example="投注：包胆8；开奖：x8*（不限顺序，x≠8） 即中奖" data-title="前二组选包胆" data-ratio="1.60" data-MaxBonus="95.90" data-bonus="85.00"><a href="javascript:;">包胆</a></li>
 
 
                             </ul>
@@ -809,157 +726,13 @@
 
 
                         <div class="lottTypeList">
-                            <span class="lottTypeTitle">任选四中四</span>
+                            <span class="lottTypeTitle">定位胆</span>
                             <ul class="lottType">
 
 
 
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x4" data-remark="从01-11共11个号码中选择4个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03,04 开奖：01,02,03,04,Z（不限顺序）" data-title="任选四任选复式" data-ratio="0.30" data-MaxBonus="128.30" data-bonus="112.20"><a href="javascript:;">复式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x4_single" data-remark="从01-11中手动输入4个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03,04 开奖：01,02,03,04,Z（不限顺序）" data-title="任选四任选单式" data-ratio="0.30" data-MaxBonus="128.30" data-bonus="112.20"><a href="javascript:;">单式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x4_dt" data-remark="从01-11共11个号码中至少选择4个以上号码进行投注，每注需至少包括1个胆码及3个拖码。只要当期的5个开奖号码中有4个包含所选号码（每注包含4个号码），即为中奖"
-                                    data-example="投注：01,02,03,04 开奖：01,02,03,04,Z（不限顺序）" data-title="任选四任选胆拖" data-ratio="0.30" data-MaxBonus="128.30" data-bonus="112.20"><a href="javascript:;">胆拖</a></li>
-
-
-                            </ul>
-                        </div>
-
-
-                    </div>
-
-
-
-                    <div class="lottTypeBox" id="group_4" style="display: none;">
-
-
-                        <div class="lottTypeList">
-                            <span class="lottTypeTitle">任选五中五</span>
-                            <ul class="lottType">
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x5" data-remark="从01-11共11个号码中选择5个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03,04,05 开奖：01,02,03,04,05（不限顺序）" data-title="任选五任选复式" data-ratio="0.30" data-MaxBonus="898.12" data-bonus="785.40"><a href="javascript:;">复式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x5_single" data-remark="从01-11中手动输入5个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03,04,05 开奖：01,02,03,04,05（不限顺序）" data-title="任选五任选单式" data-ratio="0.30" data-MaxBonus="898.12" data-bonus="785.40"><a href="javascript:;">单式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x5_dt" data-remark="从01-11共11个号码中至少选择5个以上号码进行投注，每注需至少包括1个胆码及4个拖码。只要当期的5个开奖号码中有5个包含所选号码（每注包含5个号码），即为中奖"
-                                    data-example="投注：01,02,03,04,05 开奖：01,02,03,04,05（不限顺序）" data-title="任选五任选胆拖" data-ratio="0.30" data-MaxBonus="898.12" data-bonus="785.40"><a href="javascript:;">胆拖</a></li>
-
-
-                            </ul>
-                        </div>
-
-
-                    </div>
-
-
-
-                    <div class="lottTypeBox" id="group_5" style="display: none;">
-
-
-                        <div class="lottTypeList">
-                            <span class="lottTypeTitle">任选六中五</span>
-                            <ul class="lottType">
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x6" data-remark="从01-11共11个号码中选择6个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03,04,05,06 开奖：01,02,03,04,05（不限顺序）" data-title="任选六任选复式" data-ratio="0.30" data-MaxBonus="149.68" data-bonus="130.90"><a href="javascript:;">复式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x6_single" data-remark="从01-11中手动输入6个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03,04,05,06 开奖：01,02,03,04,05（不限顺序）" data-title="任选六任选单式" data-ratio="0.30" data-MaxBonus="149.68" data-bonus="130.90"><a href="javascript:;">单式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x6_dt" data-remark="从01-11共11个号码中至少选择6个以上号码进行投注，每注需至少包括1个胆码及5个拖码。只要所选的每注6个号码当中，有5个和当期的5个开奖号码全部相同，即为中奖"
-                                    data-example="投注：01,02,03,04,05,06 开奖：01,02,03,04,05（不限顺序）" data-title="任选六任选胆拖" data-ratio="0.30" data-MaxBonus="149.68" data-bonus="130.90"><a href="javascript:;">胆拖</a></li>
-
-
-                            </ul>
-                        </div>
-
-
-                    </div>
-
-
-
-                    <div class="lottTypeBox" id="group_6" style="display: none;">
-
-
-                        <div class="lottTypeList">
-                            <span class="lottTypeTitle">任选七中五</span>
-                            <ul class="lottType">
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x7" data-remark="从01-11共11个号码中选择7个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03,04,05,06,07 开奖：01,02,03,04,05（不限顺序）" data-title="任选七任选复式" data-ratio="0.30" data-MaxBonus="42.76" data-bonus="37.40"><a href="javascript:;">复式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x7_single" data-remark="从01-11中手动输入7个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03,04,05,06,07 开奖：01,02,03,04,05（不限顺序）" data-title="任选七任选单式" data-ratio="0.30" data-MaxBonus="42.76" data-bonus="37.40"><a href="javascript:;">单式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x7_dt" data-remark="从01-11共11个号码中至少选择7个以上号码进行投注，每注需至少包括1个胆码及6个拖码。只要所选的每注7个号码当中，有5个和当期的5个开奖号码全部相同，即为中奖"
-                                    data-example="投注：01,02,03,04,05,06,07 开奖：01,02,03,04,05（不限顺序）" data-title="任选七任选胆拖" data-ratio="0.30" data-MaxBonus="42.76" data-bonus="37.40"><a href="javascript:;">胆拖</a></li>
-
-
-                            </ul>
-                        </div>
-
-
-                    </div>
-
-
-
-                    <div class="lottTypeBox" id="group_7" style="display: none;">
-
-
-                        <div class="lottTypeList">
-                            <span class="lottTypeTitle">任选八中五</span>
-                            <ul class="lottType">
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x8" data-remark="从01-11共11个号码中选择8个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03,04,05,06,07,08 开奖：01,02,03,04,05（不限顺序）" data-title="任选八任选复式" data-ratio="0.30" data-MaxBonus="16.03" data-bonus="14.02"><a href="javascript:;">复式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x8_single" data-remark="从01-11中手动输入8个号码进行购买，只要当期的5个开奖号码中包含所选号码，即为中奖"
-                                    data-example="投注：01,02,03,04,05,06,07,08 开奖：01,02,03,04,05（不限顺序）" data-title="任选八任选单式" data-ratio="0.30" data-MaxBonus="16.03" data-bonus="14.02"><a href="javascript:;">单式</a></li>
-
-
-
-
-                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n11x5_x8_dt" data-remark="从01-11共11个号码中至少选择8个以上号码进行投注，每注需至少包括1个胆码及7个拖码。只要所选的每注8个号码当中，有5个和当期的5个开奖号码全部相同，即为中奖"
-                                    data-example="投注：01,02,03,04,05,06,07,08 开奖：01,02,03,04,05（不限顺序）" data-title="任选八任选胆拖" data-ratio="0.30" data-MaxBonus="16.03" data-bonus="14.02"><a href="javascript:;">胆拖</a></li>
+                                <li class="lottTypeDetail" data-max-count="0" data-a1="0" data-a2="0" data-a3="0" data-a4="0" data-hide=".changeNumList" data-show="#n3_star1_dwd" data-remark="从百位、十位、个位任意位置上至少选择1个号码，选号与相同位置上的开奖号码一致"
+                                    data-example="投注：1** 开奖：1** 即中奖" data-title="定位胆" data-ratio="1.60" data-MaxBonus="19.18" data-bonus="17.00"><a href="javascript:;">定位胆</a></li>
 
 
                             </ul>
@@ -1001,7 +774,7 @@
                             <!--选号列表-->
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x1" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3" data-anySelect="">
 
 
 
@@ -1009,11 +782,11 @@
 
                                 <div class="changeNumDetail">
                                     <div class="changeNum">
-                                        <span class="detailTitle"></span>
+                                        <span class="detailTitle">百位</span>
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -1026,7 +799,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -1039,7 +812,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -1052,7 +825,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -1065,7 +838,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -1078,7 +851,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -1091,7 +864,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -1104,7 +877,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -1117,7 +890,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -1130,7 +903,42 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle">十位</span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -1143,7 +951,263 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle">个位</span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -1177,7 +1241,7 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x1_single" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_single" data-anySelect="">
 
 
 
@@ -1199,9 +1263,9 @@
                                         </div>
                                     </div>
                                     <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_x1_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_x1_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_x1_single">清空文本框</a>
+                                        <a href="javascript:;" class="btn errBtn" data-playId="#n3_star3_single">删除错误项</a>
+                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n3_star3_single">删除重复项</a>
+                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n3_star3_single">清空文本框</a>
                                         <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
                                     </div>
                                 </div>
@@ -1210,843 +1274,7 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_dwd" data-anySelect="">
-
-
-
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">第1位</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">第2位</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">第3位</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">第4位</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">第5位</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_front3_nx1" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_and" data-anySelect="">
 
 
 
@@ -2058,7 +1286,7 @@
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2071,7 +1299,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2084,7 +1312,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2097,7 +1325,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2110,7 +1338,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2123,7 +1351,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2136,7 +1364,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2149,7 +1377,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2162,7 +1390,20 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2200,17 +1441,218 @@
 
                                             </li>
 
+                                            <li>
+                                                <a href="javascript:;" data-num="12" class="smallNum smallNum12"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="13" class="smallNum smallNum13"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="14" class="smallNum smallNum14"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="15" class="smallNum smallNum15"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="16" class="smallNum smallNum16"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="17" class="smallNum smallNum17"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="18" class="smallNum smallNum18"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="19" class="smallNum smallNum19"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="20" class="smallNum smallNum20"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="21" class="smallNum smallNum21"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="22" class="smallNum smallNum22"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="23" class="smallNum smallNum23"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="24" class="smallNum smallNum24"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="25" class="smallNum smallNum25"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="26" class="smallNum smallNum26"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="27" class="smallNum smallNum27"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
                                         </ul>
                                     </div>
                                     <div class="changeNumBtn">
                                         <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
 
                                         </ul>
                                     </div>
@@ -2222,7 +1664,7 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x2" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_kd" data-anySelect="">
 
 
 
@@ -2234,7 +1676,7 @@
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2247,7 +1689,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2260,7 +1702,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2273,7 +1715,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2286,7 +1728,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2299,7 +1741,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2312,7 +1754,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2325,7 +1767,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2338,7 +1780,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2351,20 +1793,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2398,7 +1827,333 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x2_single" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_group3" data-anySelect="">
+
+
+
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle"></span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_group6" data-anySelect="">
+
+
+
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle"></span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_group3_single" data-anySelect="">
 
 
 
@@ -2420,9 +2175,9 @@
                                         </div>
                                     </div>
                                     <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_x2_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_x2_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_x2_single">清空文本框</a>
+                                        <a href="javascript:;" class="btn errBtn" data-playId="#n3_star3_group3_single">删除错误项</a>
+                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n3_star3_group3_single">删除重复项</a>
+                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n3_star3_group3_single">清空文本框</a>
                                         <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
                                     </div>
                                 </div>
@@ -2431,7 +2186,40 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x2_dt" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_group6_single" data-anySelect="">
+
+
+
+
+                                <!-- 单式 -->
+                                <div class="changeNumSingle">
+                                    <div class="importBetList">
+                                        <a href="javascript:;" class="btn uploadFile">导入注单</a>
+                                    </div>
+                                    <div class="singleNumBox">
+                                        <textarea class="singleNum"></textarea>
+                                        <div class="singleMsg">
+                                            <p>说明：</p>
+                                            <p>1.号码无需分割。</p>
+                                            <p>2.每一注号码之间的间隔符支持回车 空格[ ] 逗号[ , ] 分号[ ; ]</p>
+                                            <p>3.文件格式必须是.txt格式</p>
+                                            <p>4. 文件较大时会导致上传时间较长，请耐心等待！</p>
+                                            <p>5.导入文本内容后将覆盖文本框中现有的内容。</p>
+                                        </div>
+                                    </div>
+                                    <div class="singleBtns">
+                                        <a href="javascript:;" class="btn errBtn" data-playId="#n3_star3_group6_single">删除错误项</a>
+                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n3_star3_group6_single">删除重复项</a>
+                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n3_star3_group6_single">清空文本框</a>
+                                        <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_group_and" data-anySelect="">
 
 
 
@@ -2439,11 +2227,375 @@
 
                                 <div class="changeNumDetail">
                                     <div class="changeNum">
-                                        <span class="detailTitle">胆码</span>
+                                        <span class="detailTitle"></span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="12" class="smallNum smallNum12"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="13" class="smallNum smallNum13"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="14" class="smallNum smallNum14"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="15" class="smallNum smallNum15"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="16" class="smallNum smallNum16"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="17" class="smallNum smallNum17"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="18" class="smallNum smallNum18"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="19" class="smallNum smallNum19"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="20" class="smallNum smallNum20"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="21" class="smallNum smallNum21"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="22" class="smallNum smallNum22"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="23" class="smallNum smallNum23"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="24" class="smallNum smallNum24"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="25" class="smallNum smallNum25"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="26" class="smallNum smallNum26"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_group_contains" data-anySelect="">
+
+
+
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle"></span>
                                         <ul class="numList" data-max="1">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2456,7 +2608,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2469,7 +2621,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2482,7 +2634,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2495,7 +2647,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2508,7 +2660,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2521,7 +2673,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2534,7 +2686,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2547,7 +2699,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2560,20 +2712,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -2589,171 +2728,6 @@
                                     </div>
                                     <div class="changeNumBtn">
                                         <ul class="btnList">
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">拖码</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
 
                                         </ul>
                                     </div>
@@ -2765,348 +2739,7 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_star2_front" data-anySelect="">
-
-
-
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">第1位</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">第2位</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_star2_front_single" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_group36_single" data-anySelect="">
 
 
 
@@ -3128,9 +2761,9 @@
                                         </div>
                                     </div>
                                     <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_star2_front_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_star2_front_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_star2_front_single">清空文本框</a>
+                                        <a href="javascript:;" class="btn errBtn" data-playId="#n3_star3_group36_single">删除错误项</a>
+                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n3_star3_group36_single">删除重复项</a>
+                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n3_star3_group36_single">清空文本框</a>
                                         <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
                                     </div>
                                 </div>
@@ -3139,7 +2772,7 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_star2_group" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_none1" data-anySelect="">
 
 
 
@@ -3151,7 +2784,7 @@
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3164,7 +2797,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3177,7 +2810,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3190,7 +2823,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3203,7 +2836,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3216,7 +2849,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3229,7 +2862,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3242,7 +2875,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3255,7 +2888,694 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star3_none2" data-anySelect="">
+
+
+
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle"></span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_last" data-anySelect="">
+
+
+
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle">十位</span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle">个位</span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_last_single" data-anySelect="">
+
+
+
+
+                                <!-- 单式 -->
+                                <div class="changeNumSingle">
+                                    <div class="importBetList">
+                                        <a href="javascript:;" class="btn uploadFile">导入注单</a>
+                                    </div>
+                                    <div class="singleNumBox">
+                                        <textarea class="singleNum"></textarea>
+                                        <div class="singleMsg">
+                                            <p>说明：</p>
+                                            <p>1.号码无需分割。</p>
+                                            <p>2.每一注号码之间的间隔符支持回车 空格[ ] 逗号[ , ] 分号[ ; ]</p>
+                                            <p>3.文件格式必须是.txt格式</p>
+                                            <p>4. 文件较大时会导致上传时间较长，请耐心等待！</p>
+                                            <p>5.导入文本内容后将覆盖文本框中现有的内容。</p>
+                                        </div>
+                                    </div>
+                                    <div class="singleBtns">
+                                        <a href="javascript:;" class="btn errBtn" data-playId="#n3_star2_last_single">删除错误项</a>
+                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n3_star2_last_single">删除重复项</a>
+                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n3_star2_last_single">清空文本框</a>
+                                        <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_last_and" data-anySelect="">
+
+
+
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle"></span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3293,6 +3613,253 @@
 
                                             </li>
 
+                                            <li>
+                                                <a href="javascript:;" data-num="12" class="smallNum smallNum12"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="13" class="smallNum smallNum13"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="14" class="smallNum smallNum14"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="15" class="smallNum smallNum15"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="16" class="smallNum smallNum16"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="17" class="smallNum smallNum17"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="18" class="smallNum smallNum18"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_last_kd" data-anySelect="">
+
+
+
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle"></span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
                                         </ul>
                                     </div>
                                     <div class="changeNumBtn">
@@ -3315,7 +3882,170 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_star2_group_single" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_last_group" data-anySelect="">
+
+
+
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle"></span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_last_group_single" data-anySelect="">
 
 
 
@@ -3337,9 +4067,9 @@
                                         </div>
                                     </div>
                                     <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_star2_group_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_star2_group_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_star2_group_single">清空文本框</a>
+                                        <a href="javascript:;" class="btn errBtn" data-playId="#n3_star2_last_group_single">删除错误项</a>
+                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n3_star2_last_group_single">删除重复项</a>
+                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n3_star2_last_group_single">清空文本框</a>
                                         <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
                                     </div>
                                 </div>
@@ -3348,7 +4078,7 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_star2_group_dt" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_last_group_and" data-anySelect="">
 
 
 
@@ -3356,11 +4086,258 @@
 
                                 <div class="changeNumDetail">
                                     <div class="changeNum">
-                                        <span class="detailTitle">胆码</span>
+                                        <span class="detailTitle"></span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="12" class="smallNum smallNum12"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="13" class="smallNum smallNum13"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="14" class="smallNum smallNum14"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="15" class="smallNum smallNum15"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="16" class="smallNum smallNum16"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="17" class="smallNum smallNum17"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_last_group_contains" data-anySelect="">
+
+
+
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle"></span>
                                         <ul class="numList" data-max="1">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3373,7 +4350,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3386,7 +4363,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3399,7 +4376,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3412,7 +4389,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3425,7 +4402,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3438,7 +4415,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3451,7 +4428,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3464,7 +4441,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3477,20 +4454,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3512,13 +4476,24 @@
                                 </div>
 
 
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_front" data-anySelect="">
+
+
+
+
+
                                 <div class="changeNumDetail">
                                     <div class="changeNum">
-                                        <span class="detailTitle">拖码</span>
+                                        <span class="detailTitle">万位</span>
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3531,7 +4506,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3544,7 +4519,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3557,7 +4532,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3570,7 +4545,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3583,7 +4558,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3596,7 +4571,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3609,7 +4584,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3622,7 +4597,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3635,7 +4610,42 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
+                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle">千位</span>
+                                        <ul class="numList" data-max="0">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3648,7 +4658,111 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3682,7 +4796,40 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x3" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_front_single" data-anySelect="">
+
+
+
+
+                                <!-- 单式 -->
+                                <div class="changeNumSingle">
+                                    <div class="importBetList">
+                                        <a href="javascript:;" class="btn uploadFile">导入注单</a>
+                                    </div>
+                                    <div class="singleNumBox">
+                                        <textarea class="singleNum"></textarea>
+                                        <div class="singleMsg">
+                                            <p>说明：</p>
+                                            <p>1.号码无需分割。</p>
+                                            <p>2.每一注号码之间的间隔符支持回车 空格[ ] 逗号[ , ] 分号[ ; ]</p>
+                                            <p>3.文件格式必须是.txt格式</p>
+                                            <p>4. 文件较大时会导致上传时间较长，请耐心等待！</p>
+                                            <p>5.导入文本内容后将覆盖文本框中现有的内容。</p>
+                                        </div>
+                                    </div>
+                                    <div class="singleBtns">
+                                        <a href="javascript:;" class="btn errBtn" data-playId="#n3_star2_front_single">删除错误项</a>
+                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n3_star2_front_single">删除重复项</a>
+                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n3_star2_front_single">清空文本框</a>
+                                        <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_front_and" data-anySelect="">
 
 
 
@@ -3694,7 +4841,7 @@
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3707,7 +4854,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3720,7 +4867,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3733,7 +4880,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3746,7 +4893,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3759,7 +4906,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3772,7 +4919,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3785,7 +4932,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3798,7 +4945,20 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -3836,17 +4996,101 @@
 
                                             </li>
 
+                                            <li>
+                                                <a href="javascript:;" data-num="12" class="smallNum smallNum12"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="13" class="smallNum smallNum13"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="14" class="smallNum smallNum14"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="15" class="smallNum smallNum15"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="16" class="smallNum smallNum16"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="17" class="smallNum smallNum17"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="18" class="smallNum smallNum18"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
                                         </ul>
                                     </div>
                                     <div class="changeNumBtn">
                                         <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
 
                                         </ul>
                                     </div>
@@ -3858,913 +5102,7 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x3_single" data-anySelect="">
-
-
-
-
-                                <!-- 单式 -->
-                                <div class="changeNumSingle">
-                                    <div class="importBetList">
-                                        <a href="javascript:;" class="btn uploadFile">导入注单</a>
-                                    </div>
-                                    <div class="singleNumBox">
-                                        <textarea class="singleNum"></textarea>
-                                        <div class="singleMsg">
-                                            <p>说明：</p>
-                                            <p>1.号码无需分割。</p>
-                                            <p>2.每一注号码之间的间隔符支持回车 空格[ ] 逗号[ , ] 分号[ ; ]</p>
-                                            <p>3.文件格式必须是.txt格式</p>
-                                            <p>4. 文件较大时会导致上传时间较长，请耐心等待！</p>
-                                            <p>5.导入文本内容后将覆盖文本框中现有的内容。</p>
-                                        </div>
-                                    </div>
-                                    <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_x3_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_x3_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_x3_single">清空文本框</a>
-                                        <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x3_dt" data-anySelect="">
-
-
-
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">胆码</span>
-                                        <ul class="numList" data-max="2">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">拖码</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_star3_front" data-anySelect="">
-
-
-
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">第1位</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">第2位</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">第3位</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_star3_front_single" data-anySelect="">
-
-
-
-
-                                <!-- 单式 -->
-                                <div class="changeNumSingle">
-                                    <div class="importBetList">
-                                        <a href="javascript:;" class="btn uploadFile">导入注单</a>
-                                    </div>
-                                    <div class="singleNumBox">
-                                        <textarea class="singleNum"></textarea>
-                                        <div class="singleMsg">
-                                            <p>说明：</p>
-                                            <p>1.号码无需分割。</p>
-                                            <p>2.每一注号码之间的间隔符支持回车 空格[ ] 逗号[ , ] 分号[ ; ]</p>
-                                            <p>3.文件格式必须是.txt格式</p>
-                                            <p>4. 文件较大时会导致上传时间较长，请耐心等待！</p>
-                                            <p>5.导入文本内容后将覆盖文本框中现有的内容。</p>
-                                        </div>
-                                    </div>
-                                    <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_star3_front_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_star3_front_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_star3_front_single">清空文本框</a>
-                                        <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_star3_group" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_front_kd" data-anySelect="">
 
 
 
@@ -4776,7 +5114,7 @@
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -4789,7 +5127,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -4802,7 +5140,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -4815,7 +5153,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -4828,7 +5166,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -4841,7 +5179,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -4854,7 +5192,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -4867,7 +5205,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -4880,7 +5218,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -4893,20 +5231,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -4940,374 +5265,7 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_star3_group_single" data-anySelect="">
-
-
-
-
-                                <!-- 单式 -->
-                                <div class="changeNumSingle">
-                                    <div class="importBetList">
-                                        <a href="javascript:;" class="btn uploadFile">导入注单</a>
-                                    </div>
-                                    <div class="singleNumBox">
-                                        <textarea class="singleNum"></textarea>
-                                        <div class="singleMsg">
-                                            <p>说明：</p>
-                                            <p>1.号码无需分割。</p>
-                                            <p>2.每一注号码之间的间隔符支持回车 空格[ ] 逗号[ , ] 分号[ ; ]</p>
-                                            <p>3.文件格式必须是.txt格式</p>
-                                            <p>4. 文件较大时会导致上传时间较长，请耐心等待！</p>
-                                            <p>5.导入文本内容后将覆盖文本框中现有的内容。</p>
-                                        </div>
-                                    </div>
-                                    <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_star3_group_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_star3_group_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_star3_group_single">清空文本框</a>
-                                        <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_star3_group_dt" data-anySelect="">
-
-
-
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">胆码</span>
-                                        <ul class="numList" data-max="2">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">拖码</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x4" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_front_group" data-anySelect="">
 
 
 
@@ -5319,7 +5277,7 @@
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5332,7 +5290,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5345,7 +5303,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5358,7 +5316,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5371,7 +5329,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5384,7 +5342,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5397,7 +5355,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5410,7 +5368,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5423,7 +5381,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5436,20 +5394,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5483,7 +5428,7 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x4_single" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_front_group_single" data-anySelect="">
 
 
 
@@ -5505,9 +5450,9 @@
                                         </div>
                                     </div>
                                     <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_x4_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_x4_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_x4_single">清空文本框</a>
+                                        <a href="javascript:;" class="btn errBtn" data-playId="#n3_star2_front_group_single">删除错误项</a>
+                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n3_star2_front_group_single">删除重复项</a>
+                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n3_star2_front_group_single">清空文本框</a>
                                         <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
                                     </div>
                                 </div>
@@ -5516,341 +5461,7 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x4_dt" data-anySelect="">
-
-
-
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">胆码</span>
-                                        <ul class="numList" data-max="3">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">拖码</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x5" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_front_group_and" data-anySelect="">
 
 
 
@@ -5862,7 +5473,7 @@
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5875,7 +5486,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5888,7 +5499,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5901,7 +5512,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5914,7 +5525,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5927,7 +5538,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5940,7 +5551,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5953,7 +5564,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -5966,216 +5577,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x5_single" data-anySelect="">
-
-
-
-
-                                <!-- 单式 -->
-                                <div class="changeNumSingle">
-                                    <div class="importBetList">
-                                        <a href="javascript:;" class="btn uploadFile">导入注单</a>
-                                    </div>
-                                    <div class="singleNumBox">
-                                        <textarea class="singleNum"></textarea>
-                                        <div class="singleMsg">
-                                            <p>说明：</p>
-                                            <p>1.号码无需分割。</p>
-                                            <p>2.每一注号码之间的间隔符支持回车 空格[ ] 逗号[ , ] 分号[ ; ]</p>
-                                            <p>3.文件格式必须是.txt格式</p>
-                                            <p>4. 文件较大时会导致上传时间较长，请耐心等待！</p>
-                                            <p>5.导入文本内容后将覆盖文本框中现有的内容。</p>
-                                        </div>
-                                    </div>
-                                    <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_x5_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_x5_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_x5_single">清空文本框</a>
-                                        <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x5_dt" data-anySelect="">
-
-
-
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">胆码</span>
-                                        <ul class="numList" data-max="4">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6213,23 +5615,8 @@
 
                                             </li>
 
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">拖码</span>
-                                        <ul class="numList" data-max="0">
-
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="12" class="smallNum smallNum12"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6242,7 +5629,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="13" class="smallNum smallNum13"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6255,7 +5642,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="14" class="smallNum smallNum14"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6268,7 +5655,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="15" class="smallNum smallNum15"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6281,7 +5668,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="16" class="smallNum smallNum16"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6294,72 +5681,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+                                                <a href="javascript:;" data-num="17" class="smallNum smallNum17"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6375,13 +5697,6 @@
                                     </div>
                                     <div class="changeNumBtn">
                                         <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
 
                                         </ul>
                                     </div>
@@ -6393,7 +5708,7 @@
                             </div>
 
                             <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x6" data-anySelect="">
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star2_front_group_contains" data-anySelect="">
 
 
 
@@ -6402,10 +5717,166 @@
                                 <div class="changeNumDetail">
                                     <div class="changeNum">
                                         <span class="detailTitle"></span>
+                                        <ul class="numList" data-max="1">
+
+                                            <li>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                            <li>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
+
+
+                                                <!--                                    <span class="hotspotNum"> -->
+
+
+
+
+                                                <!--                                    </span> -->
+
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="changeNumBtn">
+                                        <ul class="btnList">
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <!-- 号码盘 -->
+                            <div class="changeNumList changeNumList-pl3" style="display: none;" id="n3_star1_dwd" data-anySelect="">
+
+
+
+
+
+                                <div class="changeNumDetail">
+                                    <div class="changeNum">
+                                        <span class="detailTitle">百位</span>
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6418,7 +5889,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6431,7 +5902,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6444,7 +5915,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6457,7 +5928,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6470,7 +5941,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6483,7 +5954,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6496,7 +5967,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6509,7 +5980,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6522,20 +5993,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6564,215 +6022,13 @@
                                 </div>
 
 
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x6_single" data-anySelect="">
-
-
-
-
-                                <!-- 单式 -->
-                                <div class="changeNumSingle">
-                                    <div class="importBetList">
-                                        <a href="javascript:;" class="btn uploadFile">导入注单</a>
-                                    </div>
-                                    <div class="singleNumBox">
-                                        <textarea class="singleNum"></textarea>
-                                        <div class="singleMsg">
-                                            <p>说明：</p>
-                                            <p>1.号码无需分割。</p>
-                                            <p>2.每一注号码之间的间隔符支持回车 空格[ ] 逗号[ , ] 分号[ ; ]</p>
-                                            <p>3.文件格式必须是.txt格式</p>
-                                            <p>4. 文件较大时会导致上传时间较长，请耐心等待！</p>
-                                            <p>5.导入文本内容后将覆盖文本框中现有的内容。</p>
-                                        </div>
-                                    </div>
-                                    <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_x6_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_x6_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_x6_single">清空文本框</a>
-                                        <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x6_dt" data-anySelect="">
-
-
-
-
-
                                 <div class="changeNumDetail">
                                     <div class="changeNum">
-                                        <span class="detailTitle">胆码</span>
-                                        <ul class="numList" data-max="5">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">拖码</span>
+                                        <span class="detailTitle">十位</span>
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6785,7 +6041,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6798,7 +6054,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6811,7 +6067,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6824,7 +6080,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6837,7 +6093,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6850,7 +6106,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6863,7 +6119,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6876,7 +6132,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6889,20 +6145,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6931,24 +6174,13 @@
                                 </div>
 
 
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x7" data-anySelect="">
-
-
-
-
-
                                 <div class="changeNumDetail">
                                     <div class="changeNum">
-                                        <span class="detailTitle"></span>
+                                        <span class="detailTitle">个位</span>
                                         <ul class="numList" data-max="0">
 
                                             <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
+                                                <a href="javascript:;" data-num="0" class="smallNum smallNum0"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6961,7 +6193,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
+                                                <a href="javascript:;" data-num="1" class="smallNum smallNum1"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6974,7 +6206,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
+                                                <a href="javascript:;" data-num="2" class="smallNum smallNum2"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -6987,7 +6219,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
+                                                <a href="javascript:;" data-num="3" class="smallNum smallNum3"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -7000,7 +6232,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
+                                                <a href="javascript:;" data-num="4" class="smallNum smallNum4"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -7013,7 +6245,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
+                                                <a href="javascript:;" data-num="5" class="smallNum smallNum5"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -7026,7 +6258,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
+                                                <a href="javascript:;" data-num="6" class="smallNum smallNum6"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -7039,7 +6271,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
+                                                <a href="javascript:;" data-num="7" class="smallNum smallNum7"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -7052,7 +6284,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
+                                                <a href="javascript:;" data-num="8" class="smallNum smallNum8"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -7065,930 +6297,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x7_single" data-anySelect="">
-
-
-
-
-                                <!-- 单式 -->
-                                <div class="changeNumSingle">
-                                    <div class="importBetList">
-                                        <a href="javascript:;" class="btn uploadFile">导入注单</a>
-                                    </div>
-                                    <div class="singleNumBox">
-                                        <textarea class="singleNum"></textarea>
-                                        <div class="singleMsg">
-                                            <p>说明：</p>
-                                            <p>1.号码无需分割。</p>
-                                            <p>2.每一注号码之间的间隔符支持回车 空格[ ] 逗号[ , ] 分号[ ; ]</p>
-                                            <p>3.文件格式必须是.txt格式</p>
-                                            <p>4. 文件较大时会导致上传时间较长，请耐心等待！</p>
-                                            <p>5.导入文本内容后将覆盖文本框中现有的内容。</p>
-                                        </div>
-                                    </div>
-                                    <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_x7_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_x7_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_x7_single">清空文本框</a>
-                                        <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x7_dt" data-anySelect="">
-
-
-
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">胆码</span>
-                                        <ul class="numList" data-max="6">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">拖码</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x8" data-anySelect="">
-
-
-
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle"></span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                            <li><a href="javascript:;" class="numBtn numBtnAll">全</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnBig">大</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnSmall">小</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnOdd">单</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnEven">双</a></li>
-                                            <li><a href="javascript:;" class="numBtn numBtnClear">清</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x8_single" data-anySelect="">
-
-
-
-
-                                <!-- 单式 -->
-                                <div class="changeNumSingle">
-                                    <div class="importBetList">
-                                        <a href="javascript:;" class="btn uploadFile">导入注单</a>
-                                    </div>
-                                    <div class="singleNumBox">
-                                        <textarea class="singleNum"></textarea>
-                                        <div class="singleMsg">
-                                            <p>说明：</p>
-                                            <p>1.号码无需分割。</p>
-                                            <p>2.每一注号码之间的间隔符支持回车 空格[ ] 逗号[ , ] 分号[ ; ]</p>
-                                            <p>3.文件格式必须是.txt格式</p>
-                                            <p>4. 文件较大时会导致上传时间较长，请耐心等待！</p>
-                                            <p>5.导入文本内容后将覆盖文本框中现有的内容。</p>
-                                        </div>
-                                    </div>
-                                    <div class="singleBtns">
-                                        <a href="javascript:;" class="btn errBtn" data-playId="#n11x5_x8_single">删除错误项</a>
-                                        <a href="javascript:;" class="btn cfBtn" data-playId="#n11x5_x8_single">删除重复项</a>
-                                        <a href="javascript:;" class="btn clearBtn" data-playId="#n11x5_x8_single">清空文本框</a>
-                                        <span class="msg" style="display: none;">您导入的号码有错误项和重复项，已为您标记，试试功能键由系统修正错误</span>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            <!-- 号码盘 -->
-                            <div class="changeNumList changeNumList-gd11x5" style="display: none;" id="n11x5_x8_dt" data-anySelect="">
-
-
-
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">胆码</span>
-                                        <ul class="numList" data-max="7">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                    <div class="changeNumBtn">
-                                        <ul class="btnList">
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                                <div class="changeNumDetail">
-                                    <div class="changeNum">
-                                        <span class="detailTitle">拖码</span>
-                                        <ul class="numList" data-max="0">
-
-                                            <li>
-                                                <a href="javascript:;" data-num="01" class="smallNum smallNum01"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="02" class="smallNum smallNum02"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="03" class="smallNum smallNum03"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="04" class="smallNum smallNum04"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="05" class="smallNum smallNum05"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="06" class="smallNum smallNum06"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="07" class="smallNum smallNum07"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="08" class="smallNum smallNum08"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="09" class="smallNum smallNum09"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="10" class="smallNum smallNum10"></a>
-
-
-                                                <!--                                    <span class="hotspotNum"> -->
-
-
-
-
-                                                <!--                                    </span> -->
-
-                                            </li>
-
-                                            <li>
-                                                <a href="javascript:;" data-num="11" class="smallNum smallNum11"></a>
+                                                <a href="javascript:;" data-num="9" class="smallNum smallNum9"></a>
 
 
                                                 <!--                                    <span class="hotspotNum"> -->
@@ -8076,7 +6385,6 @@
                                         <!--</label>-->
                                     </div>
                                     <div class="betsInfoTypeList">
-                                        <!--
                                         <select class="labelCond betsInfoType" id="bounsType">
 
 
@@ -8091,8 +6399,6 @@
 
 
                                         </select>
-                                        -->
-                                        <input type="range" value="${maxFandian}" min="0" max="${maxFandian}" step="0.1" onchange="changeBouns()" id="bounsNumRange"/>&nbsp;<span id="bounsNum">${maxBouns}</span>
                                     </div>
                                 </div>
                             </div>
@@ -8146,7 +6452,7 @@
                                     <span>总金额：￥</span> <span id="appNumAmount" class="fontColorTheme">0.00</span> <span>元</span>
                                 </label>
                                 <label class="currAmountDetail">
-                                    <span>余额：</span> <span class="userBalance fontColorTheme" id="appNumUserBalance">35.7103</span> <span>元</span>
+                                    <span>余额：</span> <span class="userBalance fontColorTheme" id="appNumUserBalance">35.0487</span> <span>元</span>
                                 </label>
                             </div>
                             <div class="betsBtn">
@@ -8181,8 +6487,12 @@
                                 </tr>
                                 </thead>
                                 <tbody id="openList">
+
                                 <c:forEach var="recentOpen1" items="${recentOpen}">
                                     <tr class="beforeLottNumDetail">
+
+
+
                                         <td class="smallFont12">${recentOpen1.seasonId}</td>
                                         <td class="fontColorTheme beforeLottNum">
                                             <c:set value="${ fn:split(recentOpen1.nums, ',') }" var="str1" />
@@ -8192,6 +6502,7 @@
                                         </td>
                                     </tr>
                                 </c:forEach>
+
                                 </tbody>
                             </table>
                         </div>
@@ -8237,7 +6548,6 @@
                                 </tr>
                                 </thead>
                                 <tbody id="betTable">
-
                                 <c:forEach var="recentBet1" items="${recentBet}">
                                     <tr class="beforeLottNumDetail" onclick="showGeneralDetailArea('${recentBet1.orderId}', 0, 1)">
                                         <td class="betListLottName overflowEllipsis" title="${recentBet1.lotName}">${recentBet1.lotName}</td>
@@ -8267,10 +6577,13 @@
                                         <td>${recentTrace1.startSeason}</td>
                                         <td>${recentTrace1.status}</td>
                                         <td class="fontColorTheme">${recentTrace1.finishTraceAmount}</td>
+
+
                                         <td class="fontColorRed">${recentTrace1.winAmount}</td>
 
                                     </tr>
                                 </c:forEach>
+
                                 </tbody>
                             </table>
                         </div>
@@ -8461,7 +6774,7 @@
             <strong>请核准您的投注信息</strong>
         </p>
         <p>
-            <label><span>彩种：广东11选5</span></label> <label>期号：<span id="saleSeasonId1">20180413-008</span></label>
+            <label><span>彩种：排列三</span></label> <label>期号：<span id="saleSeasonId1">2018103</span></label>
         </p>
         <div class="betCfmDetail">
             <span class="betCfmDetailTitle">详情：</span>
@@ -8964,6 +7277,75 @@
     </h3>
     <ul class="allGameList">
 
+
+
+        <li class="gameDetail">
+            <a href="/lotts/tiger/index">
+                <span>鼎汇秒秒彩</span>
+                <i class="hot">H</i>
+            </a>
+        </li>
+
+        <li class="gameDetail">
+            <a href="/lotts/sj_mmc/index">
+                <span>鼎汇40秒</span>
+                <i class="hot">H</i>
+            </a>
+        </li>
+
+        <li class="gameDetail">
+            <a href="/lotts/sj1fc/index">
+                <span>鼎汇一分彩</span>
+                <i class="hot">H</i>
+            </a>
+        </li>
+
+        <li class="gameDetail">
+            <a href="/lotts/sj3fc/index">
+                <span>鼎汇三分彩</span>
+
+            </a>
+        </li>
+
+        <li class="gameDetail">
+            <a href="/lotts/sj5fc/index">
+                <span>鼎汇五分彩</span>
+
+            </a>
+        </li>
+
+        <li class="gameDetail">
+            <a href="/lotts/gppl5/index">
+                <span>高频排列5</span>
+
+            </a>
+        </li>
+
+
+
+        <li class="gameDetail">
+            <a href="/lotts/tx1fc/index">
+                <span>腾讯分分彩</span>
+
+            </a>
+        </li>
+
+        <li class="gameDetail">
+            <a href="/lotts/jndbsc/index">
+                <span>加拿大3.5</span>
+
+            </a>
+        </li>
+
+        <li class="gameDetail">
+            <a href="/lotts/dj1_5/index">
+                <span>东京1.5</span>
+
+            </a>
+        </li>
+
+
+
         <li class="gameDetail">
             <a href="/lotts/cqssc/index">
                 <span>重庆时时彩</span>
@@ -8989,6 +7371,33 @@
             </a>
         </li>
 
+
+
+        <li class="gameDetail">
+            <a href="/lotts/ffpk10/index">
+                <span>分分PK10</span>
+
+            </a>
+        </li>
+
+        <li class="gameDetail">
+            <a href="/lotts/f3pk10/index">
+                <span>3分PK10</span>
+
+            </a>
+        </li>
+
+        <li class="gameDetail">
+            <a href="/lotts/f5pk10/index">
+                <span>5分PK10</span>
+
+            </a>
+        </li>
+
+
+
+
+
         <li class="gameDetail">
             <a href="/lotts/jsk3/index">
                 <span>江苏快3</span>
@@ -8999,6 +7408,33 @@
         <li class="gameDetail">
             <a href="/lotts/shk3/index">
                 <span>上海快3</span>
+
+            </a>
+        </li>
+
+
+
+
+
+        <li class="gameDetail">
+            <a href="/lotts/f1_11x5/index">
+                <span>一分11选5</span>
+
+            </a>
+        </li>
+
+        <li class="gameDetail">
+            <a href="/lotts/f3_11x5/index">
+                <span>三分11选5</span>
+
+            </a>
+        </li>
+
+
+
+        <li class="gameDetail">
+            <a href="/lotts/ah11x5/index">
+                <span>安徽11选5</span>
 
             </a>
         </li>

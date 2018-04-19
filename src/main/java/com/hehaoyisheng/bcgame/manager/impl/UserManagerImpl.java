@@ -81,7 +81,7 @@ public class UserManagerImpl implements UserManager {
         }catch (Exception e){
             logger.error("insert Error: username:{}, ", e);
         }
-        return -1;
+        return 0;
     }
 }
 /*

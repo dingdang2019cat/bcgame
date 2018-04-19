@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/resource/wk-common.css?ver=20180105"/>
     <script type="text/javascript" src="/resource/jquery-1.11.0.min.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/jquery.timer.js?ver=20180105"></script>
-    <script type="text/javascript" src="/resource/layer/layer.js?ver=20180105"></script>
+    <script type="text/javascript" src="/resource/layer.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/jquery.cookie.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/spinner.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/audio/audio5.js?ver=20180105"></script>
@@ -149,7 +149,7 @@
         <a href="javascript:;" class="drawMoney" onclick="javascript:if('0' == 2 || '0' == 3){$.alert('您的提现功能已被冻结！');}else{window.location.href='/deposit/deposit'}"></a>
         <div class="headerR">
             <label class="serviceSuggest">
-                <a href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&configID=62880&jid=3635228849&s=1" class="customerService" target="_blank"><i></i>联系客服</a>
+                <a href="http://dkc.duokebo.com/webchat/chat.aspx?siteid=730985" class="customerService" target="_blank"><i></i>联系客服</a>
             </label>
             <a href="javascript:;" class="refresh" id="refererUser"><i></i>刷新</a>
             <a href="/logout" class="userQuit"><i></i>登出</a>

@@ -5,7 +5,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 
-
 <!DOCTYPE html>
 <html>
 <head>

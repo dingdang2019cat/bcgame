@@ -62,6 +62,13 @@ public class GameController {
         model.addAttribute("amount", users.get(0).getMoney());
         if(!StringUtils.isEmpty(tabId)){
             if(tabId.equals("trace") || tabId.equals("gameBetList")){
+                if(tabId.equals("trace")){
+                    model.addAttribute("trace", " active");
+                    model.addAttribute("gameBetList", "");
+                }else{
+                    model.addAttribute("gameBetList", " active");
+                    model.addAttribute("trace", "");
+                }
                 model.addAttribute("account", user.getUsername());
                 return "gameBetList";
             }

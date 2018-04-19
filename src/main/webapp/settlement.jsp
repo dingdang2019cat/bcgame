@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.text.SimpleDateFormat" %><%--
   Created by IntelliJ IDEA.
   User: lnzyz
   Date: 2017/12/17
@@ -32,8 +32,9 @@
     <!--<link href="/resource/My97DatePicker/WdatePicker.css" rel="stylesheet" type="text/css">-->
     <script type="text/javascript" src="/resource/math.extends.js"></script>
     <script type="text/javascript">
-        var webProfitBiginTime ="2017-12-17";
-        var webProfitEndTime ="2017-12-17";
+        <% SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); %>
+        var webProfitBiginTime ="<%=simpleDateFormat.format(System.currentTimeMillis())%>";
+        var webProfitEndTime ="<%=simpleDateFormat.format(System.currentTimeMillis())%>";
     </script>
     <script type="text/javascript" src="/resource/report/index.js"></script>
     <script type="text/javascript" src="/resource/pagerAjax.js"></script>
@@ -264,7 +265,7 @@
                 <a class="leftListBigItem centreNavDetail traceA" data-id="#trace" href="/game/index?tabId=trace"><i></i>追号记录</a>
             </div>
             <div class="leftListDetail">
-                <a class="leftListBigItem centreNavDetail betListA" data-id="#betList"><i></i>团队投注明细</a>
+                <a class="leftListBigItem centreNavDetail betListA active" data-id="#betList"><i></i>团队投注明细</a>
             </div>
             <div class="leftListDetail">
                 <a class="leftListBigItem centreNavDetail teamReportListA" data-id="#teamReportList"><i></i>团队盈亏报表</a>
@@ -288,9 +289,9 @@
                     <form class="searchBar betListSearch" id="betSearchArgs"><input type="hidden" id="pageSize_betSearchArgs" name="rows" value="15"><input type="hidden" id="pageCurr_betSearchArgs" name="page" value="1"><input type="hidden" id="pageBtnId_betSearchArgs" value="searchBetList">
                         <label>
                             <span class="labelTitle">时间：</span>
-                            <input type="text" class="labelCond Wdate" id="conditionStartTime" value="2017-12-17 00:00:00" name="startTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
+                            <input type="text" class="labelCond Wdate" id="conditionStartTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%> 00:00:00" name="startTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
                             <span>至</span>
-                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="2017-12-17 23:59:59" name="endTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
+                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%> 23:59:59" name="endTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
                         </label>
                         <label>
                             <span class="labelTitle">游戏：</span>
@@ -434,9 +435,9 @@
                         <!--                        </label> -->
                         <label>
                             <span class="labelTitle" style="width: 50px;"> 时间：</span>
-                            <input type="text" class="labelCond  Wdate" name="begin" value="2017-12-17 00:00:00" onclick="WdatePicker({startDate: &#39;%y-%M-%d 00:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:160px;">
+                            <input type="text" class="labelCond  Wdate" name="begin" value="<%=simpleDateFormat.format(System.currentTimeMillis())%> 00:00:00" onclick="WdatePicker({startDate: &#39;%y-%M-%d 00:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:160px;">
                             <span>~</span>
-                            <input type="text" class="labelCond Wdate" name="end" value="2017-12-17 23:59:59" onclick="WdatePicker({startDate: &#39;%y-%M-%d 23:59:59&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:160px;">
+                            <input type="text" class="labelCond Wdate" name="end" value="<%=simpleDateFormat.format(System.currentTimeMillis())%> 23:59:59" onclick="WdatePicker({startDate: &#39;%y-%M-%d 23:59:59&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:160px;">
                         </label>
 
                         <label>
@@ -525,9 +526,9 @@
                             </select>
                         </label>
                         <label style="display:none;" id="conditionDate">
-                            <input type="text" class="labelCond  Wdate" id="conditionStartTime" value="2017-12-17" name="startTime" onclick="WdatePicker({maxDate:&#39;%y-%M-%d&#39;})"><span>(00:00:00)</span>
+                            <input type="text" class="labelCond  Wdate" id="conditionStartTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%>" name="startTime" onclick="WdatePicker({maxDate:&#39;%y-%M-%d&#39;})"><span>(00:00:00)</span>
                             <span>~</span>
-                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="2017-12-17" name="endTime" onclick="WdatePicker({maxDate:&#39;%y-%M-%d&#39;})"><span>(23:59:59)</span>
+                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%>" name="endTime" onclick="WdatePicker({maxDate:&#39;%y-%M-%d&#39;})"><span>(23:59:59)</span>
                         </label>
                         <label>
                             <a href="javascript:;" class="btn" id="search">搜索</a>
@@ -611,9 +612,9 @@
                         </label>
                         <label>
                             <span class="labelTitle">时间：</span>
-                            <input type="text" class="labelCond  Wdate" id="teamConditionStartTime" value="2017-12-17" name="startTime" onclick="WdatePicker({minDate:&#39;2017-11-02&#39;,maxDate:&#39;%y-%M-%d&#39;})"><span>(00:00:00)</span>
+                            <input type="text" class="labelCond  Wdate" id="teamConditionStartTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%>" name="startTime" onclick="WdatePicker({minDate:&#39;<%=simpleDateFormat.format(System.currentTimeMillis())%>&#39;,maxDate:&#39;%y-%M-%d&#39;})"><span>(00:00:00)</span>
                             <span>至</span>
-                            <input type="text" class="labelCond Wdate" id="teamConditionEndTime" value="2017-12-17" name="endTime" onclick="WdatePicker({minDate:&#39;2017-11-02&#39;,maxDate:&#39;%y-%M-%d&#39;})"><span>(23:59:59)</span>
+                            <input type="text" class="labelCond Wdate" id="teamConditionEndTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%>" name="endTime" onclick="WdatePicker({minDate:&#39;<%=simpleDateFormat.format(System.currentTimeMillis())%>&#39;,maxDate:&#39;%y-%M-%d&#39;})"><span>(23:59:59)</span>
                             <span class="changeTime" id="showChoose">
 	   							<a href="javascript:;" class="active" onclick="chooseTime(1, this)">今日</a>
 	                        	<a href="javascript:;" onclick="chooseTime(2, this)" class="">昨日</a>
@@ -799,9 +800,9 @@
                     <form class="searchBar rechargeSearch" id="rechargeSearchArgs"><input type="hidden" id="pageSize_rechargeSearchArgs" name="rows" value="15"><input type="hidden" id="pageCurr_rechargeSearchArgs" name="page" value="1"><input type="hidden" id="pageBtnId_rechargeSearchArgs" value="rechargeSearch">
                         <label>
                             <span class="labelTitle">时间：</span>
-                            <input type="text" class="labelCond Wdate" id="conditionStartTime" value="2017-12-17 00:00:00" name="startTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
+                            <input type="text" class="labelCond Wdate" id="conditionStartTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%> 00:00:00" name="startTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
                             <span>至</span>
-                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="2017-12-17 23:59:59" name="endTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
+                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%> 23:59:59" name="endTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
                         </label>
                         <label>
                             <span class="labelTitle"> 用户名：</span>
@@ -883,9 +884,9 @@
                     <form class="searchBar depositSearch" id="depositSearchArgs"><input type="hidden" id="pageSize_depositSearchArgs" name="rows" value="15"><input type="hidden" id="pageCurr_depositSearchArgs" name="page" value="1"><input type="hidden" id="pageBtnId_depositSearchArgs" value="depositSearch">
                         <label>
                             <span class="labelTitle">时间：</span>
-                            <input type="text" class="labelCond Wdate" id="conditionStartTime" value="2017-12-17 00:00:00" name="startTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
+                            <input type="text" class="labelCond Wdate" id="conditionStartTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%> 00:00:00" name="startTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
                             <span>至</span>
-                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="2017-12-17 23:59:59" name="endTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
+                            <input type="text" class="labelCond Wdate" id="conditionEndTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%> 23:59:59" name="endTime" onclick="WdatePicker({startDate: &#39;%y-%M-%d 04:00:00&#39;,dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width:135px;">
                         </label>
                         <label>
                             <span class="labelTitle"> 用户名：</span>
@@ -968,9 +969,9 @@
                     <form class="searchBar userListSearch" id="financeForm"><input type="hidden" id="pageSize_financeForm" name="rows" value="15"><input type="hidden" id="pageCurr_financeForm" name="page" value="1"><input type="hidden" id="pageBtnId_financeForm" value="financeSearch">
                         <label for="#">
                             <span class="labelTitle">帐变时间：</span>
-                            <input type="text" class="labelCond Wdate" id="startTime" name="startTime" value="2017-12-17 00:00:00" onclick="WdatePicker({dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width: 160px;">
+                            <input type="text" class="labelCond Wdate" id="startTime" name="startTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%> 00:00:00" onclick="WdatePicker({dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width: 160px;">
                             <span>~</span>
-                            <input type="text" class="labelCond Wdate" id="endTime" name="endTime" value="2017-12-17 23:59:59" onclick="WdatePicker({dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width: 160px;">
+                            <input type="text" class="labelCond Wdate" id="endTime" name="endTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%> 23:59:59" onclick="WdatePicker({dateFmt:&#39;yyyy-MM-dd HH:mm:ss&#39;})" style="width: 160px;">
                         </label>
 
                         <label for="#">

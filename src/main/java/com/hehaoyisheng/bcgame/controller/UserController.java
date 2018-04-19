@@ -16,6 +16,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +25,8 @@ import java.util.Map;
 @Controller
 @SessionAttributes("user")
 public class UserController {
+
+    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Resource
     private UserManager userManager;
@@ -210,7 +213,7 @@ public class UserController {
         int total = userManager.count(selectUser, from, rows, null, null, beginAmount, endAmount);
         List<UserVO> resultList = Lists.newArrayList();
         for(User u : childUsers){
-            double teamMoney = userManager.sum(u.getUsername());
+            double teamMoney = userManager.sum(u.getUsername() + "%");
             User user1 = new User();
             user1.setParentList(u.getParentList() + "%");
             int count = userManager.count(user1, null, null, null, null, null, null);
