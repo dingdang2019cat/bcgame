@@ -66,7 +66,7 @@ public class GameData {
 
         try {
             pl = simpleDateFormat.parse(timePl);
-            fc3d = simpleDateFormat.parse(timePl);
+            fc3d = simpleDateFormat.parse(time3d);
         }catch (Exception e){
             e.printStackTrace();
         }

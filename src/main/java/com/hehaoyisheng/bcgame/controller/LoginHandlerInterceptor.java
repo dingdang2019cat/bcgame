@@ -1,5 +1,6 @@
 package com.hehaoyisheng.bcgame.controller;
 
+import com.hehaoyisheng.bcgame.entity.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,6 +12,17 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
 
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         HttpSession httpSession = httpServletRequest.getSession();
+        String url = httpServletRequest.getServletPath();
+        if(url.contains("registByCode")){
+            return true;
+        }
+        if(url.contains("admin")){
+            if(httpSession.getAttribute("user") == null || !((User)httpSession.getAttribute("user")).getUsername().equals("admin")){
+                httpServletResponse.sendRedirect("/admin/login");
+                return false;
+            }
+            return true;
+        }
         if(httpSession.getAttribute("user") == null){
             httpServletResponse.sendRedirect("/login");
             return false;

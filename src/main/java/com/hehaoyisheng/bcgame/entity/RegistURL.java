@@ -15,6 +15,24 @@ public class RegistURL {
     private String userType;
     //有效期
     private int validTime;
+    private String parentList;
+    private String wxAddress;
+
+    public String getWxAddress() {
+        return wxAddress;
+    }
+
+    public void setWxAddress(String wxAddress) {
+        this.wxAddress = wxAddress;
+    }
+
+    public String getParentList() {
+        return parentList;
+    }
+
+    public void setParentList(String parentList) {
+        this.parentList = parentList;
+    }
 
     public int getId() {
         return id;

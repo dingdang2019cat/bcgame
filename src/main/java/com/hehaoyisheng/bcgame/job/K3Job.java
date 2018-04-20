@@ -10,6 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.text.DateFormat;
@@ -66,21 +67,17 @@ public class K3Job {
         GameData.gameSeasonId.put(type, qiHao);
         while (true){
             try {
-                String result = HttpClientUtil.sendHttpGet("http://pub.icaile.com/" + type + "jjg.php");
+                String result = HttpClientUtil.sendHttpGet("http://caipiao.163.com/award/jskuai3/");
 
                 Document document = Jsoup.parse(result);
 
-                Elements elements = document.getElementsByClass("nth-child-1");
-                Elements elements2 = document.getElementsByClass("nth-child-3");
-
-                for(int i = 0; i < elements.size(); i++){
-                    Element element = elements.get(i);
+                Elements elements = document.getElementsByClass("start");
+                for(Element element : elements){
                     String qihao = element.text();
                     if(qihao.equals(qiHao1)){
-                        String lotteryNum = "";
-                        Elements elements1 = elements2.get(i).getElementsByClass("ball");
-                        for(Element element1 : elements1){
-                            lotteryNum += element1.text();
+                        String lotteryNum = element.attr("data-win-number");
+                        if(StringUtils.isEmpty(lotteryNum)){
+                            break;
                         }
                         BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
                         bcLotteryHistory.setLotteryType(type);

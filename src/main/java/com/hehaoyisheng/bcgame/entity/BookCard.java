@@ -16,6 +16,7 @@ public class BookCard {
     private Integer status;
     private String userMark;
     private Integer bankNameId;
+    private String bankName;
 
     public int getId() {
         return id;
@@ -95,5 +96,13 @@ public class BookCard {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
     }
 }

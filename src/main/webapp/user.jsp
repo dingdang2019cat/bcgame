@@ -1448,7 +1448,7 @@
 </div>
 <script type="text/javascript" src="/resource/user/setSafePassword.js?ver=20171208"></script>
 
-<script type="text/javascript" src="/resource/user/index.js?ver=20171208"></script>
+<script type="text/javascript" src="/resource/user/index.js?ver=20180420"></script>
 <script type="text/javascript" src="/resource/user/validate.js?ver=20171208"></script>
 
 

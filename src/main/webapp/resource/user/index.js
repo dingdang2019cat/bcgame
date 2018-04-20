@@ -794,10 +794,10 @@ function initUserList(){
                 trs+='<td class="userAcctAmount fontColorTheme overflowEllipsis" title="' + u.teamAmount +'">' + u.teamAmount +'</td>';
                 trs+='<td>' + u.loginTime  +'</td>';
                 if (gloas.dailyWagesOpen || gloas.dailyWagesTrans) {
-                    trs+='<td>' + (null == u.dailyRate ? (null != u.dailyRuleId ? '已开通' : '未签订') : (u.dailyRate + '%'))  +'</td>';
+                    //trs+='<td>' + (null == u.dailyRate ? (null != u.dailyRuleId ? '已开通' : '未签订') : (u.dailyRate + '%'))  +'</td>';
                 }
                 if(gloas.contractStatus){
-                    trs+='<td>' + contractStatusName  +'</td>';
+                    //trs+='<td>' + contractStatusName  +'</td>';
                 }
                 if(u.homeRemark == null){
                     trs+='<td class="addRemark overflowEllipsis">';

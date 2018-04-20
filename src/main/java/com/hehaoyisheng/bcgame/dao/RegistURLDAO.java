@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface RegistURLDAO {
-    @Insert("insert into registurl (code, createTime, extAddress, flag, rebateRatio, registAddress, userType, validTime, account) values (#{code}, now(), #{extAddress}, #{flag}, #{rebateRatio}, #{registAddress}, #{userType}, #{validTime}, #{account})")
+    @Insert("insert into registurl (code, createTime, extAddress, flag, rebateRatio, registAddress, userType, validTime, account, parentList, wxAddress) values (#{code}, now(), #{extAddress}, #{flag}, #{rebateRatio}, #{registAddress}, #{userType}, #{validTime}, #{account}, #{parentList}, #{wxAddress})")
     int insert(RegistURL registURL);
 
     @Update("update registurl set registNum = #{registNum} where code=#{code}")

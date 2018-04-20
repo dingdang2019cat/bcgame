@@ -185,22 +185,24 @@ public class IndexController {
         try {
             GameThread gameThread = new GameThread();
             gameThread.initData("cqssc");
-            Thread.sleep(1000);
+            Thread.sleep(500);
             gameThread.initData("xjssc");
-            Thread.sleep(1000);
+            Thread.sleep(500);
             gameThread.initData("tjssc");
-            Thread.sleep(1000);
+            Thread.sleep(500);
             gameThread.initData("pk10");
-            Thread.sleep(1000);
+            Thread.sleep(500);
             gameThread.initData("gd11x5");
-            Thread.sleep(1000);
+            Thread.sleep(500);
             gameThread.initData("jx11x5");
-            Thread.sleep(1000);
+            Thread.sleep(500);
             gameThread.initData("sd11x5");
+            Thread.sleep(500);
+            gameThread.initData("jsk3");
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "初始化完成！";
+        return "init success!";
     }
 
     /**

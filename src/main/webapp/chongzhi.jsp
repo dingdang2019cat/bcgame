@@ -49,9 +49,6 @@
                 <div class="hotLotteryList">
                     <i></i>
                     <a href="/lotts/cqssc/index" class="acqsscIcon" title="重庆时时彩"></a>
-                    <a href="/lotts/sj1fc/index" class="asj1fcIcon" title="鼎汇一分彩"></a>
-                    <a href="/lotts/sj_mmc/index" class="ammcIcon" title="鼎汇40秒"></a>
-                    <a href="/lotts/tiger/index" class="atigerIcon" title="鼎汇秒秒彩"></a>
                 </div>
                 <div class="lotteryList" id="lotteryList">
 
@@ -232,13 +229,6 @@
                 </div>
                 <div class="leftListDetail">
                     <a class="leftListBigItem depositA" id="navDeposit" href="javascript:;" onclick="javascript:if('0' == 2 || '0' == 3){$.alert('您的提现功能已被冻结！');}else{window.location.href='/deposit/deposit'}"><i></i>提现</a>
-                </div>
-                <div class="leftListDetail">
-                    <a class="leftListBigItem outstandingA" href="javascript:;"><i></i>未到账处理</a>
-                    <div class="leftListItem" style="display:none;">
-                        <a class="nav rechNav" href="/recharge/rechargeOutstanding">充值未到账</a>
-                        <a class="nav depoNav" href="/deposit/depositOutstanding">提现未到账</a>
-                    </div>
                 </div>
             </div>
         </div>

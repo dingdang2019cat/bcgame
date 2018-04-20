@@ -156,7 +156,6 @@
             </div>
         </div>
         <a href="/user/index?tabId=msg" class="inMail"><i></i>站内信<span id="platNoticeNumSpan"></span></a>
-        <a href="/activity/index" class="activityIcon"><i></i>活动中心</a>
         <label class="username overflowEllipsis" title="${nickName}">
             昵称：${nickName}
 

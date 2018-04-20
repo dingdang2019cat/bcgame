@@ -6,9 +6,11 @@ import com.hehaoyisheng.bcgame.common.BaseData;
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.transfar.UserTransfar;
+import com.hehaoyisheng.bcgame.entity.vo.Bank;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
 import com.hehaoyisheng.bcgame.entity.vo.UserVO;
 import com.hehaoyisheng.bcgame.manager.*;
+import com.hehaoyisheng.bcgame.utils.MD5Util;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,8 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,6 +55,12 @@ public class UserController {
 
     @Resource
     private RechargeManager rechargeManager;
+
+    @Resource
+    private DrawHistoryManager drawHistoryManager;
+
+    @Resource
+    private SettingsManager settingsManager;
 
     @ModelAttribute("user1")
     public User addUser(User user) {
@@ -386,6 +396,11 @@ public class UserController {
         BookCard bookCard = new BookCard();
         bookCard.setAccount(user.getUsername());
         bookCard.setBankNameId(bankNameId);
+        for(Bank bank : BaseData.bankName){
+            if(bank.getId() == bankNameId){
+                bookCard.setBankName(bank.getTitle());
+            }
+        }
         bookCard.setAddress(address);
         bookCard.setCard(card);
         bookCard.setNiceName(niceName);
@@ -513,12 +528,21 @@ public class UserController {
         Map<String, Object> map = Maps.newHashMap();
         map.put("totalRecords", totalRecords);
         map.put("bottomPageNo", bottomPageNo);
+        map.put("pageNo", pageNo);
+        map.put("pageSize", 10);
         map.put("topPageNo", topPageNo);
         map.put("previousPageNo", previousPageNo);
         map.put("nextPageNo", nextPageNo);
         map.put("totalPages", bottomPageNo);
         map.put("list", list);
         return Result.success(map);
+    }
+
+    @RequestMapping("/notice/getContentById")
+    @ResponseBody
+    public Result noticeGetContentById(Integer id){
+        List<Notice> notices = noticeManager.select(id, null, null);
+        return Result.success(notices.get(0));
     }
 
     @RequestMapping("/helpCenter/index")
@@ -612,5 +636,98 @@ public class UserController {
     @ResponseBody
     public Map<String, Boolean> shanchudingdan(Integer id){
         return null;
+    }
+
+    @RequestMapping("/deposit/deposit")
+    public String deposit(@ModelAttribute("user") User user, Model model){
+        DrawHistory drawHistory = new DrawHistory();
+        drawHistory.setAccount(user.getUsername());
+        String time = simpleDateFormat.format(new Date());
+
+        String start = time.split(" ")[0] + " 00:00:00";
+        String end = time.split(" ")[0] + " 23:59:00";
+
+        Date startDate = null;
+        Date endDate = null;
+
+        try {
+            startDate = simpleDateFormat.parse(start);
+            endDate = simpleDateFormat.parse(end);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        List<DrawHistory> list = drawHistoryManager.select(drawHistory, null, null, startDate, endDate);
+        int count = CollectionUtils.isEmpty(list) ? 0 : list.size();
+
+        User u = new User();
+        u.setUsername(u.getUsername());
+        List<User> users = userManager.select(user, null, null, null, null, null, null);
+
+        BookCard bookCard = new BookCard();
+        bookCard.setAccount(user.getUsername());
+        List<BookCard> bookCards = bookCardManager.select(bookCard);
+
+        model.addAttribute("amount", users.get(0).getMoney());
+        model.addAttribute("count", 6 - count);
+        model.addAttribute("max", users.get(0).getMoney() > 5000000 ? 5000000 : users.get(0).getMoney());
+        model.addAttribute("amount", users.get(0).getMoney());
+        model.addAttribute("nickName", users.get(0).getNickName());
+        model.addAttribute("amount", users.get(0).getMoney());
+        model.addAttribute("account", users.get(0).getUsername());
+        model.addAttribute("bankCardNum", CollectionUtils.isEmpty(bookCards) ? 0 : bookCards.size());
+        return "deposit";
+    }
+
+    @RequestMapping(value = "/registByCode", method = RequestMethod.GET)
+    public String registByCode(String code, Model model){
+        model.addAttribute("code", code);
+        return "regist";
+    }
+
+    @RequestMapping(value = "/registByCode", method = RequestMethod.POST)
+    @ResponseBody
+    public Result registByCode(String account, String extcode, String code, HttpServletRequest httpServletRequest){
+        HttpSession httpSession = httpServletRequest.getSession();
+        if(!httpSession.getAttribute("code").equals(code)){
+            return Result.faild("验证码错误！", 400);
+        }
+        if(StringUtils.isEmpty(extcode)){
+
+        }else{
+            RegistURL registURL = new RegistURL();
+            registURL.setCode(extcode);
+            List<RegistURL> list = registURLManager.seletc(registURL);
+            User user = new User();
+            user.setType(Integer.valueOf(list.get(0).getUserType()));
+            user.setUsername(account);
+            user.setPassword("aa123456");
+            user.setMinBonusOdds(list.get(0).getRebateRatio());
+            user.setFandian(list.get(0).getRebateRatio());
+            user.setShangji(list.get(0).getAccount());
+            user.setParentList(list.get(0).getParentList());
+            userManager.insert(user);
+        }
+        return Result.success("注册成功！");
+    }
+
+    @RequestMapping("/openUser/createExtCode")
+    @ResponseBody
+    public Result createExtCode(@ModelAttribute("user") User user, String usertype, Double rebateratio, Integer validtime, String extaddress, String extQQ){
+        String code = MD5Util.encode(user.getUsername() + System.currentTimeMillis());
+        Settings settings = new Settings();
+        settings.setKey("url");
+        List<Settings> lists = settingsManager.select(settings);
+        settings = lists.get(0);
+        String regist = settings.getVaule() + "/registByCode?code=" + code;
+        RegistURL registURL = new RegistURL();
+        registURL.setAccount(user.getUsername());
+        registURL.setParentList(user.getParentList());
+        registURL.setExtAddress(extaddress);
+        registURL.setRebateRatio(rebateratio);
+        registURL.setValidTime(validtime);
+        registURL.setRegistAddress(regist);
+        registURL.setWxAddress(regist);
+        registURLManager.insert(registURL);
+        return Result.success(null);
     }
 }

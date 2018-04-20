@@ -19,12 +19,13 @@ import java.io.IOException;
 public class test {
     public static void main(String[] args) throws IOException {
 
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        //ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         //LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
         //lotteryThread.lottery("cqssc", "20180121024", "0,0,0,1,0");
-        BcLotteryOddsDAO bcLotteryOddsDAO = (BcLotteryOddsDAO) applicationContext.getBean("bcLotteryOddsDAO");
-        Document document = Jsoup.parse(new File("Z:\\bcgame\\bcgame\\src\\main\\webapp\\k3.jsp"), "utf-8");
-        Elements elements = document.getElementsByClass("lottTypeDetail");
+        //BcLotteryOddsDAO bcLotteryOddsDAO = (BcLotteryOddsDAO) applicationContext.getBean("bcLotteryOddsDAO");
+        //Document document = Jsoup.parse(new File("Z:\\bcgame\\bcgame\\src\\main\\webapp\\k3.jsp"), "utf-8");
+        //Elements elements = document.getElementsByClass("lottTypeDetail");
+        /*
         for(Element element : elements){
             String playCode = element.attr("data-show").replace("#", "");
             String playName = element.attr("data-title");
@@ -58,25 +59,26 @@ public class test {
 
             bcLotteryOddsDAO.insert(bcLotteryOdds);
             bcLotteryOddsDAO.insert(bcLotteryOdds1);
-            */
+
 
         }
-        System.out.println(elements.size());
+         */
+        //System.out.println(elements.size());
 
         //Pay.b2cPay(100D, "", null, System.currentTimeMillis() + "");
 
 
-        /*
-        String result = HttpClientUtil.sendHttpGet("http://pub.icaile.com/jsk3kjjg.php");
+        String result = HttpClientUtil.sendHttpGet("http://caipiao.163.com/award/jskuai3/");
 
         Document document = Jsoup.parse(result);
 
-        Elements elements = document.getElementsByClass("nth-child-1");
-        Elements elements1 = document.getElementsByClass("nth-child-3");
+        Elements elements = document.getElementsByClass("start");
 
         for(int i = 0; i < elements.size(); i++){
-            System.out.println(elements.get(i).text() + "    " + elements1.get(i).text());
+            if(elements.get(i).text().contains("期号")){
+                continue;
+            }
+            System.out.println(elements.get(i).text() + "    (" + elements.get(i).attr("data-win-number") + ")");
         }
-        */
     }
 }

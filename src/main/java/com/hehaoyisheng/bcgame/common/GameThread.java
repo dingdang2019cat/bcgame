@@ -9,6 +9,14 @@ import java.util.Map;
 public class GameThread {
 
     public void initData(String type) {
+        if(type.contains("k3")){
+            String result = HttpClientUtil.sendHttpGet("http://caipiao.163.com/order/preBet_periodInfoTime.html?gameEn=oldkuai3");
+            JSONObject jsonObject = JSONObject.parseObject(result);
+            Long time = jsonObject.getLong("secondsLeft");
+            String qiHao = jsonObject.getString("currentPeriod");
+            GameData.gameSeasonId.put(type, qiHao);
+            GameData.gameTime.put(type, System.currentTimeMillis() + time);
+        }
         Map<String, String> map = Maps.newHashMap();
         map.put("nourl", "1");
         map.put("lotid", type.endsWith("11x5") ? type.replace("11x5", "115") : type);
