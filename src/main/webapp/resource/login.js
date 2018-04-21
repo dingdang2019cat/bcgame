@@ -16,7 +16,7 @@ $(document).ready(function(){
 		console.log('cookie中mobile已设置。。。');
 	} else if(navigator.userAgent.match(/(iPhone|iPod|iPad|Android|ios)/i)){
 		//手机端
-		//window.location.href = '/mobile';
+		window.location.href = '/mobile';
 	}
 
 	$('#findPwdName').keyup(function(){

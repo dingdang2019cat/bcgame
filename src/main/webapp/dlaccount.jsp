@@ -237,27 +237,14 @@ td {
 	<div class="container">
 		<div id="toolbar">
 			<div id="search" class="form-inline">
-				<button class="btn btn-primary" onclick="add();">新增</button>
 				<label class="sr-only" for="saccount">输入会员名查询</label>
 				<div class="form-group">
-					<div class="input-group">
-						<select id="searchType" class="form-control">
-							<option value="1">直属下级</option>
-							<option value="2">所有下级</option>
-						</select>
-					</div>
+
 					<div class="input-group">
 						<select id="onlineFlag" class="form-control">
 							<option value="">全部</option>
 							<option value="1">离线</option>
 							<option value="2">在线</option>
-						</select>
-					</div>
-					<div class="input-group">
-						<select id="stype" class="form-control">
-							<option value="">全部</option>
-							<option value="1">会员</option>
-							<option value="4">代理</option>
 						</select>
 					</div>
 					<div class="input-group">
@@ -985,7 +972,6 @@ td {
 		}
 		//设置传入参数
 		function queryParams(params) {
-			params["accountType"] = $("#stype").val();
 			params["online"] = $("#onlineFlag").val();
 			params["account"] = $("#saccount").val();
 			var curId = "259454";

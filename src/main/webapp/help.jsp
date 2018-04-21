@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>鼎汇·万客 - 帮助中心</title>
+    <title>金牌娱乐 - 帮助中心</title>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
     <meta http-equiv="expires" content="0"/>
@@ -447,7 +447,7 @@
             <!-- 帮助中心-通用详情 -->
             <div class="helpCenterCommonDetail" style="display:none;" id="helpCenterCommonDetail">
                 <div class="helpCenterCommonTitle">
-                    <h3 id="helpCenterCommonTitle">如何在鼎汇·万客平台进行购彩？</h3>
+                    <h3 id="helpCenterCommonTitle">如何在金牌娱乐平台进行购彩？</h3>
                     <span id="helpCenterCommonTime">2015-12-21 18:26</span>
                 </div>
                 <div class="helpCenterCommonContent" id="helpCenterCommonContent"></div>
@@ -485,7 +485,7 @@
             <li><a href="/helpCenter/aboutUsIndex?tabId=transProtocol">交易协议</a></li>
             <li><a class="dnsLink" href="/repairDNS" target="_blank">防劫持教程</a></li>
         </ul>
-        <p>@鼎汇·万客  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.</p>
+        <p>@金牌娱乐  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.</p>
     </div>
 </div>
 

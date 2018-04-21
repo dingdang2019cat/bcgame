@@ -679,7 +679,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		//格式化彩种
 		function czFormatter(value, row, index) {
-			return cz(row.lotCode);
+			return row.lotName;
 		}
 		
 		function cz(obj){

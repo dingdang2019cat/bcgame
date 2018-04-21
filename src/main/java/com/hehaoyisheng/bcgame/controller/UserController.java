@@ -77,6 +77,7 @@ public class UserController {
         User selectUser = list.get(0);
         model.addAttribute("amount", selectUser.getMoney());
         model.addAttribute("nickName", selectUser.getNickName());
+        model.addAttribute("account", selectUser.getUsername());
         //公告播报查询
         List<Sign> signs = signManager.select(new Sign());
         model.addAttribute("signs", signs);
@@ -538,6 +539,23 @@ public class UserController {
         return Result.success(map);
     }
 
+    @RequestMapping("/notice/admin")
+    @ResponseBody
+    public Map<String, Object> noticeList1(int pageNumber, int pageSize){
+        int from = (pageNumber - 1) * pageSize;
+        List<Notice> list = noticeManager.select(null, from, pageSize);
+        int totalRecords = noticeManager.count();
+        Map<String, Object> resultMap = Maps.newHashMap();
+        resultMap.put("total", totalRecords);
+        resultMap.put("rows", list);
+        return resultMap;
+    }
+
+
+    public Result editNotice(){
+        return Result.success(null);
+    }
+
     @RequestMapping("/notice/getContentById")
     @ResponseBody
     public Result noticeGetContentById(Integer id){
@@ -577,6 +595,9 @@ public class UserController {
     public Map<String, Object> dlaccountList(Integer pageNumber, Integer accountType, Integer online, String account, Integer agentId, Integer searchType){
         List<Map<String, Object>> result = Lists.newArrayList();
         User user = new User();
+        user.setUsername(StringUtils.isEmpty(account) ? null : account);
+        user.setType(accountType);
+        user.setOnline(online);
         List<User> list = userManager.select(user, null, null, null, null, null, null);
         int total = userManager.count(user, null, null, null, null, null, null);
         for(User u : list){
@@ -610,11 +631,17 @@ public class UserController {
 
     @RequestMapping("/gameRecord")
     @ResponseBody
-    public Map<String, Object> gameRecord(){
+    public Map<String, Object> gameRecord(Integer pageSize, Integer pageNumber, String account, Date startTime, Date endTime, Integer status, String qihao, String orderCode){
         //List<Map<String, Object>> result = Lists.newArrayList();
+        int from = pageSize * (pageNumber - 1);
         BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
-        List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
-        int total = bcLotteryOrderManager.count(bcLotteryOrder, null, null, null, null);
+        bcLotteryOrder.setAccount(StringUtils.isEmpty(account) ? null : account);
+        status = status == null ? status : status == 9 ? null : status;
+        bcLotteryOrder.setStatus(status);
+        bcLotteryOrder.setQiHao(StringUtils.isEmpty(qihao) ? null : qihao);
+        bcLotteryOrder.setOrderId(StringUtils.isEmpty(orderCode) ? null : orderCode);
+        List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, from, from + pageSize, startTime, endTime);
+        int total = bcLotteryOrderManager.count(bcLotteryOrder, null, null, startTime, endTime);
         Map<String, Object> resultMap = Maps.newHashMap();
         Map<String, Double> aggsData = Maps.newHashMap();
         aggsData.put("buyMoney", 0.0);
@@ -729,5 +756,10 @@ public class UserController {
         registURL.setWxAddress(regist);
         registURLManager.insert(registURL);
         return Result.success(null);
+    }
+
+    @RequestMapping("mobile")
+    public String mobile(){
+        return "mobileLogin";
     }
 }

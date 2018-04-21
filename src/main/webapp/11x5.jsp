@@ -14,7 +14,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>鼎汇·万客 - 广东11选5</title>
+    <title>金牌娱乐 - 广东11选5</title>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
     <meta http-equiv="expires" content="0"/>
@@ -285,7 +285,7 @@
 
                             <li class="lottNumDetail">
 
-                                <p class="active">
+                                <p class="">
                                     <span class="bigNum01"></span>
                                 </p>
 
@@ -373,54 +373,6 @@
                                     <span class="bigNum10"></span>
                                 </p>
 
-                                <p class="active">
-                                    <span class="bigNum11"></span>
-                                </p>
-
-                            </li>
-
-                            <li class="lottNumDetail">
-
-                                <p class="">
-                                    <span class="bigNum01"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum02"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum03"></span>
-                                </p>
-
-                                <p class="active">
-                                    <span class="bigNum04"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum05"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum06"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum07"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum08"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum09"></span>
-                                </p>
-
-                                <p class="">
-                                    <span class="bigNum10"></span>
-                                </p>
-
                                 <p class="">
                                     <span class="bigNum11"></span>
                                 </p>
@@ -449,7 +401,7 @@
                                     <span class="bigNum05"></span>
                                 </p>
 
-                                <p class="active">
+                                <p class="">
                                     <span class="bigNum06"></span>
                                 </p>
 
@@ -513,7 +465,55 @@
                                     <span class="bigNum09"></span>
                                 </p>
 
-                                <p class="active">
+                                <p class="">
+                                    <span class="bigNum10"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum11"></span>
+                                </p>
+
+                            </li>
+
+                            <li class="lottNumDetail">
+
+                                <p class="">
+                                    <span class="bigNum01"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum02"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum03"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum04"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum05"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum06"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum07"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum08"></span>
+                                </p>
+
+                                <p class="">
+                                    <span class="bigNum09"></span>
+                                </p>
+
+                                <p class="">
                                     <span class="bigNum10"></span>
                                 </p>
 
@@ -8493,9 +8493,9 @@
             <p class="improveHeaderTitle">
                 <span>亲爱的</span>
                 <span>lnzyz1212</span>
-                <span>,感谢您选择鼎汇·万客平台，请完善以下个人信息</span>
+                <span>,感谢您选择金牌娱乐平台，请完善以下个人信息</span>
             </p>
-            <span class="improveHeaderTips">为了让鼎汇·万客更好的给您提供服务，请修改密码并牢记，不要泄露给其他人</span>
+            <span class="improveHeaderTips">为了让金牌娱乐更好的给您提供服务，请修改密码并牢记，不要泄露给其他人</span>
         </div>
         <a href="javascript:;" class="closeDialog"></a>
     </div>
@@ -8599,7 +8599,7 @@
 <!--</p>-->
 <!--<div class="awardsNoticeContent">-->
 <!--<p>尊敬的用户：</p>-->
-<!--<p class="awardsNoticeInfo">您好，鼎汇·万客隆重推出“彩中彩”游戏，如果您有投注注单中奖了，将会触发“彩中彩”。彩中彩更加刺激更加激情，中奖概率随之上涨。</p>-->
+<!--<p class="awardsNoticeInfo">您好，金牌娱乐隆重推出“彩中彩”游戏，如果您有投注注单中奖了，将会触发“彩中彩”。彩中彩更加刺激更加激情，中奖概率随之上涨。</p>-->
 <!--<p>如果您喜欢彩中彩，请选择“开启”</p>-->
 <!--<p>如果您不喜欢彩中彩，请选择“关闭”</p>-->
 <!--<p class="friendTips">温馨提示：投注页面有关闭和开启“彩中彩”的开关哦</p>-->
@@ -8738,7 +8738,7 @@
                 <span>温馨提示：</span>
                 <div class="awardsLottWarnInfo">
                     <p>您本轮的挑战次数/余额不足</p>
-                    <p>请投注鼎汇·万客彩种，中奖后将再次激活彩中彩</p>
+                    <p>请投注金牌娱乐彩种，中奖后将再次激活彩中彩</p>
                 </div>
                 <div class="awardsLottBtn">
                     <a href="javascript:;" class="btn">确定</a>
@@ -8768,7 +8768,7 @@
     <!--<span>温馨提示：</span>-->
     <!--<div class="awardsLottWarnInfo">-->
     <!--<p>您本轮的余额不足</p>-->
-    <!--<p>请投注鼎汇·万客彩种，中奖后将再次激活彩中彩</p>-->
+    <!--<p>请投注金牌娱乐彩种，中奖后将再次激活彩中彩</p>-->
     <!--</div>-->
     <!--<div class="awardsLottBtn">-->
     <!--<a href="javascript:;" class="btn">确定</a>-->
@@ -9075,7 +9075,7 @@
             <li><a href="/helpCenter/aboutUsIndex?tabId=transProtocol">交易协议</a></li>
             <li><a class="dnsLink" href="/repairDNS" target="_blank">防劫持教程</a></li>
         </ul>
-        <p>@鼎汇·万客  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.</p>
+        <p>@金牌娱乐  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.</p>
     </div>
 </div>
 

@@ -10,7 +10,7 @@
 <!-- saved from url=(0048)/report/index?tabId=settlement -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>鼎汇·万客 - 报表中心</title>
+    <title>金牌娱乐 - 报表中心</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <meta http-equiv="expires" content="0">
@@ -1225,7 +1225,7 @@
             <li><a href="/helpCenter/aboutUsIndex?tabId=transProtocol">交易协议</a></li>
             <li><a class="dnsLink" href="/repairDNS" target="_blank">防劫持教程</a></li>
         </ul>
-        <p>@鼎汇·万客  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.</p>
+        <p>@金牌娱乐  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.</p>
     </div>
 </div>
 

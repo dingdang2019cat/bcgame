@@ -13,7 +13,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>鼎汇·万客 - 注册</title>
+    <title>金牌娱乐 - 注册</title>
     <link rel="icon" href="/resource/favicon.ico"  type="image/x-icon" />
     <link rel="stylesheet" href="/resource/reset.css?ver=20180323"/>
     <link rel="stylesheet" href="/resource/wk-common.css?ver=20180323"/>
@@ -86,7 +86,7 @@
             <li class="android"><a href="/download?t=1"><i></i>安卓客户端下载</a></li>
             <li class="auto"><a href="javascript:;"><i></i>自动投注软件</a></li>
         </ul>
-        <p>@鼎汇·万客  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.&nbsp;&nbsp;|&nbsp;&nbsp;<a class="dnsLink" href="/repairDNS" target="_blank">防劫持教程</a></p>
+        <p>@金牌娱乐  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.&nbsp;&nbsp;|&nbsp;&nbsp;<a class="dnsLink" href="/repairDNS" target="_blank">防劫持教程</a></p>
     </div>
 </div>
 

@@ -98,7 +98,7 @@ function doRegist(){
         dataType : 'json',
         callback:function(data){
             var name = $('#account').val();
-            regSuccessLayer("欢迎来到鼎汇·万客，请牢记您的账户信息。<p>账户：" + name + "</p><p class='fontColorRed'>默认密码：aa123456</p>");
+            regSuccessLayer("欢迎来到金牌娱乐，请牢记您的账户信息。<p>账户：" + name + "</p><p class='fontColorRed'>默认密码：aa123456</p>");
             $('body').on('click','.closeBtn',function(){
                 window.location.href="/index";
             });

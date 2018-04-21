@@ -2297,7 +2297,7 @@ function checkBetIn(betId, amount, currResultAmount) {
 	var colseWin = Math.sub($("#play-" + betId + "-currResultAmount").text(), hs.lottery.betInAmountMix) < 0;
 	var flag = false;
 	if (parseInt($("#play-" + betId + "-gameCount").text()) <= 0 || Math.sub(amount, currResultAmount) > 0) {
-		$awardsLottWarnInfo.html("<p>您本轮的挑战次数/余额不足</p><p>请投注鼎汇·万客彩种，中奖后将再次激活彩中彩</p>");
+		$awardsLottWarnInfo.html("<p>您本轮的挑战次数/余额不足</p><p>请投注金牌娱乐彩种，中奖后将再次激活彩中彩</p>");
 		colseWin = true;
 	} else if (Math.sub(amount, hs.lottery.betInAmountMix) < 0) {
 		$awardsLottWarnInfo.text("中奖额度不够开启彩中彩，需至少中奖" + hs.lottery.betInAmountMix + "元以上");

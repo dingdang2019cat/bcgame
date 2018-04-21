@@ -18,7 +18,7 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
         }
         if(url.contains("admin")){
             if(httpSession.getAttribute("user") == null || !((User)httpSession.getAttribute("user")).getUsername().equals("admin")){
-                httpServletResponse.sendRedirect("/admin/login");
+                httpServletResponse.sendRedirect("/login");
                 return false;
             }
             return true;

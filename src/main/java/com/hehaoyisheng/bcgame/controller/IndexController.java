@@ -260,6 +260,11 @@ public class IndexController {
         return "dlaccount";
     }
 
+    @RequestMapping("/admin/login")
+    public String adminLogin(){
+        return "adminLogin";
+    }
+
     @RequestMapping("/admin/noticeInsert")
     public String noticeInsert(){
         return "noticeInsert";

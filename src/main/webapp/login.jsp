@@ -3,7 +3,7 @@
 <!-- saved from url=(0024)http://vanke55.com/login -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>鼎汇·万客 - 登录</title>
+    <title>金牌娱乐 - 登录</title>
     <meta http-equiv="pragma" content="no-cache"> 
 	<meta http-equiv="Cache-Control" content="no-cache, must-revalidate"> 
 	<meta http-equiv="expires" content="0">
@@ -187,7 +187,7 @@
 				<li class="android"><a href="http://vanke55.com/download?t=1"><i></i>安卓客户端下载</a></li>
 				<li class="auto"><a href="javascript:;"><i></i>自动投注软件</a></li>
 			</ul>
-			<p>@鼎汇·万客  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.&nbsp;&nbsp;|&nbsp;&nbsp;<a class="dnsLink" href="http://vanke55.com/repairDNS" target="_blank">防劫持教程</a></p>
+			<p>@金牌娱乐  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.&nbsp;&nbsp;|&nbsp;&nbsp;<a class="dnsLink" href="http://vanke55.com/repairDNS" target="_blank">防劫持教程</a></p>
 		</div>
 	</div>
 
