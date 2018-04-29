@@ -41,4 +41,14 @@ public interface DrawHistoryDAO {
             " order by id desc" +
             " </script> ")
     int count(@Param("drawHistory") DrawHistory drawHistory, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+
+    @Select("<script> " +
+            "select sum(amount) from drawHistory " +
+            " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
+            " <if test=\"drawHistory.account != null\"> AND account=#{drawHistory.account}</if> " +
+            " <if test=\"drawHistory.parentList != null\"> AND parentList like #{drawHistory.parentList}</if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
+            " </trim> " +
+            " </script> ")
+    double sum(@Param("drawHistory") DrawHistory drawHistory, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }

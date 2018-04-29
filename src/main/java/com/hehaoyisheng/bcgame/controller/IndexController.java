@@ -11,6 +11,7 @@ import com.hehaoyisheng.bcgame.entity.vo.LotteryOrder;
 import com.hehaoyisheng.bcgame.entity.vo.LotteryTime;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
 import com.hehaoyisheng.bcgame.manager.*;
+import com.hehaoyisheng.bcgame.utils.MD5Util;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +46,9 @@ public class IndexController {
     @Resource
     private NoticeManager noticeManager;
 
+    @Resource
+    private SettingsManager settingsManager;
+
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login(){
         return "login";
@@ -73,7 +77,7 @@ public class IndexController {
         //最近开奖
         BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
         bcLotteryHistory.setLotteryType(gameType);
-        List<BcLotteryHistory> bcLotteryHistories = bcLotteryHistoryManager.select(bcLotteryHistory);
+        List<BcLotteryHistory> bcLotteryHistories = bcLotteryHistoryManager.select(bcLotteryHistory, 0, 5);
         //最近中奖
         BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
         bcLotteryOrder.setStatus(1);
@@ -93,7 +97,7 @@ public class IndexController {
         //传值
         model.addAttribute("saleSeasonId1", GameData.gameSeasonId.get(gameType));
         model.addAttribute("saleAllSecond", (GameData.gameTime.get(gameType) - System.currentTimeMillis()) / 1000);
-        model.addAttribute("openSeasonId", GameData.lastOpen.get(gameType).getSeasonId());
+        model.addAttribute("openSeasonId", CollectionUtils.isEmpty(bcLotteryHistories) ? GameData.lastOpen.get(gameType).getSeasonId() : bcLotteryHistories.get(0).getSeasonId());
         model.addAttribute("allCount", GameData.seasonCount.get(gameType));
         model.addAttribute("openCount", GameData.openCount.get(gameType));
         model.addAttribute("remainCount", GameData.seasonCount.get(gameType) - GameData.openCount.get(gameType));
@@ -109,6 +113,15 @@ public class IndexController {
         model.addAttribute("gameType", gameType);
         model.addAttribute("maxFandian", users.get(0).getFandian());
         model.addAttribute("maxBouns", 1700 + (users.get(0).getFandian() * 20));
+        String lastOpenNums = "";
+        if(!CollectionUtils.isEmpty(bcLotteryHistories)){
+            for(String s : bcLotteryHistories.get(0).getNums().split(",")){
+                lastOpenNums += "\"" + s + "\",";
+            }
+            lastOpenNums = lastOpenNums.substring(0, lastOpenNums.length() - 1);
+        }
+
+        model.addAttribute("lastOpenNums", lastOpenNums);
         if(gameType.endsWith("k3")){
             return "k3";
         }else if(gameType.endsWith("pk10")){
@@ -162,7 +175,7 @@ public class IndexController {
         //最近开奖
         BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
         bcLotteryHistory.setLotteryType(gameType);
-        List<BcLotteryHistory> bcLotteryHistories = bcLotteryHistoryManager.select(bcLotteryHistory);
+        List<BcLotteryHistory> bcLotteryHistories = bcLotteryHistoryManager.select(bcLotteryHistory, 0, 5);
         resultMap.put("opens", bcLotteryHistories);
         //期号统计
         Map<String, Integer> seasonCount = Maps.newHashMap();
@@ -198,7 +211,8 @@ public class IndexController {
             Thread.sleep(500);
             gameThread.initData("sd11x5");
             Thread.sleep(500);
-            gameThread.initData("jsk3");
+            gameThread.initData("txssc");
+            Thread.sleep(500);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -253,11 +267,37 @@ public class IndexController {
     }
 
     @RequestMapping("/admin")
-    public String admin(@ModelAttribute("user") User user){
+    public String admin(@ModelAttribute("user") User user, Model model){
         if(user == null){
             return "adminLogin";
         }
-        return "dlaccount";
+        Settings settings1 = new Settings();
+        settings1.setKey("url");
+        List<Settings> list1 = settingsManager.select(settings1);
+        System.out.println("--------------------------------------------");
+        System.out.println(CollectionUtils.isEmpty(list1));
+        System.out.println("--------------------------------------------");
+
+
+        Settings settings2 = new Settings();
+        settings2.setKey("sscpl");
+        List<Settings> list2 = settingsManager.select(settings2);
+
+
+        Settings settings3 = new Settings();
+        settings3.setKey("pk10pl");
+        List<Settings> list3 = settingsManager.select(settings3);
+
+
+        Settings settings4 = new Settings();
+        settings4.setKey("bc11x5pl");
+        List<Settings> list4 = settingsManager.select(settings4);
+
+        model.addAttribute("url", list1.get(0).getVaule());
+        model.addAttribute("sscpl", list2.get(0).getVaule());
+        model.addAttribute("pk10pl", list3.get(0).getVaule());
+        model.addAttribute("bc11x5pl", list4.get(0).getVaule());
+        return "sz";
     }
 
     @RequestMapping("/admin/login")
@@ -272,11 +312,77 @@ public class IndexController {
 
     @RequestMapping("/admin/noticeBaocun")
     @ResponseBody
-    public Result noticeBaocun(String content, String title){
+    public Result noticeBaocun(Integer id, String content, String title){
         Notice notice = new Notice();
         notice.setContent(content);
         notice.setTitle(title);
-        noticeManager.insert(notice);
+        if(id == null || id == 0){
+            noticeManager.insert(notice);
+        }else{
+            notice.setId(id);
+            noticeManager.update(notice);
+        }
         return Result.success("操作成功！");
     }
+
+    @RequestMapping("/doSz")
+    @ResponseBody
+    public Result doSz(String mainURL, String sscpl, String pk10pl, String bc11x5pl){
+        Settings settings1 = new Settings();
+        Settings settings2 = new Settings();
+        Settings settings3 = new Settings();
+        Settings settings4 = new Settings();
+
+        settings1.setKey("url");
+        settings2.setKey("sscpl");
+        settings3.setKey("pk10pl");
+        settings4.setKey("bc11x5pl");
+
+        settings1.setVaule(mainURL);
+        settings2.setVaule(sscpl);
+        settings3.setVaule(pk10pl);
+        settings4.setVaule(bc11x5pl);
+
+        settingsManager.update(settings1);
+        settingsManager.update(settings2);
+        settingsManager.update(settings3);
+        settingsManager.update(settings4);
+
+        return Result.success("success!");
+    }
+
+    @RequestMapping("/admin/chongqian")
+    @ResponseBody
+    public Result chongqian(String account, Double money){
+        User user = new User();
+        user.setUsername(account);
+        userManager.update(user, money);
+        return Result.success("操作成功！");
+    }
+
+    @RequestMapping("/admin/kouqian")
+    @ResponseBody
+    public Result kouqian(String account, Double money){
+        User user = new User();
+        user.setUsername(account);
+        userManager.update(user, 0 - money);
+        return Result.success("操作成功！");
+    }
+
+    @RequestMapping("/admin/chongzhi")
+    @ResponseBody
+    public Result chongzhi(String account){
+        User user = new User();
+        user.setUsername(account);
+        user.setPassword(MD5Util.encode("a123456"));
+        userManager.update(user);
+        return Result.success("操作成功!");
+    }
+
+    @RequestMapping("getOrderDetailForList")
+    @ResponseBody
+    public BcLotteryOrder getOrderDetailForList(){
+        return null;
+    }
+
 }

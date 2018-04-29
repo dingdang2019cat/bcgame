@@ -35,7 +35,7 @@ public class LotteryCommon {
             bcLotteryOrder.setStatus(2);
         }
 
-        if(bcLotteryOrder.getBounsType() == 1){
+        if(bcLotteryOrder.getGaofan() > 0){
             //TODO
             double money = bcLotteryOrder.getBuyMoney() * bcLotteryOrder.getGaofan() / 100;
             userManager.update(u, money);

@@ -7,5 +7,5 @@ import java.util.List;
 public interface BcLotteryHistoryManager {
     int insert(BcLotteryHistory bcLotteryHistory);
     int update(BcLotteryHistory bcLotteryHistory);
-    List<BcLotteryHistory> select(BcLotteryHistory bcLotteryHistory);
+    List<BcLotteryHistory> select(BcLotteryHistory bcLotteryHistory, Integer from, Integer limit);
 }

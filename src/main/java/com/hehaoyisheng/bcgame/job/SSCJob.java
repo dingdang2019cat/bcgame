@@ -5,7 +5,9 @@ import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.common.GameType;
 import com.hehaoyisheng.bcgame.common.LotteryThread;
 import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
+import com.hehaoyisheng.bcgame.entity.YiLou;
 import com.hehaoyisheng.bcgame.manager.BcLotteryHistoryManager;
+import com.hehaoyisheng.bcgame.manager.YiLouManager;
 import com.hehaoyisheng.bcgame.utils.HttpClientUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -35,6 +37,9 @@ public class SSCJob {
 
     @Resource
     private LotteryThread lotteryThread;
+
+    @Resource
+    private YiLouManager yiLouManager;
 
     private String type;
 
@@ -131,7 +136,7 @@ public class SSCJob {
             }
         }
         GameData.gameSeasonId.put(type, qiHao);
-        while (true){
+        for(int k = 0; k < 50; k++){
             try {
                 String result= HttpClientUtil.sendHttpGet("http://917500.cn/Home/Lottery/kaijianghao/lotid/" + (type.endsWith("11x5") ? type.replace("11x5", "115") : type) + ".html?page=1&nourl=1");
                 String[] results = result.split("<td>");
@@ -142,7 +147,7 @@ public class SSCJob {
                 BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
                 bcLotteryHistory.setLotteryType(type);
                 bcLotteryHistory.setSeasonId(qihao);
-                List<BcLotteryHistory> bcLotteryHistoryList = bcLotteryHistoryManager.select(bcLotteryHistory);
+                List<BcLotteryHistory> bcLotteryHistoryList = bcLotteryHistoryManager.select(bcLotteryHistory, 0, 5);
                 System.out.println(qihao + " .... " + qiHao1);
                 System.out.println(qihao.equals(qiHao1));
                 System.out.println(results[3]);
@@ -151,6 +156,37 @@ public class SSCJob {
                     bcLotteryHistoryManager.insert(bcLotteryHistory);
                     bcLotteryHistory.setOpenTime(new Date());
                     GameData.lastOpen.put(type, bcLotteryHistory);
+                    /*
+                    List<YiLou> yiLous = yiLouManager.select(type, 0, 1);
+                    YiLou yiLou = yiLous.get(0);
+                    String[] yiLouNums = yiLou.getContent().split(" ");
+                    String[] lotteryNums = bcLotteryHistory.getNums().split(",");
+                    YiLou yiLou1 = new YiLou();
+                    String sss = "";
+                    for(int l = 0; l < 5; l++){
+                        String[] yiLouNums1 = yiLouNums[l].split(",");
+                        Integer lotteryNumInteger = Integer.valueOf(lotteryNums[l]);
+                        if(!type.contains("ssc")){
+                            lotteryNumInteger = lotteryNumInteger - 1;
+                        }
+                        for(int p  = 0 ; p < yiLouNums1.length; p++){
+                            Integer yi = Integer.valueOf(yiLouNums[p]);
+                            yi = yi + 1;
+                            if(p == lotteryNumInteger){
+                                yi = 0;
+                            }
+                            sss += yi + ",";
+                        }
+                        sss = sss.substring(0, sss.length() - 1);
+                        sss += " ";
+                    }
+                    sss = sss.substring(0, sss.length() - 1);
+                    yiLou1.setSessionId(qihao);
+                    yiLou1.setType(type);
+                    yiLou1.setContent(sss);
+                    yiLou1.setNums(bcLotteryHistory.getNums());
+                    yiLouManager.insert(yiLou1);
+                    */
                     lotteryThread.lottery(type, qihao, bcLotteryHistory.getNums());
                     break;
                 }

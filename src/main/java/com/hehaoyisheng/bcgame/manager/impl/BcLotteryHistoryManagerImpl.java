@@ -32,9 +32,9 @@ public class BcLotteryHistoryManagerImpl implements BcLotteryHistoryManager{
         return -1;
     }
 
-    public List<BcLotteryHistory> select(BcLotteryHistory bcLotteryHistory) {
+    public List<BcLotteryHistory> select(BcLotteryHistory bcLotteryHistory, Integer from, Integer limit) {
         try {
-            return bcLotteryHistoryDAO.select(bcLotteryHistory);
+            return bcLotteryHistoryDAO.select(bcLotteryHistory, from, limit);
         }catch (Exception e){
             e.printStackTrace();
         }

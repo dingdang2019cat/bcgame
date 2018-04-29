@@ -11,7 +11,24 @@ public class Recharge {
     private String id;
     private Double realAmount;
     private Integer rechargeType;
-    //
+    /*
+    var statusName ='';
+                    if(rows[i].status==0){
+                        statusName ="未处理";
+                    }else if(rows[i].status==1){
+                        statusName ="失败";
+                    }else if(rows[i].status==2){
+                        statusName ="成功";
+                    }else if(rows[i].status==3){
+                        statusName ="已过期";
+                    }else if(rows[i].status==4){
+                        statusName ="已撤销";
+                    }else if(rows[i].status==5){
+                        statusName ="正在处理";
+                    }else if(rows[i].status==6){
+                        statusName ="审核中";
+                    }
+     */
     private Integer status;
     private String parentList;
 

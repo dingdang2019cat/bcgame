@@ -31,23 +31,7 @@
 </head>
 
 <body>
-<script type="text/javascript">
-    var pass = prompt("请输入密码！", "");
-    $.ajax({
-        url:"adminsz.action",
-        dataType:"json",
-        data : {
-            password : pass,
-        },
-        success:function(j){
-            if(j.success){
-            }else{
-                alert("密码错误!");
-                window.location.href="dlaccount.jsp";
-            }
-        }
-    });
-</script>
+
 <div class="modal fade" id="head_editpwd" tabindex="-1" role="dialog" aria-labelledby="head_editpwdLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -140,10 +124,10 @@
 				<table border="1" align="center">
 					<tr><td>人工开奖</td><td colspan="4">期数:<input type="text" id="rgkjqishu"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号码:<input type="text" id="rgkjhaoma"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="rgkaijiang()">开奖</button></td></tr>
 					<tr><td>站内信群发</td><td><a href="#" data-toggle="modal" data-target="#head_editpwd">编辑</a></td><td><a href="#" data-toggle="modal" data-target="#head_editpwd1">历史记录</a></td><td colspan="2"></td></tr>
-					<tr><td>网址</td><td colspan="4"><input type="text" id="mainURL" value="" size="100"/></td></tr>
-					<tr><td>时时彩赔率</td><td colspan="4"><input type="text" id="sscpl" value="" size="100"/></td></tr>
-					<tr><td>11选5赔率</td><td colspan="4"><input type="text" id="11x5pl" value="" size="100"/></td></tr>
-					<tr><td>pk10赔率</td><td colspan="4"><input type="text" id="pk10pl" value="" size="100"/></td></tr>
+					<tr><td>网址</td><td colspan="4"><input type="text" id="mainURL" value="${url}" size="100"/></td></tr>
+					<tr><td>时时彩赔率</td><td colspan="4"><input type="text" id="sscpl" value="${sscpl}" size="100"/></td></tr>
+					<tr><td>11选5赔率</td><td colspan="4"><input type="text" id="11x5pl" value="${bc11x5pl}" size="100"/></td></tr>
+					<tr><td>pk10赔率</td><td colspan="4"><input type="text" id="pk10pl" value="${pk10pl}" size="100"/></td></tr>
 				</table>
 				<button onclick="update()">保存</button>
 			</table>
@@ -205,15 +189,16 @@
     }
     function update(){
         $.ajax({
-            url:"doSz.action",
+            url:"/doSz",
             data : {
-                name : encodeURI(encodeURI($("#zdks").val())),
-                api : $("#api").val(),
-                mainURL : $("#mainURL").val()
+                mainURL : $("#mainURL").val(),
+                sscpl : $("#sscpl").val(),
+                pk10pl : $("#pk10pl").val(),
+                bc11x5 : $("#bc11x5").val()
             },
             dataType:"json",
             success:function(j){
-                if(j.success){
+                if(j.status == 200){
                     alert("修改成功!");
                     window.location.reload();
                 }else{

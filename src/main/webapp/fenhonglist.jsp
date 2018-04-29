@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 <head>
-<title>代理平台</title>
+<title>管理平台</title>
 <meta charset="utf-8">
 </head>
 <body>
@@ -132,38 +132,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="container">
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-							<li><a href="sz.jsp">首页</a></li>
-			
-				<li><a href="dlaccount.jsp">下级列表</a></li>
-				
+				<li><a href="/admin">设置</a></li>
+
+				<li><a href="dlaccount.jsp">会员管理</a></li>
+
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
-						aria-hidden="true"></span> 游戏记录 <span class="caret"></span>
+																																								aria-hidden="true"></span> 游戏记录 <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						
-							<li class=""><a href="gameRecord.jsp">彩票投注记录</a></li>
-						
-						
-						
-						
-						
-					</ul></li>
-				<li><a href="dlmnyrd.jsp">公告管理</a></li>
-				<li><a href="dlmnyrd.jsp">站内信管理</a></li>
-				<li><a href="dlreport.jsp">团队统计</a></li>
 
+						<li class=""><a href="gameRecord.jsp">彩票投注记录</a></li>
+
+					</ul></li>
+				<li><a href="noticeAdmin.jsp">公告管理</a></li>
+				<li><a href="znxManager.jsp">站内信管理</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
 																																								aria-hidden="true"></span> 分红提成 <span class="caret"></span>
 				</a>
-					<ul class="dropdown-menu">
+				<li><a href="fenhonglist.jsp">分红记录</a></li>
 
-						<li class=""><a href="gameRecord.jsp">分红设置</a></li>
-						<li class=""><a href="gameRecord.jsp">分红记录</a></li>
-						<li class=""><a href="gameRecord.jsp">提成记录</a></li>
 
-					</ul></li>
-				
 				<li><a href="dldrawrd.jsp">取款日志</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -402,110 +391,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 			window.table = new Game.Table({
 				id : 'datagrid_tb',
-				url : 'gameRecord',
+				url : '/admin/fenhongList',
 				queryParams : queryParams,//参数
 				toolbar : $('#toolbar'),
 				showPageSummary:true,
 				showAllSummary:true,
 				columns : [ 
 				   {
-					field : 'orderId',
-					title : '订单号',
+					field : 'id',
+					title : '分红编号',
 					align : 'center',
 					valign : 'bottom',
 					formatter : orderFormatter
 				}, {
 					field : 'account',
-					title : '投注账号',
+					title : '分红账号',
 					align : 'center',
 					valign : 'middle',
 					events : operateEvents,
-					formatter : accountFormatter
 				}, {
-					title : '彩种名称',
+					title : '分红时间',
 					align : 'center',
 					valign : 'middle',
-					formatter : czFormatter
+					formatter : dateFormatter
 				}, {
-					field : 'qiHao',
-					title : '期号',
+					field : 'allMoney',
+					title : '总盈亏',
 					align : 'center',
 					valign : 'middle'
 				}, {
-					field : 'playName',
-					title : '玩法名称',
+					field : 'money',
+					title : '分红',
 					align : 'center',
 					width : '100',
 					valign : 'middle'
 				}, {
-					field : 'haoMa',
-					title : '投注号码',
+					field : 'bili',
+					title : '分红比例',
 					align : 'center',
 					width : '140',
 					formatter : wsFormatter
-				}, {
-					field : 'createTime',
-					title : '投注时间',
-					width : '150',
-					align : 'center',
-					formatter : dateFormatter
-				}, {
-					field : 'buyZhuShu',
-					title : '注数',
-					align : 'center'
-				},{
-					field : 'multiple',
-					title : '倍数',
-					align : 'center',
-					pageSummaryFormat:function(rows,aggsData){
-						return "小计:";
-					},
-					allSummaryFormat:function(rows,aggsData){
-						return "总计:";
-					}
-				},{
-					field : 'buyMoney',
-					title : '投注金额',
-					width : '50',
-					align : 'center',
-					pageSummaryFormat:function(rows,aggsData){
-						var r=0,row;
-						for(var i=rows.length-1;i>=0;i--){
-							row=rows[i];
-							if(row.buyMoney != null && row.status < 4){
-								r = r+row.buyMoney;
-							}
-						}
-						return r.toFixed(2);
-					},
-					allSummaryFormat:function(rows,aggsData){
-						if(!aggsData){
-							return "0.00"
-						}
-						return aggsData.buyMoney ? aggsData.buyMoney.toFixed(2) : "0.00";
-					}
-				},
-				 {
-					field : 'winMoney',
-					title : '中奖金额',
-					width : '50',
-					align : 'center',
-					pageSummaryFormat:function(rows,aggsData){
-						var r=0,row;
-						for(var i=rows.length-1;i>=0;i--){
-							row=rows[i];
-							if(row.winMoney != null){
-								r = r+row.winMoney;
-							}
-						}
-						return r.toFixed(2);
-					},
-					allSummaryFormat:function(rows,aggsData){
-						if(!aggsData){
-							return "0.00"
-						}
-						return aggsData.winMoney ? aggsData.winMoney.toFixed(2) : "0.00";
-					}
 				},
 				 {
 					field : 'status',

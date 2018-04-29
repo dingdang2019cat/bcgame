@@ -82,7 +82,7 @@
 
                             <ul class="lotteryGroupList">
 
-                                <li><a href="/lotts/cqssc/index" class="lottplayExplain">重庆时时彩</a></li>
+                                <li><a href="/lotts/cqssc/index" class="lottplayExplain">重庆时时彩</a></li><li><a href="/lotts/txssc/index" class="lottplayExplain">腾讯分分彩</a></li>
 
                                 <li><a href="/lotts/xjssc/index" class="lottplayExplain">新疆时时彩</a></li>
 
@@ -3717,6 +3717,13 @@
         <p>@金牌娱乐  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.</p>
     </div>
 </div>
-
+<script>
+    var lastOpenNums = [${lastOpenNums}];
+    for ( var n in lastOpenNums) {
+        var num = lastOpenNums[n];
+        //---新开奖号码动画
+        $('.lottNumDetail').eq(n).find('.bigNum' + num).eq(0).parent().addClass('active').siblings().removeClass('active');//开奖号码动画
+    }
+</script>
 </body>
 </html>

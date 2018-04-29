@@ -2,6 +2,7 @@ package com.hehaoyisheng.bcgame.dao;
 
 import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -17,10 +18,11 @@ public interface BcLotteryHistoryDAO {
             "select * " +
             "from bcLotteryHistory" +
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
-            " <if test=\"lotteryType != null\"> AND lotteryType=#{lotteryType}</if> " +
-            " <if test=\"seasonId != null\"> AND seasonId=#{seasonId}</if> " +
+            " <if test=\"bcLotteryHistory.lotteryType != null\"> AND bcLotteryHistory.lotteryType=#{bcLotteryHistory.lotteryType}</if> " +
+            " <if test=\"bcLotteryHistory.seasonId != null\"> AND seasonId=#{bcLotteryHistory.seasonId}</if> " +
             " </trim> " +
-            " order by id desc limit 0,5" +
+            " order by id desc limit #{from},#{limit}" +
             " </script> ")
-    List<BcLotteryHistory> select(BcLotteryHistory bcLotteryHistory);
+    List<BcLotteryHistory> select(@Param("bcLotteryHistory") BcLotteryHistory bcLotteryHistory, @Param("from")Integer from, @Param("limit")Integer limit);
+
 }

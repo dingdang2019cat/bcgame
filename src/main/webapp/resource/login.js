@@ -199,7 +199,7 @@ $(document).ready(function(){
 //	        });
 //			$("#account").val(encrypted.toString());
 	    	$("#account").val(content);
-			var password = $.md5($("#userPassword").val())+token;
+			var password = $("#userPassword").val();
 			$("#password").val($.md5(password));
 			return true;
     	}

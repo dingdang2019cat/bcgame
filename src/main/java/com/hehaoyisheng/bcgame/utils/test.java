@@ -23,51 +23,26 @@ public class test {
         //LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
         //lotteryThread.lottery("cqssc", "20180121024", "0,0,0,1,0");
         //BcLotteryOddsDAO bcLotteryOddsDAO = (BcLotteryOddsDAO) applicationContext.getBean("bcLotteryOddsDAO");
-        //Document document = Jsoup.parse(new File("Z:\\bcgame\\bcgame\\src\\main\\webapp\\k3.jsp"), "utf-8");
-        //Elements elements = document.getElementsByClass("lottTypeDetail");
-        /*
-        for(Element element : elements){
-            String playCode = element.attr("data-show").replace("#", "");
-            String playName = element.attr("data-title");
-            System.out.println("playName.put(\"" + playCode + "\", \"" + playName + "\");");
-            /*
-            String max = element.attr("data-maxbonus");
-            String bouns = element.attr("data-bonus");
-            BcLotteryOdds bcLotteryOdds = new BcLotteryOdds();
-            BcLotteryOdds bcLotteryOdds1 = new BcLotteryOdds();
-            bcLotteryOdds.setLotteryType("ssc");
-            bcLotteryOdds1.setLotteryType("ssc");
-            bcLotteryOdds.setPlayType(playCode);
-            bcLotteryOdds1.setPlayType(playCode);
-            if(max.contains("-")){
-                bcLotteryOdds.setBounsType(0);
-                bcLotteryOdds.setCount(1);
-                bcLotteryOdds.setOdds(Double.valueOf(max.split(" ")[0]));
+        String result = HttpClientUtil.sendHttpGet("http://www.off0.com/index.php");
+        Document document = Jsoup.parse(result);
+        //Element element = document.getElementById("cpdata");
+        //Elements elements = document.getElementsByTag("tr");
 
-                bcLotteryOdds1.setBounsType(1);
-                bcLotteryOdds1.setCount(1);
-                bcLotteryOdds1.setOdds(Double.valueOf(bouns.split(" ")[0]));
-            }else {
-                bcLotteryOdds.setBounsType(0);
-                bcLotteryOdds.setCount(1);
-                bcLotteryOdds.setOdds(Double.valueOf(max));
-
-                bcLotteryOdds1.setBounsType(1);
-                bcLotteryOdds1.setCount(1);
-                bcLotteryOdds1.setOdds(Double.valueOf(bouns));
+        for(Element element1 : document.getElementsByTag("tr")){
+            Elements elements = element1.getElementsByTag("td");
+            if(elements.size() > 5){
+                System.out.println(elements.get(1).text() + "  " + elements.get(4).text());
             }
-
-            bcLotteryOddsDAO.insert(bcLotteryOdds);
-            bcLotteryOddsDAO.insert(bcLotteryOdds1);
-
-
+            System.out.println();
         }
-         */
+
+
         //System.out.println(elements.size());
 
         //Pay.b2cPay(100D, "", null, System.currentTimeMillis() + "");
 
 
+        /*
         String result = HttpClientUtil.sendHttpGet("http://caipiao.163.com/award/jskuai3/");
 
         Document document = Jsoup.parse(result);
@@ -80,5 +55,9 @@ public class test {
             }
             System.out.println(elements.get(i).text() + "    (" + elements.get(i).attr("data-win-number") + ")");
         }
+        */
+        //System.out.println(MD5Util.encode("AA123456"));
+
+
     }
 }

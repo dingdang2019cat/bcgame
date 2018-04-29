@@ -2,6 +2,7 @@ package com.hehaoyisheng.bcgame.controller;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.hehaoyisheng.bcgame.common.BetCountData;
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.common.GameType;
 import com.hehaoyisheng.bcgame.entity.*;
@@ -86,6 +87,10 @@ public class LotteryController {
         //计算总额
         double buyMoney = 0;
         for(Order o : orders){
+            //计算注数是否超标
+            if(BetCountData.hashmap.get(o.getPlayId()) != null && o.getBetCount() > (BetCountData.hashmap.get(o.getPlayId()) * 0.8)){
+                return Result.faild("投注超标", 400);
+            }
             buyMoney += o.getBetCount() * o.getPrice() * o.getUnit();
             if(o.getSeasonId() == null){
                 o.setSeasonId(sessionId);

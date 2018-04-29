@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 <head>
-<title>代理平台</title>
+<title>管理平台</title>
 <meta charset="utf-8">
 </head>
 <body>
@@ -156,7 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 						
 					</ul></li>
-				<li><a href="dlmnyrd.jsp">公告管理</a></li>
+				<li><a href="noticeAdmin.jsp">公告管理</a></li>
 				<li><a href="dlmnyrd.jsp">站内信管理</a></li>
 				<li><a href="dlreport.jsp">团队统计</a></li>
 
@@ -164,13 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
 																																								aria-hidden="true"></span> 分红提成 <span class="caret"></span>
 				</a>
-					<ul class="dropdown-menu">
-
-						<li class=""><a href="gameRecord.jsp">分红设置</a></li>
-						<li class=""><a href="gameRecord.jsp">分红记录</a></li>
-						<li class=""><a href="gameRecord.jsp">提成记录</a></li>
-
-					</ul></li>
+					<li><a href="fenhonglist.jsp">分红记录</a></li>
 				
 				<li><a href="dldrawrd.jsp">取款日志</a></li>
 			</ul>
@@ -256,6 +250,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="form-group">
 
 					</div>
+					<input type="hidden" id="noticeid" value="${id}"/>
 					<button class="btn btn-primary" onclick="search();">保存</button>
 				</div>
 			</div>
@@ -683,6 +678,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $.ajax({
                 url:"admin/noticeBaocun",
                 data : {
+                    "id" : $("#noticeid").val(),
                     "content" : $("#editor").html(),
 					"title" : $("#noticeTitle").val()
                 },

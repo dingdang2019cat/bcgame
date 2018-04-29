@@ -131,38 +131,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="container">
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-							<li><a href="sz.jsp">首页</a></li>
-			
-				<li><a href="dlaccount.jsp">下级列表</a></li>
-				
+				<li><a href="/admin">设置</a></li>
+
+				<li><a href="dlaccount.jsp">会员管理</a></li>
+
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
-						aria-hidden="true"></span> 游戏记录 <span class="caret"></span>
+																																								aria-hidden="true"></span> 游戏记录 <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						
-							<li class=""><a href="gameRecord.jsp">彩票投注记录</a></li>
-						
-						
-						
-						
-						
-					</ul></li>
-				<li><a href="dlmnyrd.jsp">公告管理</a></li>
-				<li><a href="dlmnyrd.jsp">站内信管理</a></li>
-				<li><a href="dlreport.jsp">团队统计</a></li>
 
+						<li class=""><a href="gameRecord.jsp">彩票投注记录</a></li>
+
+					</ul></li>
+				<li><a href="noticeAdmin.jsp">公告管理</a></li>
+				<li><a href="znxManager.jsp">站内信管理</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
 																																								aria-hidden="true"></span> 分红提成 <span class="caret"></span>
 				</a>
-					<ul class="dropdown-menu">
+				<li><a href="fenhonglist.jsp">分红记录</a></li>
 
-						<li class=""><a href="gameRecord.jsp">分红设置</a></li>
-						<li class=""><a href="gameRecord.jsp">分红记录</a></li>
-						<li class=""><a href="gameRecord.jsp">提成记录</a></li>
 
-					</ul></li>
-				
 				<li><a href="dldrawrd.jsp">取款日志</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -258,10 +247,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<option value="1">已中奖</option>
 								<option value="2">未中奖</option>
 								<option value="10">撤单</option>
-								<option value="5">派奖回滚成功</option>
-								<option value="6">回滚异常的</option>
-								<option value="7">开奖异常</option>
-								<option value="8">和局</option>
 							</select>
 						</div>
 						<div class="input-group">
@@ -555,7 +540,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		//查看化订单详情		
 		function orderDesc(orderId,account,lotCode) {
 			$.ajax({
-				url : "getOrderDetailForList.action",
+				url : "/admin/getOrderDetailForList",
 				data : {
 					"orderId" : orderId,
 					"account" : account,
@@ -565,8 +550,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					$("#editmodel").modal('toggle');
 		 			$('#dingdh').html(j.orderId);
 		 			$('#zhangh').html(j.account);
-		 			$('#sellingTime').html(DateUtil.formatDatetime(j.sellingTime));
-		 			$('#sealTime').html(DateUtil.formatDatetime(j.sealTime));
+		 			//$('#sellingTime').html(DateUtil.formatDatetime(j.sellingTime));
+		 			//$('#sealTime').html(DateUtil.formatDatetime(j.sealTime));
 		 			$('#xiazsj').html(DateUtil.formatDatetime(j.createTime));
 		 			$('#touzzs').html(j.buyZhuShu);
 		 			$('#caiz').html(cz(j.lotCode));

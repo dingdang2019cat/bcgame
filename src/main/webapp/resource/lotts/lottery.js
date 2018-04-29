@@ -1515,6 +1515,82 @@ $(function() {
 			return;
 		}
 
+		if(info.id.indexOf("star2") > -1){
+			var dtCount = 0;
+			if(info.id.indexOf("ssc") > -1){
+				dtCount = 3;
+			}
+            if(info.id.indexOf("pk10") > -1){
+                dtCount = 3;
+            }
+            if(info.id.indexOf("11x5") > -1){
+                dtCount = 4;
+            }
+            if(info.count < dtCount){
+				if(confirm("下注为单挑模式，最高返奖两万。确定下注？")){
+				}else{
+					return;
+				}
+			}
+		}
+
+        if(info.id.indexOf("star3") > -1){
+            var dtCount = 0;
+            if(info.id.indexOf("ssc") > -1){
+                dtCount = 30;
+            }
+            if(info.id.indexOf("pk10") > -1){
+                dtCount = 30;
+            }
+            if(info.id.indexOf("11x5") > -1){
+                dtCount = 40;
+            }
+            if(info.count < dtCount){
+                if(confirm("下注为单挑模式，最高返奖两万。确定下注？")){
+                }else{
+                    return;
+                }
+            }
+        }
+
+        if(info.id.indexOf("star4") > -1){
+            var dtCount = 0;
+            if(info.id.indexOf("ssc") > -1){
+                dtCount = 300;
+            }
+            if(info.id.indexOf("pk10") > -1){
+                dtCount = 300;
+            }
+            if(info.id.indexOf("11x5") > -1){
+                dtCount = 400;
+            }
+            if(info.count < dtCount){
+                if(confirm("下注为单挑模式，最高返奖两万。确定下注？")){
+                }else{
+                    return;
+                }
+            }
+        }
+
+        if(info.id.indexOf("star2") > -1){
+            var dtCount = 0;
+            if(info.id.indexOf("ssc") > -1){
+                dtCount = 3;
+            }
+            if(info.id.indexOf("pk10") > -1){
+                dtCount = 3;
+            }
+            if(info.id.indexOf("11x5") > -1){
+                dtCount = 4;
+            }
+            if(info.count < dtCount){
+                if(confirm("下注为单挑模式，最高返奖两万。确定下注？")){
+                }else{
+                    return;
+                }
+            }
+        }
+
 		$(this).addClass('disabled');
 
 		// 高返高奖

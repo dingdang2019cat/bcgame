@@ -126,7 +126,7 @@ td {
 	<div class="container">
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-							<li><a href="sz.jsp">设置</a></li>
+							<li><a href="/admin">设置</a></li>
 			
 				<li><a href="dlaccount.jsp">会员管理</a></li>
 				
@@ -138,21 +138,13 @@ td {
 							<li class=""><a href="gameRecord.jsp">彩票投注记录</a></li>
 						
 					</ul></li>
-				<li><a href="dlmnyrd.jsp">公告管理</a></li>
-				<li><a href="dlmnyrd.jsp">站内信管理</a></li>
-				<li><a href="dlreport.jsp">团队统计</a></li>
-
+				<li><a href="noticeAdmin.jsp">公告管理</a></li>
+				<li><a href="znxManager.jsp">站内信管理</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
 																																								aria-hidden="true"></span> 分红提成 <span class="caret"></span>
 				</a>
-					<ul class="dropdown-menu">
-
-						<li class=""><a href="gameRecord.jsp">分红设置</a></li>
-						<li class=""><a href="gameRecord.jsp">分红记录</a></li>
-						<li class=""><a href="gameRecord.jsp">提成记录</a></li>
-
-					</ul></li>
+					<li><a href="fenhonglist.jsp">分红记录</a></li>
 
 				
 				<li><a href="dldrawrd.jsp">取款日志</a></li>
@@ -551,14 +543,7 @@ td {
 					align : 'center',
 					valign : 'middle',
 					formatter : userFormatter
-				}, {
-					field : 'accountType',
-					title : '用户类型',
-					align : 'center',
-					valign : 'middle',
-					sortable: true,
-					formatter : typeFormatter
-				}, {
+				},{
 					field : 'createDatetime',
 					title : '注册时间',
 					align : 'center',
@@ -694,7 +679,7 @@ td {
 		function operateFormatter(value, row, index) {
 			var btns = [];
 			var up = '<a class="doup" href="javascript:void(0)" title="上一级">上一级</a>  ';
-			var down = '<a class="chongqian" href="javascript:void(0)" title="加款">加款</a>&nbsp;<a class="kouqian" href="javascript:void(0)" title="扣款">扣款</a>&nbsp;<a class="chongzhi" href="javascript:void(0)" title="重置">重置</a>&nbsp;<a class="shanchu" href="javascript:void(0)" title="删除">删除</a>';
+			var down = '<a class="chongqian" href="javascript:void(0)" title="加款">加款</a>&nbsp;<a class="kouqian" href="javascript:void(0)" title="扣款">扣款</a>&nbsp;<a class="chongzhi" href="javascript:void(0)" title="重置">重置</a>&nbsp;<a class="shanchu" href="javascript:void(0)" title="分红">分红</a>';
 			var updateFanDian = '<a class="updateFanDian" href="javascript:void(0)" title="修改返点">修改返点</a>   ';
 			var chongqian = '<a class="chongqian" href="javascript:void(0)" title="加款">加款</a>';
 			btns.push(down);
@@ -751,7 +736,7 @@ td {
 					var money = prompt("加款", "");
 					if(money){
 						$.ajax({
-							url : "chongqian",
+							url : "/admin/chongqian",
 							data:{
 								account : row.account,
 								money : money
@@ -780,13 +765,13 @@ td {
 					var money = prompt("扣款", "");
 					if(money){
 						$.ajax({
-							url : "kouqian.action",
+							url : "/admin/kouqian",
 							data:{
 								account : row.account,
 								money : money
 							},
 							success:function(j){
-								if(j.success){
+								if(j.status == 200){
 									alert("修改成功!");
 									window.location.reload();
 								}else{
@@ -807,12 +792,12 @@ td {
 				if(cur=="1"){
 					
 						$.ajax({
-							url : "chongzhi.action",
+							url : "/admin/chongzhi",
 							data:{
 								account : row.account
 							},
 							success:function(j){
-								if(j.success){
+								if(j.status == 200){
 									alert("修改成功!");
 									window.location.reload();
 								}else{

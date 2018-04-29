@@ -43,11 +43,10 @@ public interface UserDAO {
             "update user " +
             "<trim prefix=\"set\" suffixOverrides=\",\"> " +
             "<if test=\"money > 0\" >money=money + #{money},</if>" +
-            "<if test=\"money > 0\" >money=money - #{money},</if>" +
             "</trim>" +
-            " where username=#{username} " +
+            " where username=#{user.username} " +
             " </script> ")
-    int updateMoney(User user, double money);
+    int updateMoney(@Param("user")User user, @Param("money")double money);
 
     @Delete("delete from user where id=#{id}")
     @SelectKey(statement = "select last_insert_id()", keyProperty = "id", before = false, resultType = int.class)
@@ -63,6 +62,7 @@ public interface UserDAO {
             " <if test=\"user.online != null\"> AND online=#{user.online}</if> " +
             " <if test=\"user.type != null\"> AND type=#{user.type}</if> " +
             " <if test=\"user.nickName != null\"> AND nickName=#{user.nickName}</if> " +
+            " <if test=\"user.shangji != null\"> AND shangji=#{user.shangji}</if> " +
             " <if test=\"user.parentList != null\"> AND parentList like #{user.parentList}</if> " +
             " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " <if test=\"beginAmount != null\"> AND<![CDATA[ money>#{beginAmount} AND money<${endAmount} ]]></if> " +

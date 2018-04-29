@@ -37,4 +37,14 @@ public interface RechargeDAO {
             " </trim> " +
             " </script> ")
     int count(@Param("recharge") Recharge recharge, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+
+    @Select("<script> " +
+            "select sum(amount) from recharge " +
+            " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
+            " <if test=\"recharge.account != null\"> AND account=#{recharge.account}</if> " +
+            " <if test=\"recharge.parentList != null\"> AND parentList like #{recharge.parentList}</if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
+            " </trim> " +
+            " </script> ")
+    double sum(@Param("recharge") Recharge recharge, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }

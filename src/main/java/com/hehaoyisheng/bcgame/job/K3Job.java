@@ -65,7 +65,7 @@ public class K3Job {
         }
         GameData.openCount.put(type, qiHaoInt);
         GameData.gameSeasonId.put(type, qiHao);
-        while (true){
+        for(int k = 0; k < 50; k++){
             try {
                 String result = HttpClientUtil.sendHttpGet("http://caipiao.163.com/award/jskuai3/");
 

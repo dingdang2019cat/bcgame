@@ -14,4 +14,6 @@ public interface DrawHistoryManager {
     List<DrawHistory> select(DrawHistory drawHistory, Integer from, Integer limit, Date startTime, Date endTime);
 
     int count(DrawHistory drawHistory, Date startTime, Date endTime);
+
+    double sum(DrawHistory drawHistory, Date startTime, Date endTime);
 }

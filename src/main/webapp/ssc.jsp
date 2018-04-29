@@ -80,7 +80,7 @@
                         <div class="lotteryDetdailList">
                             <ul class="lotteryGroupList">
 
-                                <li><a href="/lotts/cqssc/index" class="lottplayExplain">重庆时时彩</a></li>
+                                <li><a href="/lotts/cqssc/index" class="lottplayExplain">重庆时时彩</a></li><li><a href="/lotts/txssc/index" class="lottplayExplain">腾讯分分彩</a></li>
 
                                 <li><a href="/lotts/xjssc/index" class="lottplayExplain">新疆时时彩</a></li>
 
@@ -940,19 +940,19 @@
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_star3_front_group_and" data-remark="至少选择一个和值，竞猜开奖号码前三位数字之和(不含豹子号)"
-                                    data-example="投注：和值6 开奖：(1) 015**（不限顺序）中组六 (2)033**（不限顺序），中组三" data-title="前三组选和值" data-ratio="0.00" data-MaxBonus="324.99 - 649.99" data-bonus="283.33 - 566.66"><a href="javascript:;">和值</a></li>
+                                    data-example="投注：和值6 开奖：(1) 015**（不限顺序）中组六 (2)033**（不限顺序），中组三" data-title="前三组选和值" data-ratio="0.00" data-MaxBonus="324.99" data-bonus="283.33"><a href="javascript:;">和值</a></li>
 
 
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_star3_front_group_contains" data-remark="从0-9中任意选择1个包胆号码，开奖号码的前三位中任意1位与所选包胆号码相同(不含豹子号)，即为中奖"
-                                    data-example="投注：包胆3开奖：(1) 3xx**或者33x**（不限顺序）,中组三 (2)3xy**（不限顺序）,中组六   注：x≠y≠3" data-title="前三组选包胆" data-ratio="0.00" data-MaxBonus="324.99 - 649.99" data-bonus="283.33 - 566.66"><a href="javascript:;">包胆</a></li>
+                                    data-example="投注：包胆3开奖：(1) 3xx**或者33x**（不限顺序）,中组三 (2)3xy**（不限顺序）,中组六   注：x≠y≠3" data-title="前三组选包胆" data-ratio="0.00" data-MaxBonus="324.99" data-bonus="283.33"><a href="javascript:;">包胆</a></li>
 
 
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_star3_front_group36_single" data-remark="手动输入号码，3个数字为一注组六,两个数字为一注组三，所选号码与开奖号码的前三位相同，顺序不限，即为中奖"
-                                    data-example="投注：(01),(123) 开奖：(1)001**（不限顺序）即中组三，(2)123**（不限顺序）即中组六" data-title="前三混合组选" data-ratio="0.00" data-MaxBonus="324.99 - 649.99" data-bonus="283.33 - 566.66"><a href="javascript:;">混合组选</a></li>
+                                    data-example="投注：(01),(123) 开奖：(1)001**（不限顺序）即中组三，(2)123**（不限顺序）即中组六" data-title="前三混合组选" data-ratio="0.00" data-MaxBonus="324.99" data-bonus="283.33"><a href="javascript:;">混合组选</a></li>
 
 
                             </ul>
@@ -1051,19 +1051,19 @@
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_star3_mid_group_and" data-remark="至少选择一个和值，竞猜开奖号码中三位数字之和(不含豹子号)"
-                                    data-example="投注：和值6 开奖：(1) *015*（不限顺序）中组六 (2)*033*（不限顺序），中组三" data-title="中三组选和值" data-ratio="0.00" data-MaxBonus="324.99 - 649.99" data-bonus="283.33 - 566.66"><a href="javascript:;">和值</a></li>
+                                    data-example="投注：和值6 开奖：(1) *015*（不限顺序）中组六 (2)*033*（不限顺序），中组三" data-title="中三组选和值" data-ratio="0.00" data-MaxBonus="324.99" data-bonus="283.33"><a href="javascript:;">和值</a></li>
 
 
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_star3_mid_group_contains" data-remark="从0-9中任意选择1个包胆号码，开奖号码的中三位中任意1位与所选包胆号码相同(不含豹子号)，即为中奖"
-                                    data-example="投注：包胆3开奖：(1) *3xx*或者*33x*（不限顺序）,中组三 (2)*3xy*（不限顺序）,中组六   注：x≠y≠3" data-title="中三组选包胆" data-ratio="0.00" data-MaxBonus="324.99 - 649.99" data-bonus="283.33 - 566.66"><a href="javascript:;">包胆</a></li>
+                                    data-example="投注：包胆3开奖：(1) *3xx*或者*33x*（不限顺序）,中组三 (2)*3xy*（不限顺序）,中组六   注：x≠y≠3" data-title="中三组选包胆" data-ratio="0.00" data-MaxBonus="324.99" data-bonus="283.33"><a href="javascript:;">包胆</a></li>
 
 
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_star3_mid_group36_single" data-remark="手动输入号码，3个数字为一注组六,2个数字为一注组三，所选号码与开奖号码的中三位相同，顺序不限，即为中奖"
-                                    data-example="投注：(01),(123) 开奖：(1)*001*（不限顺序）即中组三，(2)*123*（不限顺序）即中组六" data-title="中三混合组选" data-ratio="0.00" data-MaxBonus="324.99 - 649.99" data-bonus="283.33 - 566.66"><a href="javascript:;">混合组选</a></li>
+                                    data-example="投注：(01),(123) 开奖：(1)*001*（不限顺序）即中组三，(2)*123*（不限顺序）即中组六" data-title="中三混合组选" data-ratio="0.00" data-MaxBonus="324.99" data-bonus="283.33"><a href="javascript:;">混合组选</a></li>
 
 
                             </ul>
@@ -1162,19 +1162,19 @@
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_star3_last_group_and" data-remark="至少选择一个和值，竞猜开奖号码后三位数字之和(不含豹子号)"
-                                    data-example="投注：和值6 开奖：(1) 015**（不限顺序）中组六 (2)033**（不限顺序），中组三" data-title="后三组选和值" data-ratio="0.00" data-MaxBonus="324.99 - 649.99" data-bonus="283.33 - 566.66"><a href="javascript:;">和值</a></li>
+                                    data-example="投注：和值6 开奖：(1) 015**（不限顺序）中组六 (2)033**（不限顺序），中组三" data-title="后三组选和值" data-ratio="0.00" data-MaxBonus="324.99" data-bonus="283.33"><a href="javascript:;">和值</a></li>
 
 
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_star3_last_group_contains" data-remark="从0-9中任意选择1个包胆号码，开奖号码的后三位中任意1位与所选包胆号码相同(不含豹子号)，即为中奖"
-                                    data-example="投注：包胆3开奖：(1) **3xx或者**33x（不限顺序）,中组三 (2)**3xy（不限顺序）,中组六   注：x≠y≠3" data-title="后三组选包胆" data-ratio="0.00" data-MaxBonus="324.99 - 649.99" data-bonus="283.33 - 566.66"><a href="javascript:;">包胆</a></li>
+                                    data-example="投注：包胆3开奖：(1) **3xx或者**33x（不限顺序）,中组三 (2)**3xy（不限顺序）,中组六   注：x≠y≠3" data-title="后三组选包胆" data-ratio="0.00" data-MaxBonus="324.99" data-bonus="283.33"><a href="javascript:;">包胆</a></li>
 
 
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_star3_last_group36_single" data-remark="手动输入号码，3个数字为一注组六,2个数字为一注组三，所选号码与开奖号码的后三位相同，顺序不限，即为中奖"
-                                    data-example="投注：(01),(123) 开奖：(1)**001（不限顺序）即中组三，(2)**123（不限顺序）即中组六" data-title="后三混合组选" data-ratio="0.00" data-MaxBonus="324.99 - 649.99" data-bonus="283.33 - 566.66"><a href="javascript:;">混合组选</a></li>
+                                    data-example="投注：(01),(123) 开奖：(1)**001（不限顺序）即中组三，(2)**123（不限顺序）即中组六" data-title="后三混合组选" data-ratio="0.00" data-MaxBonus="324.99" data-bonus="283.33"><a href="javascript:;">混合组选</a></li>
 
 
                             </ul>
@@ -1438,7 +1438,7 @@
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_star3_any_group36_single" data-remark="手动输入号码，3个数字为一注组六,两个数字为一注组三，所选号码与开奖号码的对应的三位相同，顺序不限，即为中奖"
-                                    data-example="投注：(01),(123) 开奖：(1)001**（不限顺序）即中组三，(2)123**（不限顺序）即中组六" data-title="任三混合组选" data-ratio="0.00" data-MaxBonus="324.99 - 649.99" data-bonus="283.33 - 566.66"><a href="javascript:;">混合组选</a></li>
+                                    data-example="投注：(01),(123) 开奖：(1)001**（不限顺序）即中组三，(2)123**（不限顺序）即中组六" data-title="任三混合组选" data-ratio="0.00" data-MaxBonus="324.99" data-bonus="283.33"><a href="javascript:;">混合组选</a></li>
 
 
                             </ul>
@@ -1480,7 +1480,7 @@
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_side_lhh" data-remark="从对应两个位上选择一个形态组成一注，前者大于后者为“龙”，反之为“虎”，相等为“和”"
-                                    data-example="万千位置投注：“龙” 开奖：21*** 即中奖" data-title="龙虎和" data-ratio="0.00" data-MaxBonus="4.32 - 19.50" data-bonus="3.77 - 17.00"><a href="javascript:;">龙虎和</a></li>
+                                    data-example="万千位置投注：“龙” 开奖：21*** 即中奖" data-title="龙虎和" data-ratio="0.00" data-MaxBonus="4.32" data-bonus="3.77"><a href="javascript:;">龙虎和</a></li>
 
 
                             </ul>
@@ -1501,7 +1501,7 @@
 
 
                                 <li class="lottTypeDetail" data-hide=".changeNumList" data-show="#ssc_dxds" data-remark="从万位、千位、百位、十位、个位任意位置上至少选择1个形态，所选形态与相同位置上的开奖号码一致"
-                                    data-example="投注：和**** 开奖：0****或5**** 即中奖" data-title="大小单双" data-ratio="0.00" data-MaxBonus="3.90 - 9.75" data-bonus="3.40 - 8.50"><a href="javascript:;">大小单双</a></li>
+                                    data-example="投注：和**** 开奖：0****或5**** 即中奖" data-title="大小单双" data-ratio="0.00" data-MaxBonus="3.90" data-bonus="3.40"><a href="javascript:;">大小单双</a></li>
 
 
 
@@ -25434,6 +25434,13 @@
         <p>@金牌娱乐  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.</p>
     </div>
 </div>
-
+<script>
+    var lastOpenNums = [${lastOpenNums}];
+    for ( var n in lastOpenNums) {
+        var num = lastOpenNums[n];
+        //---新开奖号码动画
+        $('.lottNumDetail').eq(n).find('.bigNum' + num).eq(0).parent().addClass('active').siblings().removeClass('active');//开奖号码动画
+    }
+</script>
 </body>
 </html>

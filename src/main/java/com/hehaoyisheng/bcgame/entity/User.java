@@ -6,12 +6,13 @@ public class User {
     private Integer id;
     private String username;
     private String password;
-    private double money;
+    private Double money;
     private Integer drawFlag;
     private Date createtime;
     private Integer touzhuFlag;
     private String ip;
     private Date time;
+    //1-离线 2-在线
     private Integer online;
     private Integer type;
     private String drawPwd;
@@ -55,11 +56,11 @@ public class User {
         this.password = password;
     }
 
-    public double getMoney() {
+    public Double getMoney() {
         return money;
     }
 
-    public void setMoney(double money) {
+    public void setMoney(Double money) {
         this.money = money;
     }
 

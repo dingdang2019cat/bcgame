@@ -50,4 +50,13 @@ public class DrawHistoryManagerImpl implements DrawHistoryManager{
         }
         return -1;
     }
+
+    public double sum(DrawHistory drawHistory, Date startTime, Date endTime) {
+        try {
+            return drawHistoryDAO.sum(drawHistory, startTime, endTime);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 01;
+    }
 }

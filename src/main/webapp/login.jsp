@@ -19,7 +19,7 @@
 
     <script type="text/javascript" src="./resource/base.js"></script>
 
-    <script type="text/javascript" src="./resource/login.js"></script>
+    <script type="text/javascript" src="./resource/login.js?ver=20180422"></script>
 </head>
 <body>
 	<div class="main">
@@ -46,7 +46,7 @@
 		            
 		            <div class="loginTips">
 		            	<a href="javascript:void(0);" class="forgetPassword" onclick="forgetPassword()">忘记密码?</a>
-		            	<a target="_blank" href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&amp;configID=62880&amp;jid=3635228849&amp;s=1" class="onlineServices"><i></i>联系客服</a>
+		            	<a target="_blank" href="http://dkc.duokebo.com/webchat/chat.aspx?siteid=730985" class="onlineServices"><i></i>联系客服</a>
 			        </div>
 			        <p class="errorTips">${errorTips}</p>
 			        <div class="loginBtnArea">
@@ -107,7 +107,7 @@
 		<div class="findPwdMain" style="display:none;">
 		    <div class="findPwdHeader">
 		        <a class="logo" href="login">
-		            <img src="./resource/logo.png" alt="logo">
+		            <img src="resource/logo1.png" alt="logo">
 		        </a>
 				<a target="_blank" href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&amp;configID=62880&amp;jid=3635228849&amp;s=1" class="customerService"><i></i>在线客服</a>
 		    </div>

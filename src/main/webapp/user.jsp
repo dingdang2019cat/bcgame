@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: lnzyz
   Date: 2017/12/17
@@ -7,7 +8,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
+<%
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -117,7 +120,7 @@
 
                             <ul class="lotteryGroupList">
 
-                                <li><a href="/lotts/cqssc/index" class="lottplayExplain">重庆时时彩</a></li>
+                                <li><a href="/lotts/cqssc/index" class="lottplayExplain">重庆时时彩</a></li><li><a href="/lotts/txssc/index" class="lottplayExplain">腾讯分分彩</a></li>
 
                                 <li><a href="/lotts/xjssc/index" class="lottplayExplain">新疆时时彩</a></li>
 
@@ -367,6 +370,7 @@
                                         <th>人数</th>
                                         <th width="15%">余额</th>
                                         <th width="15%">团队余额</th>
+                                        <th width="15%">返点</th>
                                         <th>最后登录时间</th>
 
 
@@ -702,9 +706,9 @@
                                 </label>
                                 <label>
                                     <span class="labelTitle">时间：</span>
-                                    <input type="text" class="labelCond Wdate" value="2017-12-17" name="begin" onClick="WdatePicker({startDate: '%y-%M-%d',dateFmt:'yyyy-MM-dd'})"/>
+                                    <input type="text" class="labelCond Wdate" value="<%=simpleDateFormat.format(new Date())%>" name="begin" onClick="WdatePicker({startDate: '%y-%M-%d',dateFmt:'yyyy-MM-dd'})"/>
                                     <span>(00:00:00)</span><span>~</span>
-                                    <input type="text" class="labelCond Wdate" value="2017-12-17" name="end" onClick="WdatePicker({startDate: '%y-%M-%d',dateFmt:'yyyy-MM-dd'})" />
+                                    <input type="text" class="labelCond Wdate" value="<%=simpleDateFormat.format(new Date())%>" name="end" onClick="WdatePicker({startDate: '%y-%M-%d',dateFmt:'yyyy-MM-dd'})" />
                                     <span>(23:59:59)</span>
                                 </label>
                                 <input type="hidden" id="teamInfoStatus" name="status" value="0" />
@@ -724,8 +728,6 @@
                                         <th width="15%">提现总额</th>
                                         <!-- 		                                   <th>日工资</th> -->
                                         <th>实际盈亏</th>
-                                        <th>新注册人数</th>
-                                        <th>首次充值人数</th>
                                         <th>有效用户</th>
                                     </tr>
                                     </thead>
@@ -1196,7 +1198,7 @@
             <td>
                 <label for="#">
                     <span>设置为：</span>
-                    <input type="text" class="selfRebateTotal" id="UserQuota" readonly="true" /> <span>%</span>
+                    <input type="text" class="selfRebateTotal" id="UserQuota"  /> <span>%</span>
                 </label>
             </td>
         </tr>
@@ -1270,9 +1272,11 @@
                     <select name="rechargeStyle" id="rechargeStyle" data-id='rechargeStyle0' class="labelCond selectCond">
                         <option value="0" data-id='rechargeType0'>帐变形式（点击选择）</option>
                         <option value="1" data-id='rechargeType1'>工资（影响盈亏）</option>
+                        <!--
                         <option value="2" data-id='rechargeType2'>团队活动（影响盈亏）</option>
                         <option value="3" data-id='rechargeType3'>周期分红（无影响）</option>
-                        <option value="4" data-id='rechargeType4'>下级充值（无影响）</option>
+                        -->
+                        <option value="4" data-id='rechargeType4'>下级充值</option>
                     </select>
                 </label>
             </div>
@@ -1281,8 +1285,10 @@
             <div id="rechargeStyle0">
                 <p class="titleBold"><span class="labelTitle">注意事项：</span>转点功能是您给下级进行转账的操作，请严格阅读注意事项！！</p>
                 <p><span class="labelTitle titleBold">工资：</span>该帐变为等同于发放工资给下级，会影响盈亏报表金额；</p>
+                <!--
                 <p><span class="labelTitle titleBold">团队活动：</span>发放活动金额给下级，会影响盈亏报表金额；</p>
                 <p><span class="labelTitle titleBold">周期分红：</span>发送分红给下级，不影响盈亏报表金额；</p>
+                -->
                 <p><span class="labelTitle titleBold">下级充值：</span>帮下级充值，下级会增加相对应充值金额的所需出款消费量。</p>
             </div>
             <div id="rechargeStyle1">
@@ -1296,13 +1302,6 @@
             </div>
             <div id="rechargeStyle4">
                 <p><span class="labelTitle titleBold">下级充值：</span>帮下级充值，下级会增加相对应充值金额的所需出款消费量。</p>
-                <label><span class="labelTitle titleBold">备注用途：</span></label>
-                <ul class="purposeRadioList">
-                    <li><label><input type="radio" name="remark" value="上级代充"/>上级代充</label></li>
-                    <li><label><input type="radio" name="remark" value="借款"/>借款</label></li>
-                    <li><label><input type="radio" name="remark" value="红包"/>红包</label></li>
-                    <li class="last"><label><input type="radio" checked="checked" name="remark" value="0"/>其他原因</label><input type="text" class="labelCond" id="remarkOtherReasion"  maxLength=5 placeholder="不得超过5个字"  /></li>
-                </ul>
             </div>
         </div>
     </form>
@@ -1448,7 +1447,7 @@
 </div>
 <script type="text/javascript" src="/resource/user/setSafePassword.js?ver=20171208"></script>
 
-<script type="text/javascript" src="/resource/user/index.js?ver=20180420"></script>
+<script type="text/javascript" src="/resource/user/index.js?ver=201804271"></script>
 <script type="text/javascript" src="/resource/user/validate.js?ver=20171208"></script>
 
 

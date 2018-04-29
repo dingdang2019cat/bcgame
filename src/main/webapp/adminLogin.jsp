@@ -16,7 +16,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>代理平台</title>
+    <title>管理平台</title>
 </head>
 <body>
 

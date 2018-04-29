@@ -89,7 +89,7 @@
                             -->
                             <ul class="lotteryGroupList">
 
-                                <li><a href="/lotts/cqssc/index" class="lottplayExplain">重庆时时彩</a></li>
+                                <li><a href="/lotts/cqssc/index" class="lottplayExplain">重庆时时彩</a></li><li><a href="/lotts/txssc/index" class="lottplayExplain">腾讯分分彩</a></li>
 
                                 <li><a href="/lotts/tjssc/index" class="lottplayExplain">天津时时彩</a></li>
 

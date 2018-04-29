@@ -16,12 +16,13 @@ public class UserTransfar {
         if(user.getTime() != null){
             userVO.setLoginTime(simpleDateFormat.format(user.getTime()));
         }
-        userVO.setRebateRatio(0);
+        userVO.setRebateRatio(user.getFandian());
         userVO.setTeamAmount(teamAmount);
         userVO.setTeamCount(teamCount);
-        userVO.setUserMark(user.getRemark());
+        userVO.setHomeRemark(user.getRemark());
         userVO.setUserType(user.getType());
         userVO.setContractStatus(8);
+        userVO.setParentAccount(user.getShangji());
         return userVO;
     }
 }

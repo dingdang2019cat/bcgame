@@ -126,35 +126,27 @@ td {
 	<div class="container">
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-							<li><a href="sz.jsp">设置</a></li>
-			
+				<li><a href="/admin">设置</a></li>
+
 				<li><a href="dlaccount.jsp">会员管理</a></li>
-				
+
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
-						aria-hidden="true"></span> 游戏记录 <span class="caret"></span>
+																																								aria-hidden="true"></span> 游戏记录 <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						
-							<li class=""><a href="gameRecord.jsp">彩票投注记录</a></li>
-						
-					</ul></li>
-				<li><a href="dlmnyrd.jsp">公告管理</a></li>
-				<li><a href="dlmnyrd.jsp">站内信管理</a></li>
-				<li><a href="dlreport.jsp">团队统计</a></li>
 
+						<li class=""><a href="gameRecord.jsp">彩票投注记录</a></li>
+
+					</ul></li>
+				<li><a href="noticeAdmin.jsp">公告管理</a></li>
+				<li><a href="znxManager.jsp">站内信管理</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
 																																								aria-hidden="true"></span> 分红提成 <span class="caret"></span>
 				</a>
-					<ul class="dropdown-menu">
+				<li><a href="fenhonglist.jsp">分红记录</a></li>
 
-						<li class=""><a href="gameRecord.jsp">分红设置</a></li>
-						<li class=""><a href="gameRecord.jsp">分红记录</a></li>
-						<li class=""><a href="gameRecord.jsp">提成记录</a></li>
 
-					</ul></li>
-
-				
 				<li><a href="dldrawrd.jsp">取款日志</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
@@ -237,22 +229,7 @@ td {
 	<div class="container">
 		<div id="toolbar">
 			<div id="search" class="form-inline">
-				<label class="sr-only" for="saccount">输入会员名查询</label>
-				<div class="form-group">
-
-					<div class="input-group">
-						<select id="onlineFlag" class="form-control">
-							<option value="">全部</option>
-							<option value="1">离线</option>
-							<option value="2">在线</option>
-						</select>
-					</div>
-					<div class="input-group">
-						<input type="text" class="form-control" id="saccount" placeholder="输入会员名查询">
-					</div>
-				</div>
-				<button class="btn btn-primary" onclick="search();">查询</button>
-				<button class="btn btn-primary" onclick="back();">返回</button>
+				<a class="btn btn-primary" href="/noticeManager.jsp">新增</a>
 			</div>
 		</div>
 		<table id="datagrid_tb"></table>
@@ -699,32 +676,36 @@ td {
 				fds(row);
 			},
 			'click .editNotice' : function(e, value, row, index) {
-				var cur = $('#agentId').val();
-				if(cur=="1"){
-					//给会员或代理加款
-					if(money){
-						$.ajax({
-							url : "/editNotice",
-							data:{
-								account : row.id
-							},
-							success:function(j){
-								if(j.status == 200){
-									alert("修改成功!");
-									window.location.reload();
-								}else{
-									alert("修改失败！");
-								}
-							}
-						});
-					}
-					//$("#editmodel2").modal('toggle');
-					//search1(row.account);
-				}else{
-					Msg.info("只能给下级会员或代理加款");
-				}
+                window.location.href="/notice/manager?id=" + row.id;
 				
 			},
+            'click .shanchuNotice' : function(e, value, row, index) {
+                var cur = $('#agentId').val();
+                if(cur=="1"){
+                    //给会员或代理加款
+                    if(money){
+                        $.ajax({
+                            url : "/notice/delete",
+                            data:{
+                                account : row.id
+                            },
+                            success:function(j){
+                                if(j.status == 200){
+                                    alert("修改成功!");
+                                    window.location.reload();
+                                }else{
+                                    alert("修改失败！");
+                                }
+                            }
+                        });
+                    }
+                    //$("#editmodel2").modal('toggle');
+                    //search1(row.account);
+                }else{
+                    Msg.info("只能给下级会员或代理加款");
+                }
+
+            },
 			'click .kouqian' : function(e, value, row, index) {
 				var cur = $('#agentId').val();
 				if(cur=="1"){

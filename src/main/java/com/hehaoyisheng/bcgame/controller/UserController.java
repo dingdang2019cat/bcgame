@@ -4,9 +4,11 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.BaseData;
 import com.hehaoyisheng.bcgame.common.GameData;
+import com.hehaoyisheng.bcgame.common.OnlineUser;
 import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.transfar.UserTransfar;
 import com.hehaoyisheng.bcgame.entity.vo.Bank;
+import com.hehaoyisheng.bcgame.entity.vo.InfoVO;
 import com.hehaoyisheng.bcgame.entity.vo.Result;
 import com.hehaoyisheng.bcgame.entity.vo.UserVO;
 import com.hehaoyisheng.bcgame.manager.*;
@@ -62,6 +64,9 @@ public class UserController {
     @Resource
     private SettingsManager settingsManager;
 
+    @Resource
+    private YiLouManager yiLouManager;
+
     @ModelAttribute("user1")
     public User addUser(User user) {
         return new User();
@@ -69,10 +74,13 @@ public class UserController {
 
     @RequestMapping("/index")
     public String index(@ModelAttribute("user") User user, Model model){
+        System.out.println("-----------------------------");
         List<User> list = userManager.select(user, null, null, null, null, null, null);
         if(CollectionUtils.isEmpty(list)){
             return "login";
         }
+        System.out.println("login");
+        System.out.println("-----------------------------");
         //用户信息
         User selectUser = list.get(0);
         model.addAttribute("amount", selectUser.getMoney());
@@ -83,7 +91,7 @@ public class UserController {
         model.addAttribute("signs", signs);
         //中奖播报查询
         BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
-        bcLotteryOrder.setStatus(2);
+        bcLotteryOrder.setStatus(1);
         List<BcLotteryOrder> bcLotteryOrders = bcLotteryOrderManager.select(bcLotteryOrder, 0, 10, null, null);
         System.out.println(bcLotteryOrders.size());
         if(!CollectionUtils.isEmpty(bcLotteryOrders)){
@@ -101,7 +109,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = {RequestMethod.POST})
-    public String login(String account, String password, Model model){
+    public String login(HttpServletRequest httpServletRequest, String account, String password, Model model){
         User user = new User();
         user.setUsername(account);
         List<User> list = userManager.select(user, null, null, null, null, null, null);
@@ -112,11 +120,33 @@ public class UserController {
             return "login";
         }
         user.setTime(new Date());
+        user.setIp(getIpAddr(httpServletRequest));
+        user.setOnline(2);
         userManager.update(user);
+        user.setIp(null);
+        user.setOnline(null);
         user.setId(list.get(0).getId());
         user.setParentList(list.get(0).getParentList());
         model.addAttribute("user", user);
         return "redirect:/index";
+    }
+
+    public static String getIpAddr(HttpServletRequest request){
+        String ip = request.getHeader("X-Real-IP");
+        if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
+            return ip;
+        }
+        ip = request.getHeader("X-Forwarded-For");
+        if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
+            int index = ip.indexOf(',');
+            if (index != -1) {
+                return ip.substring(0, index);
+            } else {
+                return ip;
+            }
+        } else {
+            return request.getRemoteAddr();
+        }
     }
 
     /**
@@ -141,6 +171,7 @@ public class UserController {
     @RequestMapping("message/messageCountUnRead")
     @ResponseBody
     public Result messageCountUnRead(@ModelAttribute("user") User user){
+        OnlineUser.online.put(user.getUsername(), System.currentTimeMillis());
         Message message = new Message();
         message.setAccount(user.getUsername());
         message.setStatus(1);
@@ -167,7 +198,7 @@ public class UserController {
         model.addAttribute("userType", users.get(0).getType());
         model.addAttribute("playerMaxRatio", users.get(0).getFandian());
         //model.addAttribute("maxRatio", users.get(0).getFandian() > 0.3 ? users.get(0).getFandian() - 0.3 : 0);
-        model.addAttribute("maxRatio", users.get(0).getFandian());
+        model.addAttribute("maxRatio", users.get(0).getFandian() > 0.1 ? users.get(0).getFandian() - 0.1 : 0);
         return "user";
     }
 
@@ -209,10 +240,12 @@ public class UserController {
         if(!StringUtils.isEmpty(account)){
             selectUser.setUsername(account);
         }if(!StringUtils.isEmpty(nextAccount)){
-            selectUser.setUsername(nextAccount);
+            selectUser.setShangji(nextAccount);
         }else{
-            user.setShangji(user.getUsername());
+            selectUser.setShangji(user.getUsername());
         }
+
+        //selectUser.setParentList(user.getParentList() + "%");
         //当为2时查询全部
         if(userType != 2){
             selectUser.setType(userType);
@@ -231,7 +264,9 @@ public class UserController {
             UserVO userVO = UserTransfar.userToUserVO(u, teamMoney, count);
             resultList.add(userVO);
         }
-        resultMap.put("ohj", StringUtils.isEmpty(account) ? StringUtils.isEmpty(nextAccount) ? user.getUsername() : nextAccount : account);
+        //resultMap.put("ohj", StringUtils.isEmpty(account) ? StringUtils.isEmpty(nextAccount) ? user.getUsername() : nextAccount : account);
+        String obj = CollectionUtils.isEmpty(childUsers) ? "" : childUsers.get(0).getParentList();
+        resultMap.put("obj", StringUtils.isEmpty(nextAccount) ? user.getParentList().split(",") : obj.split(","));
         resultMap.put("rows", resultList);
         resultMap.put("total", total);
         return Result.success(resultMap);
@@ -296,6 +331,22 @@ public class UserController {
         return Result.faild("旧密码错误", 603);
     }
 
+    @RequestMapping("/down/adjustQuota")
+    @ResponseBody
+    public Result adjustQuota(@ModelAttribute("user") User user, String account, Double rebateRatio){
+        User user1 = new User();
+        user1.setUsername(user.getUsername());
+        List<User> list = userManager.select(user1, null, null, null, null, null, null);
+        double fandian = list.get(0).getFandian();
+        if(fandian < rebateRatio){
+            return Result.faild("返点超过自身权限!", 400);
+        }
+        User user2 = new User();
+        user2.setUsername(account);
+        user2.setFandian(rebateRatio);
+        return Result.success("操作成功！");
+    }
+
     /**
      * 更新资金密码
      * @return
@@ -309,6 +360,7 @@ public class UserController {
         }
         if(StringUtils.equals(users.get(0).getDrawPwd(), oldpass)){
             user.setDrawPwd(newpass);
+            user.setPassword(null);
             userManager.update(user);
             return Result.success("修改成功！");
         }
@@ -438,7 +490,7 @@ public class UserController {
         User user = new User();
         user.setType(userType);
         user.setUsername(account);
-        user.setPassword(passWord);
+        user.setPassword(MD5Util.encode(passWord));
         user.setMinBonusOdds(rebateRatio);
         user.setFandian(rebateRatio);
         user.setShangji(user1.getUsername());
@@ -453,7 +505,43 @@ public class UserController {
     @RequestMapping("/user/getTeamInfo")
     @ResponseBody
     public Result getTeamInfo(@ModelAttribute("user") User user, Integer rows, Integer page, String account, Date begin, Date end, Integer status, String childAccount){
-        return Result.success(null);
+        User user1 = new User();
+        if(!StringUtils.isEmpty(account)){
+            user1.setUsername(account);
+        }else if(!StringUtils.isEmpty(childAccount)){
+            user1.setShangji(childAccount);
+        }else{
+            user1.setUsername(user.getUsername());
+        }
+        List<User> users = userManager.select(user1, null, null, null, null, null, null);
+        List<InfoVO> infoVOList = Lists.newArrayList();
+        for(User user2 : users){
+            User user3 = new User();
+            user3.setParentList(user2.getParentList() + "%");
+            int teamCount = userManager.count(user3, null, null, null, null, null, null);
+            double amount = userManager.sum(user2.getParentList() + "%");
+            DrawHistory drawHistory = new DrawHistory();
+            drawHistory.setParentList(user2.getParentList() + "%");
+            double draw = drawHistoryManager.sum(drawHistory, begin, end);
+            Recharge recharge = new Recharge();
+            recharge.setParentList(user2.getParentList() + "%");
+            double rechargeMoney = rechargeManager.sum(recharge, begin, end);
+            InfoVO infoVO = new InfoVO();
+            infoVO.setAccount(user2.getUsername());
+            infoVO.setDrawingAmount(draw);
+            infoVO.setTeamAmount(amount);
+            infoVO.setTeamCount(teamCount);
+            infoVO.setParentAccount(user.getShangji());
+            infoVO.setParentList(user2.getParentList());
+            infoVO.setRechargeAmount(rechargeMoney);
+            infoVO.setUserType(user2.getType());
+            infoVO.setWin(0);
+            infoVOList.add(infoVO);
+        }
+        Map<String, Object> resultMap = Maps.newHashMap();
+        resultMap.put("rows", infoVOList);
+        resultMap.put("total", infoVOList.size());
+        return Result.success(resultMap);
     }
 
     /**
@@ -541,7 +629,7 @@ public class UserController {
 
     @RequestMapping("/notice/admin")
     @ResponseBody
-    public Map<String, Object> noticeList1(int pageNumber, int pageSize){
+    public Map<String, Object> noticeList1(int pageNumber, int pageSize, String account){
         int from = (pageNumber - 1) * pageSize;
         List<Notice> list = noticeManager.select(null, from, pageSize);
         int totalRecords = noticeManager.count();
@@ -549,6 +637,24 @@ public class UserController {
         resultMap.put("total", totalRecords);
         resultMap.put("rows", list);
         return resultMap;
+    }
+
+    @RequestMapping("/notice/manager")
+    public String noticeManager(Integer id, Model model){
+        List<Notice> notices = noticeManager.select(id, null, null);
+        model.addAttribute("title", notices.get(0).getTitle());
+        model.addAttribute("content", notices.get(0).getContent());
+        model.addAttribute("content", notices.get(0).getId());
+        return "noticeManager";
+    }
+
+    @RequestMapping("/notice/delete")
+    @ResponseBody
+    public Result noticeNotice(Integer id){
+        Notice notice = new Notice();
+        notice.setId(id);
+        noticeManager.delete(notice);
+        return Result.success("操作成功！");
     }
 
 
@@ -762,4 +868,84 @@ public class UserController {
     public String mobile(){
         return "mobileLogin";
     }
+
+    @RequestMapping("/recharge/rechargeLower")
+    @ResponseBody
+    public Result rechargeLower(@ModelAttribute("user") User user, Integer rechargeType,  String targetUser, Double chargeamount, String sourceUserSafePassword){
+        List<User> list = userManager.select(user, null, null, null, null, null, null);
+        User user1 = new User();
+        user1.setUsername(targetUser);
+        List<User> list1 = userManager.select(user1, null, null, null, null, null, null);
+        if(CollectionUtils.isEmpty(list)){
+            return Result.faild("无此用户!", 400);
+        }
+        if(!sourceUserSafePassword.equals(list.get(0).getDrawPwd())){
+            return Result.faild("资金密码不正确！", 400);
+        }
+        if(list.get(0).getMoney() < chargeamount){
+            return Result.faild("余额不足！", 400);
+        }
+        Recharge recharge = new Recharge();
+        recharge.setAccount(targetUser);
+        recharge.setStatus(2);
+        recharge.setParentList(list1.get(0).getParentList());
+        recharge.setAmount(chargeamount);
+        recharge.setBankName("上级");
+        recharge.setBankNameCode("0");
+        recharge.setRechargeType(rechargeType);
+        recharge.setRealAmount(chargeamount);
+        rechargeManager.insert(recharge);
+        double money = list.get(0).getMoney();
+        money = money - chargeamount;
+        user.setMoney(money);
+        user.setPassword(null);
+        userManager.update(user);
+        userManager.update(user1, chargeamount);
+        return Result.success("充值成功！");
+    }
+
+    @RequestMapping("/check/newSafe")
+    @ResponseBody
+    public Result checkNewSafe(@ModelAttribute("user") User user, String password){
+        List<User> list = userManager.select(user, null, null, null, null, null, null);
+        if(password.equals(list.get(0).getDrawPwd())){
+            return Result.faild("操作失败！", 606);
+        }
+        return Result.success("操作成功！");
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest httpServletRequest){
+        httpServletRequest.getSession().removeAttribute("user");
+        return "login";
+    }
+
+    @RequestMapping("/lotts/{gameType}/trend")
+    public String trend(@PathVariable String gameType, Integer len){
+        len = len == null ? 30 : len;
+        BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
+        bcLotteryHistory.setLotteryType(gameType);
+        List<YiLou> list = yiLouManager.select(gameType, 0, len);
+
+        return "trend";
+    }
+
+    /*
+    @RequestMapping("/user/getTeamInfo")
+    public Result getTeamInfo(@ModelAttribute("user") User user, String account, String childAccount, Date begin, Date end){
+        User user1 = new User();
+        user1.setParentList(user.getParentList() + "%");
+        userManager.count(user, null, null, null, null, null, null);
+        double amount = userManager.sum(user.getUsername());
+        DrawHistory drawHistory = new DrawHistory();
+        drawHistory.setParentList(user.getParentList() + "%");
+        double draw = drawHistoryManager.sum(drawHistory, begin, end);
+        Recharge recharge = new Recharge();
+        recharge.setParentList(user.getParentList() + "%");
+        double rechargeMoney = rechargeManager.sum(recharge, begin, end);
+
+        return Result.success(1);
+    }
+    */
+
 }

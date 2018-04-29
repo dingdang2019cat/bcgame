@@ -10,4 +10,5 @@ public interface RechargeManager {
     int update(Recharge recharge);
     List<Recharge> select(Recharge recharge, Integer from, Integer limit, Date startTime, Date endTime);
     int count(Recharge recharge, Date startTime, Date endTime);
+    double sum(Recharge recharge, Date startTime, Date endTime);
 }

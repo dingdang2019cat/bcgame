@@ -55,6 +55,7 @@ public class GameData {
         gameTime.put("sd11x5", 100L);
         gameTime.put("jsk3", 100L);
         gameTime.put("shk3", 100L);
+        gameTime.put("txssc", 100L);
 
         String time = simpleDateFormat.format(new Date());
 
@@ -88,6 +89,7 @@ public class GameData {
         seasonCount.put("pl3", 1);
         seasonCount.put("pl5", 1);
         seasonCount.put("3d", 1);
+        seasonCount.put("txssc", 1440);
         //seasonCount.put("11x5", 84);
 
         lastOpen.put("cqssc", new BcLotteryHistory());
@@ -102,6 +104,7 @@ public class GameData {
         lastOpen.put("pl3", new BcLotteryHistory());
         lastOpen.put("pl5", new BcLotteryHistory());
         lastOpen.put("3d", new BcLotteryHistory());
+        lastOpen.put("txssc", new BcLotteryHistory());
 
         openCount.put("cqssc", 0);
         openCount.put("tjssc", 0);
@@ -115,6 +118,7 @@ public class GameData {
         openCount.put("pl3", 0);
         openCount.put("pl5", 0);
         openCount.put("3d", 0);
+        openCount.put("txssc", 0);
     }
 
     public static void main(String[] args){

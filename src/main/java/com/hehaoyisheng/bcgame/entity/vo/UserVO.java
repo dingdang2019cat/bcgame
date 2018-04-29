@@ -9,9 +9,18 @@ public class UserVO {
     private double rebateRatio;
     private double teamAmount;
     private int teamCount;
-    private String userMark;
+    private String homeRemark;
     private int userType;
     private int contractStatus;
+    private String parentAccount;
+
+    public String getParentAccount() {
+        return parentAccount;
+    }
+
+    public void setParentAccount(String parentAccount) {
+        this.parentAccount = parentAccount;
+    }
 
     public String getAccount() {
         return account;
@@ -61,14 +70,6 @@ public class UserVO {
         this.teamCount = teamCount;
     }
 
-    public String getUserMark() {
-        return userMark;
-    }
-
-    public void setUserMark(String userMark) {
-        this.userMark = userMark;
-    }
-
     public int getUserType() {
         return userType;
     }
@@ -83,5 +84,13 @@ public class UserVO {
 
     public void setContractStatus(int contractStatus) {
         this.contractStatus = contractStatus;
+    }
+
+    public String getHomeRemark() {
+        return homeRemark;
+    }
+
+    public void setHomeRemark(String homeRemark) {
+        this.homeRemark = homeRemark;
     }
 }

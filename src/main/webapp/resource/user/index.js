@@ -290,9 +290,11 @@ $(function(){
                     trs+='<td>'+ d.rechargeAmount +'</td>';
                     trs+='<td>'+ d.drawingAmount +'</td>';
                     trs+='<td>'+ d.win +'</td>';
+                    /*
                     trs+='<td>'+ d.registerNum +'</td>';
                     trs+='<td>'+ d.firstRechargeNum +'</td>';
-                    trs+='<td>'+ d.userCount +'</td>';
+                    */
+                    trs+='<td>'+ d.teamCount +'</td>';
                     trs+='</tr>';
                 }
                 $("#teamInfoListTable").html(trs);
@@ -792,6 +794,7 @@ function initUserList(){
                 trs+='<td>' + u.teamCount + '</td>';
                 trs+='<td class="userAcctAmount fontColorTheme overflowEllipsis" title="' + u.amount +'">' + u.amount  +'</td>';
                 trs+='<td class="userAcctAmount fontColorTheme overflowEllipsis" title="' + u.teamAmount +'">' + u.teamAmount +'</td>';
+                trs+='<td class="userAcctAmount fontColorTheme overflowEllipsis" title="' + u.rebateRatio +'">' + u.rebateRatio +'</td>';
                 trs+='<td>' + u.loginTime  +'</td>';
                 if (gloas.dailyWagesOpen || gloas.dailyWagesTrans) {
                     //trs+='<td>' + (null == u.dailyRate ? (null != u.dailyRuleId ? '已开通' : '未签订') : (u.dailyRate + '%'))  +'</td>';
@@ -811,7 +814,13 @@ function initUserList(){
                 trs+='<a href="javascript:;" class="fontColorTheme userSelect">操作</a>';
 
                 trs+='<div class="userOption" style="display:none;"><a href="/game/index?tabId=' + u.account  +'" class="fontColorTheme">投注记录</a>';
+                if(u.parentAccount == gloas.currentAccount){
+                    trs+='<a href="javascript:accountRecharge(\'' + u.account  +'\');" class="fontColorTheme">下级充值</a>';
+                    var showRebateDialog = 'showQueryRebateArea(\''+ u.account +'\',\''+ u.niceName +'\','+ u.rebateRatio +','+ u.userType +')';
+                    trs+='<a href="javascript:'+showRebateDialog+';" class="fontColorTheme tableOperate">返点调配</a>';
+                }
 
+                /*
                 //直接下级
                 if(u.parentAccount == gloas.currentAccount){
 
@@ -849,6 +858,7 @@ function initUserList(){
                     }
 
                 }
+                */
                 if(u.homeRemark != null){
                     trs+='<a href="javascript:showHomeRemarkArea(\'' + u.account  +'\',\''+u.homeRemark+'\');" class="fontColorTheme">修改备注</a>';
                 }

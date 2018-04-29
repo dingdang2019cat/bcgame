@@ -19,6 +19,7 @@ public class GameType {
             gameType.put("sd11x5", "山东11选5");
             gameType.put("jsk3", "江苏快3");
             gameType.put("shk3", "上海快3");
+            gameType.put("txssc", "腾讯分分彩");
 
             playName.put("ssc_star5", "五星复式");
             playName.put("ssc_star5_single", "五星单式");

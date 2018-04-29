@@ -46,4 +46,12 @@ public class RechargeManagerImpl implements RechargeManager {
         }
         return 0;
     }
+
+    public double sum(Recharge recharge, Date startTime, Date endTime) {
+        try {
+            return rechargeDAO.sum(recharge, startTime, endTime);
+        }catch (Exception e){
+        }
+        return 0;
+    }
 }
