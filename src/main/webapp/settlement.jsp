@@ -197,7 +197,7 @@
             <span>元</span>
             <a href="javascript:;" class="accountHide" id="accountHide" data-value="false" title="隐藏金额"></a>
         </label>
-        <a href="javascript:;" class="recharge" onclick="javascript:if(&#39;0&#39; == 1 || &#39;0&#39; == 3){$.alert(&#39;您的充值功能已被冻结！&#39;);}else{window.location.href=&#39;/recharge/rechargeMoney&#39;}"></a>
+        <a href="javascript:;" class="recharge" onclick="javascript:if(&#39;0&#39; == 1 || &#39;0&#39; == 3){$.alert(&#39;您的充值功能已被冻结！&#39;);}else{window.location.href=&#39;/recharge/rechargeMoney1&#39;}"></a>
         <a href="javascript:;" class="drawMoney" onclick="javascript:if(&#39;0&#39; == 2 || &#39;0&#39; == 3){$.alert(&#39;您的提现功能已被冻结！&#39;);}else{window.location.href=&#39;/deposit/deposit&#39;}"></a>
         <div class="headerR">
             <a href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&amp;configID=62880&amp;jid=3635228849&amp;s=1" class="customerService" target="_blank"><i></i>联系客服</a>

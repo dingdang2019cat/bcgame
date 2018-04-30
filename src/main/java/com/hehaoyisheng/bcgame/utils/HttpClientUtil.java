@@ -207,6 +207,13 @@ public class HttpClientUtil {
         return sendHttpGet(httpGet);
     }
 
+    public static String sendHttpGet(String httpUrl, String cookie) {
+        // 创建get请求
+        HttpGet httpGet = new HttpGet(httpUrl);
+        httpGet.setHeader("Cookie", cookie);
+        return sendHttpGet(httpGet);
+    }
+
 
 
     /**

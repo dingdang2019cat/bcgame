@@ -43,6 +43,7 @@ public class OnLineJob {
                 PayOrderList.payList.remove(s);
                 Recharge recharge = new Recharge();
                 recharge.setId(s);
+                recharge.setRealAmount(0D);
                 recharge.setStatus(3);
                 rechargeManager.update(recharge);
             }

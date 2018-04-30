@@ -477,7 +477,7 @@
                                            data-point="2" data-bankApiId="87" data-classKey="gaotongWx" data-isQrcode="false" data-poundage=""
                                            onclick="selectBank('33', '10.00','3000.00', this)" />
                                     <img src="/resource/recharge/3.png" class="cateImg" />
-                                    <span>微信扫码一</span>
+                                    <span>微信扫码</span>
                                     <i class="bankIcon bankApiIcon1"></i>
                                 </label>
 
@@ -552,7 +552,7 @@
                                            data-point="2" data-bankApiId="78" data-classKey="gaotongQQ" data-isQrcode="false" data-poundage=""
                                            onclick="selectBank('38', '100.00','3000.00', this)" />
                                     <img src="/resource/recharge/5.png" class="cateImg" />
-                                    <span>支付宝扫码</span>
+                                    <span>QQ钱包扫码</span>
                                     <i class="bankIcon bankApiIcon1"></i>
                                 </label>
 

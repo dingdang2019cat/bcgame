@@ -186,10 +186,10 @@ public class GameController {
         resultMap.put("obj", null);
         int from = rows * (page - 1);
         Recharge recharge = new Recharge();
-        if(isIncludeChildFlag != 0){
+        if(isIncludeChildFlag == 1){
             recharge.setParentList(user.getParentList() + "%");
         }else{
-            recharge.setAccount(account);
+            recharge.setAccount(StringUtils.isEmpty(account) ? user.getUsername() : account);
         }
         List<Recharge> resultList = rechargeManager.select(recharge, from, rows, startTime, endTime);
         int total = rechargeManager.count(recharge, startTime, endTime);

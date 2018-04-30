@@ -1957,7 +1957,7 @@ function betSubmit(elem,texting,texted){
 		callback:function(rel) {
 			var content = '';
 			if(rel == '余额不足'){
-			    content = "<p class='lottTipLayerTitle'>温馨提示</p><div class='lottTipBox'><p class='msg'><i></i><span class='content fontColorRed'>余额不足</span>是否需要进行充值？</p></div><div class='lottTipBtn2'><a href='/recharge/rechargeMoney' class='blueBtn' style='display:inline-block;'>前往充值</a><a href='javascript:;' class='btn closeBtn'>关闭</a></div>";
+			    content = "<p class='lottTipLayerTitle'>温馨提示</p><div class='lottTipBox'><p class='msg'><i></i><span class='content fontColorRed'>余额不足</span>是否需要进行充值？</p></div><div class='lottTipBtn2'><a href='/recharge/rechargeMoney1' class='blueBtn' style='display:inline-block;'>前往充值</a><a href='javascript:;' class='btn closeBtn'>关闭</a></div>";
 			}else if(typeof(rel) == 'object'){
 				//刷新投注列表
 				if(rel.betList){

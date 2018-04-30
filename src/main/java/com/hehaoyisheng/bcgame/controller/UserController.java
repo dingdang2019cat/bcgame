@@ -1,5 +1,6 @@
 package com.hehaoyisheng.bcgame.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.BaseData;
@@ -958,5 +959,18 @@ public class UserController {
         return Result.success(1);
     }
     */
+
+    @RequestMapping("/info/getCity")
+    @ResponseBody
+    public Result getCity(Integer provinceId){
+        List<String> list = BaseData.cityList.get(provinceId);
+        List<Map<String, String>> resultList = Lists.newArrayList();
+        for(String s : list){
+            Map<String, String> map = Maps.newHashMap();
+            map.put("cityname", s);
+            resultList.add(map);
+        }
+        return Result.success(resultList);
+    }
 
 }

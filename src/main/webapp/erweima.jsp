@@ -12,7 +12,15 @@
     <title>Title</title>
 </head>
 <body>
+<!--
 <div id="code"><img src=\"data:image/png;base64,${qrCode}\"/></div>
+-->
+
+<div id="code"></div>
 
 </body>
+
+<script>
+    $('#code').qrcode("${qrCode}");
+</script>
 </html>

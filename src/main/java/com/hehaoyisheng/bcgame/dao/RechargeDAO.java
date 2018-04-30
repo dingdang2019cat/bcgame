@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface RechargeDAO {
-    @Insert("insert into recharge (account, amount, bankName, bankNameCode, createTime, id, parentList) values (#{account}, #{amount}, #{bankName}, #{bankNameCode}, now(), #{id}, #{parentList})")
+    @Insert("insert into recharge (account, amount, bankName, bankNameCode, createTime, id, parentList, realAmount, status) values (#{account}, #{amount}, #{bankName}, #{bankNameCode}, now(), #{id}, #{parentList}, #{realAmount}, #{status})")
     int insert(Recharge recharge);
 
     @Update("update recharge set realAmount=#{realAmount}, status=#{status} where id=#{id}")

@@ -70,10 +70,12 @@ public class PayController {
         if(bankNameId == 33){
             payWay = "WEIXIN";
             payType = "SCANPAY_WEIXIN";
+            bankName = "微信";
         }
         if(bankNameId == 38){
-            payWay = "ALIPAY";
-            payType = "SCANPAY_ALIPAY";
+            payWay = "QQPAY";
+            payType = "SCANPAY_QQ";
+            bankName = "QQ钱包";
         }
 
         PayOrderList.orderList.remove(sign);
@@ -84,6 +86,7 @@ public class PayController {
         recharge.setBankName(bankName);
         recharge.setBankNameCode(bankCode);
         recharge.setStatus(0);
+        recharge.setRealAmount(0D);
         recharge.setRechargeType(rechargeType);
         recharge.setParentList(user.getParentList());
         PayOrderList.payList.put(sign, System.currentTimeMillis());
@@ -120,6 +123,7 @@ public class PayController {
         }
         if(status.equals("SUCCESS")){
             recharge.setStatus(2);
+            recharge.setRealAmount(Double.valueOf(amount));
             //MoneyHistory moneyHistory = new MoneyHistory();
             User user = new User();
             user.setUsername(recharges.get(0).getAccount());

@@ -185,7 +185,7 @@ $(document).ready(function(){
                     $(tr).append("<td>"+rows[i].id+"</td>");
                     $(tr).append("<td>"+rows[i].createTime+"</td>");
                     $(tr).append("<td>"+rows[i].amount+"</td>");
-                    $(tr).append("<td>"+rows[i].amount+"</td>");
+                    $(tr).append("<td>"+rows[i].realAmount+"</td>");
                     $(tr).append("<td>"+rows[i].bankName+"</td>");
                     var statusName ='';
                     if(rows[i].status==0){
