@@ -144,7 +144,7 @@
             <span>元</span>
             <a href="javascript:;" class="accountHide" id="accountHide" data-value="false" title="隐藏金额"></a>
         </label>
-        <a href="javascript:;" class="recharge" onclick="javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney'}"></a>
+        <a href="javascript:;" class="recharge" onclick="javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney1'}"></a>
         <a href="javascript:;" class="drawMoney" onclick="javascript:if('0' == 2 || '0' == 3){$.alert('您的提现功能已被冻结！');}else{window.location.href='/deposit/deposit'}"></a>
         <div class="headerR">
             <label class="serviceSuggest">
@@ -242,14 +242,14 @@
 
 
 
-                <form action="/recharge/rechargeMoney" class="changeBankAreaForm" id="changeBankAreaForm1" style="display:none;">
+                <form  method="post" action="/recharge/rechargeMoney" class="changeBankAreaForm" id="changeBankAreaForm1" style="display:none;" >
 
                     <div class="changeBankArea">
                         <input type="hidden" class="rechargeType" name="rechargeType" value="1" />
                         <input type="hidden" class="bankApiId" name="bankApiId" value="" />
                         <input type="hidden" class="classKey" name="classKey" value="" />
                         <input type="hidden" name="account" value="${account}" />
-                        <input type="hidden" name="sign" value="fba0fe1d536aa9dde319da4e3e456d90" />
+                        <input type="hidden" name="sign" value="${sign}" />
                         <input type="hidden" class="categoryId" name="categoryId" value="1" />
 
 
@@ -452,7 +452,7 @@
                     </div>
                 </form>
 
-                <form action="/recharge/rechargeMoney" class="changeBankAreaForm" id="changeBankAreaForm3" style="display:none;">
+                <form method="post" action="/recharge/rechargeMoney" class="changeBankAreaForm" id="changeBankAreaForm3" style="display:none;" >
 
                     <div class="changeBankArea">
                         <input type="hidden" class="rechargeType" name="rechargeType" value="1" />
@@ -527,14 +527,14 @@
                     </div>
                 </form>
 
-                <form action="/recharge/rechargeMoney" class="changeBankAreaForm" id="changeBankAreaForm4" style="display:none;">
+                <form method="post" action="/recharge/rechargeMoney" class="changeBankAreaForm" id="changeBankAreaForm4" style="display:none;">
 
                     <div class="changeBankArea">
                         <input type="hidden" class="rechargeType" name="rechargeType" value="1" />
                         <input type="hidden" class="bankApiId" name="bankApiId" value="" />
                         <input type="hidden" class="classKey" name="classKey" value="" />
-                        <input type="hidden" name="account" value="lnzyz1212" />
-                        <input type="hidden" name="sign" value="fba0fe1d536aa9dde319da4e3e456d90" />
+                        <input type="hidden" name="account" value="${account}" />
+                        <input type="hidden" name="sign" value="${sign}" />
                         <input type="hidden" class="categoryId" name="categoryId" value="4" />
 
 
@@ -552,7 +552,7 @@
                                            data-point="2" data-bankApiId="78" data-classKey="gaotongQQ" data-isQrcode="false" data-poundage=""
                                            onclick="selectBank('38', '100.00','3000.00', this)" />
                                     <img src="/resource/recharge/5.png" class="cateImg" />
-                                    <span>QQ扫码一</span>
+                                    <span>支付宝扫码</span>
                                     <i class="bankIcon bankApiIcon1"></i>
                                 </label>
 

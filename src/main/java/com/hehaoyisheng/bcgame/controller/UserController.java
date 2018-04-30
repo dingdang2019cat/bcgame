@@ -213,14 +213,17 @@ public class UserController {
         if(CollectionUtils.isEmpty(users)){
             return null;
         }
+        User user1 = new User();
         if(StringUtils.equals(users.get(0).getPassword(), password)){
-            user.setDrawPwd(safePassWord);
-            user.setQsType1(qsType1);
-            user.setQsType2(qsType2);
-            user.setAnswer1(answer1);
-            user.setAnswer2(answer2);
-            user.setName(cardName);
-            userManager.update(user);
+            user1.setUsername(user.getUsername());
+            user1.setId(user.getId());
+            user1.setDrawPwd(safePassWord);
+            user1.setQsType1(qsType1);
+            user1.setQsType2(qsType2);
+            user1.setAnswer1(answer1);
+            user1.setAnswer2(answer2);
+            user1.setName(cardName);
+            userManager.update(user1);
             return Result.success("操作成功!");
         }
         return Result.faild("登陆密码不正确", 501);
@@ -279,13 +282,16 @@ public class UserController {
     @RequestMapping("/info/setInformation")
     @ResponseBody
     public Result setInformation(@ModelAttribute("user") User user, String niceName, String message){
+        User user1 = new User();
+        user1.setId(user.getId());
+        user1.setUsername(user.getUsername());
         if(!StringUtils.isEmpty(niceName)){
-            user.setNickName(niceName);
+            user1.setNickName(niceName);
         }
         if(!StringUtils.isEmpty(message)){
-            user.setMessage(message);
+            user1.setMessage(message);
         }
-        userManager.update(user);
+        userManager.update(user1);
         return Result.success("操作成功");
     }
 
@@ -320,12 +326,14 @@ public class UserController {
     @ResponseBody
     public Result updatePass(@ModelAttribute("user") User user, String oldpass, String newpass){
         List<User> users = userManager.select(user, null, null, null, null, null, null);
+        User user1 = new User();
+        user1.setId(user.getId());
         if(CollectionUtils.isEmpty(users)){
             return null;
         }
         if(StringUtils.equals(users.get(0).getPassword(), oldpass)){
-            user.setPassword(newpass);
-            userManager.update(user);
+            user1.setPassword(newpass);
+            userManager.update(user1);
             return Result.success("修改成功！");
         }
         return Result.faild("旧密码错误", 603);
@@ -358,10 +366,11 @@ public class UserController {
         if(CollectionUtils.isEmpty(users)){
            return null;
         }
+        User user1 = new User();
+        user1.setId(user.getId());
         if(StringUtils.equals(users.get(0).getDrawPwd(), oldpass)){
-            user.setDrawPwd(newpass);
-            user.setPassword(null);
-            userManager.update(user);
+            user1.setDrawPwd(newpass);
+            userManager.update(user1);
             return Result.success("修改成功！");
         }
         return Result.faild("旧资金密码错误", 605);
@@ -897,9 +906,11 @@ public class UserController {
         rechargeManager.insert(recharge);
         double money = list.get(0).getMoney();
         money = money - chargeamount;
-        user.setMoney(money);
-        user.setPassword(null);
-        userManager.update(user);
+        User user2 = new User();
+        user2.setId(user.getId());
+        user2.setMoney(money);
+        user2.setPassword(null);
+        userManager.update(user2);
         userManager.update(user1, chargeamount);
         return Result.success("充值成功！");
     }

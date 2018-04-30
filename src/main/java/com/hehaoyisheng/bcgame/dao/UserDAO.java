@@ -43,6 +43,7 @@ public interface UserDAO {
             "update user " +
             "<trim prefix=\"set\" suffixOverrides=\",\"> " +
             "<if test=\"money > 0\" >money=money + #{money},</if>" +
+            "<if test=\"money < 0\" >money=money #{money},</if>" +
             "</trim>" +
             " where username=#{user.username} " +
             " </script> ")

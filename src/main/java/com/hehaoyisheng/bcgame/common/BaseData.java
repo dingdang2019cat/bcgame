@@ -22,6 +22,9 @@ public class BaseData {
         bankName.add(new Bank(16, "交通银行"));
         bankName.add(new Bank(25, "中国邮政储蓄银行"));
         bankName.add(new Bank(28, "平安银行"));
+        bankName.add(new Bank(29, "浦发银行"));
+        bankName.add(new Bank(33, "微信扫码"));
+        bankName.add(new Bank(38, "支付宝扫码"));
 
         province.add(new Province(10, "北京"));
         province.add(new Province(11, "上海"));

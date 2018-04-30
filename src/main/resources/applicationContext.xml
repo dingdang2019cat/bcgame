@@ -140,6 +140,7 @@
     <bean id="txsscJob" class="com.hehaoyisheng.bcgame.job.TxSSCJob">
         <property name="type" value="txssc" />
     </bean>
+    <bean id="onlineJob" class="com.hehaoyisheng.bcgame.job.OnLineJob" />
 
     <bean id="cqsscDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="sscJob" />
@@ -195,6 +196,13 @@
         <property name="targetMethod" value="execute"/>
         <property name="name" value="txsscJob" />
         <property name="group" value="sscJob" />
+    </bean>
+
+    <bean id="onlineDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="onlineJob" />
+        <property name="targetMethod" value="execute"/>
+        <property name="name" value="onlineJob" />
+        <property name="group" value="online" />
     </bean>
 
     <bean id="tjsscTigger1" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
@@ -274,6 +282,13 @@
         <property name="group" value="ssc" />
     </bean>
 
+    <bean id="onlineTigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="onlineDetail" />
+        <property name="cronExpression" value="0 * * * * ?" />
+        <property name="name" value="onlineJob" />
+        <property name="group" value="online" />
+    </bean>
+
     <bean id="schedulerfactory" name="schedulerfactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
         <property name="triggers">
             <list>
@@ -290,6 +305,7 @@
                 <ref bean="shk3Tigger"/>
                 -->
                 <ref bean="txsscTigger"/>
+                <ref bean="onlineTigger"/>
             </list>
         </property>
         <property name="autoStartup" value="true" />

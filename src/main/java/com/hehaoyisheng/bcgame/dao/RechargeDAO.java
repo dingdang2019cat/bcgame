@@ -19,6 +19,7 @@ public interface RechargeDAO {
     @Select("<script> " +
             "select * from recharge " +
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
+            " <if test=\"recharge.id != null\"> AND id=#{recharge.id}</if> " +
             " <if test=\"recharge.account != null\"> AND account=#{recharge.account}</if> " +
             " <if test=\"recharge.parentList != null\"> AND parentList like #{recharge.parentList}</if> " +
             " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +

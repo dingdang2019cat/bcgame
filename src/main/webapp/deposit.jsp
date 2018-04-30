@@ -144,7 +144,7 @@
             <span>元</span>
             <a href="javascript:;" class="accountHide" id="accountHide" data-value="false" title="隐藏金额"></a>
         </label>
-        <a href="javascript:;" class="recharge" onclick="javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney'}"></a>
+        <a href="javascript:;" class="recharge" onclick="javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney1'}"></a>
         <a href="javascript:;" class="drawMoney" onclick="javascript:if('0' == 2 || '0' == 3){$.alert('您的提现功能已被冻结！');}else{window.location.href='/deposit/deposit'}"></a>
         <div class="headerR">
             <label class="serviceSuggest">
@@ -227,7 +227,7 @@
                 if ($("#rechargeNavUl .active").length == 0) {
                     if (href.indexOf('deposit') > 0 && href.indexOf('Outstanding') < 0) {
                         $("#navDeposit").addClass("active");
-                        $(".rechargeA").attr("onclick","javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney'}");
+                        $(".rechargeA").attr("onclick","javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney1'}");
                     }else if (href.indexOf('Outstanding') > 0){
                         $('.outstandingA').addClass("active").click();
                         if(href.indexOf('rechargeOutstanding') > 0){
@@ -235,7 +235,7 @@
                         }else{
                             $('.depoNav').addClass("active");
                         }
-                        $(".rechargeA").attr("onclick","javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney'}");
+                        $(".rechargeA").attr("onclick","javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney1'}");
                     }else{
                         $('.leftListBigItem').eq(0).click();
                         if(categoryNavId){

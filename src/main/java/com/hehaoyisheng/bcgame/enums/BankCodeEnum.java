@@ -65,7 +65,11 @@ public enum BankCodeEnum {
 	BOCDBANK("成都银行"),
 
 	HKB("汉口银行"),
-	
+
+	SCANPAY_WEIXIN("微信扫码"),
+
+	SCANPAY_ALIPAY("支付宝扫码"),
+
 	OTHER("其他");
 
 	/** 描述 */
