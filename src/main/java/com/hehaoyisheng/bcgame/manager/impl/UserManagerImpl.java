@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +40,21 @@ public class UserManagerImpl implements UserManager {
 
     public int update(User user, double money) {
         try {
-            return userDAO.updateMoney(user, money);
+            if(money > 0)
+                return userDAO.updateMoney(user, money);
+            else
+                return userDAO.kouqian(user, 0 - money);
+        }catch (Exception e){
+            logger.error("insert Error: username:{}, ", e);
+        }
+        return -1;
+    }
+
+    public int updagteFandian(String username, Double fandian){
+        try {
+            BigDecimal bg = new BigDecimal(fandian);
+            double f1 = bg.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+            return userDAO.updagteFandian(username, f1);
         }catch (Exception e){
             logger.error("insert Error: username:{}, ", e);
         }

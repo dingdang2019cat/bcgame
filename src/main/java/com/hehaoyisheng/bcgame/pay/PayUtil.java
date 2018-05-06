@@ -8,6 +8,7 @@ import java.util.Date;
 
 public class PayUtil {
     private static final String URL = "https://api.fzmanba.com/paygateway/mbpay/order/v1";
+    private static final String geteWayURL = "https://api.fzmanba.com/paygateway/mbgateway/gatewayorder/v1";
     private static final String merAccount = "34c448e5117943bebedf0f69c685e2bb";
     private static final String merNo = "10001238";
     private static final String key = "ad305d0ded184b238587efa1daf9f93c";
@@ -41,7 +42,8 @@ public class PayUtil {
         json.put("sign", sign);
         String data = PayUtils.buildData(json, key);
         //JSONObject result = PayUtil.httpGet("https://api.fzmanba.com/paygateway/quickPay/order/v1", merAccount, data);
-        JSONObject result = PayUtils.httpGet(URL, merAccount, data);
+        String url = payWay.equals("UNIONPAY") ? geteWayURL : URL;
+        JSONObject result = PayUtils.httpGet(url, merAccount, data);
         System.out.println(result.toJSONString());
         return result;
     }

@@ -51,8 +51,8 @@
 
         </td>
         <td class="operate">
-            <a href="javascript:;" onclick="messageDetail('7280','加我qq 918520168');" class="operateBtn delete fontColorTheme">查看</a>
-            <a href="javascript:;" onclick="messageDelete('7280');" class="operateBtn delete fontColorTheme">删除</a>
+            <a href="javascript:;" onclick="messageDetail('${message.id}','');" class="operateBtn delete fontColorTheme">查看</a>
+            <a href="javascript:;" onclick="messageDelete('${message.id}');" class="operateBtn delete fontColorTheme">删除</a>
         </td>
     </tr>
     </c:forEach>

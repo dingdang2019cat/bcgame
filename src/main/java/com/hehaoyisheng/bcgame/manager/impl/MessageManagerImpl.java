@@ -49,4 +49,13 @@ public class MessageManagerImpl implements MessageManager{
         }
         return null;
     }
+
+    public Message selectById(Integer id) {
+        try {
+            return messageDAO.selectById(id);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface DrawHistoryDAO {
 
-    @Insert("insert into drawHistory (account, card, amount, createTime, bankCode, bankName, lastOperator, lastTime, parentList) values (#{account}, #{card}, #{amount}, now(), #{bankCode}, #{bankName}, #{lastOperator}, now(), #{parentList})")
+    @Insert("insert into drawHistory (id, account, card, amount, createTime, bankCode, bankName, lastOperator, lastTime, parentList, remark) values (#{id}, #{account}, #{card}, #{amount}, now(), #{bankCode}, #{bankName}, #{lastOperator}, now(), #{parentList}, #{remark})")
     int insert(DrawHistory drawHistory);
 
     @Update("update drawHistory set status=#{status},remark=#{remark}")
@@ -24,6 +24,7 @@ public interface DrawHistoryDAO {
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
             " <if test=\"drawHistory.account != null\"> AND account=#{drawHistory.account}</if> " +
             " <if test=\"drawHistory.parentList != null\"> AND parentList like #{drawHistory.parentList}</if> " +
+            " <if test=\"drawHistory.status != null\"> AND status = #{drawHistory.status}</if> " +
             " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +
             " order by id desc" +
@@ -43,7 +44,7 @@ public interface DrawHistoryDAO {
     int count(@Param("drawHistory") DrawHistory drawHistory, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 
     @Select("<script> " +
-            "select sum(amount) from drawHistory " +
+            "select sum(realAmount) from drawHistory " +
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
             " <if test=\"drawHistory.account != null\"> AND account=#{drawHistory.account}</if> " +
             " <if test=\"drawHistory.parentList != null\"> AND parentList like #{drawHistory.parentList}</if> " +

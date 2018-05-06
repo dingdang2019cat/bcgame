@@ -152,7 +152,7 @@
             <span>可用余额：</span>
             <span id="userBalance" class="userBalance overflowEllipsis" title="${amount}" data-value="${amount}">${amount}</span>
             <span>元</span>
-            <a href="javascript:;" class="accountHide" id="accountHide" data-value="false" title="隐藏金额"></a>R
+            <a href="javascript:;" class="accountHide" id="accountHide" data-value="false" title="隐藏金额"></a>
         </label>
         <a href="javascript:;" class="recharge" onclick="javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney1'}"></a>
         <a href="javascript:;" class="drawMoney" onclick="javascript:if('0' == 2 || '0' == 3){$.alert('您的提现功能已被冻结！');}else{window.location.href='/deposit/deposit'}"></a>
@@ -284,8 +284,6 @@
 
                     <a href='javascript:;' class="nav" data-id="45"> 玩法介绍</a>
 
-                    <a href='javascript:;' class="nav" data-id="43"> 鼎汇娱乐特色彩种介绍</a>
-
                     <a href='javascript:;' class="nav" data-id="39"> 北京赛车</a>
 
                     <a href='javascript:;' class="nav" data-id="41"> 彩种介绍</a>
@@ -356,19 +354,19 @@
                     <div class="autoServicesBox">
                         <h3>自主服务</h3>
                         <div class="autoServices">
-                            <a href="/user/index?tabId=modLoginPwd" class="autoServiceDetail">
+                            <a href="#" class="autoServiceDetail">
                                 <i class="lock-white"></i>
                                 <span>修改登录密码</span>
                             </a>
-                            <a href="/user/index?tabId=modAccountPwd" class="autoServiceDetail">
+                            <a href="#" class="autoServiceDetail">
                                 <i class="money-white"></i>
                                 <span>修改资金密码</span>
                             </a>
-                            <a href="/user/index?tabId=personInfo" class="autoServiceDetail">
+                            <a href="#" class="autoServiceDetail">
                                 <i class="qq-white"></i>
                                 <span>修改QQ</span>
                             </a>
-                            <a href="/user/index?tabId=personInfo" class="autoServiceDetail">
+                            <a href="#" class="autoServiceDetail">
                                 <i class="msg-white"></i>
                                 <span>修改邮箱</span>
                             </a>
@@ -470,9 +468,9 @@
 <div class="footer">
     <div class="mainWidth">
         <ul class="download">
-            <li class="pc"><a href="/download?t=4"><i></i>pc端下载</a></li>
-            <li class="ios"><a href="/download?t=2"><i></i>ios端下载</a></li>
-            <li class="android"><a href="/download?t=1"><i></i>安卓客户端下载</a></li>
+            <li class="pc"><a href="#?t=4"><i></i>pc端下载</a></li>
+            <li class="ios"><a href="#?t=2"><i></i>ios端下载</a></li>
+            <li class="android"><a href="#?t=1"><i></i>安卓客户端下载</a></li>
             <li class="auto"><a href="javascript:;"><i></i>自动投注软件</a></li>
         </ul>
         <ul class="browser">
@@ -481,9 +479,9 @@
             <li class="ie"><a target="_blank" href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads"><i></i>IE浏览器</a></li>
         </ul>
         <ul class="footerOther">
-            <li><a href="/helpCenter/aboutUsIndex">关于我们</a></li>
-            <li><a href="/helpCenter/aboutUsIndex?tabId=transProtocol">交易协议</a></li>
-            <li><a class="dnsLink" href="/repairDNS" target="_blank">防劫持教程</a></li>
+            <li><a href="#">关于我们</a></li>
+            <li><a href="#?tabId=transProtocol">交易协议</a></li>
+            <li><a class="dnsLink" href="#">防劫持教程</a></li>
         </ul>
         <p>@金牌娱乐  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.</p>
     </div>

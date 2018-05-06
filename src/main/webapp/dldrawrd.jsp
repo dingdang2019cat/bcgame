@@ -146,9 +146,7 @@
                 <li><a href="noticeAdmin.jsp">公告管理</a></li>
                 <li><a href="znxManager.jsp">站内信管理</a></li>
 
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
-                                                                                                                                                                aria-hidden="true"></span> 分红提成 <span class="caret"></span>
-                </a>
+
                 <li><a href="fenhonglist.jsp">分红记录</a></li>
 
 
@@ -238,10 +236,10 @@
                 <div class="form-group">
                     <div class="input-group">
                         <label class="sr-only" for="sstatus">状态</label> <select class="form-control" id="sstatus">
-                        <option value="0" class="text-warning">全部记录</option>
-                        <option value="1" class="text-warning">处理中</option>
-                        <option value="2" class="text-success">处理成功</option>
-                        <option value="3" class="text-danger">处理失败</option>
+                        <option value="9" class="text-warning">全部记录</option>
+                        <option value="0" class="text-warning">处理中</option>
+                        <option value="7" class="text-success">处理成功</option>
+                        <option value="8" class="text-danger">处理失败</option>
                     </select>
                     </div>
                     <div class="input-group">
@@ -290,7 +288,7 @@
 
         window.table = new Game.Table({
             id : 'datagrid_tb',
-            url : 'dldrawrdList.action',
+            url : '/dldrawrdList',
             queryParams : queryParams,//参数
             toolbar : $('#toolbar'),
             columns : [ {
@@ -304,12 +302,12 @@
                 align : 'center',
                 valign : 'middle'
             }
-                // 				, {
-                // 					field : 'cardNo',
-                // 					title : '收款账号',
-                // 					align : 'center',
-                // 					valign : 'middle'
-                // 				}
+            , {
+                field : 'cardNo',
+                title : '收款账号',
+                align : 'center',
+                valign : 'middle'
+            }
                 // 				, {
                 // 					field : 'userName',
                 // 					title : '收款户名',
@@ -334,12 +332,6 @@
                     align : 'center',
                     valign : 'middle',
                     formatter : dateFormatter
-                }, {
-                    field : 'type',
-                    title : '存取类型',
-                    align : 'center',
-                    valign : 'middle',
-                    formatter : typeFormatter
                 }, {
                     field : 'status',
                     title : '状态',

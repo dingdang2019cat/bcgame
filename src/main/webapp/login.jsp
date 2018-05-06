@@ -19,7 +19,7 @@
 
     <script type="text/javascript" src="./resource/base.js"></script>
 
-    <script type="text/javascript" src="./resource/login.js?ver=20180422"></script>
+    <script type="text/javascript" src="./resource/login.js?ver=20180506"></script>
 </head>
 <body>
 	<div class="main">

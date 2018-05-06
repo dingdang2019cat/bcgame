@@ -50,6 +50,10 @@ public class LotteryCommon {
             moneyHistory.setChangeType("高返返现");
             moneyHistoryManager.insert(moneyHistory);
         }
+
+        for(String s : bcLotteryOrder.getParentList().split(",")){
+
+        }
         bcLotteryOrderManager.update(bcLotteryOrder);
     }
 }

@@ -17,6 +17,7 @@ import com.hehaoyisheng.bcgame.utils.PayUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -66,7 +67,7 @@ public class PayController {
         }*/
 
         String payWay = "UNIONPAY";
-        String payType = "SCANPAY_UNIONPAY";
+        String payType = "GATEWAY_UNIONPAY_ONE";
         if(bankNameId == 33){
             payWay = "WEIXIN";
             payType = "SCANPAY_WEIXIN";
@@ -93,13 +94,19 @@ public class PayController {
         JSONObject result = PayUtil.payOrder(sign, UserController.getIpAddr(request), "01", "充值", "web", chargeamount, payWay, payType);
         rechargeManager.insert(recharge);
         String qrCode = "";
+        String payUrl = "";
         //进行业务处理
         if("000000".equals(result.getString("code"))){
             //request.setAttribute("responseDataMap", result.get("data"));
             qrCode = result.getJSONObject("data").getString("qrCode");
+            payUrl = result.getJSONObject("data").getString("payUrl");
         }
-        model.addAttribute("qrCode", qrCode);
-        return "erweima";
+        if(StringUtils.isEmpty(qrCode)){
+            return "redirect:" + payUrl;
+        }else{
+            model.addAttribute("qrCode", qrCode);
+            return "erweima";
+        }
         //return "redirect:/index";
     }
 

@@ -141,22 +141,12 @@ td {
 				<li><a href="noticeAdmin.jsp">公告管理</a></li>
 				<li><a href="znxManager.jsp">站内信管理</a></li>
 
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
-																																								aria-hidden="true"></span> 分红提成 <span class="caret"></span>
-				</a>
 					<li><a href="fenhonglist.jsp">分红记录</a></li>
 
 				
 				<li><a href="dldrawrd.jsp">取款日志</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session.getAttribute("user") %><span class="caret"></span>
-				</a>
-					<ul class="dropdown-menu">
-						<li><a href="#" data-toggle="modal" data-target="#head_editpwd">修改密码</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#logout">退出</a></li>
-					</ul></li>
-			</ul>
+
 		</div>
 	</div>
 </nav>
@@ -259,59 +249,7 @@ td {
 				<div class="modal-body">
 					<input type="hidden" id="accountId">
 					<table class="table table-bordered table-striped" style="clear: both">
-						<tbody>
-							<tr>
-								<td width="15%" class="text-right">登录账号：</td>
-								<td width="35%" class="text-left"><input type="text" class="form-control" id="account" disabled="disabled" /></td>
-								<td width="15%" class="text-right">用户类型：</td>
-								<td width="35%" class="text-left"><select id="accountType" class="form-control" disabled="disabled">
-										<option value="1" id="member_opt">会员</option>
-										<option value="4" id="agent_opt">代理</option>
-										<option value="5" id="general_opt">总代理</option>
-								</select></td>
-							</tr>
-							<tr class="newpwd_tr">
-								<td width="15%" class="text-right">密码：</td>
-								<td width="35%" class="text-left"><input type="text" class="form-control" id="newpwd" /></td>
-								<td width="15%" class="text-right">提款密码：</td>
-								<td width="35%" class="text-left"><input type="text" class="form-control" id="newrpwd" /></td>
-							</tr>
-							<tr class="userinfo_tr">
-								<td width="15%" class="text-right">账号状态：</td>
-								<td width="35%" class="text-left"><select id="accountStatus" class="form-control">
-										<option value="1">禁用</option>
-										<option value="2">启用</option>
-								</select></td>
-								<td width="15%" class="text-right">用户姓名：</td>
-								<td width="35%" class="text-left"><input type="text" class="form-control" id="userName" disabled="disabled" /></td>
-							</tr>
-							<tr class="userinfo_tr">
-								<td width="15%" class="text-right">银行账号：</td>
-								<td width="35%" class="text-left"><input type="text" class="form-control" id="cardNo" disabled="disabled" />
-								<td width="15%" class="text-right">取现银行：</td>
-								<td width="35%" class="text-left">
-									<input id="bankName" class="form-control" disabled="disabled"/>
-								</td>
-								</td>
-							</tr>
-
-							<tr class="rebateNum_tr">
-								<td width="15%" class="text-right multiData hidden">返点数：</td>
-								<td width="35%" class="text-left multiData hidden"><input type="text" class="form-control" id="rebateNum" /></td>
-								<td width="50%" class="text-left multiData hidden" colspan="2"><span id="rebate_desc"></span></td>
-							</tr>
-							<tr class="userinfo_tr">
-								<td width="15%" class="text-right showTel">电话：</td>
-								<td width="35%" class="text-left showTel"><input type="text" class="form-control" id="phone" disabled="disabled" /></td>
-								<td width="15%" class="text-right showEmail">邮箱：</td>
-								<td width="35%" class="text-left showEmail"><input type="text" class="form-control" id="email" disabled="disabled" /></td>
-							</tr>
-							<tr class="parentNames_tr">
-								<td width="15%" class="text-right showBankAdd">银行地址：</td>
-								<td width="35%" class="text-left showBankAdd"><input type="text" class="form-control" id="bankAddress" disabled="disabled" /></td>
-								<td width="15%" class="text-right showQQ">QQ：</td>
-								<td width="35%" class="text-left showQQ"><input type="text" class="form-control" id="qq" disabled="disabled" /></td>
-							</tr>
+						<tbody id="tbody1">
 							<tr>
 								<td width="15%" class="text-right">所属上级：</td>
 								<td width="85%" colspan="3" class="text-left"><textarea class="form-control" id="parentNames" disabled="disabled"></textarea></td>
@@ -320,7 +258,6 @@ td {
 					</table>
 				</div>
 				<div class="modal-footer">
-					<a href="#" data-toggle="modal" data-target="#head_editpwd1">站内信</a>
 					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="savestatus();" id="save_btn">保存</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 				</div>
@@ -434,20 +371,6 @@ td {
 
 
 	<script type="text/javascript">
-		$(function()  {
-			$.ajax({
-				url : "dlaccountThirdList.action",
-				success : function(data) {
-					var eachdata = {
-						"data" : data
-					};
-					var html = template('memmnyope_tpl', eachdata);
-					$("#memmnyope_tb").html(html);
-					$("#memmnyope_tb").addClass("hidden");
-				}
-			});
-			fdsDate();
-		});
 		
 		function submit1() {
 			$.ajax({
@@ -537,12 +460,6 @@ td {
 					align : 'center',
 					valign : 'middle',
 					sortable: true
-				}, {
-					field : 'userName',
-					title : '用户姓名',
-					align : 'center',
-					valign : 'middle',
-					formatter : userFormatter
 				},{
 					field : 'createDatetime',
 					title : '注册时间',
@@ -558,6 +475,13 @@ td {
 					sortable: true,
 					formatter : dateFormatter
 				}, {
+					field : 'fenhong',
+					title : '分红',
+					align : 'center',
+					valign : 'middle',
+					sortable: true,
+					formatter : fenhongFormatter
+				},{
 					field : 'lastLoginIp',
 					title : '最后登录ip',
 					align : 'center',
@@ -569,12 +493,6 @@ td {
 					valign : 'middle',
 					sortable: true,
 					formatter : onlineFormatter,
-				}, {
-					field : 'accountStatus',
-					title : '状态',
-					align : 'center',
-					valign : 'middle',
-					formatter : statusFormatter,
 				}, {
 					title : '操作',
 					align : 'center',
@@ -676,10 +594,29 @@ td {
 			return DateUtil.formatDatetime(value);
 		}
 
+        function fenhongFormatter(value, row, index) {
+            var btns = [];
+            var down = '';
+            if(row.fenhong == 0){
+                down += '无';
+            }else{
+                down += '有';
+			}
+            if(row.gameShare == 14.4 || row.gameShare == 14.5){
+                if(row.fenhong == 0){
+                    down += '(<a class="fenhong" href="javascript:void(0)" onclick="fenhong(' + row.id + ')" title="设置分红">设置分红</a>)';
+                }else{
+                    down += '(<a class="quxiaofenhong" href="javascript:void(0)" onclick="fenhong(' + row.id + ')" title="取消分红">取消分红</a>)';
+                }
+            }
+            btns.push(down);
+            return btns.join('');
+        }
+
 		function operateFormatter(value, row, index) {
 			var btns = [];
 			var up = '<a class="doup" href="javascript:void(0)" title="上一级">上一级</a>  ';
-			var down = '<a class="chongqian" href="javascript:void(0)" title="加款">加款</a>&nbsp;<a class="kouqian" href="javascript:void(0)" title="扣款">扣款</a>&nbsp;<a class="chongzhi" href="javascript:void(0)" title="重置">重置</a>&nbsp;<a class="shanchu" href="javascript:void(0)" title="分红">分红</a>';
+			var down = '<a class="chongqian" href="javascript:void(0)" title="加款">加款</a>&nbsp;<a class="kouqian" href="javascript:void(0)" title="扣款">扣款</a>&nbsp;<a class="chongzhi" href="javascript:void(0)" title="重置">重置</a>&nbsp;<a class="shanchu" href="javascript:void(0)" title="删除">删除</a>';
 			var updateFanDian = '<a class="updateFanDian" href="javascript:void(0)" title="修改返点">修改返点</a>   ';
 			var chongqian = '<a class="chongqian" href="javascript:void(0)" title="加款">加款</a>';
 			btns.push(down);
@@ -687,31 +624,75 @@ td {
 		}
 
 		window.operateEvents = {
+		    /*
+            'click .quxiaofenhong' : function(e, value, row, index) {
+                //$("#save_btn").addClass("hidden");
+
+                $.ajax({
+                    url: "/admin/fenhong",
+                    data: {
+                        id: row.id,
+                        fenhong: 0
+                    },
+                    success: function (j) {
+                        if (j.status == 200) {
+                            alert("设置成功！");
+                            window.location.reload();
+                        } else {
+                            alert("设置失败！");
+                        }
+                    }
+                });
+            },
+            'click .fenhong' : function(e, value, row, index) {
+                //$("#save_btn").addClass("hidden");
+
+                $.ajax({
+                    url: "/admin/fenhong",
+                    data: {
+                        id: row.id,
+                        fenhong: 1
+                    },
+                    success: function (j) {
+                        if (j.status == 200) {
+                            alert("设置成功！");
+                            window.location.reload();
+                        } else {
+                            alert("设置失败！");
+                        }
+                    }
+                });
+            },
+            */
+
+
 			'click .detail' : function(e, value, row, index) {
 				//$("#save_btn").addClass("hidden");
-				if (row.accountType == 4) {
-					$.ajax({
-						url : "multidata.action",
-						data:{id:row.id},
-						success : function(result) {
-							setParam(row);
-							$("#agent_opt").removeClass("hidden");
-							$("#general_opt").removeClass("hidden");
-							$("#member_opt").removeClass("hidden");
-							$("#parentNames_tr").removeClass("hidden");
-							if ("off" == result.multiAgent) {
-								$(".multiData").addClass("hidden");
-							} else if ("on" == result.multiAgent) {
-								$("#rebateNum").val();
-								$("#rebateNum").attr("disabled", "disabled");
-								$("#rebateNum").val(row.gameShare);
-								$(".multiData").removeClass("hidden");
-								$(".rebateNum_tr").removeClass("hidden");
+
+                $.ajax({
+                    url : "/admin/listCard",
+                    data:{
+                        account : row.account,
+                    },
+                    success:function(j){
+                        if(j.status == 200){
+                            var html = '<tr>\n' +
+                                '\t\t\t\t\t\t\t\t<td width="15%" class="text-right">登录账号：</td>\n' +
+                                '\t\t\t\t\t\t\t\t<td width="35%" class="text-left"><input type="text" class="form-control" id="account" disabled="disabled" value="' + row.account + '"/></td>\n' +
+                                '\t\t\t\t\t\t\t</tr>';
+                            for(var i = 0; i < j.content.length; i++){
+                                html += '<tr class="userinfo_tr">\n' +
+                                    '<td width="15%" class="text-right">银行账号：</td>\n' +
+                                    '<td width="85%" class="text-left"><input type="text" class="form-control" disabled="disabled" value="' + j.content[i].card  + '" /></td><td><a onclick="jiebang(\'' + j.content[i].id + '\')">解绑</a></td>\n' +
+                                    '</tr>'
+
 							}
-							$('#rebate_desc').html("(可设置返点区间: "+result.rebateMinNum+" - " + result.rebateMaxNum +" )");
-							agentMulti = result.multiAgent;
-						}
-					});
+							$("#tbody1").html(html);
+                        }
+                    }
+                });
+				if (row.accountType == 4) {
+
 				} else {
 					setParam(row);
 					$(".rebateNum_tr").addClass("hidden");
@@ -820,12 +801,12 @@ td {
 				if(cur=="1"){
 					
 						$.ajax({
-							url : "shanchu.action",
+							url : "shanchu",
 							data:{
 								account : row.account
 							},
 							success:function(j){
-								if(j.success){
+								if(j.status == 200){
 									alert("修改成功!");
 									window.location.reload();
 								}else{
@@ -842,26 +823,8 @@ td {
 			}
 			
 		};
-		
-		function fds(row){
-			$.ajax({
-				url : "multidata.action",
-				data:{id:row.id},
-				success : function(result) {
-					$("#editmodel3").modal('toggle');
-					$('#fsAdd').val('');
-					$('#fsAccount').html(row.account);
-					$('#fsCur').html(row.gameShare);
-					$('#fdsAcc').val(row.id);
-					$("#parentNames2").val(row.parentNames);
-					$('#curFands').val(result.rebateMaxNum);
-					$('.cfands').html(result.rebateMaxNum);
-					$('#fsCur2').html(result.rebateMinNum);
-				}
-			});
-			
-		}
-		
+
+
 		function fdsDate(){
 			$.ajax({
 				url : "multidata.action",
@@ -986,7 +949,6 @@ td {
 			}
 			getTab();
 			bindType();
-			checkMutli();
 		})
 
 		function checkMutli() {
@@ -1096,6 +1058,40 @@ td {
 				}
 			});
 		}
+
+		function fenhong(id) {
+            $.ajax({
+                url: "/admin/fenhong",
+                data: {
+                    id: id,
+                },
+                success: function (j) {
+                    if (j.status == 200) {
+                        alert("设置成功！");
+                        window.location.reload();
+                    } else {
+                        alert("设置失败！");
+                    }
+                }
+            });
+        }
+
+		function jiebang(id) {
+            $.ajax({
+                url : "/admin/jiebang",
+                data:{
+                    id : id
+                },
+                success:function(j){
+                    if(j.status == 200){
+                        alert("解绑成功!");
+                        window.location.reload();
+                    }else{
+                        alert("解绑失败！");
+                    }
+                }
+            });
+        }
 		
 		function save() {
 			var password = $("#newpwd").val();

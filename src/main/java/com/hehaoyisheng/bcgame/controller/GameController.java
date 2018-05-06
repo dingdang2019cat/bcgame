@@ -156,11 +156,12 @@ public class GameController {
         int from = rows * (page - 1);
         //查询
         BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
-        if(account != null){
+        if(!StringUtils.isEmpty(account)){
             bcLotteryOrder.setAccount(account);
         }
+        System.out.println("status:" + status);
         bcLotteryOrder.setStatus(status);
-        bcLotteryOrder.setLotCode(lotteryId);
+        bcLotteryOrder.setLotCode(StringUtils.isEmpty(lotteryId) ? null : lotteryId);
         bcLotteryOrder.setParentList(user.getParentList() + "%");
         List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, from, rows, startTime, endTime);
         int total = bcLotteryOrderManager.count(bcLotteryOrder, from, rows, startTime, endTime);
@@ -211,7 +212,7 @@ public class GameController {
         if(isIncludeChildFlag != 0){
             drawHistory.setParentList(user.getParentList() + "%");
         }else{
-            drawHistory.setAccount(account);
+            drawHistory.setAccount(StringUtils.isEmpty(account) ? user.getUsername() : account);
         }
         List<DrawHistory> resultList = drawHistoryManager.select(drawHistory, from, rows, startTime, endTime);
         int total = drawHistoryManager.count(drawHistory, startTime, endTime);

@@ -91,9 +91,9 @@
 <div class="container">
 	<div id="navbar" class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
-			<li><a href="sz.jsp">首页</a></li>
+			<li><a href="/admin">设置</a></li>
 
-			<li><a href="dlaccount.jsp">下级列表</a></li>
+			<li><a href="dlaccount.jsp">会员管理</a></li>
 
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
 																																							aria-hidden="true"></span> 游戏记录 <span class="caret"></span>
@@ -102,17 +102,13 @@
 
 					<li class=""><a href="gameRecord.jsp">彩票投注记录</a></li>
 
-
-
-
-
 				</ul></li>
-			<li><a href="dlmnyrd.jsp">团队账变</a></li>
-			<li><a href="dlreport.jsp">团队统计</a></li>
+			<li><a href="noticeAdmin.jsp">公告管理</a></li>
+			<li><a href="znxManager.jsp">站内信管理</a></li>
 
-			<li><a href="generalizeLink.jsp">修改密码</a></li>
 
-			<li><a href="dlfh.jsp">业绩提成</a></li>
+			<li><a href="fenhonglist.jsp">分红记录</a></li>
+
 
 			<li><a href="dldrawrd.jsp">取款日志</a></li>
 		</ul>

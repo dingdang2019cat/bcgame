@@ -19,7 +19,6 @@ public interface UserDAO {
             "<if test=\"password != null\" >password=#{password},</if>" +
             "<if test=\"drawFlag != null\" >drawFlag=#{drawFlag},</if>" +
             "<if test=\"ip != null\" >ip=#{ip},</if>" +
-            "<if test=\"fandian != null\" >fandian=#{fandian},</if>" +
             "<if test=\"status != null\" >status=#{status},</if>" +
             "<if test=\"money != null\" >money=#{money},</if>" +
             "<if test=\"touzhuFlag != null\" >touzhuFlag=#{touzhuFlag},</if>" +
@@ -30,7 +29,9 @@ public interface UserDAO {
             "<if test=\"qsType2 != null\" >qsType2=#{qsType2},</if>" +
             "<if test=\"answer1 != null\" >answer1=#{answer1},</if>" +
             "<if test=\"answer2 != null\" >answer2=#{answer2},</if>" +
+            "<if test=\"fenhong != null\" >fenhong=#{fenhong},</if>" +
             "<if test=\"name != null\" >name=#{name},</if>" +
+            "<if test=\"time != null\" >time=now(),</if>" +
             "<if test=\"message != null\" >message=#{message},</if>" +
             "<if test=\"nickName != null\" >nickName=#{nickName},</if>" +
             "</trim>" +
@@ -43,11 +44,28 @@ public interface UserDAO {
             "update user " +
             "<trim prefix=\"set\" suffixOverrides=\",\"> " +
             "<if test=\"money > 0\" >money=money + #{money},</if>" +
-            "<if test=\"money < 0\" >money=money #{money},</if>" +
             "</trim>" +
             " where username=#{user.username} " +
             " </script> ")
     int updateMoney(@Param("user")User user, @Param("money")double money);
+
+    @Update("<script> " +
+            "update user " +
+            "<trim prefix=\"set\" suffixOverrides=\",\"> " +
+            "<if test=\"money > 0\" >money=money - #{money},</if>" +
+            "</trim>" +
+            " where username=#{user.username} " +
+            " </script> ")
+    int kouqian(@Param("user")User user, @Param("money")double money);
+
+    @Update("<script> " +
+            "update user " +
+            "<trim prefix=\"set\" suffixOverrides=\",\"> " +
+            "<if test=\"fandian != null\" >fandian=#{fandian},</if>" +
+            "</trim>" +
+            " where username=#{username} " +
+            " </script> ")
+    int updagteFandian(@Param("username")String username, @Param("fandian")Double fandian);
 
     @Delete("delete from user where id=#{id}")
     @SelectKey(statement = "select last_insert_id()", keyProperty = "id", before = false, resultType = int.class)

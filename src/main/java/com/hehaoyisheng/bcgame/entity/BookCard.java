@@ -1,5 +1,8 @@
 package com.hehaoyisheng.bcgame.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -10,6 +13,8 @@ public class BookCard {
     private String account;
     private String niceName;
     private String card;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
     private String address;
     private String parentAccount;

@@ -1,5 +1,6 @@
 package com.hehaoyisheng.bcgame.controller;
 
+import com.hehaoyisheng.bcgame.common.OnlineUser;
 import com.hehaoyisheng.bcgame.entity.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,6 +27,12 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
         if(httpSession.getAttribute("user") == null){
             httpServletResponse.sendRedirect("/login");
             return false;
+        }else{
+            User user = (User) httpSession.getAttribute("user");
+            if(user == null || user.getUsername() == null){
+                return false;
+            }
+            OnlineUser.online.put(user.getUsername(), System.currentTimeMillis());
         }
         return true;
     }

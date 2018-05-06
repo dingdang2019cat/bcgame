@@ -192,6 +192,54 @@ public class GameLottery {
     }
 
     /**
+     * 龙虎和
+     * @return
+     */
+    public static int lhh(@Nonnull String lotteryNumber, @Nonnull String betNumber){
+        int winCount = 0;
+        String[] lotteryNumbers = lotteryNumber.split(",");
+        String[] betNumbers = betNumber.split(",");
+        for(int i = 0; i < betNumbers.length; i++){
+            if(betNumbers[i].contains("-")){
+                continue;
+            }
+            String weishu = betNumbers[i].substring(1, 3);
+            List<Integer> list = Lists.newArrayList();
+            for(String s : weishu.split("")){
+                if(s.equals("")){
+                    continue;
+                }
+                if(s.equals("万")){
+                    list.add(Integer.valueOf(lotteryNumbers[0]));
+                }
+                if(s.equals("千")){
+                    list.add(Integer.valueOf(lotteryNumbers[1]));
+                }
+                if(s.equals("个")){
+                    list.add(Integer.valueOf(lotteryNumbers[2]));
+                }
+                if(s.equals("十")){
+                    list.add(Integer.valueOf(lotteryNumbers[3]));
+                }
+                if(s.equals("百")){
+                    list.add(Integer.valueOf(lotteryNumbers[4]));
+                }
+            }
+            if(betNumbers[i].contains("龙") && list.get(0) > list.get(1)){
+                winCount++;
+            }
+            if(betNumbers[i].contains("虎") && list.get(0) < list.get(1)){
+                winCount++;
+            }
+            if(betNumbers[i].contains("和") && list.get(0) == list.get(1)){
+                winCount++;
+            }
+        }
+        return winCount;
+    }
+
+
+    /**
      * 特码开奖
      * @param lotteryNumber 开奖号码
      * @param betNumber     投注号码

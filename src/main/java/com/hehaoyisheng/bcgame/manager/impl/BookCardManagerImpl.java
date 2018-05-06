@@ -50,4 +50,13 @@ public class BookCardManagerImpl implements BookCardManager{
         }
         return Lists.newArrayList();
     }
+
+    public BookCard select(Integer id) {
+        try {
+            return bookCardDAO.selectById(id);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

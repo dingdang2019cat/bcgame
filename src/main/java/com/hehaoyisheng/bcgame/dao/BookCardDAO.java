@@ -12,7 +12,7 @@ import java.util.List;
 //TODO
 public interface BookCardDAO {
 
-    @Insert("insert into bookcard (account, niceName, card, createTime, parentAccount, userMark, bankNameId, bankName) values (#{account}, #{niceName}, #{card}, now(), #{parentAccount},, #{userMark}, #{bankNameId}, #{bankName)")
+    @Insert("insert into bookcard (account, niceName, card, createTime, parentAccount, userMark, bankNameId, bankName) values (#{account}, #{niceName}, #{card}, now(), #{parentAccount}, #{userMark}, #{bankNameId}, #{bankName})")
     int insert(BookCard bookCard);
 
     @Update("update bookcard set status=#{status} where id=#{id}")
@@ -23,4 +23,7 @@ public interface BookCardDAO {
 
     @Select("select * from bookcard where account=#{account}")
     List<BookCard> select(BookCard bookCard);
+
+    @Select("select * from bookcard where id=#{id}")
+    BookCard selectById(Integer id);
 }

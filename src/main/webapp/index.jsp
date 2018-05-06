@@ -187,7 +187,7 @@
 		<a href="javascript:;" class="recharge" onclick="javascript:if('0' == 1 || '0' == 3){$.alert('您的充值功能已被冻结！');}else{window.location.href='/recharge/rechargeMoney1'}"></a>
 		<a href="javascript:;" class="drawMoney" onclick="javascript:if('0' == 2 || '0' == 3){$.alert('您的提现功能已被冻结！');}else{window.location.href='/deposit/deposit'}"></a>
         <div class="headerR">
-            <a href="https://kf1.learnsaas.com/chat/chatClient/chatbox.jsp?companyID=814048&amp;configID=62880&amp;jid=3635228849&amp;s=1" class="customerService" target="_blank"><i></i>联系客服</a>
+            <a href="http://dkc.duokebo.com/webchat/chat.aspx?siteid=730985" class="customerService" target="_blank"><i></i>联系客服</a>
 	        <a href="javascript:;" class="refresh" id="refererUser"><i class=""></i>刷新</a>
 	        <a href="/logout" class="userQuit"><i></i>登出</a>
         </div>
@@ -307,10 +307,10 @@
     		
     	</div>
     	<div class="hlott">
-		    <a href="/lotts/sj_mmc/index">秒秒彩</a>
-    		<a href="/lotts/sj1fc/index">分分彩</a>
-    		<a href="/lotts/sj3fc/index">三分彩</a>
-    		<a href="/lotts/sj5fc/index">五分彩</a>
+		    <a href="/lotts/cqssc/index">时时彩</a>
+    		<a href="/lotts/pk10/index">赛车彩</a>
+    		<a href="/lotts/gd11x5/index">选五彩</a>
+    		<a href="/lotts/jsk3/index">快三彩</a>
     	</div>
     </div>
     <!-- 中奖播报——跑马灯 -->
@@ -335,9 +335,9 @@
     	<h2>帮助中心</h2>
     	<div class="state-4" id="helpList">
     		<a href="/helpCenter/index" class="item-1"><i></i></a>
-    		<a href="/helpCenter/index?id=15" class="item-2"><i></i></a>
-    		<a href="/helpCenter/index?id=41" class="item-3"><i></i></a>
-    		<a href="/helpCenter/index?id=29" class="item-4"><i></i></a>
+    		<a href="/helpCenter/index" class="item-2"><i></i></a>
+    		<a href="/helpCenter/index" class="item-3"><i></i></a>
+    		<a href="/helpCenter/index" class="item-4"><i></i></a>
     	</div>
     </div>
 </div>
@@ -347,9 +347,9 @@
 <div class="footer">
 	<div class="mainWidth">
 		<ul class="download">
-			<li class="pc"><a href="/download?t=4"><i></i>pc端下载</a></li>
-			<li class="ios"><a href="/download?t=2"><i></i>ios端下载</a></li>
-			<li class="android"><a href="/download?t=1"><i></i>安卓客户端下载</a></li>
+			<li class="pc"><a href="#?t=4"><i></i>pc端下载</a></li>
+			<li class="ios"><a href="#?t=2"><i></i>ios端下载</a></li>
+			<li class="android"><a href="#?t=1"><i></i>安卓客户端下载</a></li>
 			<li class="auto"><a href="javascript:;"><i></i>自动投注软件</a></li>
 		</ul>
 		<ul class="browser">
@@ -358,9 +358,9 @@
 			<li class="ie"><a target="_blank" href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads"><i></i>IE浏览器</a></li>
 		</ul>
 		<ul class="footerOther">
-			<li><a href="/helpCenter/aboutUsIndex">关于我们</a></li>
-			<li><a href="/helpCenter/aboutUsIndex?tabId=transProtocol">交易协议</a></li>
-			<li><a class="dnsLink" href="/repairDNS" target="_blank">防劫持教程</a></li>
+			<li><a href="#">关于我们</a></li>
+			<li><a href="#?tabId=transProtocol">交易协议</a></li>
+			<li><a class="dnsLink" href="#">防劫持教程</a></li>
 		</ul>
 		<p>@金牌娱乐  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.</p>
 	</div>

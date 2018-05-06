@@ -12,4 +12,6 @@ public interface MessageManager {
     int delete(int id);
 
     List<Message> select(Message message);
+
+    Message selectById(Integer id);
 }

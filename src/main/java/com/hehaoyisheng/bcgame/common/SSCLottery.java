@@ -71,6 +71,8 @@ public class SSCLottery implements Runnable{
                     winCount = GameLottery.sscTmLottery(looteryContent, betNumber);
                 }else if(playCode.contains("dxds")){
                     winCount = GameLottery.sscDxdsLottery(looteryContent, betNumber);
+                }else if(playCode.contains("lhh")){
+                    winCount = GameLottery.sscDxdsLottery(looteryContent, betNumber);
                 }else {
                     winCount = GameLottery.sscFsLottery(looteryContent, betNumber, playCode);
                 }

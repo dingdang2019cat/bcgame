@@ -12,4 +12,6 @@ public interface BookCardManager {
     int delete(int id);
 
     List<BookCard> select(BookCard bookCard);
+
+    BookCard select(Integer id);
 }

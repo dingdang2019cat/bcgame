@@ -15,7 +15,7 @@ public interface RegistURLDAO {
     @Update("update registurl set registNum = #{registNum} where code=#{code}")
     int update(RegistURL registURL);
 
-    @Delete("delete from registurl where code=#{code}")
+    @Delete("delete from registurl where id=#{id}")
     int delete(RegistURL registURL);
 
     @Select("<script> " +

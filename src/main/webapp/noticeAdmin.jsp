@@ -141,22 +141,13 @@ td {
 				<li><a href="noticeAdmin.jsp">公告管理</a></li>
 				<li><a href="znxManager.jsp">站内信管理</a></li>
 
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
-																																								aria-hidden="true"></span> 分红提成 <span class="caret"></span>
-				</a>
+
 				<li><a href="fenhonglist.jsp">分红记录</a></li>
 
 
 				<li><a href="dldrawrd.jsp">取款日志</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session.getAttribute("user") %><span class="caret"></span>
-				</a>
-					<ul class="dropdown-menu">
-						<li><a href="#" data-toggle="modal" data-target="#head_editpwd">修改密码</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#logout">退出</a></li>
-					</ul></li>
-			</ul>
+
 		</div>
 	</div>
 </nav>
@@ -419,21 +410,6 @@ td {
 
 
 	<script type="text/javascript">
-		$(function()  {
-			$.ajax({
-				url : "dlaccountThirdList.action",
-				success : function(data) {
-					var eachdata = {
-						"data" : data
-					};
-					var html = template('memmnyope_tpl', eachdata);
-					$("#memmnyope_tb").html(html);
-					$("#memmnyope_tb").addClass("hidden");
-				}
-			});
-			fdsDate();
-		});
-		
 		function submit1() {
 			$.ajax({
 				url : "/daili/dlaccount/saveCash.do",
@@ -617,7 +593,7 @@ td {
 
 		function caozuoFormatter(value, row, index) {
             var btns = [];
-            var down = '<a class="editNotice" href="javascript:void(0)" title="编辑">编辑</a>&nbsp;<a class="shanchuNotice" href="javascript:void(0)" title="删除">删除</a>';
+            var down = '<a class="editNotice" href="/noticeManager?id=' + row.id + '" title="编辑">编辑</a>&nbsp;<a class="shanchuNotice" href="javascript:void(0)" title="删除">删除</a>';
             btns.push(down);
             return btns.join('');
         }
@@ -680,30 +656,20 @@ td {
 				
 			},
             'click .shanchuNotice' : function(e, value, row, index) {
-                var cur = $('#agentId').val();
-                if(cur=="1"){
-                    //给会员或代理加款
-                    if(money){
-                        $.ajax({
-                            url : "/notice/delete",
-                            data:{
-                                account : row.id
-                            },
-                            success:function(j){
-                                if(j.status == 200){
-                                    alert("修改成功!");
-                                    window.location.reload();
-                                }else{
-                                    alert("修改失败！");
-                                }
-                            }
-                        });
-                    }
-                    //$("#editmodel2").modal('toggle');
-                    //search1(row.account);
-                }else{
-                    Msg.info("只能给下级会员或代理加款");
-                }
+				$.ajax({
+					url : "/notice/delete",
+					data:{
+						account : row.id
+					},
+					success:function(j){
+						if(j.status == 200){
+							alert("修改成功!");
+							window.location.reload();
+						}else{
+							alert("修改失败！");
+						}
+					}
+				});
 
             },
 			'click .kouqian' : function(e, value, row, index) {
@@ -934,7 +900,6 @@ td {
 			}
 			getTab();
 			bindType();
-			checkMutli();
 		})
 
 		function checkMutli() {

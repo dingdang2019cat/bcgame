@@ -12,13 +12,14 @@ import java.util.List;
 
 public interface BcLotteryOrderDAO {
 
-    @Insert("insert into bcLotteryOrder (account, accountId, buyMoney, buyZhuShu, haoMa, lotCode, lotName, lotType, multiple, playCode, playName, qiHao, minBonusOdds, shangji, orderId, traceId, createTime, zhuiHao, odds, bounsType, gaofan) values (#{account}, #{accountId}, #{buyMoney}, #{buyZhuShu}, #{haoMa}, #{lotCode}, #{lotName}, #{lotType}, #{multiple}, #{playCode}, #{playName}, #{qiHao}, #{minBonusOdds}, #{shangji}, #{orderId}, #{traceId}, now(), #{zhuiHao}, #{odds}, #{bounsType}, #{gaofan})")
+    @Insert("insert into bcLotteryOrder (account, accountId, buyMoney, buyZhuShu, haoMa, lotCode, lotName, lotType, multiple, playCode, playName, qiHao, minBonusOdds, shangji, orderId, traceId, createTime, zhuiHao, odds, bounsType, gaofan, parentList) values (#{account}, #{accountId}, #{buyMoney}, #{buyZhuShu}, #{haoMa}, #{lotCode}, #{lotName}, #{lotType}, #{multiple}, #{playCode}, #{playName}, #{qiHao}, #{minBonusOdds}, #{shangji}, #{orderId}, #{traceId}, now(), #{zhuiHao}, #{odds}, #{bounsType}, #{gaofan}, #{parentList})")
     int insert(BcLotteryOrder bcLotteryOrder);
 
     @Update("<script> " +
             "update bcLotteryOrder " +
             "<trim prefix=\"set\" suffixOverrides=\",\"> " +
             "<if test=\"status != null\" >status=#{status},</if>" +
+            "<if test=\"lotteryHaoMa != null\" >lotteryHaoMa=#{lotteryHaoMa},</if>" +
             "<if test=\"rollBackMoney != null\" >rollBackMoney=#{rollBackMoney},</if>" +
             "<if test=\"winMoney != null\" >winMoney=#{winMoney},</if>" +
             "<if test=\"winZhuShu != null\" >winZhuShu=#{winZhuShu},</if>" +

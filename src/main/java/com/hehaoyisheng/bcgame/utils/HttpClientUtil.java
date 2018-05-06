@@ -211,6 +211,9 @@ public class HttpClientUtil {
         // 创建get请求
         HttpGet httpGet = new HttpGet(httpUrl);
         httpGet.setHeader("Cookie", cookie);
+        httpGet.setHeader("Referer", "http://vanke55.com/helpCenter/index");
+        httpGet.setHeader("X-Requested-With", "XMLHttpRequest");
+        httpGet.setHeader("Accept", "application/json, text/javascript, */*; q=0.01");
         return sendHttpGet(httpGet);
     }
 

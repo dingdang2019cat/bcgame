@@ -6,33 +6,36 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <div class="tableBox">
     <div class="messageContentDiv" id="messageContentDiv">
 
+    <c:forEach var="messages1" items="${messages}">
+        <c:choose>
 
+            <c:when test="${messages1.account eq account}">    <!--如果 -->
+                <p class="textRight">
+                    <span class="messageInfo messageRight">
+                            ${messages1.text}
+                    </span>
+                    <span class="msgUserName">我</span>
+                </p>
+            </c:when>
 
-
-
-
-
-
-        <p class="textLeft">
-            <span class="msgUserName">上级</span>
-            <span class="messageInfo messageLeft">
-							加我qq 918520168
+            <c:otherwise>  <!--否则 -->
+                <p class="textLeft">
+                    <span class="msgUserName">${duifang}</span>
+                    <span class="messageInfo messageLeft">
+                ${messages1.text}
 						</span>
+                </p>
+            </c:otherwise>
 
-
-
-
-            <span class="time">2017-11-18</span>
-
-
-        </p>
-
+        </c:choose>
+    </c:forEach>
 
 
 

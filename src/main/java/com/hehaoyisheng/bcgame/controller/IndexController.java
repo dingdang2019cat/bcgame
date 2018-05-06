@@ -1,5 +1,7 @@
 package com.hehaoyisheng.bcgame.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.GameData;
@@ -235,7 +237,12 @@ public class IndexController {
         message.setAuthor(user.getUsername());
         message.setStatus(1);
         message.setTitle(title);
-        message.setText(sendContent);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("account", user.getUsername());
+        jsonObject.put("content", sendContent);
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.add(jsonObject);
+        message.setText(jsonArray.toJSONString());
         if(StringUtils.isEmpty(rever)){
             return null;
         }
@@ -365,6 +372,10 @@ public class IndexController {
     public Result kouqian(String account, Double money){
         User user = new User();
         user.setUsername(account);
+        List<User> list = userManager.select(user, null, null, null, null, null, null);
+        if(list.get(0).getMoney() < money){
+            return Result.faild("操作失败", 400);
+        }
         userManager.update(user, 0 - money);
         return Result.success("操作成功！");
     }
@@ -374,7 +385,10 @@ public class IndexController {
     public Result chongzhi(String account){
         User user = new User();
         user.setUsername(account);
-        user.setPassword(MD5Util.encode("a123456"));
+        List<User> list = userManager.select(user, null, null, null, null, null, null);
+        user.setId(list.get(0).getId());
+        user.setPassword(MD5Util.encode("aa123456"));
+        user.setDrawPwd("aa123456");
         userManager.update(user);
         return Result.success("操作成功!");
     }

@@ -12,6 +12,7 @@ public class BaseData {
     public final static List<Bank> bankName = Lists.newArrayList();
     public final static List<Province> province = Lists.newArrayList();
     public final static Map<Integer, List<String>> cityList = Maps.newHashMap();
+    public final static Map<Integer, String> map = Maps.newConcurrentMap();
 
     static {
         bankName.add(new Bank(1, "中国工商银行"));
@@ -611,5 +612,7 @@ public class BaseData {
         cityList43.add("花莲县");
         cityList43.add("澎湖县");
         cityList.put(43, cityList43);
+
+
     }
 }

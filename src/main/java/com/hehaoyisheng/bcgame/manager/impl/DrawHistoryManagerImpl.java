@@ -57,6 +57,6 @@ public class DrawHistoryManagerImpl implements DrawHistoryManager{
         }catch (Exception e){
             e.printStackTrace();
         }
-        return 01;
+        return 0;
     }
 }

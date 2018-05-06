@@ -8,6 +8,7 @@ import com.hehaoyisheng.bcgame.manager.UserManager;
 import com.hehaoyisheng.bcgame.pay.PayOrderList;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 public class OnLineJob {
@@ -24,6 +25,8 @@ public class OnLineJob {
             if((System.currentTimeMillis() - time) > 300000){
                 User user = new User();
                 user.setUsername(s);
+                List<User> userList = userManager.select(user, null, null, null, null, null, null);
+                user.setId(userList.get(0).getId());
                 user.setOnline(1);
                 userManager.update(user);
                 OnlineUser.online.remove(s);

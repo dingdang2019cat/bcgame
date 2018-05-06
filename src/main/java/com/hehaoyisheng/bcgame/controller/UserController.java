@@ -1,6 +1,7 @@
 package com.hehaoyisheng.bcgame.controller;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.BaseData;
@@ -15,10 +16,12 @@ import com.hehaoyisheng.bcgame.entity.vo.UserVO;
 import com.hehaoyisheng.bcgame.manager.*;
 import com.hehaoyisheng.bcgame.utils.MD5Util;
 import org.apache.commons.lang.StringUtils;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -114,12 +117,11 @@ public class UserController {
         User user = new User();
         user.setUsername(account);
         List<User> list = userManager.select(user, null, null, null, null, null, null);
-        System.out.println(account + "   " + password);
-        System.out.println(list.get(0).getPassword());
         if(CollectionUtils.isEmpty(list) || !StringUtils.equals(list.get(0).getPassword(), password)){
             model.addAttribute("errorTips", "用户名或密码错误！");
             return "login";
         }
+        user.setId(list.get(0).getId());
         user.setTime(new Date());
         user.setIp(getIpAddr(httpServletRequest));
         user.setOnline(2);
@@ -177,7 +179,16 @@ public class UserController {
         message.setAccount(user.getUsername());
         message.setStatus(1);
         List<Message> list = messageManager.select(message);
-        return Result.success(list == null ? 0 : list.size());
+        if(CollectionUtils.isEmpty(list)){
+            return Result.success(0);
+        }
+        int count = 0;
+        for(Message message1 : list){
+            if(message1.getAccount().equals(user.getUsername())){
+                count++;
+            }
+        }
+        return Result.success(count);
     }
 
     /**
@@ -186,21 +197,25 @@ public class UserController {
      */
     @RequestMapping("/user/index")
     public String userIndex(@ModelAttribute("user") User user, Model model){
-        //当前用户
-        List<User> users = userManager.select(user, null, null, null, null, null,null);
-        //最大可调返点
-        //会员最大返点
-        //用户类型
-        //是否有资金密码hasSafeWord
+        try{
+            //当前用户
+            List<User> users = userManager.select(user, null, null, null, null, null,null);
+            //最大可调返点
+            //会员最大返点
+            //用户类型
+            //是否有资金密码hasSafeWord
 
-        model.addAttribute("nickName", users.get(0).getNickName());
-        model.addAttribute("amount", users.get(0).getMoney());
-        model.addAttribute("account", user.getUsername());
-        model.addAttribute("userType", users.get(0).getType());
-        model.addAttribute("playerMaxRatio", users.get(0).getFandian());
-        //model.addAttribute("maxRatio", users.get(0).getFandian() > 0.3 ? users.get(0).getFandian() - 0.3 : 0);
-        model.addAttribute("maxRatio", users.get(0).getFandian() > 0.1 ? users.get(0).getFandian() - 0.1 : 0);
-        return "user";
+            model.addAttribute("nickName", users.get(0).getNickName());
+            model.addAttribute("amount", users.get(0).getMoney());
+            model.addAttribute("account", user.getUsername());
+            model.addAttribute("userType", users.get(0).getType());
+            model.addAttribute("playerMaxRatio", users.get(0).getFandian());
+            //model.addAttribute("maxRatio", users.get(0).getFandian() > 0.3 ? users.get(0).getFandian() - 0.3 : 0);
+            model.addAttribute("maxRatio", users.get(0).getFandian() > 0.1 ? users.get(0).getFandian() - 0.1 : 0);
+            return "user";
+        }catch (Exception e){
+            return "redirect:/login";
+        }
     }
 
     /**
@@ -240,15 +255,23 @@ public class UserController {
         int from = rows*(page - 1);
         Map<String, Object> resultMap = Maps.newHashMap();
         User selectUser = new User();
+        String obj = "";
         //不是根据用户名查询则直接查下级
         if(!StringUtils.isEmpty(account)){
             selectUser.setUsername(account);
+            User user1 = new User();
+            user1.setUsername(account);
+            List<User> userList = userManager.select(user1, null, null, null, null, null, null);
+            obj = userList.get(0).getParentList();
         }if(!StringUtils.isEmpty(nextAccount)){
             selectUser.setShangji(nextAccount);
+            User user1 = new User();
+            user1.setUsername(nextAccount);
+            List<User> userList = userManager.select(user1, null, null, null, null, null, null);
+            obj = userList.get(0).getParentList();
         }else{
             selectUser.setShangji(user.getUsername());
         }
-
         //selectUser.setParentList(user.getParentList() + "%");
         //当为2时查询全部
         if(userType != 2){
@@ -257,6 +280,7 @@ public class UserController {
         if(isOnLine != 0){
             selectUser.setOnline(isOnLine);
         }
+        selectUser.setParentList(user.getParentList() + "%");
         List<User> childUsers = userManager.select(selectUser, from, rows, null, null, beginAmount, endAmount);
         int total = userManager.count(selectUser, from, rows, null, null, beginAmount, endAmount);
         List<UserVO> resultList = Lists.newArrayList();
@@ -269,8 +293,9 @@ public class UserController {
             resultList.add(userVO);
         }
         //resultMap.put("ohj", StringUtils.isEmpty(account) ? StringUtils.isEmpty(nextAccount) ? user.getUsername() : nextAccount : account);
-        String obj = CollectionUtils.isEmpty(childUsers) ? "" : childUsers.get(0).getParentList();
-        resultMap.put("obj", StringUtils.isEmpty(nextAccount) ? user.getParentList().split(",") : obj.split(","));
+        String objstr = StringUtils.isEmpty(nextAccount) ? user.getParentList() : obj;
+        objstr = user.getUsername() + objstr.split(user.getUsername())[1];
+        resultMap.put("obj", objstr.split(","));
         resultMap.put("rows", resultList);
         resultMap.put("total", total);
         return Result.success(resultMap);
@@ -332,8 +357,8 @@ public class UserController {
         if(CollectionUtils.isEmpty(users)){
             return null;
         }
-        if(StringUtils.equals(users.get(0).getPassword(), oldpass)){
-            user1.setPassword(newpass);
+        if(StringUtils.equals(users.get(0).getPassword(), MD5Util.encode(oldpass))){
+            user1.setPassword(MD5Util.encode(newpass));
             userManager.update(user1);
             return Result.success("修改成功！");
         }
@@ -350,9 +375,7 @@ public class UserController {
         if(fandian < rebateRatio){
             return Result.faild("返点超过自身权限!", 400);
         }
-        User user2 = new User();
-        user2.setUsername(account);
-        user2.setFandian(rebateRatio);
+        userManager.updagteFandian(account, rebateRatio);
         return Result.success("操作成功！");
     }
 
@@ -407,7 +430,7 @@ public class UserController {
         if(CollectionUtils.isEmpty(users)){
             return null;
         }
-        if(StringUtils.equals(user.getDrawPwd(), safePassword)){
+        if(StringUtils.equals(users.get(0).getDrawPwd(), safePassword)){
             return Result.success(null);
         }
         return Result.faild("您输入的资金密码错误", 501);
@@ -443,6 +466,9 @@ public class UserController {
         bookCard.setAccount(user.getUsername());
         List<BookCard> list = bookCardManager.select(bookCard);
         if(!CollectionUtils.isEmpty(list)){
+            for(BookCard bookCard1 : list){
+                bookCard1.setCard(bookCard1.getCard().substring(bookCard1.getCard().length() - 4, bookCard1.getCard().length()));
+            }
             return Result.success(list);
         }
         list = Lists.newArrayList();
@@ -497,6 +523,12 @@ public class UserController {
     @RequestMapping("/openUser/regist")
     @ResponseBody
     public Result regist(@ModelAttribute("user") User user1, Integer userType, String account, String passWord, Double rebateRatio){
+        User user2 = new User();
+        user2.setUsername(account);
+        List<User> list1 = userManager.select(user2, null, null, null, null, null, null);
+        if(!CollectionUtils.isEmpty(list1)){
+            return Result.faild("已存在的用户名!", 400);
+        }
         User user = new User();
         user.setType(userType);
         user.setUsername(account);
@@ -649,7 +681,7 @@ public class UserController {
         return resultMap;
     }
 
-    @RequestMapping("/notice/manager")
+    @RequestMapping("/noticeManager")
     public String noticeManager(Integer id, Model model){
         List<Notice> notices = noticeManager.select(id, null, null);
         model.addAttribute("title", notices.get(0).getTitle());
@@ -680,19 +712,22 @@ public class UserController {
     }
 
     @RequestMapping("/helpCenter/index")
-    public String helpCenter(@ModelAttribute("user") User user, Model model){
+    public String helpCenter(@ModelAttribute("user") User user, Model model, Integer id){
         List<User> users = userManager.select(user, null, null, null, null,null,null);
-        model.addAttribute("nickName", users.get(0).getNickName());
+        model.addAttribute("nickName", users.get(0).getNickName() == null ? "" : users.get(0).getNickName());
         model.addAttribute("amount", users.get(0).getMoney());
+        if(id  != null){
+
+        }
         return "help";
     }
 
     @RequestMapping("/newMessage")
     @ResponseBody
     public Result newMessage(){
-        Recharge recharge = new Recharge();
-        recharge.setStatus(0);
-        List<Recharge> list = rechargeManager.select(recharge, null, null, null, null);
+        DrawHistory drawHistory = new DrawHistory();
+        drawHistory.setStatus(0);
+        List<DrawHistory> list = drawHistoryManager.select(drawHistory, null, null, null, null);
         if(CollectionUtils.isEmpty(list)){
             return Result.faild(null, 0);
         }
@@ -703,22 +738,28 @@ public class UserController {
     @RequestMapping("/shanchu")
     @ResponseBody
     public Result shanchu(String account){
+        User user = new User();
+        user.setUsername(account);
+        List<User> users = userManager.select(user, null, null, null, null, null, null);
+        userManager.delete(users.get(0).getId());
         return Result.success(null);
     }
 
     @RequestMapping("/dlaccountList")
     @ResponseBody
     public Map<String, Object> dlaccountList(Integer pageNumber, Integer accountType, Integer online, String account, Integer agentId, Integer searchType){
+        Integer from = (pageNumber - 1) * 10;
         List<Map<String, Object>> result = Lists.newArrayList();
         User user = new User();
         user.setUsername(StringUtils.isEmpty(account) ? null : account);
         user.setType(accountType);
         user.setOnline(online);
-        List<User> list = userManager.select(user, null, null, null, null, null, null);
+        List<User> list = userManager.select(user, from, 10, null, null, null, null);
         int total = userManager.count(user, null, null, null, null, null, null);
         for(User u : list){
             Map<String, Object> map = Maps.newHashMap();
             map.put("account", u.getUsername());
+            map.put("id", u.getId());
             map.put("money", u.getMoney());
             map.put("gameShare", u.getFandian());
             map.put("userName", u.getName());
@@ -728,6 +769,7 @@ public class UserController {
             map.put("lastLoginIp", u.getIp());
             map.put("online", u.getOnline());
             map.put("accountStatus", u.getStatus());
+            map.put("fenhong", u.getFenhong());
             result.add(map);
         }
         Map<String, Object> resultMap = Maps.newHashMap();
@@ -781,7 +823,7 @@ public class UserController {
         return null;
     }
 
-    @RequestMapping("/deposit/deposit")
+    @RequestMapping(value = "/deposit/deposit" , method = RequestMethod.GET)
     public String deposit(@ModelAttribute("user") User user, Model model){
         DrawHistory drawHistory = new DrawHistory();
         drawHistory.setAccount(user.getUsername());
@@ -818,7 +860,52 @@ public class UserController {
         model.addAttribute("amount", users.get(0).getMoney());
         model.addAttribute("account", users.get(0).getUsername());
         model.addAttribute("bankCardNum", CollectionUtils.isEmpty(bookCards) ? 0 : bookCards.size());
+        model.addAttribute("bookCards", bookCards);
         return "deposit";
+    }
+
+    @RequestMapping(value = "/deposit/deposit" , method = RequestMethod.POST)
+    @ResponseBody
+    public Result deposit(@ModelAttribute("user") User user, Integer bankCardId, Double amount, String safePassword, boolean isAgreeFee){
+        if(!isAgreeFee){
+            return Result.faild("拒绝提现！", 500);
+        }
+        User user1 = new User();
+        user1.setId(user.getId());
+        List<User> users = userManager.select(user1, null, null, null, null, null, null);
+        if(CollectionUtils.isEmpty(users)){
+            return Result.faild("", 302);
+        }
+        if(users.get(0).getMoney() < amount){
+            return Result.faild("余额不足！", 500);
+        }
+        if(!StringUtils.equals(users.get(0).getDrawPwd(), safePassword)){
+            return Result.faild("密码不正确！", 500);
+        }
+        BookCard bookCard = bookCardManager.select(bankCardId);
+        if(bookCard == null){
+            return Result.faild("银行卡不存在！", 500);
+        }
+        DrawHistory drawHistory = new DrawHistory();
+        drawHistory.setId("TX" + System.currentTimeMillis());
+        drawHistory.setAccount(user.getUsername());
+        drawHistory.setParentList(user.getParentList());
+        drawHistory.setAmount(amount);
+        //drawHistory.setBankCode(bookCard);
+        drawHistory.setBankName(bookCard.getBankName());
+        drawHistory.setCard(bookCard.getCard());
+        drawHistory.setRemark("");
+        drawHistory.setStatus(0);
+        user1.setMoney(users.get(0).getMoney() - amount);
+        userManager.update(user1);
+        drawHistoryManager.insert(drawHistory);
+        return Result.success("");
+    }
+
+    @RequestMapping("/deposit/checkFee")
+    @ResponseBody
+    public Result checkFee(){
+        return Result.success("");
     }
 
     @RequestMapping(value = "/registByCode", method = RequestMethod.GET)
@@ -834,6 +921,12 @@ public class UserController {
         if(!httpSession.getAttribute("code").equals(code)){
             return Result.faild("验证码错误！", 400);
         }
+        User user1 = new User();
+        user1.setUsername(account);
+        List<User> list1 = userManager.select(user1, null, null, null, null, null, null);
+        if(!CollectionUtils.isEmpty(list1)){
+            return Result.faild("已存在的用户名!", 400);
+        }
         if(StringUtils.isEmpty(extcode)){
 
         }else{
@@ -843,7 +936,7 @@ public class UserController {
             User user = new User();
             user.setType(Integer.valueOf(list.get(0).getUserType()));
             user.setUsername(account);
-            user.setPassword("aa123456");
+            user.setPassword(MD5Util.encode("aa123456"));
             user.setMinBonusOdds(list.get(0).getRebateRatio());
             user.setFandian(list.get(0).getRebateRatio());
             user.setShangji(list.get(0).getAccount());
@@ -870,8 +963,19 @@ public class UserController {
         registURL.setValidTime(validtime);
         registURL.setRegistAddress(regist);
         registURL.setWxAddress(regist);
+        registURL.setCode(code);
+        registURL.setUserType(usertype);
         registURLManager.insert(registURL);
         return Result.success(null);
+    }
+
+    @RequestMapping("/user/delExtCode")
+    @ResponseBody
+    public Result delExtCode(Integer id){
+        RegistURL registURL = new RegistURL();
+        registURL.setId(id);
+        registURLManager.delete(registURL);
+        return Result.success("删除成功！");
     }
 
     @RequestMapping("mobile")
@@ -927,9 +1031,10 @@ public class UserController {
     }
 
     @RequestMapping("/logout")
-    public String logout(HttpServletRequest httpServletRequest){
-        httpServletRequest.getSession().removeAttribute("user");
-        return "login";
+    public String logout(HttpSession session, SessionStatus sessionStatus){
+        session.removeAttribute("user");
+        sessionStatus.setComplete();
+        return "redirect:/login";
     }
 
     @RequestMapping("/lotts/{gameType}/trend")
@@ -973,4 +1078,137 @@ public class UserController {
         return Result.success(resultList);
     }
 
+    @RequestMapping("/helpCenter/getContentByAjax")
+    @ResponseBody
+    public Result getContentByAjax(String id){
+        Settings settings = new Settings();
+        settings.setKey(id);
+        List<Settings> list = settingsManager.select(settings);
+        JSONObject jsonObject = JSONObject.parseObject(list.get(0).getVaule());
+        return Result.success(jsonObject);
+    }
+
+    @RequestMapping("/message/messageReverCheck")
+    @ResponseBody
+    public Result messageReverCheck(@ModelAttribute("user") User user, String account){
+        User user1 = new User();
+        user1.setUsername(account);
+        user1.setShangji(user.getShangji());
+        List<User> list = userManager.select(user1, null, null, null, null, null, null);
+        if(CollectionUtils.isEmpty(list)){
+            return Result.faild(false, 400);
+        }
+        return Result.success(true);
+    }
+
+    @RequestMapping("/admin/listCard")
+    @ResponseBody
+    public Result adminListCard(String account){
+        BookCard bookCard = new BookCard();
+        bookCard.setAccount(account);
+        List<BookCard> bookCards = bookCardManager.select(bookCard);
+        return Result.success(bookCards);
+    }
+
+    @RequestMapping("/admin/jiebang")
+    @ResponseBody
+    public Result jiebang(Integer id){
+        bookCardManager.delete(id);
+        return Result.success(null);
+    }
+
+    @RequestMapping("/admin/getOrderDetailForList")
+    @ResponseBody
+    public BcLotteryOrder getOrderDetailForList(String orderId, String account){
+        BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
+        bcLotteryOrder.setOrderId(orderId);
+        List<BcLotteryOrder> lotteryOrders = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
+        return CollectionUtils.isEmpty(lotteryOrders) ? null : lotteryOrders.get(0);
+    }
+
+    @RequestMapping("/dldrawrdList")
+    @ResponseBody
+    public Map<String, Object> dldrawrdList(Integer pageNumber, String account, Integer status, Date begin, Date end){
+        Integer from = (pageNumber - 1) * 10;
+        DrawHistory drawHistory = new DrawHistory();
+        drawHistory.setAccount(StringUtils.isEmpty(account) ? null : account);
+        drawHistory.setStatus(status == 9 ? null : status);
+        List<DrawHistory> list = drawHistoryManager.select(drawHistory, from, 10, begin, end);
+        int count = drawHistoryManager.count(drawHistory, begin, end);
+        Map<String, Object> map = Maps.newHashMap();
+        map.put("rows", list);
+        map.put("total", count);
+        return map;
+    }
+
+    @RequestMapping("/admin/fenhong")
+    @ResponseBody
+    public Result fenhong(Integer id){
+        User user = new User();
+        user.setId(id);
+        List<User> list = userManager.select(user, null, null, null, null, null, null);
+        if(list.get(0).getFenhong() == 1){
+            user.setFenhong(0);
+        }else{
+            user.setFenhong(1);
+        }
+        userManager.update(user);
+        User user1 = new User();
+        user1.setShangji(list.get(0).getUsername());
+        if(list.get(0).getFenhong() == 1) {
+            List<User> users = userManager.select(user1, null, null, null, null, null, null);
+            for(User user2 : users){
+                User user3 = new User();
+                user3.setId(user2.getId());
+                if(user2.getFenhong() == 1){
+                    user3.setFenhong(0);
+                }
+                userManager.update(user3);
+            }
+        }
+        return Result.success("");
+    }
+
+    @RequestMapping("/message/messageContentRead")
+    public String messageContentRead(@ModelAttribute("user") User user, Integer id, Model model){
+        Message message = messageManager.selectById(id);
+        System.out.println("-------------------" + id);
+        if(StringUtils.isEmpty(message.getText())){
+            return null;
+        }
+        JSONArray jsonArray = JSONArray.parseArray(message.getText());
+        List<MessageInfo> list = Lists.newArrayList();
+        for(int i = 0; i < jsonArray.size(); i++){
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            MessageInfo messageInfo = new MessageInfo();
+            messageInfo.setAccount(jsonObject.getString("account"));
+            messageInfo.setText(jsonObject.getString("content"));
+            list.add(messageInfo);
+        }
+        model.addAttribute("messages", list);
+        model.addAttribute("account", user.getUsername());
+        model.addAttribute("duifang", message.getAccount().equals(user.getUsername()) ? message.getAuthor() : message.getAccount());
+        return "messageinfo";
+    }
+}
+
+class MessageInfo{
+    private String account;
+    private String text;
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }

@@ -40,7 +40,7 @@ public interface RechargeDAO {
     int count(@Param("recharge") Recharge recharge, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 
     @Select("<script> " +
-            "select sum(amount) from recharge " +
+            "select sum(realAmount) from recharge " +
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
             " <if test=\"recharge.account != null\"> AND account=#{recharge.account}</if> " +
             " <if test=\"recharge.parentList != null\"> AND parentList like #{recharge.parentList}</if> " +

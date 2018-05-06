@@ -147,22 +147,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<li><a href="noticeAdmin.jsp">公告管理</a></li>
 				<li><a href="znxManager.jsp">站内信管理</a></li>
 
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-fire"
-																																								aria-hidden="true"></span> 分红提成 <span class="caret"></span>
-				</a>
+
 				<li><a href="fenhonglist.jsp">分红记录</a></li>
 
 
 				<li><a href="dldrawrd.jsp">取款日志</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session.getAttribute("user") %><span class="caret"></span>
-				</a>
-					<ul class="dropdown-menu">
-						<li><a href="#" data-toggle="modal" data-target="#head_editpwd">修改密码</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#logout">退出</a></li>
-					</ul></li>
-			</ul>
+
 		</div>
 	</div>
 </nav>

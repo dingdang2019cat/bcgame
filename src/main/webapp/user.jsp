@@ -848,9 +848,10 @@
                                         <a href="javascript:void(0);" class="btn" onclick="setInformation()">修改</a>
                                     </div>
                                     <div>
-                                        <span class="labelTitle">预留信息：</span>
+                                        <!--<span class="labelTitle">预留信息：</span>
                                         <input class="labelCond" value="" name="message" />
                                         <a href="javascript:void(0);" class="btn" onclick="setInformation()">修改</a>
+                                        -->
                                     </div>
                                 </form>
                             </div>
@@ -1447,7 +1448,7 @@
 </div>
 <script type="text/javascript" src="/resource/user/setSafePassword.js?ver=20171208"></script>
 
-<script type="text/javascript" src="/resource/user/index.js?ver=201804271"></script>
+<script type="text/javascript" src="/resource/user/index.js?ver=20180505"></script>
 <script type="text/javascript" src="/resource/user/validate.js?ver=20171208"></script>
 
 
@@ -1456,9 +1457,9 @@
 <div class="footer">
     <div class="mainWidth">
         <ul class="download">
-            <li class="pc"><a href="/download?t=4"><i></i>pc端下载</a></li>
-            <li class="ios"><a href="/download?t=2"><i></i>ios端下载</a></li>
-            <li class="android"><a href="/download?t=1"><i></i>安卓客户端下载</a></li>
+            <li class="pc"><a href="#?t=4"><i></i>pc端下载</a></li>
+            <li class="ios"><a href="#?t=2"><i></i>ios端下载</a></li>
+            <li class="android"><a href="#?t=1"><i></i>安卓客户端下载</a></li>
             <li class="auto"><a href="javascript:;"><i></i>自动投注软件</a></li>
         </ul>
         <ul class="browser">
@@ -1467,9 +1468,9 @@
             <li class="ie"><a target="_blank" href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads"><i></i>IE浏览器</a></li>
         </ul>
         <ul class="footerOther">
-            <li><a href="/helpCenter/aboutUsIndex">关于我们</a></li>
-            <li><a href="/helpCenter/aboutUsIndex?tabId=transProtocol">交易协议</a></li>
-            <li><a class="dnsLink" href="/repairDNS" target="_blank">防劫持教程</a></li>
+            <li><a href="#">关于我们</a></li>
+            <li><a href="#?tabId=transProtocol">交易协议</a></li>
+            <li><a class="dnsLink" href="#">防劫持教程</a></li>
         </ul>
         <p>@金牌娱乐  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.</p>
     </div>

@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="/resource/jquery-1.11.0.min.js" ></script>
+    <script src="/resource/jquery.qrcode.min.js"></script>
 </head>
 <body>
 <!--

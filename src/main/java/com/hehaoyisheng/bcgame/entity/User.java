@@ -27,6 +27,7 @@ public class User {
     private String answer1;
     private String answer2;
     private double fandian;
+    private Integer fenhong;
     private String shangji;
     private String parentList;
     private Integer status;
@@ -229,5 +230,13 @@ public class User {
 
     public void setAnswer2(String answer2) {
         this.answer2 = answer2;
+    }
+
+    public Integer getFenhong() {
+        return fenhong;
+    }
+
+    public void setFenhong(Integer fenhong) {
+        this.fenhong = fenhong;
     }
 }

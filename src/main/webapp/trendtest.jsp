@@ -264,7 +264,7 @@
             <span><input type="checkbox" id="control_omitLayer" autocomplete="off" ><label for="control_omitLayer">遗漏分层</label></span>
             <span><input type="checkbox" id="control_sepLine" autocomplete="off" checked><label for="control_sepLine">分隔线</label></span>
             <div class="control_R">
-                <a href="/downloadTrendAwardNumber.html?gameEn=ssc&beginPeriod=180427093&endPeriod=180428002" target="_blank" id="lot_export" class="export">导出</a><a id="lot_print" class="print" href="javascript:;">打印</a>
+                <a href="#TrendAwardNumber.html?gameEn=ssc&beginPeriod=180427093&endPeriod=180428002" target="_blank" id="lot_export" class="export">导出</a><a id="lot_print" class="print" href="javascript:;">打印</a>
             </div>
         </div>
         <div id="tableAndCanvas">

@@ -606,6 +606,7 @@ function doDownRecharge(){
             remark = $("#remarkOtherReasion").val();
         }
     }
+    /*
     if (!remark) {
         $("#accountRegLowerTip").text("上级充值必须选择备注原因");
         return;
@@ -618,6 +619,7 @@ function doDownRecharge(){
         $.alert("备注用途不能包含特殊字符！");
         return;
     }
+    */
 
     $('#accountRegLowerBtn').css('pointer-events','none');
 
