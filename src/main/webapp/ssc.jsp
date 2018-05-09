@@ -37,7 +37,7 @@
     <script type="text/javascript" src="/resource/lotts/play.js?ver=20171208"></script>
     <script type="text/javascript" src="/resource/lotts/play_ssc.js?ver=20171208"></script>
     <script type="text/javascript" src="/resource/lotts/fire.js?ver=20171208"></script>
-    <script type="text/javascript" src="/resource/lotts/lottery.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/lotts/lottery.js?ver=120171208"></script>
     <script type="text/javascript" src="/resource/ajaxfileupload.js?ver=20171208"></script>
     <script type="text/javascript">
         var hs = hs || {};
@@ -25357,14 +25357,6 @@
             </a>
         </li>
          -->
-
-
-        <li class="gameDetail">
-            <a href="/lotts/ah11x5/index">
-                <span>安徽11选5</span>
-
-            </a>
-        </li>
 
         <li class="gameDetail">
             <a href="/lotts/gd11x5/index">

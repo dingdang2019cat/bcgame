@@ -38,7 +38,7 @@
     <script type="text/javascript" src="/resource/lotts/play.js?ver=20171208"></script>
     <script type="text/javascript" src="/resource/lotts/play_3d.js?ver=20171208"></script>
     <script type="text/javascript" src="/resource/lotts/fire.js?ver=20171208"></script>
-    <script type="text/javascript" src="/resource/lotts/lottery.js?ver=20171208"></script>
+    <script type="text/javascript" src="/resource/lotts/lottery.js?ver=120171208"></script>
     <script type="text/javascript" src="/resource/ajaxfileupload.js?ver=20171208"></script>
 
 

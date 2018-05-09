@@ -853,6 +853,7 @@ $(function() {
 			*/
 
 			var fandian = $("#bounsNumRange").attr("max");
+			alert(1700 / minBonus);
 			maxBonus = (fandian * 20 + 1700) / (1700 / minBonus);
             //$("#bounsNumRange").attr("max", maxBonus);
             //$("#bounsNumRange").val(maxBonus);
@@ -2611,7 +2612,7 @@ function changeBouns(){
 	var beishu = 1700 / +bouns;
     var max = $("#bounsNumRange").attr("max");
     var bounsNumRange = $("#bounsNumRange").val();
-    var bounsNum = ((bounsNumRange * 20 + +bouns) / beishu).toFixed(2);
+    var bounsNum = ((bounsNumRange * 20 + 1700) / beishu).toFixed(2);
     if(max == bounsNumRange){
         $("#bounsNum").text(bounsNum);
 	}else{
