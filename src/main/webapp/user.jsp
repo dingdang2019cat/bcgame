@@ -614,10 +614,8 @@
                                 <label for="#">
                                     <span class="labelTitle">日期：</span>
                                     <select name="dividendDate" class="labelCond selectCond" style='width:190px'>
-
-                                        <option value="2017/12/16-2017/12/31">2017/12/16-2017/12/31</option>
-
-                                        <option value="2017/12/01-2017/12/15">2017/12/01-2017/12/15</option>
+                                        <option value="<%=simpleDateFormat.format(new Date()).substring(0, 7).replace("-", "/") %>/01-<%=simpleDateFormat.format(new Date()).substring(0, 7).replace("-", "/") %>/15"><%=simpleDateFormat.format(new Date()).substring(0, 7).replace("-", "/") %>/01-<%=simpleDateFormat.format(new Date()).substring(0, 7).replace("-", "/") %>/15</option>
+                                        <option value="<%=simpleDateFormat.format(new Date()).substring(0, 7).replace("-", "/") %>/16-<%=simpleDateFormat.format(new Date()).substring(0, 7).replace("-", "/") %>/31"><%=simpleDateFormat.format(new Date()).substring(0, 7).replace("-", "/") %>/16-<%=simpleDateFormat.format(new Date()).substring(0, 7).replace("-", "/") %>/31</option>
 
                                     </select>
                                 </label>
