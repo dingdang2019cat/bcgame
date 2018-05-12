@@ -16,7 +16,7 @@ public interface DrawHistoryDAO {
     @Insert("insert into drawHistory (id, account, card, amount, createTime, bankCode, bankName, lastOperator, lastTime, parentList, remark) values (#{id}, #{account}, #{card}, #{amount}, now(), #{bankCode}, #{bankName}, #{lastOperator}, now(), #{parentList}, #{remark})")
     int insert(DrawHistory drawHistory);
 
-    @Update("update drawHistory set status=#{status},remark=#{remark}")
+    @Update("update drawHistory set status=#{status},remark=#{remark} where id=#{id}")
     int update(DrawHistory drawHistory);
 
     @Select("<script> " +

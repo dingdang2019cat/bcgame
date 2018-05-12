@@ -152,14 +152,6 @@
 
                 <li><a href="dldrawrd.jsp">取款日志</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%=session.getAttribute("user") %><span class="caret"></span>
-                </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" data-toggle="modal" data-target="#head_editpwd">修改密码</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#logout">退出</a></li>
-                    </ul></li>
-            </ul>
         </div>
     </div>
 </nav><div style="height: 52px;">&nbsp;</div>
@@ -243,11 +235,7 @@
                     </select>
                     </div>
                     <div class="input-group">
-                        <label class="sr-only" for="saccountType"></label> <select class="form-control" id="saccountType">
-                        <option value="0" class="text-warning">全部类型</option>
-                        <option value="1" class="text-warning">会员</option>
-                        <option value="4" class="text-success">代理</option>
-                    </select>
+
                     </div>
                     <div class="input-group">
                         <input type="text" class="form-control" id="userAccount" placeholder="用户账号">
@@ -297,13 +285,13 @@
                 align : 'center',
                 valign : 'middle',
             }, {
-                field : 'orderNo',
+                field : 'id',
                 title : '订单号',
                 align : 'center',
                 valign : 'middle'
             }
             , {
-                field : 'cardNo',
+                field : 'card',
                 title : '收款账号',
                 align : 'center',
                 valign : 'middle'
@@ -321,13 +309,13 @@
                     valign : 'middle',
                     formatter : addressFormatter
                 }, {
-                    field : 'drawMoney',
+                    field : 'amount',
                     title : '提款金额',
                     align : 'center',
                     valign : 'middle',
                     formatter : moneyFormatter
                 }, {
-                    field : 'createDatetime',
+                    field : 'createTime',
                     title : '交易时间',
                     align : 'center',
                     valign : 'middle',
@@ -360,22 +348,22 @@
 
     function statusFormatter(value, row, index) {
 
-        var sn = GlobalTypeUtil.getTypeName(1, 3, value);
+        var sn = '';
 
-        if (value === 2) {
-            return [ '<span class="text-success">', '</span>' ].join(sn);
-        } else if (value === 3) {
-            return [ '<span class="text-danger">', '</span>' ].join(sn);
-        } else if (value === 4) {
-            return [ '<span class="text-default">', '</span>' ].join(sn);
+        if (value === 3) {
+            return [ '<span class="text-success">成功', '</span>' ].join(sn);
+        } else if (value === 2) {
+            return [ '<span class="text-danger">失败', '</span>' ].join(sn);
+        } else if (value === 0) {
+            return [ '<span class="text-default">未处理', '</span>' ].join(sn);
         }
         return [ '<span class="text-primary">', '</span>' ].join(sn);
     }
 
     function caozuo(value, row, index) {
         var col = '-';
-        if(row.status == 1){
-            col = "<a onclick=\"tikuanpass(" + row.id + ", 2)\" href=\"javascript:void(0)\" title=\"通过\">通过</a>&nbsp;<a onclick=\"tikuanpass(" + row.id + ", 3)\" href=\"javascript:void(0)\" title=\"拒绝\">拒绝</a>";
+        if(row.status == 0){
+            col = "<a onclick=\"tikuanpass('" + row.id + "', 3)\" href=\"javascript:void(0)\" title=\"通过\">通过</a>&nbsp;<a onclick=\"tikuanpass('" + row.id + "', 2)\" href=\"javascript:void(0)\" title=\"拒绝\">拒绝</a>";
         }
         return col;
     }
@@ -452,15 +440,15 @@
             }
         }
         $.ajax({
-            url:"tikuanpass.action",
+            url:"/tikuanpass",
             data : {
-                "id" : id,
+                "orderid" : id,
                 "status" : status,
-                "password" : pass
+                "remark" : pass
             },
             dataType:"json",
             success:function(j){
-                if(j.success){
+                if(j.status == 200){
                     alert("成功!");
                     window.location.reload();
                 }else{

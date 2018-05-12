@@ -52,14 +52,18 @@ public class LotteryController {
     @RequestMapping("/{gameType}/bet")
     @ResponseBody
     public Result doBet(@ModelAttribute("user") User user, @PathVariable String gameType, int isTrace, Integer traceWinStop, Integer bounsType, String bouns, Double bounsRange, OrderModel order, double amount, int count, int force, TraceModel traceOrders){
-        double bouns1 = Double.valueOf(bouns.split("-")[0]);
-        if(gameType.contains("ssc") && bouns1 > 1980){
+        User user1 = userManager.select(user, null, null, null, null, null, null).get(0);
+        double bouns1 = 0;
+        if(bouns.split("-").length > 1){
+            bouns1 = Double.valueOf(bouns.split("-")[1].replace("%", ""));
+        }
+        if(gameType.contains("ssc") && user1.getFandian() - bouns1 > 14.0){
             return Result.faild("赔率过高，无法下注", 400);
         }
-        if(gameType.contains("11x5") && bouns1 > 1950){
+        if(gameType.contains("11x5") && user1.getFandian() - bouns1 > 13.5){
             return Result.faild("赔率过高，无法下注", 400);
         }
-        if(gameType.contains("pk10") && bouns1 > 1950){
+        if(gameType.contains("pk10") && user1.getFandian() - bouns1 > 13.5){
             return Result.faild("赔率过高，无法下注", 400);
         }
         System.out.println(" userName is the " + user.getUsername());
@@ -97,7 +101,6 @@ public class LotteryController {
             }
         }
         //判断余额
-        User user1 = userManager.select(user, null, null, null, null, null, null).get(0);
         if(user1.getMoney() < buyMoney){
             System.out.println("余额不足" + user.getUsername() + user1.getMoney() + "   " + buyMoney);
             //余额不足

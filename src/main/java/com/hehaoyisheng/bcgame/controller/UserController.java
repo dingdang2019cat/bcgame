@@ -1169,6 +1169,17 @@ public class UserController {
         return Result.success("");
     }
 
+    @RequestMapping("/tikuanpass")
+    @ResponseBody
+    public Result tikuanpass(String orderid, Integer status, String remark){
+        DrawHistory drawHistory = new DrawHistory();
+        drawHistory.setId(orderid);
+        drawHistory.setStatus(status);
+        drawHistory.setRemark(remark);
+        drawHistoryManager.update(drawHistory);
+        return Result.success("成功!");
+    }
+
     @RequestMapping("/message/messageContentRead")
     public String messageContentRead(@ModelAttribute("user") User user, Integer id, Model model){
         Message message = messageManager.selectById(id);
