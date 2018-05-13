@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface DrawHistoryDAO {
 
-    @Insert("insert into drawHistory (id, account, card, amount, createTime, bankCode, bankName, lastOperator, lastTime, parentList, remark) values (#{id}, #{account}, #{card}, #{amount}, now(), #{bankCode}, #{bankName}, #{lastOperator}, now(), #{parentList}, #{remark})")
+    @Insert("insert into drawHistory (id, account, name, card, amount, createTime, bankCode, bankName, lastOperator, lastTime, parentList, remark) values (#{id}, #{account}, #{name}, #{card}, #{amount}, now(), #{bankCode}, #{bankName}, #{lastOperator}, now(), #{parentList}, #{remark})")
     int insert(DrawHistory drawHistory);
 
     @Update("update drawHistory set status=#{status},remark=#{remark} where id=#{id}")

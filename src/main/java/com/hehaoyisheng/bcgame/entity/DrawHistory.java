@@ -8,6 +8,7 @@ import java.util.Date;
 public class DrawHistory {
     private String id;
     private String account;
+    private String name;
     private String card;
     private double amount;
     private double realAmount;
@@ -45,6 +46,14 @@ public class DrawHistory {
     private Date lastTime;
     private String remark;
     private String parentList;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public double getRealAmount() {
         return realAmount;

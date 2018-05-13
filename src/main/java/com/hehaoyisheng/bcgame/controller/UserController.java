@@ -894,6 +894,7 @@ public class UserController {
         //drawHistory.setBankCode(bookCard);
         drawHistory.setBankName(bookCard.getBankName());
         drawHistory.setCard(bookCard.getCard());
+        drawHistory.setName(bookCard.getNiceName());
         drawHistory.setRemark("");
         drawHistory.setStatus(0);
         user1.setMoney(users.get(0).getMoney() - amount);

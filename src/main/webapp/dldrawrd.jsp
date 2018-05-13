@@ -289,6 +289,11 @@
                 title : '订单号',
                 align : 'center',
                 valign : 'middle'
+            }, {
+                field : 'name',
+                title : '姓名',
+                align : 'center',
+                valign : 'middle'
             }
             , {
                 field : 'card',
