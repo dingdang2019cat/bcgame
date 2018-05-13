@@ -16,12 +16,29 @@ public class Contract {
     private Integer dividend;
     private Double cumulativeProfit;
     private Double dividendAmount;
-
+    private String shangji;
+    private String parentList;
     private Date time;
     private Integer status;
 
+    public String getParentList() {
+        return parentList;
+    }
+
+    public void setParentList(String parentList) {
+        this.parentList = parentList;
+    }
+
     public Integer getId() {
         return id;
+    }
+
+    public String getShangji() {
+        return shangji;
+    }
+
+    public void setShangji(String shangji) {
+        this.shangji = shangji;
     }
 
     public void setId(Integer id) {

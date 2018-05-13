@@ -107,6 +107,10 @@
         <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.YiLouDAO"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+    <bean id="contractDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.hehaoyisheng.bcgame.dao.ContractDAO"/>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
 
     <!-- 调度 -->
     <bean id="sscJob" class="com.hehaoyisheng.bcgame.job.SSCJob">
