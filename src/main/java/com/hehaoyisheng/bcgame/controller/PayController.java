@@ -113,12 +113,15 @@ public class PayController {
     @RequestMapping("/payNotify")
     @ResponseBody
     public String payNotify(String merAccount, String data){
+        System.out.println("______________________________________支付______________________________________________________");
         String merKey = "ad305d0ded184b238587efa1daf9f93c";
         JSONObject json = PayUtils.decrypt(data, merKey);
+        System.out.println(json.toJSONString());
         String status = json.getString("orderStatus");
         String amount = json.getString("amount");
         String orderId = json.getString("orderId");
         if(PayOrderList.payList.get(orderId) == null){
+            System.out.println("______________________________________orderId为空______________________________________________________");
             return "SUCCESS";
         }
         PayOrderList.payList.remove(orderId);
@@ -126,6 +129,7 @@ public class PayController {
         recharge.setId(orderId);
         List<Recharge> recharges = rechargeManager.select(recharge, null, null, null, null);
         if(CollectionUtils.isEmpty(recharges)){
+            System.out.println("______________________________________recharges为空______________________________________________________");
             return "SUCCESS";
         }
         if(status.equals("SUCCESS")){

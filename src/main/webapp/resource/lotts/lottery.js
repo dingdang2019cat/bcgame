@@ -853,7 +853,6 @@ $(function() {
 			*/
 
 			var fandian = $("#bounsNumRange").attr("max");
-			alert(1700 / minBonus);
 			maxBonus = (fandian * 20 + 1700) / (1700 / minBonus);
             //$("#bounsNumRange").attr("max", maxBonus);
             //$("#bounsNumRange").val(maxBonus);

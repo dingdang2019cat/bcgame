@@ -15,7 +15,7 @@
 <body>
 
 <%
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     String s = simpleDateFormat.format(System.currentTimeMillis());
 %>
 <div id="dailiheadmenu"></div>

@@ -602,7 +602,7 @@ td {
             }else{
                 down += '有';
 			}
-            if(row.gameShare == 14.4 || row.gameShare == 14.5){
+            if(row.gameShare > 14.3 && row.gameShare < 14.8){
                 if(row.fenhong == 0){
                     down += '(<a class="fenhong" href="javascript:void(0)" onclick="fenhong(' + row.id + ')" title="设置分红">设置分红</a>)';
                 }else{
