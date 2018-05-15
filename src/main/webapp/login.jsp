@@ -182,9 +182,9 @@
 		<div class="w920">
 			<i class="logo"></i>
 			<ul class="download">
-				<li class="pc"><a href="http://vanke55.com/download?t=4"><i></i>pc端下载</a></li>
-				<li class="ios"><a href="http://vanke55.com/download?t=2#"><i></i>ios端下载</a></li>
-				<li class="android"><a href="http://vanke55.com/download?t=1"><i></i>安卓客户端下载</a></li>
+				<li class="pc"><a href="#"><i></i>pc端下载</a></li>
+				<li class="ios"><a href="#"><i></i>ios端下载</a></li>
+				<li class="android"><a href="#"><i></i>安卓客户端下载</a></li>
 				<li class="auto"><a href="javascript:;"><i></i>自动投注软件</a></li>
 			</ul>
 			<p>@金牌娱乐  版权所有 2010-2018 copyright DH·VK Interactive Network Techno Co.&nbsp;&nbsp;|&nbsp;&nbsp;<a class="dnsLink" href="http://vanke55.com/repairDNS" target="_blank">防劫持教程</a></p>

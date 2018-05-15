@@ -243,16 +243,10 @@
 	<div class="bannerBox">
 	    <div class="userAcctBgBox" id="userAcctBg">
 		   	
-	           <a href="/index" title="pc【重庆时时彩】投注狂欢双11" target="_blank" class=""><img src="./resource/cd1d07a053fe4e5db84d89f86c796ce6.jpg"></a>
+
+	           <a href="/index" title="标语" target="_blank" class="active"><img src="./resource/indexbiaoyu.jpg"></a>
 		   	
-	           <a href="/index" title="标语" target="_blank" class="active"><img src="./resource/2b4cb290ce3146699c1377b79e5dce5c.jpg"></a>
-		   	
-	           <a href="/index" title="新版客户端" target="_blank" class=""><img src="./resource/0119a299dbfa4f93a96320bbd43bc61e.png"></a>
-		   	
-	           <a href="/index" title="签到" target="_blank" class=""><img src="./resource/1f11b704ef2a47b9af2cb882e40cac12.jpg"></a>
-		   	
-	           <a href="/index" title="消费佣金" target="_blank" class=""><img src="./resource/ec795c99d7c74f5fa5de6e9e5e5b10d1.jpg"></a>
-		   	
+
 	    </div>
 	    <p class="userAcctBgList" id="userAcctBgList">
 		    
