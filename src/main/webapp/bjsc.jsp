@@ -32,7 +32,7 @@
     <script type="text/javascript" src="/resource/lotts/play.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/lotts/play_pk10.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/lotts/fire.js?ver=20180105"></script>
-    <script type="text/javascript" src="/resource/lotts/lottery.js?ver=120180105"></script>
+    <script type="text/javascript" src="/resource/lotts/lottery.js?ver=30180105"></script>
     <script type="text/javascript" src="/resource/ajaxfileupload.js?ver=20180105"></script>
     <script type="text/javascript">
         var hs = hs || {};
@@ -43,7 +43,7 @@
         hs.lottery.betInAmountMax = 1000.00;
         hs.lottery.gameSecondMax =  25;
         hs.lottery.pk10 = true;
-        var account ="lnzyz1212";
+        var account ="";
     </script>
     <style>
         body {
@@ -4167,9 +4167,8 @@
                                         <!--<canvas class="fire" id="surface"></canvas>-->
                                         <!--</label>-->
                                     </div>
-                                    <div class="betsInfoTypeList">
+                                    <div class="betsInfoTypeList"><input type="hidden" id="bounsNumRangeValue" value="${maxFandian}" />
                                         <input type="range" value="${maxFandian}" min="0" max="${maxFandian}" step="0.1" onchange="changeBouns()" id="bounsNumRange"/>&nbsp;<span id="bounsNum">${maxBouns}</span>
-
 
                                     </div>
                                 </div>
@@ -4854,7 +4853,7 @@
         <div class="improveHeaderInfo">
             <p class="improveHeaderTitle">
                 <span>亲爱的</span>
-                <span>lnzyz1212</span>
+                <span></span>
                 <span>,感谢您选择金牌娱乐平台，请完善以下个人信息</span>
             </p>
             <span class="improveHeaderTips">为了让金牌娱乐更好的给您提供服务，请修改密码并牢记，不要泄露给其他人</span>

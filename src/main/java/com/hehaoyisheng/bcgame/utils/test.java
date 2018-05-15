@@ -8,10 +8,7 @@ import com.hehaoyisheng.bcgame.common.LotteryThread;
 import com.hehaoyisheng.bcgame.dao.BcLotteryOddsDAO;
 import com.hehaoyisheng.bcgame.dao.SettingsDAO;
 import com.hehaoyisheng.bcgame.dao.UserDAO;
-import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
-import com.hehaoyisheng.bcgame.entity.BcLotteryOdds;
-import com.hehaoyisheng.bcgame.entity.Settings;
-import com.hehaoyisheng.bcgame.entity.User;
+import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.vo.Province;
 import com.hehaoyisheng.bcgame.manager.BcLotteryHistoryManager;
 import com.hehaoyisheng.bcgame.manager.UserManager;
@@ -33,5 +30,36 @@ import java.util.Map;
 public class test {
     public static void main(String[] args) throws Exception {
 
+        /*
+        List<YiLou> yiLous = yiLouManager.select(type, 0, 1);
+        YiLou yiLou = yiLous.get(0);
+        String[] yiLouNums = yiLou.getContent().split(" ");
+        String[] lotteryNums = bcLotteryHistory.getNums().split(",");
+        YiLou yiLou1 = new YiLou();
+        String sss = "";
+        for(int l = 0; l < 5; l++){
+            String[] yiLouNums1 = yiLouNums[l].split(",");
+            Integer lotteryNumInteger = Integer.valueOf(lotteryNums[l]);
+            if(!type.contains("ssc")){
+                lotteryNumInteger = lotteryNumInteger - 1;
+            }
+            for(int p  = 0 ; p < yiLouNums1.length; p++){
+                Integer yi = Integer.valueOf(yiLouNums[p]);
+                yi = yi + 1;
+                if(p == lotteryNumInteger){
+                    yi = 0;
+                }
+                sss += yi + ",";
+            }
+            sss = sss.substring(0, sss.length() - 1);
+            sss += " ";
+        }
+        sss = sss.substring(0, sss.length() - 1);
+        yiLou1.setSessionId(qihao);
+        yiLou1.setType(type);
+        yiLou1.setContent(sss);
+        yiLou1.setNums(bcLotteryHistory.getNums());
+        yiLouManager.insert(yiLou1);
+        */
     }
 }

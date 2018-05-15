@@ -192,7 +192,7 @@ function getInfo() {
 				var openList ="";
 				var openListCont = 0;
 				if (hs.lottery.pk10) {
-					var pkop = data.opens[0].nums;
+					var pkop = data.opens[0].nums.split(",");
 					for(var m in pkop) {
 						openList += '<tr class="beforeLottNumDetail">';
 						openList += '<td>第' + (Number(m) + 1) + '名</td>';
@@ -851,12 +851,17 @@ $(function() {
 			}
 			$("#bounsType").html(opts);
 			*/
-
+			var nowFandain = $("#bounsNumRangeValue").val();
 			var fandian = $("#bounsNumRange").attr("max");
-			maxBonus = (fandian * 20 + 1700) / (1700 / minBonus);
+			maxBonus = (nowFandain * 20 + 1700) / (1700 / minBonus);
+			var change = fandian - nowFandain;
             //$("#bounsNumRange").attr("max", maxBonus);
             //$("#bounsNumRange").val(maxBonus);
-			$("#bounsNum").text(maxBonus.toFixed(2));
+			if(nowFandain == fandian) {
+                $("#bounsNum").text(maxBonus.toFixed(2));
+            }else{
+                $("#bounsNum").text(maxBonus.toFixed(2) + "-" + change + "%");
+			}
 
             /*
             var bonus = null;
@@ -2611,6 +2616,7 @@ function changeBouns(){
 	var beishu = 1700 / +bouns;
     var max = $("#bounsNumRange").attr("max");
     var bounsNumRange = $("#bounsNumRange").val();
+    $("#bounsNumRangeValue").val(bounsNumRange);
     var bounsNum = ((bounsNumRange * 20 + 1700) / beishu).toFixed(2);
     if(max == bounsNumRange){
         $("#bounsNum").text(bounsNum);

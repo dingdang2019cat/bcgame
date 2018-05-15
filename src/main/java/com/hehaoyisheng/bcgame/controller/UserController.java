@@ -256,19 +256,12 @@ public class UserController {
         Map<String, Object> resultMap = Maps.newHashMap();
         User selectUser = new User();
         String obj = "";
+        List<UserVO> resultList = Lists.newArrayList();
         //不是根据用户名查询则直接查下级
         if(!StringUtils.isEmpty(account)){
             selectUser.setUsername(account);
-            User user1 = new User();
-            user1.setUsername(account);
-            List<User> userList = userManager.select(user1, null, null, null, null, null, null);
-            obj = userList.get(0).getParentList();
-        }if(!StringUtils.isEmpty(nextAccount)){
+        }else if(!StringUtils.isEmpty(nextAccount)){
             selectUser.setShangji(nextAccount);
-            User user1 = new User();
-            user1.setUsername(nextAccount);
-            List<User> userList = userManager.select(user1, null, null, null, null, null, null);
-            obj = userList.get(0).getParentList();
         }else{
             selectUser.setShangji(user.getUsername());
         }
@@ -283,7 +276,6 @@ public class UserController {
         selectUser.setParentList(user.getParentList() + "%");
         List<User> childUsers = userManager.select(selectUser, from, rows, null, null, beginAmount, endAmount);
         int total = userManager.count(selectUser, from, rows, null, null, beginAmount, endAmount);
-        List<UserVO> resultList = Lists.newArrayList();
         for(User u : childUsers){
             double teamMoney = userManager.sum(u.getUsername() + "%");
             User user1 = new User();
@@ -293,7 +285,7 @@ public class UserController {
             resultList.add(userVO);
         }
         //resultMap.put("ohj", StringUtils.isEmpty(account) ? StringUtils.isEmpty(nextAccount) ? user.getUsername() : nextAccount : account);
-        String objstr = StringUtils.isEmpty(nextAccount) ? user.getParentList() : obj;
+        String objstr = StringUtils.isEmpty(nextAccount) && StringUtils.isEmpty(account) ? user.getParentList() : CollectionUtils.isEmpty(childUsers) ? "" : childUsers.get(0).getParentList();
         objstr = user.getUsername() + objstr.split(user.getUsername())[1];
         resultMap.put("obj", objstr.split(","));
         resultMap.put("rows", resultList);
@@ -1179,6 +1171,12 @@ public class UserController {
         drawHistory.setRemark(remark);
         drawHistoryManager.update(drawHistory);
         return Result.success("成功!");
+    }
+
+    @RequestMapping("/report/teamList")
+    @ResponseBody
+    public Result teamList(){
+        return Result.success("");
     }
 
     @RequestMapping("/message/messageContentRead")

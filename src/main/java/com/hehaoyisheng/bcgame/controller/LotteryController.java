@@ -53,6 +53,7 @@ public class LotteryController {
     @ResponseBody
     public Result doBet(@ModelAttribute("user") User user, @PathVariable String gameType, int isTrace, Integer traceWinStop, Integer bounsType, String bouns, Double bounsRange, OrderModel order, double amount, int count, int force, TraceModel traceOrders){
         User user1 = userManager.select(user, null, null, null, null, null, null).get(0);
+        /*
         double bouns1 = 0;
         if(bouns.split("-").length > 1){
             bouns1 = Double.valueOf(bouns.split("-")[1].replace("%", ""));
@@ -66,6 +67,7 @@ public class LotteryController {
         if(gameType.contains("pk10") && user1.getFandian() - bouns1 > 13.5){
             return Result.faild("赔率过高，无法下注", 400);
         }
+        */
         System.out.println(" userName is the " + user.getUsername());
         //初始化赔率
         if(CollectionUtils.isEmpty(GameData.oddsMap)){

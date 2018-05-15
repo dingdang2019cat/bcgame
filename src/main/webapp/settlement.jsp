@@ -607,7 +607,7 @@
                         <label class="searchCondition">
                             <span class="labelTitle">查询条件：</span>
                             <a href="javascript:;" class="btn searchTeamBtn active" onclick="teamRecord(2, this)">团队盈亏详情</a>
-                            <a href="javascript:;" class="btn searchTeamBtn" onclick="teamRecord(1, this)">每日盈亏记录</a>
+                            <!--<a href="javascript:;" class="btn searchTeamBtn" onclick="teamRecord(1, this)">每日盈亏记录</a>-->
                             <input name="teamStatus" value="2" id="teamHistoryAndNow" type="hidden">
                         </label>
                         <label>
@@ -616,9 +616,9 @@
                             <span>至</span>
                             <input type="text" class="labelCond Wdate" id="teamConditionEndTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%>" name="endTime" onclick="WdatePicker({minDate:&#39;<%=simpleDateFormat.format(System.currentTimeMillis())%>&#39;,maxDate:&#39;%y-%M-%d&#39;})"><span>(23:59:59)</span>
                             <span class="changeTime" id="showChoose">
-	   							<a href="javascript:;" class="active" onclick="chooseTime(1, this)">今日</a>
+	   							<!--<a href="javascript:;" class="active" onclick="chooseTime(1, this)">今日</a>
 	                        	<a href="javascript:;" onclick="chooseTime(2, this)" class="">昨日</a>
-	                        	<a href="javascript:;" onclick="chooseTime(3, this)" class="">本月</a>
+	                        	<a href="javascript:;" onclick="chooseTime(3, this)" class="">本月</a>-->
 	    					</span>
                         </label>
                         <label id="accountArea">
@@ -630,7 +630,7 @@
                         </label>
                         <label>
                             <span class="labelTitle">备注：</span>
-                            <span class="fontColorRed" id="teamRemarks">※团队盈亏详情※ 会统计您查询时间内的团队盈亏总和，以及下一级的团队盈亏总和。包含当天数据</span>
+                            <span class="fontColorRed" id="teamRemarks">※团队盈亏详情※ 会统计您查询时间内的团队盈亏总和，以及下一级的团队盈亏总和。不包含当天数据，若想查询当天数据请到-管理中心-团队概况</span>
                         </label>
                     </form>
                     <p class="userBreadCrumb" id="testing"></p>
