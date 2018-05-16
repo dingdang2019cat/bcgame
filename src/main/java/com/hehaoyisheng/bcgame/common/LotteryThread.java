@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Component
+@Component("lotteryThread")
 public class LotteryThread {
 
     //线程池
@@ -59,6 +59,7 @@ public class LotteryThread {
         bcLotteryOrder.setQiHao(seasonId);
         bcLotteryOrder.setStatus(0);
         List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
+        System.out.println(list.size());
         Runnable runnable = null;
         if(lotteryType.contains("ssc")){
             runnable = new SSCLottery(bcLotteryOrderManager, traceManager, userManager, moneyHistoryManager, list, looteryContent);

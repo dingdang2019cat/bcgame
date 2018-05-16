@@ -37,6 +37,8 @@ public class LotteryCommon {
         }else {
             bcLotteryOrder.setStatus(2);
         }
+        bcLotteryOrderManager.update(bcLotteryOrder);
+
 
         if(bcLotteryOrder.getGaofan() > 0){
             //TODO
@@ -56,13 +58,19 @@ public class LotteryCommon {
 
         double fandian = list.get(0).getFandian();
         String[] ss = bcLotteryOrder.getParentList().split(",");
-        for(int i = ss.length - 1; i >= 0; i++){
+        for(int i = ss.length - 1; i >= 0; i--){
+            if(ss[i].equals(bcLotteryOrder.getAccount()) || StringUtils.isEmpty(ss[i])){
+                continue;
+            }
             User u1 = new User();
-            u.setUsername(ss[i]);
+            u1.setUsername(ss[i]);
             List<User> list1 = userManager.select(u1, null, null, null, null, null, null);
+            System.out.println("-------------------------------------------------" + list1.get(0).getFandian() + "------------------------" + fandian);
             double fandian1 = list1.get(0).getFandian() - fandian;
             fandian = list1.get(0).getFandian();
             double money = bcLotteryOrder.getBuyMoney() * fandian1 / 100;
+            System.out.println("-------------------------------------------------" + bcLotteryOrder.getBuyMoney() + "------------------------" + money);
+
             MoneyHistory moneyHistory = new MoneyHistory();
             moneyHistory.setAccount(ss[i]);
             moneyHistory.setBalance(list1.get(0).getMoney() + money);
@@ -73,9 +81,10 @@ public class LotteryCommon {
             moneyHistory.setPlayName(bcLotteryOrder.getPlayName());
             moneyHistory.setChangeType("下级投注返现");
             moneyHistoryManager.insert(moneyHistory);
+            System.out.println("-------------------------------------------------" + u1.getUsername() + "------------------------" + money);
             userManager.update(u1, money);
         }
-        bcLotteryOrderManager.update(bcLotteryOrder);
+
 
         //追单取消
         if(StringUtils.isEmpty(bcLotteryOrder.getTraceId())){
