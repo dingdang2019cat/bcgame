@@ -8170,7 +8170,7 @@
                             <h3 class="beforeLottNumHeader beforeLottery">
                                 <i class="beforeLottIcon"></i>
                                 <span>最近开奖</span>
-                                <a href="trend" class="trend" target="_blank">走势图</a>
+                                <a href="#" class="trend" onclick="alert('新平台上线，正在积攒开奖数据制作走势图，马上到来！尽请期待！')" target="_blank">走势图</a>
                             </h3>
                             <table class="beforeLottNumList">
                                 <thead>

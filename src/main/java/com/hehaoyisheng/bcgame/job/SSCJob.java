@@ -156,37 +156,39 @@ public class SSCJob {
                     bcLotteryHistoryManager.insert(bcLotteryHistory);
                     bcLotteryHistory.setOpenTime(new Date());
                     GameData.lastOpen.put(type, bcLotteryHistory);
-                    /*
-                    List<YiLou> yiLous = yiLouManager.select(type, 0, 1);
-                    YiLou yiLou = yiLous.get(0);
-                    String[] yiLouNums = yiLou.getContent().split(" ");
-                    String[] lotteryNums = bcLotteryHistory.getNums().split(",");
-                    YiLou yiLou1 = new YiLou();
-                    String sss = "";
-                    for(int l = 0; l < 5; l++){
-                        String[] yiLouNums1 = yiLouNums[l].split(",");
-                        Integer lotteryNumInteger = Integer.valueOf(lotteryNums[l]);
-                        if(!type.contains("ssc")){
-                            lotteryNumInteger = lotteryNumInteger - 1;
-                        }
-                        for(int p  = 0 ; p < yiLouNums1.length; p++){
-                            Integer yi = Integer.valueOf(yiLouNums[p]);
-                            yi = yi + 1;
-                            if(p == lotteryNumInteger){
-                                yi = 0;
+                    try {
+                        List<YiLou> yiLous = yiLouManager.select(type, 0, 1);
+                        YiLou yiLou = yiLous.get(0);
+                        String[] yiLouNums = yiLou.getContent().split(" ");
+                        String[] lotteryNums = bcLotteryHistory.getNums().split(",");
+                        YiLou yiLou1 = new YiLou();
+                        String sss = "";
+                        for(int l = 0; l < 5; l++){
+                            String[] yiLouNums1 = yiLouNums[l].split(",");
+                            Integer lotteryNumInteger = Integer.valueOf(lotteryNums[l]);
+                            if(!type.contains("ssc")){
+                                lotteryNumInteger = lotteryNumInteger - 1;
                             }
-                            sss += yi + ",";
+                            for(int p  = 0 ; p < yiLouNums1.length; p++){
+                                Integer yi = Integer.valueOf(yiLouNums1[p]);
+                                yi = yi + 1;
+                                if(p == lotteryNumInteger){
+                                    yi = 0;
+                                }
+                                sss += yi + ",";
+                            }
+                            sss = sss.substring(0, sss.length() - 1);
+                            sss += " ";
                         }
                         sss = sss.substring(0, sss.length() - 1);
-                        sss += " ";
+                        yiLou1.setSessionId(qihao);
+                        yiLou1.setType(type);
+                        yiLou1.setContent(sss);
+                        yiLou1.setNums(bcLotteryHistory.getNums());
+                        yiLouManager.insert(yiLou1);
+                    }catch (Exception e1){
+                        e1.printStackTrace();
                     }
-                    sss = sss.substring(0, sss.length() - 1);
-                    yiLou1.setSessionId(qihao);
-                    yiLou1.setType(type);
-                    yiLou1.setContent(sss);
-                    yiLou1.setNums(bcLotteryHistory.getNums());
-                    yiLouManager.insert(yiLou1);
-                    */
                     lotteryThread.lottery(type, qihao, bcLotteryHistory.getNums());
                     break;
                 }

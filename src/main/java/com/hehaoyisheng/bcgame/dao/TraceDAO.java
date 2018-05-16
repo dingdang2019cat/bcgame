@@ -11,11 +11,12 @@ import java.util.List;
 
 //TODO
 public interface TraceDAO {
-    @Insert("insert into trace (id, account, createTime, isWinStop, lotteryId, lotteryName, startSeason, traceAmount, traceNum) values (#{id}, #{account}, #{createTime}, #{isWinStop}, #{lotteryId}, #{lotteryName}, #{startSeason}, #{traceAmount}, #{traceNum})")
+    @Insert("insert into trace (id, account, createTime, isWinStop, lotteryId, lotteryName, startSeason, traceAmount, traceNum, createTime) values (#{id}, #{account}, #{createTime}, #{isWinStop}, #{lotteryId}, #{lotteryName}, #{startSeason}, #{traceAmount}, #{traceNum}, now())")
     int insert(Trace trace);
 
-    @Update("update trace set winAmount=#{winAmount} where id=#{id}")
+    @Update("update trace set winAmount=#{winAmount}, status=#{status} where id=#{id}")
     int update(Trace trace);
+
 
     @Select("<script> " +
             "select * " +

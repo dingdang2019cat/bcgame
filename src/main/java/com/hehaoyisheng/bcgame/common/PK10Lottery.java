@@ -5,6 +5,7 @@ import com.hehaoyisheng.bcgame.entity.MoneyHistory;
 import com.hehaoyisheng.bcgame.entity.User;
 import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
 import com.hehaoyisheng.bcgame.manager.MoneyHistoryManager;
+import com.hehaoyisheng.bcgame.manager.TraceManager;
 import com.hehaoyisheng.bcgame.manager.UserManager;
 import org.springframework.util.CollectionUtils;
 
@@ -19,6 +20,8 @@ public class PK10Lottery implements Runnable{
     private MoneyHistoryManager moneyHistoryManager;
 
     private List<BcLotteryOrder> bcLotteryOrders;
+
+    private TraceManager traceManager;
 
     private String looteryContent;
 
@@ -38,12 +41,13 @@ public class PK10Lottery implements Runnable{
         this.looteryContent = looteryContent;
     }
 
-    public PK10Lottery(BcLotteryOrderManager bcLotteryOrderManager, UserManager userManager, MoneyHistoryManager moneyHistoryManager,  List<BcLotteryOrder> bcLotteryOrders, String looteryContent) {
+    public PK10Lottery(BcLotteryOrderManager bcLotteryOrderManager, TraceManager traceManager, UserManager userManager, MoneyHistoryManager moneyHistoryManager,  List<BcLotteryOrder> bcLotteryOrders, String looteryContent) {
         this.bcLotteryOrderManager = bcLotteryOrderManager;
         this.bcLotteryOrders = bcLotteryOrders;
         this.moneyHistoryManager = moneyHistoryManager;
         this.looteryContent = looteryContent;
         this.userManager = userManager;
+        this.traceManager = traceManager;
     }
 
     public void run() {{
@@ -69,7 +73,7 @@ public class PK10Lottery implements Runnable{
                 }
                 bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * (bcLotteryOrder.getMinBonusOdds() / 2));
                 bcLotteryOrder.setWinZhuShu(winCount);
-                LotteryCommon.addMoneyAndHistory(winCount, bcLotteryOrderManager, bcLotteryOrder, userManager, moneyHistoryManager);
+                LotteryCommon.addMoneyAndHistory(winCount, bcLotteryOrderManager, traceManager, bcLotteryOrder, userManager, moneyHistoryManager);
             }catch (Exception e){
                 e.printStackTrace();
             }

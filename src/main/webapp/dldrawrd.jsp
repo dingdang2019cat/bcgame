@@ -437,12 +437,8 @@
         $('#end').val(end);
     }
     function tikuanpass(id, status){
-        var pass = "";
-        if(status == 3){
-            pass = prompt("拒绝理由", "");
-            if(pass == ""){
-                return;
-            }
+        if(!confirm("请仔细审阅该用户最近充值，投注。防止异常行为的出现！已经确认？")){
+            return;
         }
         $.ajax({
             url:"/tikuanpass",

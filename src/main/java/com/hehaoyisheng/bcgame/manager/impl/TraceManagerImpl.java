@@ -37,7 +37,7 @@ public class TraceManagerImpl implements TraceManager{
         return -1;
     }
 
-    public List<Trace> select(Trace trace, int from, int limit, Date startTime, Date endTime) {
+    public List<Trace> select(Trace trace, Integer from, Integer limit, Date startTime, Date endTime) {
         try {
             return traceDAO.select(trace, from, limit, startTime, endTime);
         }catch (Exception e){

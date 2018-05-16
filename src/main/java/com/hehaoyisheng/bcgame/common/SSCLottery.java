@@ -3,10 +3,7 @@ package com.hehaoyisheng.bcgame.common;
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
 import com.hehaoyisheng.bcgame.entity.MoneyHistory;
 import com.hehaoyisheng.bcgame.entity.User;
-import com.hehaoyisheng.bcgame.manager.BcLotteryOddsManager;
-import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
-import com.hehaoyisheng.bcgame.manager.MoneyHistoryManager;
-import com.hehaoyisheng.bcgame.manager.UserManager;
+import com.hehaoyisheng.bcgame.manager.*;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
@@ -22,6 +19,8 @@ public class SSCLottery implements Runnable{
     private List<BcLotteryOrder> bcLotteryOrders;
 
     private String looteryContent;
+
+    private TraceManager traceManager;
 
     public List<BcLotteryOrder> getBcLotteryOrders() {
         return bcLotteryOrders;
@@ -39,12 +38,13 @@ public class SSCLottery implements Runnable{
         this.looteryContent = looteryContent;
     }
 
-    public SSCLottery(BcLotteryOrderManager bcLotteryOrderManager, UserManager userManager, MoneyHistoryManager moneyHistoryManager,  List<BcLotteryOrder> bcLotteryOrders, String looteryContent){
+    public SSCLottery(BcLotteryOrderManager bcLotteryOrderManager, TraceManager traceManager, UserManager userManager, MoneyHistoryManager moneyHistoryManager,  List<BcLotteryOrder> bcLotteryOrders, String looteryContent){
         this.bcLotteryOrderManager = bcLotteryOrderManager;
         this.bcLotteryOrders = bcLotteryOrders;
         this.moneyHistoryManager = moneyHistoryManager;
         this.looteryContent = looteryContent;
         this.userManager = userManager;
+        this.traceManager = traceManager;
     }
 
     public void run() {
@@ -78,7 +78,7 @@ public class SSCLottery implements Runnable{
                 }
                 bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * (bcLotteryOrder.getMinBonusOdds() / 2));
                 bcLotteryOrder.setWinZhuShu(winCount);
-                LotteryCommon.addMoneyAndHistory(winCount, bcLotteryOrderManager, bcLotteryOrder, userManager, moneyHistoryManager);
+                LotteryCommon.addMoneyAndHistory(winCount, bcLotteryOrderManager, traceManager, bcLotteryOrder, userManager, moneyHistoryManager);
             }catch (Exception e){
                 e.printStackTrace();
             }

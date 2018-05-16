@@ -111,7 +111,7 @@ public class LotteryController {
         //扣减余额
         User updateUser = new User();
         updateUser.setId(user.getId());
-        updateUser.setMoney(user1.getMoney() - amount);
+        updateUser.setMoney(user1.getMoney() - buyMoney);
         userManager.update(updateUser);
         //判断高返点
         /*
@@ -217,6 +217,9 @@ public class LotteryController {
         List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
         if(CollectionUtils.isEmpty(list)){
             return null;
+        }
+        if(!org.apache.commons.lang.StringUtils.equals(list.get(0).getQiHao(), GameData.gameSeasonId.get(list.get(0).getLotType()))){
+            return Result.faild("不是当期!", 400);
         }
         list.get(0).setStatus(10);
         bcLotteryOrderManager.update(list.get(0));

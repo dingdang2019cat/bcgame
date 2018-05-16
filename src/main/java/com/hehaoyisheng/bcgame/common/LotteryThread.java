@@ -2,10 +2,8 @@ package com.hehaoyisheng.bcgame.common;
 
 import com.hehaoyisheng.bcgame.entity.BcLotteryOrder;
 import com.hehaoyisheng.bcgame.entity.MoneyHistory;
-import com.hehaoyisheng.bcgame.manager.BcLotteryOddsManager;
-import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
-import com.hehaoyisheng.bcgame.manager.MoneyHistoryManager;
-import com.hehaoyisheng.bcgame.manager.UserManager;
+import com.hehaoyisheng.bcgame.entity.Trace;
+import com.hehaoyisheng.bcgame.manager.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -27,6 +25,9 @@ public class LotteryThread {
 
     @Resource
     private MoneyHistoryManager moneyHistoryManager;
+
+    @Resource
+    private TraceManager traceManager;
 
 
     public ExecutorService getCachedThreadPool() {
@@ -60,11 +61,11 @@ public class LotteryThread {
         List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
         Runnable runnable = null;
         if(lotteryType.contains("ssc")){
-            runnable = new SSCLottery(bcLotteryOrderManager, userManager, moneyHistoryManager, list, looteryContent);
+            runnable = new SSCLottery(bcLotteryOrderManager, traceManager, userManager, moneyHistoryManager, list, looteryContent);
         }else if(lotteryType.contains("pk10")){
-            runnable = new PK10Lottery(bcLotteryOrderManager, userManager, moneyHistoryManager, list, looteryContent);
+            runnable = new PK10Lottery(bcLotteryOrderManager, traceManager, userManager, moneyHistoryManager, list, looteryContent);
         }else if(lotteryType.contains("11x5")){
-            runnable = new BC11x5Lottery(bcLotteryOrderManager, userManager, moneyHistoryManager, list, looteryContent);
+            runnable = new BC11x5Lottery(bcLotteryOrderManager, traceManager, userManager, moneyHistoryManager, list, looteryContent);
         }
         cachedThreadPool.execute(runnable);
     }

@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!DOCTYPE html>
@@ -235,8 +236,136 @@
             </tr>
             </thead>
             <tbody>
+            <c:forEach var="list1" items="${list}">
+                <tr>
+                    <td class="fontColorBlack" width="110">${list1.seasonId}</td>
+                    <td class="fontColorBlack trendBorder-l" width="80">${list1.nums}</td>
+
+                    <td class=" trendBorder-l">2</td>
+
+                    <td class="">3</td>
+
+                    <td class="">4</td>
+
+                    <td class="">17</td>
+
+                    <td class="">5</td>
+
+                    <td class="">1</td>
+
+                    <td class="">8</td>
+
+                    <td class="">22</td>
+
+                    <td class="">18</td>
+
+                    <td class="trendBall-1">9</td>
+
+                    <td class=" trendBorder-l">4</td>
+
+                    <td class="">1</td>
+
+                    <td class="">29</td>
+
+                    <td class="trendBall-2">3</td>
+
+                    <td class="">12</td>
+
+                    <td class="">2</td>
+
+                    <td class="">15</td>
+
+                    <td class="">7</td>
+
+                    <td class="">9</td>
+
+                    <td class="">19</td>
+
+                    <td class="trendBall-3 trendBorder-l">0</td>
+
+                    <td class="">25</td>
+
+                    <td class="">10</td>
+
+                    <td class="">7</td>
+
+                    <td class="">2</td>
+
+                    <td class="">15</td>
+
+                    <td class="">6</td>
+
+                    <td class="">16</td>
+
+                    <td class="">12</td>
+
+                    <td class="">5</td>
+
+                    <td class=" trendBorder-l">2</td>
+
+                    <td class="">6</td>
+
+                    <td class="">5</td>
+
+                    <td class="">35</td>
+
+                    <td class="">8</td>
+
+                    <td class="trendBall-4">5</td>
+
+                    <td class="">13</td>
+
+                    <td class="">3</td>
+
+                    <td class="">1</td>
+
+                    <td class="">10</td>
+
+                    <td class=" trendBorder-l">17</td>
+
+                    <td class="trendBall-5">1</td>
+
+                    <td class="">22</td>
+
+                    <td class="">8</td>
+
+                    <td class="">5</td>
+
+                    <td class="">7</td>
+
+                    <td class="">4</td>
+
+                    <td class="">3</td>
+
+                    <td class="">1</td>
+
+                    <td class="">15</td>
+
+                    <td class="clustNumBallOverlap trendBorder-l">0</td>
+
+                    <td class="clustNumBallOverlap">1</td>
+
+                    <td class="">4</td>
+
+                    <td class="clustNumBallOverlap">3</td>
+
+                    <td class="">2</td>
+
+                    <td class="clustNumBallOverlap">5</td>
+
+                    <td class="">4</td>
+
+                    <td class="">3</td>
+
+                    <td class="">1</td>
+
+                    <td class="clustNumBallOverlap">9</td>
+
+                </tr>
+            </c:forEach>
 
             <tr>
+
                 <td class="fontColorBlack" width="110">20180427-096</td>
                 <td class="fontColorBlack trendBorder-l" width="80">9,3,0,5,1</td>
 

@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 public interface YiLouDAO {
-    @Insert("insert into (sessionId, type, content, nums) values (#{sessionId}, #{type}, #{content}, #{nums})")
+    @Insert("insert into yilou (sessionId, type, content, nums) values (#{sessionId}, #{type}, #{content}, #{nums})")
     int insert(YiLou yiLou);
 
     @Select("select * from yilou where type=#{type} order by sessionId desc limit #{from},#{limit}")

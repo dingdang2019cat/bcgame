@@ -31,6 +31,11 @@ public class UserManagerImpl implements UserManager {
 
     public int update(User user) {
         try {
+            if(user.getMoney() != null){
+                BigDecimal bg = new BigDecimal(user.getMoney());
+                double f1 = bg.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
+                user.setMoney(f1);
+            }
             return userDAO.update(user);
         }catch (Exception e){
             logger.error("insert Error: username:{}, ", e);
@@ -40,10 +45,12 @@ public class UserManagerImpl implements UserManager {
 
     public int update(User user, double money) {
         try {
+            BigDecimal bg = new BigDecimal(money);
+            double f1 = bg.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
             if(money > 0)
-                return userDAO.updateMoney(user, money);
+                return userDAO.updateMoney(user, f1);
             else
-                return userDAO.kouqian(user, 0 - money);
+                return userDAO.kouqian(user, 0 - f1);
         }catch (Exception e){
             logger.error("insert Error: username:{}, ", e);
         }
