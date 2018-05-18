@@ -378,60 +378,161 @@ public class GameLottery {
         return winCount;
     }
 
+
+    public static void main(String[] args) {
+        String s = pk10SubString("1011");
+        System.out.println(s);
+    }
+
+    private static String pk10SubString(String betNumber){
+        String result = "";
+        for(int i = 0; (i * 2 + 2) <= betNumber.length() ; i++){
+            result += betNumber.substring(i * 2, i * 2 + 2) + ",";
+        }
+        return result;
+    }
+
     /**
-     * 11x5 定位胆
+     * 11x5任选几中几
+     * @param lotteryNumber
+     * @param betNumber
+     * @param playCode
      * @return
      */
-    public static int bc11x5Dwd(@Nonnull String lotteryNumber, @Nonnull String betNumber){
+    public static int bc11x5rx(@Nonnull String lotteryNumber, @Nonnull String betNumber, @Nonnull String playCode){
+        int xuanCount = Integer.valueOf(playCode.substring(playCode.length() - 1, playCode.length()));
+        xuanCount = xuanCount > 5 ? 5 : xuanCount;
         int winCount = 0;
-        //将投注开奖数字转化为数组
         String[] betNumbers = betNumber.split(",");
-        String[] lotteryNumbers = lotteryNumber.split(",");
-        for(int i = 0; i < 5; i++){
-            String bet = betNumbers[i];
-            String bet1 = "";
-            if(bet.equals("-")){
-                continue;
+        List<String> list = combine(betNumbers, xuanCount);
+        for(String s : list){
+            String[] betNumbers1 = s.split(" ");
+            int count = 0;
+            for(String betNumber1 : betNumbers1){
+                if(lotteryNumber.contains(betNumber1)){
+                    count++;
+                }
             }
-            for(int j = 0; j < bet.length() - 2; j += 2){
-                bet1 += bet.substring(j, j + 2) + ",";
-            }
-            if(bet1.contains(lotteryNumbers[i])){
+            if(count >= xuanCount){
                 winCount++;
             }
         }
         return winCount;
     }
 
-    public static int bc11x5rxfs(@Nonnull String lotteryNumber, @Nonnull String betNumber, @Nonnull String playCode){
+    /**
+     * 11x5不定位胆
+     * @param lotteryNumber
+     * @param betNumber
+     * @return
+     */
+    public static int bc11x5bdwd(@Nonnull String lotteryNumber, @Nonnull String betNumber){
         int winCount = 0;
-        //将投注开奖数字转化为数组
         String[] betNumbers = betNumber.split(",");
-        String[] lotteryNumbers = lotteryNumber.split(",");
-        int count = Integer.valueOf(playCode.substring(playCode.length() - 1, playCode.length()));
-        List<String> ss = combine(betNumbers, count);
-        for(int i = 0; i < 5; i++){
-            for(String s : ss.get(i).split(" ")){
-                s.equals(lotteryNumbers[i]);
+        lotteryNumber = lotteryNumber.substring(0, 8);
+        for(String betNumber1 : betNumbers){
+            if(lotteryNumber.contains(betNumber1)){
+                winCount++;
             }
         }
-        return 0;
+        return winCount;
     }
 
-
-    public static void main(String[] args) {
-        String[] ss = {"01", "02", "03"};
-        for(String s : combine(ss, 2)){
-            System.out.println(s);
+    /**
+     * 11x5胆拖
+     * @param lotteryNumber
+     * @param betNumber
+     * @param playCode
+     * @return
+     */
+    public static int bc11x5dt(@Nonnull String lotteryNumber, @Nonnull String betNumber, @Nonnull String playCode){
+        if(playCode.contains("group")){
+            if(playCode.contains("start2")){
+                lotteryNumber = lotteryNumber.substring(0, 5);
+            }
+            if(playCode.contains("start3")){
+                lotteryNumber = lotteryNumber.substring(0, 8);
+            }
         }
+        String[] betNumbers = betNumber.split(";");
+        int winCount = 0;
+        String dan = betNumbers[0].replace("胆", "");
+        for(String s : dan.split(",")) {
+            if (lotteryNumber.contains(s)) {
+                if(playCode.contains("x2")){
+                    for(String s1 : betNumbers[1].split(",")){
+                        if(lotteryNumber.contains(s1)){
+                            winCount++;
+                        }
+                    }
+
+                }else if(playCode.contains("x3")){
+                    for(String s1 : combine(betNumbers[1].split(","), 2)){
+                        int count = 0;
+                        for(String s2 : s1.split(" ")){
+                            if(lotteryNumber.contains(s2)){
+                                count++;
+                            }
+                        }
+                        if(count == 2){
+                            winCount++;
+                        }
+                    }
+                }
+            }
+        }
+        return winCount;
     }
 
-    private static String pk10SubString(String betNumber){
-        String result = "";
-        for(int i = 0; (i * 2 + 2) < betNumber.length() ; i++){
-            result += betNumber.substring(i * 2, i * 2 + 2) + ",";
+    /**
+     * 11x5直选复式
+     * @param lotteryNumber
+     * @param betNumber
+     * @param playCode
+     * @return
+     */
+    public static int bc11x5zxfs(@Nonnull String lotteryNumber, @Nonnull String betNumber, @Nonnull String playCode){
+        String[] betNumbers = betNumber.split(",");
+        if(playCode.contains("start2")){
+            lotteryNumber = lotteryNumber.substring(0, 5);
         }
-        return result;
+        if(playCode.contains("start3")){
+            lotteryNumber = lotteryNumber.substring(0, 8);
+        }
+        String[] lotteryNumbers = lotteryNumber.split(",");
+        boolean flag = true;
+        for(int i = 0; i < lotteryNumber.length(); i++) {
+            if (!pk10SubString(betNumbers[i]).contains(lotteryNumbers[i])) {
+                flag = false;
+            }
+        }
+        return flag ? 1 : 0;
+    }
+
+    public static int bc11x5zuxuanfs(@Nonnull String lotteryNumber, @Nonnull String betNumber, @Nonnull String playCode){
+        String[] betNumbers = betNumber.split(",");
+        int needCount = 0;
+        int winCount = 0;
+        if(playCode.contains("start2")){
+            needCount = 2;
+            lotteryNumber = lotteryNumber.substring(0, 5);
+        }
+        if(playCode.contains("start3")){
+            needCount = 3;
+            lotteryNumber = lotteryNumber.substring(0, 8);
+        }
+        for(String s : combine(betNumbers, needCount)){
+            int count = 0;
+            for(String ss : s.split(" ")) {
+                if (lotteryNumber.contains(ss)) {
+                    count++;
+                }
+            }
+            if(count >= needCount){
+                winCount++;
+            }
+        }
+        return winCount;
     }
 
     /**
@@ -440,7 +541,7 @@ public class GameLottery {
      * @param num M选N中 N的个数
      * @return
      */
-    private static List<String> combine(String[] betNumber, int num) {
+    public static List<String> combine(String[] betNumber, int num) {
         List<String> list = new ArrayList<String>();
         StringBuffer sb = new StringBuffer();
         String[] b = new String[betNumber.length];

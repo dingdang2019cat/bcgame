@@ -60,20 +60,20 @@ public class BC11x5Lottery implements Runnable{
                 String playCode = bcLotteryOrder.getPlayCode();
                 String betNumber = bcLotteryOrder.getHaoMa();
                 int winCount = 0;
-                /*
-                if(playCode.contains("fs")){
-                    winCount = GameLottery.pk10FsLottery(looteryContent, betNumber);
-                }else if(playCode.contains("_dj")){
-                    winCount = GameLottery.pk10CqLottery(looteryContent, betNumber);
+                if(playCode.contains("dt")){
+                    winCount = GameLottery.bc11x5dt(looteryContent, betNumber, playCode);
+                }else if(playCode.endsWith("front")){
+                    winCount = GameLottery.bc11x5zxfs(looteryContent, betNumber, playCode);
                 }else if(playCode.contains("dwd")){
                     winCount = GameLottery.pk10DwdLottery(looteryContent, betNumber, playCode);
-                }else if(playCode.contains("_lh")){
-                    winCount = GameLottery.pk10Lh(looteryContent, betNumber);
-                }else if(playCode.contains("star2_and")){
-                    winCount = GameLottery.pk10Gyh(looteryContent, betNumber);
+                }else if(playCode.contains("n11x5_front3_nx1")){
+                    winCount = GameLottery.bc11x5bdwd(looteryContent, betNumber);
+                }else if(playCode.endsWith("group")){
+                    winCount = GameLottery.bc11x5zuxuanfs(looteryContent, betNumber, playCode);
+                }else{
+                    winCount = GameLottery.bc11x5rx(looteryContent, betNumber, playCode);
                 }
-                */
-                bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * (bcLotteryOrder.getMinBonusOdds() / 2));
+                bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2));
                 bcLotteryOrder.setWinZhuShu(winCount);
                 LotteryCommon.addMoneyAndHistory(winCount, bcLotteryOrderManager, traceManager, bcLotteryOrder, userManager, moneyHistoryManager);
             }catch (Exception e){

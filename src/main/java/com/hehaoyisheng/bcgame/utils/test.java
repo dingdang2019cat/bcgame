@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import com.hehaoyisheng.bcgame.common.BaseData;
+import com.hehaoyisheng.bcgame.common.GameLottery;
 import com.hehaoyisheng.bcgame.common.LotteryThread;
 import com.hehaoyisheng.bcgame.dao.*;
 import com.hehaoyisheng.bcgame.entity.*;
@@ -31,14 +32,14 @@ import java.util.Map;
 
 public class test {
     public static void main(String[] args) throws Exception {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
-        BcLotteryHistoryDAO bcLotteryHistoryDAO = (BcLotteryHistoryDAO) applicationContext.getBean("bcLotteryHistoryDAO");
-        BcLotteryHistory bcLotteryOrder = new BcLotteryHistory();
-        bcLotteryOrder.setLotteryType("cqssc");
-        List<BcLotteryHistory> lotteryOrders = bcLotteryHistoryDAO.select(bcLotteryOrder, 0, 100);
-        for(BcLotteryHistory bcLotteryHistory1 : lotteryOrders){
-            lotteryThread.lottery("cqssc", bcLotteryHistory1.getSeasonId(), bcLotteryHistory1.getNums());
+        /*
+        String[] ss = {"aa", "bb", "cc"};
+        List<String> list = GameLottery.combine(ss, 2);
+        for(String s : list){
+            System.out.println(s);
         }
+        */
+
+        System.out.print("01,02,03,04,05".substring(0, 8));
     }
 }

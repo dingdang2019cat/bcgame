@@ -1,5 +1,7 @@
 package com.hehaoyisheng.bcgame.common;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.utils.HttpClientUtil;
@@ -23,16 +25,14 @@ public class GameThread {
             return;
         }
         if(type.equals("txssc")){
-            String result = HttpClientUtil.sendHttpGet("http://www.off0.com/index.php");
-            Document document = Jsoup.parse(result);
-            for(Element element1 : document.getElementsByTag("tr")) {
-                Elements elements = element1.getElementsByTag("td");
-                if (elements.size() > 5) {
-                    String qihao = (Long.valueOf(elements.get(1).text().replace("-", "")) + 1) + "";
-                    GameData.gameSeasonId.put(type, qihao);
-                    GameData.gameTime.put(type, System.currentTimeMillis() + 6000L);
-                    return;
-                }
+            String result = HttpClientUtil.sendHttpGet("https://www.369kj.com/txffc/kj/txffc.php");
+            JSONObject json = JSON.parseObject(result);
+            JSONArray jsonArray = json.getJSONArray("list");
+            for(int k = 0; k < jsonArray.size(); k++){
+                String qihao = (Long.valueOf(jsonArray.getJSONObject(0).getString("period")) + 1) + "";
+                GameData.gameSeasonId.put(type, qihao);
+                GameData.gameTime.put(type, System.currentTimeMillis() + 6000L);
+                return;
             }
             return;
         }

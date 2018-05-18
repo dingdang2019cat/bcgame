@@ -1,5 +1,8 @@
 package com.hehaoyisheng.bcgame.job;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.common.LotteryThread;
 import com.hehaoyisheng.bcgame.entity.BcLotteryHistory;
@@ -66,58 +69,21 @@ public class TxSSCJob {
             GameData.gameSeasonId.put(type, qiHao);
             for(int i = 0; i < 100; i++){
                 System.out.println("-------------------------------------------begin");
-                String result = HttpClientUtil.sendHttpGet("http://www.off0.com/index.php");
-                System.out.println(result);
-                Document document = Jsoup.parse(result);
-                //Element element = document.getElementById("cpdata");
-                //Elements elements = document.getElementsByTag("tr");
-                for(Element element1 : document.getElementsByTag("tr")){
-                    System.out.println(element1.text());
-                    Elements elements = element1.getElementsByTag("td");
-                    if(elements.size() > 5){
-                        System.out.println(elements.get(1).text().replace("-", ""));
-                       if(qihao.equals(elements.get(1).text().replace("-", ""))){
-                           BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
-                           bcLotteryHistory.setLotteryType(type);
-                           bcLotteryHistory.setSeasonId(qihao);
-                           bcLotteryHistory.setNums(elements.get(4).text());
-                           bcLotteryHistory.setOpenTime(new Date());
-                           bcLotteryHistoryManager.insert(bcLotteryHistory);
-                           GameData.lastOpen.put(type, bcLotteryHistory);
-                           /*
-                           List<YiLou> yiLous = yiLouManager.select(type, 0, 1);
-                           YiLou yiLou = yiLous.get(0);
-                           String[] yiLouNums = yiLou.getContent().split(" ");
-                           String[] lotteryNums = bcLotteryHistory.getNums().split(",");
-                           YiLou yiLou1 = new YiLou();
-                           String sss = "";
-                           for(int l = 0; l < 5; l++){
-                               String[] yiLouNums1 = yiLouNums[l].split(",");
-                               Integer lotteryNumInteger = Integer.valueOf(lotteryNums[l]);
-                               if(!type.contains("ssc")){
-                                   lotteryNumInteger = lotteryNumInteger - 1;
-                               }
-                               for(int p  = 0 ; p < yiLouNums1.length; p++){
-                                   Integer yi = Integer.valueOf(yiLouNums[p]);
-                                   yi = yi + 1;
-                                   if(p == lotteryNumInteger){
-                                       yi = 0;
-                                   }
-                                   sss += yi + ",";
-                               }
-                               sss = sss.substring(0, sss.length() - 1);
-                               sss += " ";
-                           }
-                           sss = sss.substring(0, sss.length() - 1);
-                           yiLou1.setSessionId(qihao);
-                           yiLou1.setType(type);
-                           yiLou1.setContent(sss);
-                           yiLou1.setNums(bcLotteryHistory.getNums());
-                           yiLouManager.insert(yiLou1);
-                           */
-                           lotteryThread.lottery(type, qihao, bcLotteryHistory.getNums());
-                           return;
-                        }
+                String result = HttpClientUtil.sendHttpGet("https://www.369kj.com/txffc/kj/txffc.php");
+                JSONObject json = JSON.parseObject(result);
+                JSONArray jsonArray = json.getJSONArray("list");
+                for(int k = 0; k < jsonArray.size(); k++){
+                    JSONObject jsonObject = jsonArray.getJSONObject(k);
+                    if(qihao.equals(jsonObject.getString("period"))){
+                        BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
+                        bcLotteryHistory.setLotteryType(type);
+                        bcLotteryHistory.setSeasonId(qihao);
+                        bcLotteryHistory.setNums(jsonObject.getString("result"));
+                        bcLotteryHistory.setOpenTime(new Date());
+                        bcLotteryHistoryManager.insert(bcLotteryHistory);
+                        GameData.lastOpen.put(type, bcLotteryHistory);
+                        lotteryThread.lottery(type, qihao, bcLotteryHistory.getNums());
+                        return;
                     }
                 }
                 Thread.sleep(3000);
