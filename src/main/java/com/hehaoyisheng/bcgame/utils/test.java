@@ -32,10 +32,10 @@ public class test {
     public static void main(String[] args) throws Exception {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         YiLouManager yiLouManager = (YiLouManager)applicationContext.getBean("yiLouManager");
-        String type = "gd11x5";
+        String type = "txssc";
         BcLotteryHistoryDAO bcLotteryHistoryDAO = (BcLotteryHistoryDAO) applicationContext.getBean("bcLotteryHistoryDAO");
         BcLotteryHistory bcLotteryHistory1 = new BcLotteryHistory();
-        bcLotteryHistory1.setLotteryType("gd11x5");
+        bcLotteryHistory1.setLotteryType("txssc");
         List<BcLotteryHistory> bcLotteryHistories = bcLotteryHistoryDAO.select(bcLotteryHistory1, 0, 150);
         for(int i = bcLotteryHistories.size() - 1; i >= 0; i--){
             BcLotteryHistory bcLotteryHistory = bcLotteryHistories.get(i);

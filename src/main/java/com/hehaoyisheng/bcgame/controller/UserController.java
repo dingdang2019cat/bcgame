@@ -1041,6 +1041,7 @@ public class UserController {
             System.out.println(yiLou.getSessionId() + "   " + yiLou.getContent());
         }
         model.addAttribute("gameName", GameType.gameType.get(gameType));
+        model.addAttribute("gameNameCode", gameType);
         model.addAttribute("start", gameType.contains("ssc") ? 0 : 1);
         model.addAttribute("end", gameType.contains("ssc") ? 9 : gameType.contains("pk10") ? 10 : 11);
         model.addAttribute("list", list);

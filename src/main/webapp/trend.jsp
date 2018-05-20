@@ -152,7 +152,7 @@
                         <c:set value="0" var="startIndex" />
                         <c:forEach items="${ str2 }" var="s1">
                             <c:set value="${startIndex + 1}" var="startIndex1" />
-                            <c:if test="${fn:contains(gameName, 'ssc')}">
+                            <c:if test="${fn:contains(gameNameCode, 'ssc')}">
                                 <c:set value="${startIndex}" var="startIndex1" />
                             </c:if>
                             <c:choose>
