@@ -1031,12 +1031,15 @@ public class UserController {
     }
 
     @RequestMapping("/lotts/{gameType}/trend")
-    public String trend(@PathVariable String gameType, Integer len){
+    public String trend(@PathVariable String gameType, Integer len, Model model){
         len = len == null ? 30 : len;
         BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
         bcLotteryHistory.setLotteryType(gameType);
         List<YiLou> list = yiLouManager.select(gameType, 0, len);
-
+        for(YiLou yiLou : list){
+            System.out.println(yiLou.getSessionId() + "   " + yiLou.getContent());
+        }
+        model.addAttribute("list", list);
         return "trend";
     }
 

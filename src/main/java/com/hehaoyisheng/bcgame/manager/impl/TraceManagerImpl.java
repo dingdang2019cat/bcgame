@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
-@Component
+@Component("traceManager")
 public class TraceManagerImpl implements TraceManager{
 
     private static final Logger logger = LoggerFactory.getLogger(TraceManagerImpl.class);

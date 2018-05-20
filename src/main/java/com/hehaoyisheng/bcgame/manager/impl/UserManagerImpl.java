@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-@Component
+@Component("userManager")
 public class UserManagerImpl implements UserManager {
 
     private static final Logger logger = LoggerFactory.getLogger(UserManagerImpl.class);

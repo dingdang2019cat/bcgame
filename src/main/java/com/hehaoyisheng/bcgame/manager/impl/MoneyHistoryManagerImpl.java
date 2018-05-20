@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
-@Component
+@Component("moneyHistoryManager")
 public class MoneyHistoryManagerImpl implements MoneyHistoryManager{
 
     @Resource
