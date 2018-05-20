@@ -26,7 +26,7 @@
 
     <!-- 开奖走势图头部 -->
     <div class="trendHeaderArea">
-        <span class="lottsType-trend">彩种：重庆时时彩</span>
+        <span class="lottsType-trend">彩种：${gameName}</span>
         <ul class="lottsGroup-trend">
             <li class="lottsDetail-trend active">
                 <a href="javascript:;">五星</a>
@@ -100,116 +100,19 @@
                 <!--<span>全部</span>-->
                 <!--</label>-->
                 <!--</td>-->
-
-
-                <td class="trendBorder-l" width="17">
-                    0</td>
-
-                <td width="17">1</td>
-
-                <td width="17">2</td>
-
-                <td width="17">3</td>
-
-                <td width="17">4</td>
-
-                <td width="17">5</td>
-
-                <td width="17">6</td>
-
-                <td width="17">7</td>
-
-                <td width="17">8</td>
-
-                <td width="17">9</td>
-
-
-                <td class="trendBorder-l" width="17">
-                    0</td>
-
-                <td width="17">1</td>
-
-                <td width="17">2</td>
-
-                <td width="17">3</td>
-
-                <td width="17">4</td>
-
-                <td width="17">5</td>
-
-                <td width="17">6</td>
-
-                <td width="17">7</td>
-
-                <td width="17">8</td>
-
-                <td width="17">9</td>
-
-
-                <td class="trendBorder-l" width="17">
-                    0</td>
-
-                <td width="17">1</td>
-
-                <td width="17">2</td>
-
-                <td width="17">3</td>
-
-                <td width="17">4</td>
-
-                <td width="17">5</td>
-
-                <td width="17">6</td>
-
-                <td width="17">7</td>
-
-                <td width="17">8</td>
-
-                <td width="17">9</td>
-
-
-                <td class="trendBorder-l" width="17">
-                    0</td>
-
-                <td width="17">1</td>
-
-                <td width="17">2</td>
-
-                <td width="17">3</td>
-
-                <td width="17">4</td>
-
-                <td width="17">5</td>
-
-                <td width="17">6</td>
-
-                <td width="17">7</td>
-
-                <td width="17">8</td>
-
-                <td width="17">9</td>
-
-
-                <td class="trendBorder-l" width="17">
-                    0</td>
-
-                <td width="17">1</td>
-
-                <td width="17">2</td>
-
-                <td width="17">3</td>
-
-                <td width="17">4</td>
-
-                <td width="17">5</td>
-
-                <td width="17">6</td>
-
-                <td width="17">7</td>
-
-                <td width="17">8</td>
-
-                <td width="17">9</td>
+                <c:forEach var="x1" begin="0" end="4" step="1">
+                    <c:forEach var="x" begin="${start}" end="${end}" step="1">
+                        <c:choose>
+                            <c:when test="${start == 0}">
+                                <td class="trendBorder-l" width="17">
+                                    ${x}</td>
+                            </c:when>
+                            <c:otherwise>
+                                <td width="17">${x}</td>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </c:forEach>
 
 
                 <!--
@@ -248,11 +151,15 @@
                         <c:set value="${ fn:split(s, ',') }" var="str2" />
                         <c:set value="0" var="startIndex" />
                         <c:forEach items="${ str2 }" var="s1">
+                            <c:set value="${startIndex + 1}" var="startIndex1" />
+                            <c:if test="${fn:contains(gameName, 'ssc')}">
+                                <c:set value="${startIndex}" var="startIndex1" />
+                            </c:if>
                             <c:choose>
                                 <c:when test="${startIndex == 0}">
                                     <td class="trendBorder-l">${s1}</td>
                                 </c:when>
-                                <c:when test="${fn:split(list1.nums, ',')[index] == startIndex}">
+                                <c:when test="${fn:split(list1.nums, ',')[index] == startIndex1}">
                                     <td class="trendBall-${index + 1}">${s1}</td>
                                 </c:when>
                                 <c:otherwise>

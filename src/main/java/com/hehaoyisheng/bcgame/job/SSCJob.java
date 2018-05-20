@@ -161,19 +161,22 @@ public class SSCJob {
                         YiLou yiLou = yiLous.get(0);
                         String[] yiLouNums = yiLou.getContent().split(" ");
                         String[] lotteryNums = bcLotteryHistory.getNums().split(",");
+                        String[] lotteryNums1 = yiLou.getNums().split(",");
                         YiLou yiLou1 = new YiLou();
                         String sss = "";
                         for(int l = 0; l < 5; l++){
                             String[] yiLouNums1 = yiLouNums[l].split(",");
                             Integer lotteryNumInteger = Integer.valueOf(lotteryNums[l]);
+                            Integer lotteryNumInteger1 = Integer.valueOf(lotteryNums1[l]);
                             if(!type.contains("ssc")){
                                 lotteryNumInteger = lotteryNumInteger - 1;
+                                lotteryNumInteger1 = lotteryNumInteger1 - 1;
                             }
                             for(int p  = 0 ; p < yiLouNums1.length; p++){
                                 Integer yi = Integer.valueOf(yiLouNums1[p]);
                                 yi = yi + 1;
-                                if(p == lotteryNumInteger){
-                                    yi = 0;
+                                if(p == lotteryNumInteger1){
+                                    yi = 1;
                                 }
                                 sss += yi + ",";
                             }

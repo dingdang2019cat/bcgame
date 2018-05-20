@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.hehaoyisheng.bcgame.common.BaseData;
 import com.hehaoyisheng.bcgame.common.GameData;
+import com.hehaoyisheng.bcgame.common.GameType;
 import com.hehaoyisheng.bcgame.common.OnlineUser;
 import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.transfar.UserTransfar;
@@ -1039,6 +1040,9 @@ public class UserController {
         for(YiLou yiLou : list){
             System.out.println(yiLou.getSessionId() + "   " + yiLou.getContent());
         }
+        model.addAttribute("gameName", GameType.gameType.get(gameType));
+        model.addAttribute("start", gameType.contains("ssc") ? 0 : 1);
+        model.addAttribute("end", gameType.contains("ssc") ? 9 : gameType.contains("pk10") ? 10 : 11);
         model.addAttribute("list", list);
         return "trend";
     }

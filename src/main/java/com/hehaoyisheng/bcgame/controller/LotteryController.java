@@ -52,6 +52,9 @@ public class LotteryController {
     @RequestMapping("/{gameType}/bet")
     @ResponseBody
     public Result doBet(@ModelAttribute("user") User user, @PathVariable String gameType, int isTrace, Integer traceWinStop, Integer bounsType, String bouns, Double bounsRange, OrderModel order, double amount, int count, int force, TraceModel traceOrders){
+        if(order.getOrder().get(0).getPlayId().contains("single")){
+            return Result.faild("暂时不允许单式投注！", 400);
+        }
         User user1 = userManager.select(user, null, null, null, null, null, null).get(0);
         /*
         double bouns1 = 0;
