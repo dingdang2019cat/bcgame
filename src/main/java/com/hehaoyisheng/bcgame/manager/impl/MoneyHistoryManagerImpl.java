@@ -41,4 +41,13 @@ public class MoneyHistoryManagerImpl implements MoneyHistoryManager{
         }
         return -1;
     }
+
+    public double sumFandin(MoneyHistory moneyHistory, Date startTime, Date endTime) {
+        try {
+            return moneyHistoryDAO.sumFandin(moneyHistory, startTime, endTime);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

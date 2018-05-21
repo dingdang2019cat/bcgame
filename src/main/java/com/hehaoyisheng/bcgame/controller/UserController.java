@@ -10,10 +10,7 @@ import com.hehaoyisheng.bcgame.common.GameType;
 import com.hehaoyisheng.bcgame.common.OnlineUser;
 import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.transfar.UserTransfar;
-import com.hehaoyisheng.bcgame.entity.vo.Bank;
-import com.hehaoyisheng.bcgame.entity.vo.InfoVO;
-import com.hehaoyisheng.bcgame.entity.vo.Result;
-import com.hehaoyisheng.bcgame.entity.vo.UserVO;
+import com.hehaoyisheng.bcgame.entity.vo.*;
 import com.hehaoyisheng.bcgame.manager.*;
 import com.hehaoyisheng.bcgame.utils.MD5Util;
 import org.apache.commons.lang.StringUtils;
@@ -71,6 +68,9 @@ public class UserController {
 
     @Resource
     private YiLouManager yiLouManager;
+
+    @Resource
+    private MoneyHistoryManager moneyHistoryManager;
 
     @ModelAttribute("user1")
     public User addUser(User user) {
@@ -1183,8 +1183,106 @@ public class UserController {
 
     @RequestMapping("/report/teamList")
     @ResponseBody
-    public Result teamList(){
-        return Result.success("");
+    public Result teamList(@ModelAttribute("user") User user, Integer rows, Integer page, Integer teamStatus, String startTime, String endTime, String account){
+        Date start = null;
+        Date end = null;
+        try{
+            start = simpleDateFormat.parse(startTime + " 00:00:00");
+            end = simpleDateFormat.parse(endTime + " 23:59:59");
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.faild("查询格式错误！", 400);
+        }
+        Map<String, Object> resultMp = Maps.newHashMap();
+        BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
+        bcLotteryOrder.setAccount(StringUtils.isEmpty(account) ? null : account);
+        bcLotteryOrder.setParentList(user.getParentList() + "%");
+        bcLotteryOrder.setStatus(0);
+        double allWinMoney = bcLotteryOrderManager.sumWinMoney(bcLotteryOrder, start, end);
+        double allBuyMoney = bcLotteryOrderManager.sumBuyMoney(bcLotteryOrder, start, end);
+        MoneyHistory moneyHistory = new MoneyHistory();
+        moneyHistory.setParentList(user.getParentList() + "%");
+        moneyHistory.setAccount(StringUtils.isEmpty(account) ? null : account);
+        moneyHistory.setChangeType("下级投注返现");
+        double allfandin = moneyHistoryManager.sumFandin(moneyHistory, start, end);
+
+        Recharge recharge = new Recharge();
+        recharge.setAccount(StringUtils.isEmpty(account) ? null : account);
+        recharge.setParentList(user.getParentList() + "%");
+        recharge.setStatus(2);
+        double allRech = rechargeManager.sum(recharge, start, end);
+        recharge.setRechargeType(1);
+        double gongzi = rechargeManager.sum(recharge, start, end);
+        double yingkui = allBuyMoney - allWinMoney - gongzi;
+
+        DrawHistory drawHistory = new DrawHistory();
+        drawHistory.setAccount(StringUtils.isEmpty(account) ? null : account);
+        drawHistory.setParentList(user.getParentList() + "%");
+        double allTikuan = drawHistoryManager.sum(drawHistory, start, end);
+
+        ReportVO reportVO = new ReportVO();
+        reportVO.setAccount(StringUtils.isEmpty(account) ? user.getUsername() : account);
+        reportVO.setActualSaleAmount(allBuyMoney);
+        reportVO.setCount(yingkui);
+        reportVO.setRechargeAmount(allRech);
+        reportVO.setWages(gongzi);
+        reportVO.setWinAmount(allWinMoney);
+        reportVO.setRebateAmount(allfandin);
+        reportVO.setDrawingAmount(allTikuan);
+        resultMp.put("teamReport", reportVO);
+        resultMp.put("userReport", new ReportVO());
+        String[] tree = {};
+        resultMp.put("userTree", tree);
+        List<ReportVO> list = Lists.newArrayList();
+        User user1 = new User();
+        user1.setShangji(user.getUsername());
+        Map<String, Object> map = Maps.newHashMap();
+        map.put("obj", null);
+        map.put("total", 0);
+        map.put("rows", list);
+        resultMp.put("list", map);
+        if(!StringUtils.isEmpty(account)){
+            return Result.success(resultMp);
+        }
+        List<User> users = userManager.select(user1, rows*(page - 1), rows, null, null, null, null);
+        int total = userManager.count(user1, rows*(page - 1), rows, null, null, null, null);
+        map.put("total", total);
+        for(User user2 : users){
+            BcLotteryOrder bcLotteryOrder1 = new BcLotteryOrder();
+            bcLotteryOrder1.setParentList(user2.getParentList() + "%");
+            bcLotteryOrder1.setStatus(0);
+            double allWinMoney1 = bcLotteryOrderManager.sumWinMoney(bcLotteryOrder1, start, end);
+            double allBuyMoney1 = bcLotteryOrderManager.sumBuyMoney(bcLotteryOrder1, start, end);
+            MoneyHistory moneyHistory1 = new MoneyHistory();
+            moneyHistory1.setParentList(user2.getParentList() + "%");
+            moneyHistory1.setChangeType("下级投注返现");
+            double allfandin1 = moneyHistoryManager.sumFandin(moneyHistory1, start, end);
+
+            Recharge recharge1 = new Recharge();
+            recharge1.setParentList(user2.getParentList() + "%");
+            recharge1.setStatus(2);
+            double allRech1 = rechargeManager.sum(recharge1, start, end);
+            recharge1.setRechargeType(1);
+            double gongzi1 = rechargeManager.sum(recharge1, start, end);
+            double yingkui1 = allBuyMoney1 - allWinMoney1 - gongzi1;
+
+            DrawHistory drawHistory1 = new DrawHistory();
+            drawHistory1.setParentList(user2.getParentList() + "%");
+            double allTikuan1 = drawHistoryManager.sum(drawHistory1, start, end);
+
+            ReportVO reportVO1 = new ReportVO();
+            reportVO1.setAccount(user2.getUsername());
+            reportVO1.setActualSaleAmount(allBuyMoney1);
+            reportVO1.setCount(yingkui1);
+            reportVO1.setRechargeAmount(allRech1);
+            reportVO1.setWages(gongzi1);
+            reportVO1.setWinAmount(allWinMoney1);
+            reportVO1.setRebateAmount(allfandin1);
+            reportVO1.setDrawingAmount(allTikuan1);
+            list.add(reportVO1);
+        }
+        map.put("rows", list);
+        return Result.success(resultMp);
     }
 
     @RequestMapping("/message/messageContentRead")

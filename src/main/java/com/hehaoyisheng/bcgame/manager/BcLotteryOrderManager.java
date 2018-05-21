@@ -13,4 +13,8 @@ public interface BcLotteryOrderManager {
     List<BcLotteryOrder> select(BcLotteryOrder bcLotteryOrder, Integer from, Integer limit, Date startTime, Date endTime);
 
     int count(BcLotteryOrder bcLotteryOrder, Integer from, Integer limit, Date startTime, Date endTime);
+
+    double sumBuyMoney(BcLotteryOrder bcLotteryOrder, Date startTime, Date endTime);
+
+    double sumWinMoney(BcLotteryOrder bcLotteryOrder, Date startTime, Date endTime);
 }

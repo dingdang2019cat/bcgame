@@ -38,5 +38,17 @@ public interface MoneyHistoryDAO {
             " </trim> " +
             " </script> ")
     int count(@Param("moneyHistory") MoneyHistory moneyHistory, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+
+    @Select("<script> " +
+            "select sum(amount) " +
+            "from moneyHistory" +
+            " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
+            " <if test=\"moneyHistory.account != null\"> AND account=#{moneyHistory.account}</if> " +
+            " <if test=\"moneyHistory.changeType != null\"> AND changeType = #{moneyHistory.changeType}</if> " +
+            " <if test=\"moneyHistory.parentList != null\"> AND parentList like #{moneyHistory.parentList}</if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
+            " </trim> " +
+            " </script> ")
+    double sumFandin(@Param("moneyHistory") MoneyHistory moneyHistory, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }
 

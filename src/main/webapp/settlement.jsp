@@ -616,9 +616,9 @@
                             <span>至</span>
                             <input type="text" class="labelCond Wdate" id="teamConditionEndTime" value="<%=simpleDateFormat.format(System.currentTimeMillis())%>" name="endTime" onclick="WdatePicker({minDate:&#39;<%=simpleDateFormat.format(System.currentTimeMillis())%>&#39;,maxDate:&#39;%y-%M-%d&#39;})"><span>(23:59:59)</span>
                             <span class="changeTime" id="showChoose">
-	   							<!--<a href="javascript:;" class="active" onclick="chooseTime(1, this)">今日</a>
+	   							<a href="javascript:;" class="active" onclick="chooseTime(1, this)">今日</a>
 	                        	<a href="javascript:;" onclick="chooseTime(2, this)" class="">昨日</a>
-	                        	<a href="javascript:;" onclick="chooseTime(3, this)" class="">本月</a>-->
+	                        	<a href="javascript:;" onclick="chooseTime(3, this)" class="">本月</a>
 	    					</span>
                         </label>
                         <label id="accountArea">

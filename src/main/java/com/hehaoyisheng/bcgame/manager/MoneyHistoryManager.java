@@ -11,4 +11,5 @@ public interface MoneyHistoryManager {
     List<MoneyHistory> select(MoneyHistory moneyHistory, Integer from, Integer limit, Date startTime, Date endTime);
 
     int count(MoneyHistory moneyHistory, Date startTime, Date endTime);
+    double sumFandin(MoneyHistory moneyHistory, Date startTime, Date endTime);
 }

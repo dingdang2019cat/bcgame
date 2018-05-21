@@ -43,6 +43,8 @@ public interface RechargeDAO {
             "select sum(realAmount) from recharge " +
             " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
             " <if test=\"recharge.account != null\"> AND account=#{recharge.account}</if> " +
+            " <if test=\"recharge.rechargeType != null\"> AND rechargeType=#{recharge.rechargeType}</if> " +
+            " <if test=\"recharge.status != null\"> AND rechargeType=#{recharge.status}</if> " +
             " <if test=\"recharge.parentList != null\"> AND parentList like #{recharge.parentList}</if> " +
             " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
             " </trim> " +

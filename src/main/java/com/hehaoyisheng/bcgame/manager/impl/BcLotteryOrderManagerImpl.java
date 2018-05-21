@@ -56,4 +56,24 @@ public class BcLotteryOrderManagerImpl implements BcLotteryOrderManager{
         }
         return 0;
     }
+
+    public double sumBuyMoney(BcLotteryOrder bcLotteryOrder, Date startTime, Date endTime) {
+        try {
+            return bcLotteryOrderDAO.sumBuyMoney(bcLotteryOrder, startTime, endTime);
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("insert Error: username:{}, ", e);
+        }
+        return 0;
+    }
+
+    public double sumWinMoney(BcLotteryOrder bcLotteryOrder, Date startTime, Date endTime) {
+        try {
+            return bcLotteryOrderDAO.sumWinMoney(bcLotteryOrder, startTime, endTime);
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("insert Error: username:{}, ", e);
+        }
+        return 0;
+    }
 }

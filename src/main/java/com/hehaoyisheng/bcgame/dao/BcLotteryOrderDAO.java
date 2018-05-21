@@ -59,4 +59,34 @@ public interface BcLotteryOrderDAO {
             " </trim> " +
             " </script> ")
     int count(@Param("bcLotteryOrder") BcLotteryOrder bcLotteryOrder, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+
+    @Select("<script> " +
+            "select sum(buyMoney) from bcLotteryOrder " +
+            " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
+            " <if test=\"bcLotteryOrder.id != null\"> AND id=#{bcLotteryOrder.id}</if> " +
+            " <if test=\"bcLotteryOrder.status != null\"> AND (status=1 OR status=2)</if> " +
+            " <if test=\"bcLotteryOrder.account != null\"> AND account=#{bcLotteryOrder.account}</if> " +
+            " <if test=\"bcLotteryOrder.lotCode != null\"> AND lotCode=#{bcLotteryOrder.lotCode}</if> " +
+            " <if test=\"bcLotteryOrder.qiHao != null\"> AND qiHao=#{bcLotteryOrder.qiHao}</if> " +
+            " <if test=\"bcLotteryOrder.orderId != null\"> AND qiHao=#{bcLotteryOrder.orderId}</if> " +
+            " <if test=\"bcLotteryOrder.parentList != null\"> AND parentList like #{bcLotteryOrder.parentList}</if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
+            " </trim> " +
+            " </script> ")
+    double sumBuyMoney(@Param("bcLotteryOrder") BcLotteryOrder bcLotteryOrder, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+
+    @Select("<script> " +
+            "select sum(winMoney) from bcLotteryOrder " +
+            " <trim prefix=\"where\" prefixOverrides=\"AND |OR \">" +
+            " <if test=\"bcLotteryOrder.id != null\"> AND id=#{bcLotteryOrder.id}</if> " +
+            " <if test=\"bcLotteryOrder.status != null\"> AND (status=1 OR status=2)</if> " +
+            " <if test=\"bcLotteryOrder.account != null\"> AND account=#{bcLotteryOrder.account}</if> " +
+            " <if test=\"bcLotteryOrder.lotCode != null\"> AND lotCode=#{bcLotteryOrder.lotCode}</if> " +
+            " <if test=\"bcLotteryOrder.qiHao != null\"> AND qiHao=#{bcLotteryOrder.qiHao}</if> " +
+            " <if test=\"bcLotteryOrder.orderId != null\"> AND qiHao=#{bcLotteryOrder.orderId}</if> " +
+            " <if test=\"bcLotteryOrder.parentList != null\"> AND parentList like #{bcLotteryOrder.parentList}</if> " +
+            " <if test=\"startTime != null\"><![CDATA[  AND createTime >=  DATE_FORMAT(#{startTime}, '%Y-%m-%d %H:%T:%s') AND createTime <= DATE_FORMAT(#{endTime}, '%Y-%m-%d %H:%T:%s')]]></if>" +
+            " </trim> " +
+            " </script> ")
+    double sumWinMoney(@Param("bcLotteryOrder") BcLotteryOrder bcLotteryOrder, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }
