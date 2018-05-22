@@ -224,7 +224,7 @@ public class LotteryController {
         if(CollectionUtils.isEmpty(list)){
             return null;
         }
-        if(!org.apache.commons.lang.StringUtils.equals(list.get(0).getQiHao(), GameData.gameSeasonId.get(list.get(0).getLotType()))){
+        if(!org.apache.commons.lang.StringUtils.equals(list.get(0).getQiHao(), GameData.gameSeasonId.get(list.get(0).getLotCode()))){
             return Result.faild("不是当期!", 400);
         }
         list.get(0).setStatus(10);

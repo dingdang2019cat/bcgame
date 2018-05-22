@@ -54,22 +54,34 @@ public class TxSSCJob {
     }
 
     public void execute(){
-        try {
-            System.out.println("-------------------------------------------");
-            System.out.println("-------------------------------------------");
-            System.out.println("--------------------txssc--------------");
-            System.out.println("-------------------------------------------");
-            System.out.println("-------------------------------------------");
-            Long time = 60000L;
-            GameData.gameTime.put(type, System.currentTimeMillis() + time);
-            String qihao = GameData.gameSeasonId.get(type);
-            System.out.println(qihao);
-            Integer qiHaoInt = Integer.valueOf(qihao.substring(qihao.length() - 4, qihao.length()));
-            GameData.openCount.put(type, qiHaoInt);
-            String qiHao = (Long.valueOf(qihao) + 1) + "";
-            GameData.gameSeasonId.put(type, qiHao);
-            for(int i = 0; i < 1000; i++){
+
+        System.out.println("-------------------------------------------");
+        System.out.println("-------------------------------------------");
+        System.out.println("--------------------txssc--------------");
+        System.out.println("-------------------------------------------");
+        System.out.println("-------------------------------------------");
+        Long time = 60000L;
+        GameData.gameTime.put(type, System.currentTimeMillis() + time);
+        String qihao = GameData.gameSeasonId.get(type);
+        System.out.println(qihao);
+        Integer qiHaoInt = Integer.valueOf(qihao.substring(qihao.length() - 4, qihao.length()));
+        GameData.openCount.put(type, qiHaoInt);
+        String qiHao = (Long.valueOf(qihao) + 1) + "";
+        GameData.gameSeasonId.put(type, qiHao);
+        for(int i = 0; i < 1000; i++){
+            try {
                 System.out.println("-------------------------------------------begin");
+                String ss = HttpClientUtil.sendHttpGet("http://www.e3sh.com/txffc/");
+
+                Document document = Jsoup.parse(ss);
+                Elements elements = document.getElementsByTag("tr");
+                for(int e = 3; e < elements.size(); e++){
+                    Element element = elements.get(e);
+                    String[] ee = element.text().split(" ");
+                    String period = ee[0] + ee[2];
+                    System.out.println(ee[0] + ee[2] + "   " + ee[3]);
+                    String nums1 = ee[3];
+                /*
                 String result = HttpClientUtil.sendHttpGet("http://77tj.org/api/tencent/onlineim");
                 JSONArray jsonArray = JSON.parseArray(result);
                 for(int k = 0; k < jsonArray.size(); k++){
@@ -88,7 +100,10 @@ public class TxSSCJob {
                     }
                     String period = format1.format(new Date()) + sss1;
                     System.out.println(period + "      " + jsonObject.getLong("onlinenumber"));
+                    */
+
                     if(qihao.equals(period)){
+                        /*
                         String[] ko = (jsonObject.getLong("onlinenumber") + "").split("");
                         Integer koNumber = 0;
                         for(String ko1 : ko){
@@ -100,6 +115,7 @@ public class TxSSCJob {
                         String koString = koNumber + "";
                         String koString1 = (jsonObject.getLong("onlinenumber") + "");
                         String nums1 = koString.substring(koString.length() - 1, koString.length()) + koString1.substring(koString1.length() - 4, koString1.length());
+                        */
                         String nums = "";
                         for(String nu : nums1.split("")){
                             if(nu.equals("")){
@@ -156,13 +172,13 @@ public class TxSSCJob {
                     }
                 }
                 Thread.sleep(3000);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-            try {
-                Thread.sleep(3000);
-            }catch (Exception e1){
-                e1.printStackTrace();
+            }catch (Exception e){
+                e.printStackTrace();
+                try {
+                    Thread.sleep(3000);
+                }catch (Exception e1){
+                    e1.printStackTrace();
+                }
             }
         }
     }

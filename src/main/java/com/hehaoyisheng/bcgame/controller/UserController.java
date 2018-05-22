@@ -914,7 +914,7 @@ public class UserController {
         User user1 = new User();
         user1.setUsername(user.getUsername());
         List<User> list = userManager.select(user, null, null, null, null, null, null);
-        if(!CollectionUtils.isEmpty(list)){
+        if(CollectionUtils.isEmpty(list)){
             return Result.faild("请重新登录！", 400);
         }
         if(list.get(0).getDrawFlag() == 0){

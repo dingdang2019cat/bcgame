@@ -437,9 +437,7 @@
         $('#end').val(end);
     }
     function tikuanpass(id, status){
-        if(!confirm("请仔细审阅该用户最近充值，投注。防止异常行为的出现！已经确认？")){
-            return;
-        }
+        alert("请仔细审阅该用户最近充值，投注。防止异常行为的出现!");
         $.ajax({
             url:"/tikuanpass",
             data : {
