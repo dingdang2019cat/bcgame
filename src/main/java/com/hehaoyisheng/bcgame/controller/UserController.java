@@ -776,7 +776,19 @@ public class UserController {
     public Result chongqian(String account, Double money){
         User user = new User();
         user.setUsername(account);
+        User user1 = userManager.select(user, null, null, null, null, null, null).get(0);
+        Recharge recharge = new Recharge();
+        recharge.setAccount(account);
+        recharge.setAmount(money);
+        recharge.setId(System.currentTimeMillis() + "");
+        recharge.setBankName("人工充值");
+        recharge.setBankNameCode("");
+        recharge.setStatus(2);
+        recharge.setRealAmount(money);
+        recharge.setRechargeType(9);
+        recharge.setParentList(user1.getParentList());
         userManager.update(user, money);
+        rechargeManager.insert(recharge);
         return Result.success(null);
     }
 
@@ -898,8 +910,18 @@ public class UserController {
 
     @RequestMapping("/deposit/checkFee")
     @ResponseBody
-    public Result checkFee(){
-        return Result.success("");
+    public Result checkFee(@ModelAttribute("user") User user){
+        User user1 = new User();
+        user1.setUsername(user.getUsername());
+        List<User> list = userManager.select(user, null, null, null, null, null, null);
+        if(!CollectionUtils.isEmpty(list)){
+            return Result.faild("请重新登录！", 400);
+        }
+        if(list.get(0).getDrawFlag() == 0){
+            return Result.success("");
+        }else{
+            return Result.faild("该用户禁止提现！", 400);
+        }
     }
 
     @RequestMapping(value = "/registByCode", method = RequestMethod.GET)

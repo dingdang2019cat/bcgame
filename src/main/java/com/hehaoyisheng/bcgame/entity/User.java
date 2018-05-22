@@ -7,8 +7,10 @@ public class User {
     private String username;
     private String password;
     private Double money;
+    //0-允许 1-不允许
     private Integer drawFlag;
     private Date createtime;
+    //0-允许 1-不允许
     private Integer touzhuFlag;
     private String ip;
     private Date time;

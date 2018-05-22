@@ -10,6 +10,7 @@ import com.hehaoyisheng.bcgame.common.LotteryThread;
 import com.hehaoyisheng.bcgame.dao.*;
 import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.vo.Province;
+import com.hehaoyisheng.bcgame.job.BuchangJob;
 import com.hehaoyisheng.bcgame.manager.*;
 import com.hehaoyisheng.bcgame.pay.Pay;
 import org.apache.http.Header;
@@ -24,58 +25,50 @@ import org.springframework.util.CollectionUtils;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 public class test {
     public static void main(String[] args) throws Exception {
+        /*
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time1 = simpleDateFormat.format(new Date());
+        Date date = simpleDateFormat.parse(time1.split(" ")[0] + " 00:00:00");
+        String sss1 = ((System.currentTimeMillis() - date.getTime()) / 60000) + "";
+        System.out.println(sss1);
+        */
+
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        YiLouManager yiLouManager = (YiLouManager)applicationContext.getBean("yiLouManager");
-        String type = "txssc";
-        BcLotteryHistoryDAO bcLotteryHistoryDAO = (BcLotteryHistoryDAO) applicationContext.getBean("bcLotteryHistoryDAO");
-        BcLotteryHistory bcLotteryHistory1 = new BcLotteryHistory();
-        bcLotteryHistory1.setLotteryType("txssc");
-        List<BcLotteryHistory> bcLotteryHistories = bcLotteryHistoryDAO.select(bcLotteryHistory1, 0, 150);
-        for(int i = bcLotteryHistories.size() - 1; i >= 0; i--){
-            BcLotteryHistory bcLotteryHistory = bcLotteryHistories.get(i);
-            try {
-                List<YiLou> yiLous = yiLouManager.select(type, 0, 1);
-                YiLou yiLou = yiLous.get(0);
-                String[] yiLouNums = yiLou.getContent().split(" ");
-                String[] lotteryNums = bcLotteryHistory.getNums().split(",");
-                System.out.println("----------------------" + yiLou.getNums() + "--------------------------");
-                String[] lotteryNums1 = yiLou.getNums().split(",");
-                YiLou yiLou1 = new YiLou();
-                String sss = "";
-                for(int l = 0; l < 5; l++){
-                    String[] yiLouNums1 = yiLouNums[l].split(",");
-                    Integer lotteryNumInteger = Integer.valueOf(lotteryNums[l]);
-                    Integer lotteryNumInteger1 = Integer.valueOf(lotteryNums1[l]);
-                    if(!type.contains("ssc")){
-                        lotteryNumInteger1 = lotteryNumInteger1 - 1;
-                    }
-                    for(int p  = 0 ; p < yiLouNums1.length; p++){
-                        Integer yi = Integer.valueOf(yiLouNums1[p]);
-                        yi = yi + 1;
-                        if(p == lotteryNumInteger1){
-                            yi = 1;
-                        }
-                        sss += yi + ",";
-                    }
-                    sss = sss.substring(0, sss.length() - 1);
-                    sss += " ";
-                }
-                sss = sss.substring(0, sss.length() - 1);
-                yiLou1.setSessionId(bcLotteryHistory.getSeasonId());
-                yiLou1.setType(type);
-                yiLou1.setContent(sss);
-                yiLou1.setNums(bcLotteryHistory.getNums());
-                yiLouManager.insert(yiLou1);
-            }catch (Exception e1){
-                e1.printStackTrace();
-            }
-        }
+
+
+        LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
+        lotteryThread.lottery("txssc", "201805211440","8,7,4,6,3");
+
+
+
+
+        /*
+        BcLotteryOrderManager bcLotteryOrderDAO = (BcLotteryOrderManager)applicationContext.getBean("bcLotteryOrderManager");
+        TraceManager traceManager = (TraceManager)applicationContext.getBean("traceManager");
+        UserManager userManager = (UserManager)applicationContext.getBean("userManager");
+        MoneyHistoryManager moneyHistoryManager = (MoneyHistoryManager)applicationContext.getBean("moneyHistoryManager");
+        BcLotteryOrder bcLotteryOrder1 = new BcLotteryOrder();
+        bcLotteryOrder1.setOrderId("c15269104033540");
+        BcLotteryOrder bcLotteryOrder = bcLotteryOrderDAO.select(bcLotteryOrder1, null, null, null, null).get(0);
+        bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * 1 * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2));
+        bcLotteryOrder.setLotteryHaoMa("7,6,6,4,2");
+        bcLotteryOrder.setWinZhuShu(2);
+        LotteryCommon.addMoneyAndHistory(2, bcLotteryOrderDAO, traceManager, bcLotteryOrder, userManager, moneyHistoryManager);
+
+
+        /*
+        String s = simpleDateFormat.format(new Date()).split(" ")[0] + " 00:00:00";
+        Date date = simpleDateFormat.parse(s);
+        System.out.println((System.currentTimeMillis() - date.getTime()) / 60000);
+        */
 
     }
 }

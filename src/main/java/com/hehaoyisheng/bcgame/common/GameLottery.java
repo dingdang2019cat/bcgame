@@ -270,6 +270,9 @@ public class GameLottery {
         int winCount = 0;
         for(int i = 0; i < betNumbers.length; i++){
             String betNumbersOne = betNumbers[i];
+            if(betNumbersOne.contains("-")){
+                continue;
+            }
             for(String s : betNumbersOne.split("\\+")){
                 String ss = GameLotteryData.dxdsLottery.get(s);
                 if(ss.contains(lotteryNumbers[i])){

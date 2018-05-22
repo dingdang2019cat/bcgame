@@ -2,9 +2,7 @@ package com.hehaoyisheng.bcgame.controller;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.hehaoyisheng.bcgame.common.BetCountData;
-import com.hehaoyisheng.bcgame.common.GameData;
-import com.hehaoyisheng.bcgame.common.GameType;
+import com.hehaoyisheng.bcgame.common.*;
 import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.transfar.OrderTransfar;
 import com.hehaoyisheng.bcgame.entity.vo.*;
@@ -39,6 +37,8 @@ public class LotteryController {
     @Resource
     private BcLotteryOddsManager bcLotteryOddsManager;
 
+    @Resource
+    private LotteryThread lotteryThread;
     /**
      * 投注
      * @param isTrace       是否追号
@@ -71,6 +71,9 @@ public class LotteryController {
             return Result.faild("赔率过高，无法下注", 400);
         }
         */
+        if(user1.getTouzhuFlag() != 0){
+            return Result.faild("该账号已经禁止投注!", 400);
+        }
         System.out.println(" userName is the " + user.getUsername());
         //初始化赔率
         if(CollectionUtils.isEmpty(GameData.oddsMap)){
@@ -230,6 +233,13 @@ public class LotteryController {
         u.setUsername(user.getUsername());
         userManager.update(u, list.get(0).getBuyMoney());
         return Result.success("操作成功！");
+    }
+
+    @RequestMapping("/rengong")
+    @ResponseBody
+    public Result txsscKj(String qiHao, String content){
+        lotteryThread.lottery("txssc", qiHao, content);
+        return Result.success("");
     }
 
 }

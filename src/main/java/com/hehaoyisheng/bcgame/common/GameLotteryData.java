@@ -66,6 +66,7 @@ public class GameLotteryData {
         lotteryNumberCount.put("ssc_star3_last_group6", new Integer[]{4, 9, 1, 1, 1});
         lotteryNumberCount.put("ssc_star3_last_none1", new Integer[]{4, 9, 1});
         lotteryNumberCount.put("ssc_star3_last_none2", new Integer[]{4, 9, 2});
+        lotteryNumberCount.put("ssc_star2_front", new Integer[]{0, 3});
 
 
         //lotteryNumberCount.put("pk10_star1_dwd", new Integer[]{0, 9, 2});

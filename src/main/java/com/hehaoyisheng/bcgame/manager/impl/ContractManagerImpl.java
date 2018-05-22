@@ -1,16 +1,26 @@
 package com.hehaoyisheng.bcgame.manager.impl;
 
+import com.hehaoyisheng.bcgame.dao.ContractDAO;
 import com.hehaoyisheng.bcgame.entity.Contract;
 import com.hehaoyisheng.bcgame.manager.ContractManager;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
 @Component
 public class ContractManagerImpl implements ContractManager {
 
+    @Resource
+    private ContractDAO contractDAO;
+
     public int insert(Contract contract) {
+        try {
+            return contractDAO.insert(contract);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return 0;
     }
 

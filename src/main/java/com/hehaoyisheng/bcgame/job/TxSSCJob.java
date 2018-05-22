@@ -24,6 +24,7 @@ import java.util.List;
 public class TxSSCJob {
     private static DateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
     private static DateFormat format1 = new SimpleDateFormat("yyyyMMdd");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Resource
     private BcLotteryHistoryManager bcLotteryHistoryManager;
@@ -67,18 +68,50 @@ public class TxSSCJob {
             GameData.openCount.put(type, qiHaoInt);
             String qiHao = (Long.valueOf(qihao) + 1) + "";
             GameData.gameSeasonId.put(type, qiHao);
-            for(int i = 0; i < 100; i++){
+            for(int i = 0; i < 1000; i++){
                 System.out.println("-------------------------------------------begin");
-                String result = HttpClientUtil.sendHttpGet("https://www.369kj.com/txffc/kj/txffc.php");
-                JSONObject json = JSON.parseObject(result);
-                JSONArray jsonArray = json.getJSONArray("list");
+                String result = HttpClientUtil.sendHttpGet("http://77tj.org/api/tencent/onlineim");
+                JSONArray jsonArray = JSON.parseArray(result);
                 for(int k = 0; k < jsonArray.size(); k++){
                     JSONObject jsonObject = jsonArray.getJSONObject(k);
-                    if(qihao.equals(jsonObject.getString("period"))){
+                    String time1 = jsonObject.getString("onlinetime");
+                    Date date = simpleDateFormat.parse(time1.split(" ")[0] + " 00:00:00");
+                    String sss1 = ((simpleDateFormat.parse(time1).getTime() - date.getTime()) / 60000) + "";
+                    if(sss1.length() == 1){
+                        sss1 = "000" + sss1;
+                    }
+                    if(sss1.length() == 2){
+                        sss1 = "00" + sss1;
+                    }
+                    if(sss1.length() == 3){
+                        sss1 = "0" + sss1;
+                    }
+                    String period = format1.format(new Date()) + sss1;
+                    System.out.println(period + "      " + jsonObject.getLong("onlinenumber"));
+                    if(qihao.equals(period)){
+                        String[] ko = (jsonObject.getLong("onlinenumber") + "").split("");
+                        Integer koNumber = 0;
+                        for(String ko1 : ko){
+                            if(ko1.equals("")){
+                                continue;
+                            }
+                            koNumber += Integer.valueOf(ko1);
+                        }
+                        String koString = koNumber + "";
+                        String koString1 = (jsonObject.getLong("onlinenumber") + "");
+                        String nums1 = koString.substring(koString.length() - 1, koString.length()) + koString1.substring(koString1.length() - 4, koString1.length());
+                        String nums = "";
+                        for(String nu : nums1.split("")){
+                            if(nu.equals("")){
+                                continue;
+                            }
+                            nums += nu + ",";
+                        }
+                        nums = nums.substring(0, nums.length() - 1);
                         BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
                         bcLotteryHistory.setLotteryType(type);
                         bcLotteryHistory.setSeasonId(qihao);
-                        bcLotteryHistory.setNums(jsonObject.getString("result"));
+                        bcLotteryHistory.setNums(nums);
                         bcLotteryHistory.setOpenTime(new Date());
                         bcLotteryHistoryManager.insert(bcLotteryHistory);
                         GameData.lastOpen.put(type, bcLotteryHistory);

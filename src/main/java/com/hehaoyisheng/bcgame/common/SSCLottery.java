@@ -76,7 +76,15 @@ public class SSCLottery implements Runnable{
                 }else {
                     winCount = GameLottery.sscFsLottery(looteryContent, betNumber, playCode);
                 }
-                bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2));
+                if(bcLotteryOrder.getBuyZhuShu() < (BetCountData.hashmap.get(bcLotteryOrder.getPlayCode()) * 0.3)){
+                    if((bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2)) > 2000){
+                        bcLotteryOrder.setWinMoney(20000);
+                    }else{
+                        bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2));
+                    }
+                }else{
+                    bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2));
+                }
                 bcLotteryOrder.setWinZhuShu(winCount);
                 LotteryCommon.addMoneyAndHistory(winCount, bcLotteryOrderManager, traceManager, bcLotteryOrder, userManager, moneyHistoryManager);
             }catch (Exception e){

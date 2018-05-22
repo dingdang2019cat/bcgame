@@ -146,6 +146,7 @@
     </bean>
     <bean id="onlineJob" class="com.hehaoyisheng.bcgame.job.OnLineJob" />
     <bean id="contractJob" class="com.hehaoyisheng.bcgame.job.ContractJob" />
+    <bean id="buchangJob" class="com.hehaoyisheng.bcgame.job.BuchangJob" />
 
     <bean id="contractDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="contractJob" />
@@ -215,6 +216,13 @@
         <property name="targetMethod" value="execute"/>
         <property name="name" value="onlineJob" />
         <property name="group" value="online" />
+    </bean>
+
+    <bean id="buchangDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="buchangJob" />
+        <property name="targetMethod" value="execute"/>
+        <property name="name" value="buchangJob" />
+        <property name="group" value="buchang" />
     </bean>
 
     <bean id="contractTigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
@@ -308,6 +316,13 @@
         <property name="group" value="online" />
     </bean>
 
+    <bean id="buchangTigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="buchangDetail" />
+        <property name="cronExpression" value="0 * * * * ?" />
+        <property name="name" value="buchangJob" />
+        <property name="group" value="buchang" />
+    </bean>
+
     <bean id="schedulerfactory" name="schedulerfactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
         <property name="triggers">
             <list>
@@ -326,6 +341,7 @@
                 <ref bean="txsscTigger"/>
                 <ref bean="onlineTigger"/>
                 <ref bean="contractTigger"/>
+                <!--<ref bean="buchangTigger"/>-->
             </list>
         </property>
         <property name="autoStartup" value="true" />

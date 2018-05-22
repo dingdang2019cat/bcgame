@@ -21,7 +21,7 @@ public interface BcLotteryHistoryDAO {
             " <if test=\"bcLotteryHistory.lotteryType != null\"> AND bcLotteryHistory.lotteryType=#{bcLotteryHistory.lotteryType}</if> " +
             " <if test=\"bcLotteryHistory.seasonId != null\"> AND seasonId=#{bcLotteryHistory.seasonId}</if> " +
             " </trim> " +
-            " order by id desc limit #{from},#{limit}" +
+            " order by seasonId desc limit #{from},#{limit}" +
             " </script> ")
     List<BcLotteryHistory> select(@Param("bcLotteryHistory") BcLotteryHistory bcLotteryHistory, @Param("from")Integer from, @Param("limit")Integer limit);
 

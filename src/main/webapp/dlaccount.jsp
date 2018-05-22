@@ -616,9 +616,10 @@ td {
 		function operateFormatter(value, row, index) {
 			var btns = [];
 			var up = '<a class="doup" href="javascript:void(0)" title="上一级">上一级</a>  ';
-			var down = '<a class="chongqian" href="javascript:void(0)" title="加款">加款</a>&nbsp;<a class="kouqian" href="javascript:void(0)" title="扣款">扣款</a>&nbsp;<a class="chongzhi" href="javascript:void(0)" title="重置">重置</a>&nbsp;<a class="shanchu" href="javascript:void(0)" title="删除">删除</a>';
+			var down = '<a class="chongqian" href="javascript:void(0)" title="加款">加款</a>&nbsp;<a class="kouqian" href="javascript:void(0)" title="扣款">扣款</a>&nbsp;<a class="chongzhi" href="javascript:void(0)" title="重置">重置</a>&nbsp;<a class="shanchu" href="javascript:void(0)" title="删除">删除</a>&nbsp;<a class="shanchu" href="javascript:void(0)" title="禁止投注">禁止投注</a>&nbsp;<a class="shanchu" href="javascript:void(0)" title="禁止提现">禁止提现</a>';
 			var updateFanDian = '<a class="updateFanDian" href="javascript:void(0)" title="修改返点">修改返点</a>   ';
 			var chongqian = '<a class="chongqian" href="javascript:void(0)" title="加款">加款</a>';
+
 			btns.push(down);
 			return btns.join('');
 		}
