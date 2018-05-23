@@ -46,8 +46,8 @@ public class test {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
 
-        //LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
-        //lotteryThread.lottery("txssc", "201805220945","0,0,3,6,7");
+        LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
+        lotteryThread.lottery("gd11x5", "2018052308","04,10,05,02,11");
 
 
         /*
@@ -64,6 +64,7 @@ public class test {
         */
 
 
+        /*
         BcLotteryOrderManager bcLotteryOrderDAO = (BcLotteryOrderManager)applicationContext.getBean("bcLotteryOrderManager");
         TraceManager traceManager = (TraceManager)applicationContext.getBean("traceManager");
         UserManager userManager = (UserManager)applicationContext.getBean("userManager");
@@ -75,7 +76,7 @@ public class test {
         bcLotteryOrder.setLotteryHaoMa("05,02,01,11,10");
         bcLotteryOrder.setWinZhuShu(1);
         LotteryCommon.addMoneyAndHistory(1, bcLotteryOrderDAO, traceManager, bcLotteryOrder, userManager, moneyHistoryManager);
-
+        */
 
         /*
         String s = simpleDateFormat.format(new Date()).split(" ")[0] + " 00:00:00";

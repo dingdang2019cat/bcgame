@@ -383,7 +383,7 @@ public class GameLottery {
 
 
     public static void main(String[] args) {
-        System.out.println(bc11x5rx("05,02,01,11,10", "05", "n11x5_x1"));
+        System.out.println(bc11x5rx("04,10,05,02,11", "09", "n11x5_x1"));
     }
 
     private static String pk10SubString(String betNumber){

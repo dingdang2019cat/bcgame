@@ -437,13 +437,14 @@
         $('#end').val(end);
     }
     function tikuanpass(id, status){
-        alert("请仔细审阅该用户最近充值，投注。防止异常行为的出现!");
+        if(!confirm("请仔细审阅该用户最近充值，投注。防止异常行为的出现!")){
+            return;
+        }
         $.ajax({
             url:"/tikuanpass",
             data : {
                 "orderid" : id,
-                "status" : status,
-                "remark" : pass
+                "status" : status
             },
             dataType:"json",
             success:function(j){

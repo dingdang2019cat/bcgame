@@ -71,9 +71,11 @@ public class PK10Lottery implements Runnable{
                 }else if(playCode.contains("star2_and")){
                     winCount = GameLottery.pk10Gyh(looteryContent, betNumber);
                 }
-                bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2));
-                bcLotteryOrder.setWinZhuShu(winCount);
-                if(bcLotteryOrder.getBuyZhuShu() < (BetCountData.hashmap.get(bcLotteryOrder.getPlayCode()) * 0.3)){
+                int betCount = 0;
+                if(BetCountData.hashmap.get(bcLotteryOrder.getPlayCode()) != null){
+                    betCount = BetCountData.hashmap.get(bcLotteryOrder.getPlayCode());
+                }
+                if(bcLotteryOrder.getBuyZhuShu() < (betCount * 0.3)){
                     if((bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2)) > 2000){
                         bcLotteryOrder.setWinMoney(20000);
                     }else{

@@ -5,6 +5,7 @@ import com.hehaoyisheng.bcgame.entity.Contract;
 import com.hehaoyisheng.bcgame.entity.Recharge;
 import com.hehaoyisheng.bcgame.entity.User;
 import com.hehaoyisheng.bcgame.manager.BcLotteryOrderManager;
+import com.hehaoyisheng.bcgame.manager.ContractManager;
 import com.hehaoyisheng.bcgame.manager.RechargeManager;
 import com.hehaoyisheng.bcgame.manager.UserManager;
 
@@ -27,6 +28,9 @@ public class ContractJob {
 
     @Resource
     private RechargeManager rechargeManager;
+
+    @Resource
+    private ContractManager contractManager;
 
     public void execute(){
         try {
@@ -62,6 +66,7 @@ public class ContractJob {
                     }
                 }
                 double cumulativeProfit = money - winMoney - gongzi;
+
                 Integer dividend = 10;
                 double dividendAmount = 0D;
                 if(cumulativeProfit < 0){
