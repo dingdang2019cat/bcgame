@@ -10,10 +10,13 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 public class GameThread {
-
+    private static DateFormat format1 = new SimpleDateFormat("yyyyMMdd");
     public void initData(String type) {
         if(type.contains("k3")){
             String result = HttpClientUtil.sendHttpGet("http://caipiao.163.com/order/preBet_periodInfoTime.html?gameEn=oldkuai3");
@@ -25,15 +28,11 @@ public class GameThread {
             return;
         }
         if(type.equals("txssc")){
-            String result = HttpClientUtil.sendHttpGet("https://www.369kj.com/txffc/kj/txffc.php");
-            JSONObject json = JSON.parseObject(result);
-            JSONArray jsonArray = json.getJSONArray("list");
-            for(int k = 0; k < jsonArray.size(); k++){
-                String qihao = (Long.valueOf(jsonArray.getJSONObject(0).getString("period")) + 1) + "";
-                GameData.gameSeasonId.put(type, qihao);
-                GameData.gameTime.put(type, System.currentTimeMillis() + 6000L);
-                return;
-            }
+            String result = HttpClientUtil.sendHttpGet("http://www.e3sh.com/txffc/");
+            Document document = Jsoup.parse(result);
+            String s = document.getElementById("end_qishu").text();
+            GameData.gameSeasonId.put(type, format1.format(new Date()) + s);
+            GameData.gameTime.put(type, System.currentTimeMillis() + 6000L);
             return;
         }
         Map<String, String> map = Maps.newHashMap();

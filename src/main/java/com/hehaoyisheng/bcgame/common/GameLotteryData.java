@@ -43,7 +43,7 @@ public class GameLotteryData {
         lotteryNumberCount.put("ssc_star3_front_kd", new Integer[]{0, 5});
         lotteryNumberCount.put("ssc_star3_front_group_and", new Integer[]{0, 5});
         lotteryNumberCount.put("ssc_star3_front_group_contains", new Integer[]{0, 5});
-        lotteryNumberCount.put("ssc_star3_front_group3", new Integer[]{0, 5, 1, 1});
+        lotteryNumberCount.put("ssc_star3_front_group3", new Integer[]{0, 5, 1, 1, 2});
         lotteryNumberCount.put("ssc_star3_front_group6", new Integer[]{0, 5, 1, 1, 1});
         lotteryNumberCount.put("ssc_star3_front_none1", new Integer[]{0, 5, 1});
         lotteryNumberCount.put("ssc_star3_front_none2", new Integer[]{0, 5, 2});
@@ -53,7 +53,7 @@ public class GameLotteryData {
         lotteryNumberCount.put("ssc_star3_midssc_star3_mid_kd", new Integer[]{2, 7});
         lotteryNumberCount.put("ssc_star3_mid_group_and", new Integer[]{2, 7});
         lotteryNumberCount.put("ssc_star3_mid_group_contains", new Integer[]{2, 7});
-        lotteryNumberCount.put("ssc_star3_mid_group3", new Integer[]{2, 7, 1, 1});
+        lotteryNumberCount.put("ssc_star3_mid_group3", new Integer[]{2, 7, 1, 1, 2});
         lotteryNumberCount.put("ssc_star3_mid_group6", new Integer[]{2, 7, 1, 1, 1});
         lotteryNumberCount.put("ssc_star3_mid_none1", new Integer[]{2, 7, 1});
         lotteryNumberCount.put("ssc_star3_mid_none2", new Integer[]{2, 7, 2});
@@ -62,7 +62,7 @@ public class GameLotteryData {
         lotteryNumberCount.put("ssc_star3_last_kd", new Integer[]{4, 9});
         lotteryNumberCount.put("ssc_star3_last_group_and", new Integer[]{4, 9});
         lotteryNumberCount.put("ssc_star3_last_group_contains", new Integer[]{4, 9});
-        lotteryNumberCount.put("ssc_star3_last_group3", new Integer[]{4, 9, 1, 1});
+        lotteryNumberCount.put("ssc_star3_last_group3", new Integer[]{4, 9, 1, 1, 2});
         lotteryNumberCount.put("ssc_star3_last_group6", new Integer[]{4, 9, 1, 1, 1});
         lotteryNumberCount.put("ssc_star3_last_none1", new Integer[]{4, 9, 1});
         lotteryNumberCount.put("ssc_star3_last_none2", new Integer[]{4, 9, 2});

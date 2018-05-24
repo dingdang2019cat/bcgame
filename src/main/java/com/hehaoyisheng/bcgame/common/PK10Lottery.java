@@ -76,7 +76,7 @@ public class PK10Lottery implements Runnable{
                     betCount = BetCountData.hashmap.get(bcLotteryOrder.getPlayCode());
                 }
                 if(bcLotteryOrder.getBuyZhuShu() < (betCount * 0.3)){
-                    if((bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2)) > 2000){
+                    if((bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2)) > 20000){
                         bcLotteryOrder.setWinMoney(20000);
                     }else{
                         bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2));

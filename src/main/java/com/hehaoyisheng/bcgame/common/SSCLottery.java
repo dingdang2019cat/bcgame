@@ -72,7 +72,7 @@ public class SSCLottery implements Runnable{
                 }else if(playCode.contains("dxds")){
                     winCount = GameLottery.sscDxdsLottery(looteryContent, betNumber);
                 }else if(playCode.contains("lhh")){
-                    winCount = GameLottery.sscDxdsLottery(looteryContent, betNumber);
+                    winCount = GameLottery.lhh(looteryContent, betNumber);
                 }else {
                     winCount = GameLottery.sscFsLottery(looteryContent, betNumber, playCode);
                 }
@@ -81,7 +81,7 @@ public class SSCLottery implements Runnable{
                     betCount = BetCountData.hashmap.get(bcLotteryOrder.getPlayCode());
                 }
                 if(bcLotteryOrder.getBuyZhuShu() < (betCount * 0.3)){
-                    if((bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2)) > 2000){
+                    if((bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2)) > 20000){
                         bcLotteryOrder.setWinMoney(20000);
                     }else{
                         bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * winCount * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2));

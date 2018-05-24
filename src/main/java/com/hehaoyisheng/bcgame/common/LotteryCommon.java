@@ -56,6 +56,7 @@ public class LotteryCommon {
             userManager.update(u, money);
         }
 
+        /*
         double fandian = list.get(0).getFandian();
         String[] ss = bcLotteryOrder.getParentList().split(",");
         for(int i = ss.length - 1; i >= 0; i--){
@@ -103,5 +104,6 @@ public class LotteryCommon {
             return;
         }
         list1.get(0).setStatus(1);
+        */
     }
 }

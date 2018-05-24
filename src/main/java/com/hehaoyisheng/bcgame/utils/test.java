@@ -43,12 +43,12 @@ public class test {
 
 
 
+
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-
-
+/*
         LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
-        lotteryThread.lottery("gd11x5", "2018052308","04,10,05,02,11");
-
+        lotteryThread.lottery("txssc", "2018052406","01,09,11,02,10");
+        */
 
         /*
         String ss = HttpClientUtil.sendHttpGet("http://www.e3sh.com/txffc/");
@@ -64,19 +64,21 @@ public class test {
         */
 
 
-        /*
+
+
         BcLotteryOrderManager bcLotteryOrderDAO = (BcLotteryOrderManager)applicationContext.getBean("bcLotteryOrderManager");
         TraceManager traceManager = (TraceManager)applicationContext.getBean("traceManager");
         UserManager userManager = (UserManager)applicationContext.getBean("userManager");
         MoneyHistoryManager moneyHistoryManager = (MoneyHistoryManager)applicationContext.getBean("moneyHistoryManager");
         BcLotteryOrder bcLotteryOrder1 = new BcLotteryOrder();
-        bcLotteryOrder1.setOrderId("g15269866205030");
+        bcLotteryOrder1.setOrderId("c15270943593810");
         BcLotteryOrder bcLotteryOrder = bcLotteryOrderDAO.select(bcLotteryOrder1, null, null, null, null).get(0);
         bcLotteryOrder.setWinMoney(bcLotteryOrder.getOdds() * 1 * bcLotteryOrder.getMultiple() * (bcLotteryOrder.getMinBonusOdds() / 2));
-        bcLotteryOrder.setLotteryHaoMa("05,02,01,11,10");
+        bcLotteryOrder.setLotteryHaoMa("9,7,3,7,6");
         bcLotteryOrder.setWinZhuShu(1);
-        LotteryCommon.addMoneyAndHistory(1, bcLotteryOrderDAO, traceManager, bcLotteryOrder, userManager, moneyHistoryManager);
-        */
+        bcLotteryOrderDAO.update(bcLotteryOrder);
+        //LotteryCommon.addMoneyAndHistory(1, bcLotteryOrderDAO, traceManager, bcLotteryOrder, userManager, moneyHistoryManager);
+
 
         /*
         String s = simpleDateFormat.format(new Date()).split(" ")[0] + " 00:00:00";
