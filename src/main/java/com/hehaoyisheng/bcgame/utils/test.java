@@ -45,10 +45,9 @@ public class test {
 
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-/*
         LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
-        lotteryThread.lottery("txssc", "2018052406","01,09,11,02,10");
-        */
+        lotteryThread.lottery("gd11x5", "2018052513","03,01,02,10,04");
+
 
         /*
         String ss = HttpClientUtil.sendHttpGet("http://www.e3sh.com/txffc/");
@@ -66,6 +65,7 @@ public class test {
 
 
 
+        /*
         BcLotteryOrderManager bcLotteryOrderDAO = (BcLotteryOrderManager)applicationContext.getBean("bcLotteryOrderManager");
         TraceManager traceManager = (TraceManager)applicationContext.getBean("traceManager");
         UserManager userManager = (UserManager)applicationContext.getBean("userManager");

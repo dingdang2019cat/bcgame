@@ -28,7 +28,7 @@ public class GameThread {
             return;
         }
         if(type.equals("txssc")){
-            String result = HttpClientUtil.sendHttpGet("http://www.e3sh.com/txffc/");
+            String result = HttpClientUtil.sendHttpGet("http://47.52.78.51:8080/bcgame/lotts/beiyong");
             Document document = Jsoup.parse(result);
             String s = document.getElementById("end_qishu").text();
             GameData.gameSeasonId.put(type, format1.format(new Date()) + s);

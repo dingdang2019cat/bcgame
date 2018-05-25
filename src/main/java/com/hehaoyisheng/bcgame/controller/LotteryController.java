@@ -8,6 +8,7 @@ import com.hehaoyisheng.bcgame.entity.transfar.OrderTransfar;
 import com.hehaoyisheng.bcgame.entity.vo.*;
 import com.hehaoyisheng.bcgame.manager.*;
 import com.hehaoyisheng.bcgame.utils.CalculationUtils;
+import com.hehaoyisheng.bcgame.utils.HttpClientUtil;
 import com.mysql.jdbc.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
@@ -100,7 +101,7 @@ public class LotteryController {
         double buyMoney = 0;
         for(Order o : orders){
             //计算注数是否超标
-            if(BetCountData.hashmap.get(o.getPlayId()) != null && o.getBetCount() > (BetCountData.hashmap.get(o.getPlayId()) * 0.8)){
+            if ((o.getPlayId().contains("dwd") || o.getPlayId().contains("rx") || o.getPlayId().contains("single")) && BetCountData.hashmap.get(o.getPlayId()) != null && o.getBetCount() > BetCountData.hashmap.get(o.getPlayId()) * 0.8) {
                 return Result.faild("投注超标", 400);
             }
             buyMoney += o.getBetCount() * o.getPrice() * o.getUnit();
@@ -242,4 +243,10 @@ public class LotteryController {
         return Result.success("");
     }
 
+    @RequestMapping("/beiyong")
+    @ResponseBody
+    public String beiyong(){
+        String ss = HttpClientUtil.sendHttpGet("http://www.e3sh.com/txffc/");
+        return ss;
+    }
 }

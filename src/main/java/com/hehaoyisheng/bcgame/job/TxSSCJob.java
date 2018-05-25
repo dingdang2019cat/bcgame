@@ -71,7 +71,7 @@ public class TxSSCJob {
         for(int i = 0; i < 1000; i++){
             try {
                 System.out.println("-------------------------------------------begin");
-                String ss = HttpClientUtil.sendHttpGet("http://www.e3sh.com/txffc/");
+                String ss = HttpClientUtil.sendHttpGet("http://47.52.78.51:8080/bcgame/lotts/beiyong");
 
                 Document document = Jsoup.parse(ss);
                 Elements elements = document.getElementsByTag("tr");

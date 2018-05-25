@@ -89,126 +89,214 @@ public class GameLottery {
         System.out.println(lotteryNumber);
         //将投注开奖数字转化为数组
         int winCount = 0;
-        String[] lotteryNumbers = lotteryNumber.split(",");
+        final String[] lotteryNumbers = lotteryNumber.split(",");
         betNumber = betNumber.replace("-,", "");
-        //betNumber = betNumber.replace(",-", "");
-        String[] betNumbers = betNumber.split(",");
+        final String[] betNumbers = betNumber.split(",");
         int count = 0;
-        if(playCode.contains("group3")){
-            List<String> lists = combine(betNumbers, 2);
-            for(String ss : lists){
-                for(String lotteryNumber1 : lotteryNumber.split(",")){
-                    if(ss.contains(lotteryNumber1)){
-                        count++;
+        if (playCode.contains("group3")) {
+            final List<String> lists = combine(betNumbers, 2);
+            for (final String ss : lists) {
+                for (final String lotteryNumber2 : lotteryNumber.split(",")) {
+                    if (ss.contains(lotteryNumber2)) {
+                        ++count;
                     }
                 }
-                if(count >= 3){
-                    winCount++;
+                if (count >= 3) {
+                    ++winCount;
                 }
             }
         }
-        if(playCode.contains("group4")){
-            String chong = betNumbers[0];
-            for(String chong1 : chong.split("")){
-                if(chong1.equals("")){
-                    continue;
-                }
-                betNumbers[1] = betNumbers[1].replace(chong1, "");
-                for(String lotteryNumber1 : lotteryNumber.split(",")){
-                    if(chong1.equals(lotteryNumber1)){
-                        count++;
+        if (playCode.contains("group4")) {
+            final String chong = betNumbers[0];
+            for (final String chong2 : chong.split("")) {
+                if (!chong2.equals("")) {
+                    betNumbers[1] = betNumbers[1].replace(chong2, "");
+                    for (final String lotteryNumber3 : lotteryNumber.split(",")) {
+                        if (chong2.equals(lotteryNumber3)) {
+                            ++count;
+                        }
                     }
-                }
-                if(count == 3){
-                    for(String lotteryNumber1 : lotteryNumber.split(",")){
-                        if(betNumbers[1].contains(lotteryNumber1)){
-                            winCount++;
+                    if (count == 3) {
+                        for (final String lotteryNumber3 : lotteryNumber.split(",")) {
+                            if (betNumbers[1].contains(lotteryNumber3)) {
+                                ++winCount;
+                            }
                         }
                     }
                 }
             }
         }
-        if(playCode.contains("group12")){
-            String chong = betNumbers[0];
-            for(String chong1 : chong.split("")){
-                if(chong1.equals("")){
-                    continue;
-                }
-                betNumbers[1] = betNumbers[1].replace(chong1, "");
-                for(String lotteryNumber1 : lotteryNumber.split(",")){
-                    if(chong1.equals(lotteryNumber1)){
-                        count++;
+        if (playCode.contains("group5")) {
+            final String chong = betNumbers[0];
+            for (final String chong2 : chong.split("")) {
+                if (!chong2.equals("")) {
+                    betNumbers[1] = betNumbers[1].replace(chong2, "");
+                    for (final String lotteryNumber3 : lotteryNumber.split(",")) {
+                        if (chong2.equals(lotteryNumber3)) {
+                            ++count;
+                        }
                     }
-                }
-                if(count == 2){
-                    for(String lotteryNumber1 : lotteryNumber.split(",")){
-                        if(betNumbers[1].contains(lotteryNumber1)){
-                            count++;
+                    if (count == 4) {
+                        for (final String lotteryNumber3 : lotteryNumber.split(",")) {
+                            if (betNumbers[1].contains(lotteryNumber3)) {
+                                ++winCount;
+                            }
                         }
                     }
                 }
-                if(count == 4){
-                    winCount++;
-                }
             }
         }
-        if(playCode.contains("group24")){
-            for(String betNumbers1 : betNumbers){
-                if(lotteryNumber.contains(betNumbers1)){
-                    count++;
-                }
-            }
-            if(count == 4){
-                winCount++;
-            }
-        }
-        if(playCode.contains("group6") && playCode.contains("star3")){
-            for(String betNumbers1 : betNumbers){
-                if(lotteryNumber.contains(betNumbers1)){
-                    count++;
-                }
-            }
-            if(count == 3){
-                winCount++;
-            }
-        }
-        if(playCode.contains("group6") && playCode.contains("star4")){
-            int count1 = 0;
-            int count2 = 0;
-            for(String betNumbers1 : betNumbers){
-                if(lotteryNumber.contains(betNumbers1)){
-                    count++;
-                }
-            }
-            if(count == 3){
-                winCount++;
-            }
-        }
-        boolean flag = false;
-        for(int i = 0; i < betNumbers.length; i++){
-            if(i > 0 && flag){
-                return 0;
-            }
-            for(String betNumberOne : betNumbers[i].split("")){
-                flag = false;
-                int repeatCount = 0;
-                if("".equals(betNumberOne)){
-                    continue;
-                }
-                for(String lotteryNumberOne : lotteryNumbers){
-                    System.out.println(lotteryNumberOne);
-                    System.out.println(betNumberOne);
-                    if(lotteryNumberOne.equals(betNumberOne)){
-                        repeatCount++;
+        if (playCode.contains("group10")) {
+            final String chong = betNumbers[0];
+            for (final String chong2 : chong.split("")) {
+                if (!chong2.equals("")) {
+                    betNumbers[1] = betNumbers[1].replace(chong2, "");
+                    for (final String lotteryNumber3 : lotteryNumber.split(",")) {
+                        if (chong2.equals(lotteryNumber3)) {
+                            ++count;
+                        }
+                    }
+                    if (count == 3) {
+                        for (final String chong3 : betNumbers[1].split("")) {
+                            int count2 = 0;
+                            if (!chong3.equals("")) {
+                                for (final String lotteryNumber4 : lotteryNumber.split(",")) {
+                                    if (chong3.equals(lotteryNumber4)) {
+                                        ++count2;
+                                    }
+                                }
+                                if (count2 == 2) {
+                                    ++winCount;
+                                }
+                            }
+                        }
                     }
                 }
-                if(repeatCount >= lotteryNumberCount[i + 2]){
-                    flag = true;
-                    break;
+            }
+        }
+        if (playCode.contains("group20")) {
+            final String chong = betNumbers[0];
+            for (final String chong2 : chong.split("")) {
+                if (!chong2.equals("")) {
+                    betNumbers[1] = betNumbers[1].replace(chong2, "");
+                    for (final String lotteryNumber3 : lotteryNumber.split(",")) {
+                        if (chong2.equals(lotteryNumber3)) {
+                            ++count;
+                        }
+                    }
+                    if (count == 3) {
+                        int count3 = 0;
+                        for (final String chong4 : betNumbers[1].split("")) {
+                            if (!chong4.equals("")) {
+                                if (lotteryNumber.contains(chong4)) {
+                                    ++count3;
+                                }
+                            }
+                        }
+                        if (count3 == 2) {
+                            ++winCount;
+                        }
+                    }
                 }
             }
         }
-        return flag ? 1 : 0;
+        if (playCode.contains("group60")) {
+            final String chong = betNumbers[0];
+            for (final String chong2 : chong.split("")) {
+                if (!chong2.equals("")) {
+                    betNumbers[1] = betNumbers[1].replace(chong2, "");
+                    for (final String lotteryNumber3 : lotteryNumber.split(",")) {
+                        if (chong2.equals(lotteryNumber3)) {
+                            ++count;
+                        }
+                    }
+                    if (count == 2) {
+                        int count3 = 0;
+                        for (final String chong4 : betNumbers[1].split("")) {
+                            if (!chong4.equals("")) {
+                                if (lotteryNumber.contains(chong4)) {
+                                    ++count3;
+                                }
+                            }
+                        }
+                        if (count3 == 3) {
+                            ++winCount;
+                        }
+                    }
+                }
+            }
+        }
+        if (playCode.contains("group120")) {
+            for (final String betNumbers2 : betNumbers) {
+                if (lotteryNumber.contains(betNumbers2)) {
+                    ++count;
+                }
+            }
+            if (count == 5) {
+                ++winCount;
+            }
+        }
+        if (playCode.contains("group12")) {
+            final String chong = betNumbers[0];
+            for (final String chong2 : chong.split("")) {
+                if (!chong2.equals("")) {
+                    betNumbers[1] = betNumbers[1].replace(chong2, "");
+                    for (final String lotteryNumber3 : lotteryNumber.split(",")) {
+                        if (chong2.equals(lotteryNumber3)) {
+                            ++count;
+                        }
+                    }
+                    if (count == 2) {
+                        for (final String lotteryNumber3 : lotteryNumber.split(",")) {
+                            if (betNumbers[1].contains(lotteryNumber3)) {
+                                ++count;
+                            }
+                        }
+                    }
+                    if (count == 4) {
+                        ++winCount;
+                    }
+                }
+            }
+        }
+        if (playCode.contains("group24")) {
+            for (final String betNumbers2 : betNumbers) {
+                if (lotteryNumber.contains(betNumbers2)) {
+                    ++count;
+                }
+            }
+            if (count == 4) {
+                ++winCount;
+            }
+        }
+        if (playCode.contains("group6") && playCode.contains("star3")) {
+            for (final String betNumbers2 : betNumbers) {
+                if (lotteryNumber.contains(betNumbers2)) {
+                    ++count;
+                }
+            }
+            if (count == 3) {
+                ++winCount;
+            }
+        }
+        if (playCode.contains("group6") && playCode.contains("star4")) {
+            int count4 = 0;
+            for (final String betNumbers3 : betNumbers) {
+                int count5 = 0;
+                for (final String lotteryNumberOne : lotteryNumber.split(",")) {
+                    if (lotteryNumberOne.equals(betNumbers3)) {
+                        ++count5;
+                    }
+                }
+                if (count5 == 2) {
+                    ++count4;
+                }
+            }
+            if (count4 == 2) {
+                ++winCount;
+            }
+        }
+        return winCount;
     }
 
     /**
@@ -601,7 +689,7 @@ public class GameLottery {
         }
         String[] lotteryNumbers = lotteryNumber.split(",");
         boolean flag = true;
-        for(int i = 0; i < lotteryNumber.length(); i++) {
+        for(int i = 0; i < lotteryNumbers.length; i++) {
             if (!pk10SubString(betNumbers[i]).contains(lotteryNumbers[i])) {
                 flag = false;
             }
