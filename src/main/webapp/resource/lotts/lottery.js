@@ -1236,9 +1236,9 @@ $(function() {
 		}
 		var price = parseInt($("#betPrice").val()); // 倍数
 		var amount = price.mul(unit).mul(info.count); // 总额（单注）
-
+		var bouns = $("#bounsNum").text();
 		//添加到待投列表:(选号信息，总额（单注），倍数，元角分厘，单价-圆角分模式，预计盈利)
-		addSelectBetPanle(info, amount, price, unitTxt, unit, forecast);
+		addSelectBetPanle(info, amount, price, unitTxt, unit, forecast, bouns);
 		refererPage();
 	});
 
@@ -1632,6 +1632,7 @@ $(function() {
 		formInputs += '<input type="hidden" name="order[0].betCount" value="'+info.count+'"/>';
 		formInputs += '<input type="hidden" name="order[0].price" value="'+price+'"/>';
 		formInputs += '<input type="hidden" name="order[0].unit" value="'+unit+'"/>';
+		formInputs += '<input type="hidden" name="order[0].bouns" value="'+bouns+'"/>';
 		formInputs += '<input type="hidden" name="traceOrders[0].seasonId" value="'+$("#saleSeasonId").text()+'"/>';
 		formInputs += '<input type="hidden" name="amount" value="'+amount+'"/>';
 		formInputs += '<input type="hidden" name="count" value="'+info.count+'"/>';
@@ -1694,7 +1695,8 @@ $(function() {
 			var amount = parseFloat($(this).attr("data-amount")); // 单注金额
 			var price = $(this).attr("data-price"); // 倍数
 			var unit = $(this).attr("data-unit"); // 单价
-			
+			var bouns = $(this).attr("data-bouns"); // 单价
+
 			allAmount = allAmount.add(amount);
 			allCount = allCount.add(count);
 			
@@ -1703,7 +1705,8 @@ $(function() {
 			formInputs += '<input type="hidden" name="order[' + i + '].betCount" value="'+count+'"/>';
 			formInputs += '<input type="hidden" name="order[' + i + '].price" value="'+price+'"/>';
 			formInputs += '<input type="hidden" name="order[' + i + '].unit" value="'+unit+'"/>';
-			
+			formInputs += '<input type="hidden" name="order[' + i + '].bouns" value="'+bouns+'"/>';
+
 			trs +='<tr>';
 			trs+='<td>'+ $(this).find("td:first").text() +'</td>';
 			trs+='<td width="180">'+ $(this).find("td:eq(1)").text() +'</td>';
@@ -2032,10 +2035,10 @@ function computeBetInfo(info, quotaAmount, add, unitTxt) {
 	var playBonus = $('#playBonus').html();
 	var bonus = parseFloat(playBonus.substr(playBonus.indexOf('-') + 1));
 	var forecast = bonus * unit / 2 * price - amount;
-
+    var bouns = $("#bounsNum").text();
 	//添加到待投列表:(选号信息，总额（单注），倍数，元角分厘，单价-圆角分模式，预计盈利)
 	if (add && amount > 0) {
-		addSelectBetPanle(info, amount, price, unitTxt, unit, forecast);
+		addSelectBetPanle(info, amount, price, unitTxt, unit, forecast, bouns);
 	} else if (add == false) {
 		totleForecast += forecast;
 	}
@@ -2047,12 +2050,12 @@ function computeBetInfo(info, quotaAmount, add, unitTxt) {
 }
 
 //添加到待投列表
-function addSelectBetPanle(info, amount, price, unitTxt, unit, forecast){
+function addSelectBetPanle(info, amount, price, unitTxt, unit, forecast, bouns){
 	var xml = '<tr class="appNumDetail" data-amount="'
 		+ amount + '" data-content="' + info.content
 		+ '" data-count="' + info.count + '" data-id="'
 		+ info.id + '" data-unit="' + unit
-		+ '" data-price="' + price + '">';
+		+ '" data-price="' + price + '" + data-bouns="' + bouns + '">';
 	xml += '<td>【' + info.title + '】</td>';
 	xml += '<td class="appNum fontColorTheme overflowEllipsis">' + info.content.substring(0,40) + '</td>';
 	xml += '<td>' + unitTxt + '</td>';

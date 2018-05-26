@@ -94,16 +94,13 @@ public class GameLottery {
         final String[] betNumbers = betNumber.split(",");
         int count = 0;
         if (playCode.contains("group3")) {
-            final List<String> lists = combine(betNumbers, 2);
-            for (final String ss : lists) {
-                for (final String lotteryNumber2 : lotteryNumber.split(",")) {
-                    if (ss.contains(lotteryNumber2)) {
-                        ++count;
-                    }
+            for (final String ss : betNumbers) {
+                if(lotteryNumber.contains(ss)){
+                    count++;
                 }
-                if (count >= 3) {
-                    ++winCount;
-                }
+            }
+            if (count >= 3) {
+                ++winCount;
             }
         }
         if (playCode.contains("group4")) {
@@ -566,7 +563,7 @@ public class GameLottery {
 
 
     public static void main(String[] args) {
-        System.out.println(GameLottery.bc11x5rx("03,10,02,05,04", "01,02,03,06,07,09,10", "n11x5_x3"));
+        System.out.println(GameLottery.sscZxLottery("6,3,5,2,3", "0,1,2,3,4,5,6,7,8,9", "ssc_star3_last_group3"));
     }
 
     private static String pk10SubString(String betNumber){

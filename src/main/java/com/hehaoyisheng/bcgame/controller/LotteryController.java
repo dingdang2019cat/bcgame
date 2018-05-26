@@ -10,6 +10,7 @@ import com.hehaoyisheng.bcgame.manager.*;
 import com.hehaoyisheng.bcgame.utils.CalculationUtils;
 import com.hehaoyisheng.bcgame.utils.HttpClientUtil;
 import com.mysql.jdbc.StringUtils;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
@@ -55,6 +56,11 @@ public class LotteryController {
     public Result doBet(@ModelAttribute("user") User user, @PathVariable String gameType, int isTrace, Integer traceWinStop, Integer bounsType, String bouns, Double bounsRange, OrderModel order, double amount, int count, int force, TraceModel traceOrders){
         if(order.getOrder().get(0).getPlayId().contains("single")){
             return Result.faild("暂时不允许单式投注！", 400);
+        }
+        for(Order o : order.getOrder()){
+            if(o.getPlayId().contains("group")){
+                return Result.faild("暂时不允许组选投注！", 400);
+            }
         }
         User user1 = userManager.select(user, null, null, null, null, null, null).get(0);
         /*
@@ -131,7 +137,7 @@ public class LotteryController {
             fandian = fandian > 1.6 ? fandian - 1.6 : 0;
         }*/
 
-        double fandian = bounsRange == null ? bounsType == null ? 0 : user1.getFandian() : bounsRange;
+
 
         //追单
         if(isTrace == 1){
@@ -171,9 +177,16 @@ public class LotteryController {
             bcLotteryOrder.setLotName(GameType.gameType.get(gameType));
             bcLotteryOrder.setZhuiHao(isTrace + "");
             bcLotteryOrder.setStatus(0);
+            //double fandian = bounsRange == null ? bounsType == null ? 0 : user1.getFandian() : bounsRange;
+            double fandian = 0;
+            try{
+                fandian = o.getBouns().split("-").length > 1 ? Double.valueOf(o.getBouns().split("-")[1].replace("%", "")) : 0;
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             bcLotteryOrder.setBounsType(fandian > 0 ? 1 : 0);
             //bcLotteryOrder.setOdds(GameData.oddsMap.get(o.getPlayId() + ":" + 0));
-            bcLotteryOrder.setOdds(Double.valueOf(bouns.split("-")[0]));
+            bcLotteryOrder.setOdds(Double.valueOf(o.getBouns().split("-")[0]));
             bcLotteryOrder.setGaofan(fandian);
             System.out.println("---------------------------------");
             System.out.println(bcLotteryOrder.getAccount());

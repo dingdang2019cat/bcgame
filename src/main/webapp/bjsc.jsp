@@ -32,7 +32,7 @@
     <script type="text/javascript" src="/resource/lotts/play.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/lotts/play_pk10.js?ver=20180105"></script>
     <script type="text/javascript" src="/resource/lotts/fire.js?ver=20180105"></script>
-    <script type="text/javascript" src="/resource/lotts/lottery.js?ver=30180105"></script>
+    <script type="text/javascript" src="/resource/lotts/lottery.js?ver=20180526"></script>
     <script type="text/javascript" src="/resource/ajaxfileupload.js?ver=20180105"></script>
     <script type="text/javascript">
         var hs = hs || {};

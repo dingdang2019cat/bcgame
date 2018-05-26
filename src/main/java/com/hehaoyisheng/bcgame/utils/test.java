@@ -3,13 +3,11 @@ package com.hehaoyisheng.bcgame.utils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
-import com.hehaoyisheng.bcgame.common.BaseData;
-import com.hehaoyisheng.bcgame.common.GameLottery;
-import com.hehaoyisheng.bcgame.common.LotteryCommon;
-import com.hehaoyisheng.bcgame.common.LotteryThread;
+import com.hehaoyisheng.bcgame.common.*;
 import com.hehaoyisheng.bcgame.dao.*;
 import com.hehaoyisheng.bcgame.entity.*;
 import com.hehaoyisheng.bcgame.entity.vo.Province;
+import com.hehaoyisheng.bcgame.entity.vo.Result;
 import com.hehaoyisheng.bcgame.job.BuchangJob;
 import com.hehaoyisheng.bcgame.manager.*;
 import com.hehaoyisheng.bcgame.pay.Pay;
@@ -34,6 +32,7 @@ import java.util.Map;
 public class test {
     public static void main(String[] args) throws Exception {
 
+        /*
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date1 = simpleDateFormat.parse("2018-05-26 08:46:15");
         String time1 = simpleDateFormat.format(date1);
@@ -42,15 +41,33 @@ public class test {
         String sss1 = ((date1.getTime() - date.getTime()) / 60000) + "";
         Long sss2 = ((System.currentTimeMillis() - date.getTime()) % 60000) / 1000;
         System.out.println(sss1 + "  " + sss2);
+        */
 
 
 
+
+        String result = HttpClientUtil.sendHttpGet("https://www.369kj.com/pks/getPksDoubleCount.do?date=&lotCode=10001");
+        System.out.println(result);
+        //ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        /*
+        LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
+        lotteryThread.lottery("txssc", "201805261170","0,5,2,0,7");
+        */
 
         /*
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
-        lotteryThread.lottery("gd11x5", "2018052513","03,01,02,10,04");
+        BcLotteryOrderManager bcLotteryOrderManager = (BcLotteryOrderManager)applicationContext.getBean("bcLotteryOrderManager");
+        BcLotteryOrder bcLotteryOrder = new BcLotteryOrder();
+        bcLotteryOrder.setOrderId("g15273345322640");
+        List<BcLotteryOrder> list = bcLotteryOrderManager.select(bcLotteryOrder, null, null, null, null);
+
+        list.get(0).setStatus(10);
+        bcLotteryOrderManager.update(list.get(0));
+        User u = new User();
+        u.setUsername(user.getUsername());
+        userManager.update(u, list.get(0).getBuyMoney());
+        return Result.success("操作成功！");
         */
+
 
 
         /*

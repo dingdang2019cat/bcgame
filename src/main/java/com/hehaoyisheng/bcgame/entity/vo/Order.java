@@ -7,6 +7,15 @@ public class Order {
     private int betCount;
     private int price;
     private double unit;
+    private String bouns;
+
+    public String getBouns() {
+        return bouns;
+    }
+
+    public void setBouns(String bouns) {
+        this.bouns = bouns;
+    }
 
     public String getPlayId() {
         return playId;
