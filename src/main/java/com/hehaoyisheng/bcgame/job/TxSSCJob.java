@@ -71,16 +71,12 @@ public class TxSSCJob {
         for(int i = 0; i < 1000; i++){
             try {
                 System.out.println("-------------------------------------------begin");
-                String ss = HttpClientUtil.sendHttpGet("http://47.52.78.51:8080/bcgame/lotts/beiyong");
-
-                Document document = Jsoup.parse(ss);
-                Elements elements = document.getElementsByTag("tr");
-                for(int e = 3; e < elements.size(); e++){
-                    Element element = elements.get(e);
-                    String[] ee = element.text().split(" ");
-                    String period = ee[0] + ee[2];
-                    System.out.println(ee[0] + ee[2] + "   " + ee[3]);
-                    String nums1 = ee[3];
+                String ss = HttpClientUtil.sendHttpGet("http://39.108.12.104:8080/beiyong/select");
+                JSONArray jsonArray = JSON.parseArray(ss);
+                for(int e = 0; e < jsonArray.size(); e++){
+                    JSONObject jsonObject = jsonArray.getJSONObject(e);
+                    String period = jsonObject.getString("seasonId");
+                    String nums1 = jsonObject.getString("nums");
                 /*
                 String result = HttpClientUtil.sendHttpGet("http://77tj.org/api/tencent/onlineim");
                 JSONArray jsonArray = JSON.parseArray(result);
@@ -115,7 +111,7 @@ public class TxSSCJob {
                         String koString = koNumber + "";
                         String koString1 = (jsonObject.getLong("onlinenumber") + "");
                         String nums1 = koString.substring(koString.length() - 1, koString.length()) + koString1.substring(koString1.length() - 4, koString1.length());
-                        */
+
                         String nums = "";
                         for(String nu : nums1.split("")){
                             if(nu.equals("")){
@@ -124,10 +120,11 @@ public class TxSSCJob {
                             nums += nu + ",";
                         }
                         nums = nums.substring(0, nums.length() - 1);
+                        */
                         BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
                         bcLotteryHistory.setLotteryType(type);
                         bcLotteryHistory.setSeasonId(qihao);
-                        bcLotteryHistory.setNums(nums);
+                        bcLotteryHistory.setNums(nums1);
                         bcLotteryHistory.setOpenTime(new Date());
                         bcLotteryHistoryManager.insert(bcLotteryHistory);
                         GameData.lastOpen.put(type, bcLotteryHistory);

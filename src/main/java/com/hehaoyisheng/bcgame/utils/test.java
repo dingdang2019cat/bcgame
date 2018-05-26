@@ -33,20 +33,24 @@ import java.util.Map;
 
 public class test {
     public static void main(String[] args) throws Exception {
-        /*
+
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time1 = simpleDateFormat.format(new Date());
+        Date date1 = simpleDateFormat.parse("2018-05-26 08:46:15");
+        String time1 = simpleDateFormat.format(date1);
+        System.out.println(time1);
         Date date = simpleDateFormat.parse(time1.split(" ")[0] + " 00:00:00");
-        String sss1 = ((System.currentTimeMillis() - date.getTime()) / 60000) + "";
-        System.out.println(sss1);
-        */
+        String sss1 = ((date1.getTime() - date.getTime()) / 60000) + "";
+        Long sss2 = ((System.currentTimeMillis() - date.getTime()) % 60000) / 1000;
+        System.out.println(sss1 + "  " + sss2);
 
 
 
 
+        /*
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         LotteryThread lotteryThread = (LotteryThread) applicationContext.getBean("lotteryThread");
         lotteryThread.lottery("gd11x5", "2018052513","03,01,02,10,04");
+        */
 
 
         /*

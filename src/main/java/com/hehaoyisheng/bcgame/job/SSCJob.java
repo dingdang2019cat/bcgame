@@ -1,6 +1,8 @@
 package com.hehaoyisheng.bcgame.job;
 
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.hehaoyisheng.bcgame.common.GameData;
 import com.hehaoyisheng.bcgame.common.GameType;
 import com.hehaoyisheng.bcgame.common.LotteryThread;
@@ -138,6 +140,65 @@ public class SSCJob {
         GameData.gameSeasonId.put(type, qiHao);
         for(int k = 0; k < 50; k++){
             try {
+                String result = HttpClientUtil.sendHttpGet("http://ho.apiplus.net/newly.do?token=t9339fdff9c8fe887k&code=" + (type.endsWith("pk10") ? "bjpk10" : type) + "&format=json");
+                JSONObject jsonObject = JSONObject.parseObject(result);
+                JSONArray jsonArray = jsonObject.getJSONArray("data");
+                for(int i = 0; i < jsonArray.size(); i++) {
+                    JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                    String qihao = jsonObject1.getString("expect");
+                    if(qihao.equals(qiHao1)){
+                        BcLotteryHistory bcLotteryHistory = new BcLotteryHistory();
+                        bcLotteryHistory.setLotteryType(type);
+                        bcLotteryHistory.setSeasonId(qihao);
+                        List<BcLotteryHistory> bcLotteryHistoryList = bcLotteryHistoryManager.select(bcLotteryHistory, 0, 5);
+                        if(CollectionUtils.isEmpty(bcLotteryHistoryList)){
+                            bcLotteryHistory.setNums(jsonObject1.getString("opencode"));
+                            bcLotteryHistoryManager.insert(bcLotteryHistory);
+                            bcLotteryHistory.setOpenTime(new Date());
+                            GameData.lastOpen.put(type, bcLotteryHistory);
+                            try {
+                                List<YiLou> yiLous = yiLouManager.select(type, 0, 1);
+                                YiLou yiLou = yiLous.get(0);
+                                String[] yiLouNums = yiLou.getContent().split(" ");
+                                String[] lotteryNums = bcLotteryHistory.getNums().split(",");
+                                String[] lotteryNums1 = yiLou.getNums().split(",");
+                                YiLou yiLou1 = new YiLou();
+                                String sss = "";
+                                for(int l = 0; l < 5; l++){
+                                    String[] yiLouNums1 = yiLouNums[l].split(",");
+                                    Integer lotteryNumInteger = Integer.valueOf(lotteryNums[l]);
+                                    Integer lotteryNumInteger1 = Integer.valueOf(lotteryNums1[l]);
+                                    if(!type.contains("ssc")){
+                                        lotteryNumInteger = lotteryNumInteger - 1;
+                                        lotteryNumInteger1 = lotteryNumInteger1 - 1;
+                                    }
+                                    for(int p  = 0 ; p < yiLouNums1.length; p++){
+                                        Integer yi = Integer.valueOf(yiLouNums1[p]);
+                                        yi = yi + 1;
+                                        if(p == lotteryNumInteger1){
+                                            yi = 1;
+                                        }
+                                        sss += yi + ",";
+                                    }
+                                    sss = sss.substring(0, sss.length() - 1);
+                                    sss += " ";
+                                }
+                                sss = sss.substring(0, sss.length() - 1);
+                                yiLou1.setSessionId(qihao);
+                                yiLou1.setType(type);
+                                yiLou1.setContent(sss);
+                                yiLou1.setNums(bcLotteryHistory.getNums());
+                                yiLouManager.insert(yiLou1);
+                            }catch (Exception e1){
+                                e1.printStackTrace();
+                            }
+
+                            lotteryThread.lottery(type, qihao, bcLotteryHistory.getNums());
+                            return;
+                        }
+                    }
+                }
+                /*
                 String result= HttpClientUtil.sendHttpGet("http://917500.cn/Home/Lottery/kaijianghao/lotid/" + (type.endsWith("11x5") ? type.replace("11x5", "115") : type) + ".html?page=1&nourl=1");
                 String[] results = result.split("<td>");
                 String qihao = results[1].replace("</td>", "").substring(0, count);
@@ -192,9 +253,11 @@ public class SSCJob {
                     }catch (Exception e1){
                         e1.printStackTrace();
                     }
+
                     lotteryThread.lottery(type, qihao, bcLotteryHistory.getNums());
                     break;
                 }
+                */
                 Thread.sleep(10000);
             }catch (Exception e){
                 try {
